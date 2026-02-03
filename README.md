@@ -118,6 +118,6 @@ https//api.snaphutaorp.org/
 
 ## 📈 开发 / Development
 
-![Snap.Hutao](https://repobeats.axiom.co/api/embed/f029553fbe0c60689b1710476ec8512452163fc9.svg)
+![Alt](https://repobeats.axiom.co/api/embed/9876638ea2cec2a214a07632390215e57f4ecc40.svg "Repobeats analytics image")
 
 [![Star History Chart](https://api.star-history.com/svg?repos=SnapHutaoRemasteringProject/Snap.Hutao.Remastered&type=Date)](https://star-history.com/#SnapHutaoRemasteringProject/Snap.Hutao.Remastered&Date)

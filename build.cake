@@ -143,7 +143,7 @@ Task("Generate AppxManifest")
             content = content
                 .Replace("Snap Hutao Remastered", "Snap Hutao Remastered Alpha")
                 .Replace("胡桃重制版", "胡桃重制版 Alpha")
-                .Replace("SnapHutaoRemasteringProject", "SnapHutaoRemasteringProject CI");
+                //.Replace("SnapHutaoRemasteringProject", "SnapHutaoRemasteringProject CI");
             content = System.Text.RegularExpressions.Regex.Replace(content, "  Name=\"([^\"]*)\"", "  Name=\"7f0db578-026f-4e0b-a75b-d5d06bb0a74c\"");
         }
         else if (GitHubActions.Environment.Workflow.Workflow == "Snap Hutao Remastered Canary")
@@ -152,7 +152,7 @@ Task("Generate AppxManifest")
             content = content
                 .Replace("Snap Hutao Remastered", "Snap Hutao Remastered Canary")
                 .Replace("胡桃重制版", "胡桃重制版 Canary")
-                .Replace("SnapHutaoRemasteringProject", "SnapHutaoRemasteringProject CI");
+                //.Replace("SnapHutaoRemasteringProject", "SnapHutaoRemasteringProject CI");
             content = System.Text.RegularExpressions.Regex.Replace(content, "  Name=\"([^\"]*)\"", "  Name=\"52127695-c6a7-406e-916a-693b905e8ba7\"");
         }
         else
@@ -160,7 +160,7 @@ Task("Generate AppxManifest")
             throw new Exception("Unsupported workflow.");
         }
 
-        content = System.Text.RegularExpressions.Regex.Replace(content, "  Publisher=\"([^\"]*)\"", "  Publisher=\"E=admin@dgp-studio.cn, CN=SnapHutaoRemasteringProject CI, OU=CI, O=DGP-Studio, L=San Jose, S=CA, C=US\"");
+        content = System.Text.RegularExpressions.Regex.Replace(content, "  Publisher=\"([^\"]*)\"", "  Publisher=\"CN=SnapHutaoRemasteringProject CI\"");
         content = System.Text.RegularExpressions.Regex.Replace(content, "  Version=\"([0-9\\.]+)\"", $"  Version=\"{version}\"");
     }
     else if (AppVeyor.IsRunningOnAppVeyor)

@@ -142,7 +142,7 @@ Task("Generate AppxManifest")
             Information("Using Alpha configuration");
             content = content
                 .Replace("Snap Hutao Remastered", "Snap Hutao Remastered Alpha")
-                .Replace("胡桃重制版", "胡桃重制版 Alpha")
+                .Replace("胡桃重制版", "胡桃重制版 Alpha");
                 //.Replace("SnapHutaoRemasteringProject", "SnapHutaoRemasteringProject CI");
             content = System.Text.RegularExpressions.Regex.Replace(content, "  Name=\"([^\"]*)\"", "  Name=\"7f0db578-026f-4e0b-a75b-d5d06bb0a74c\"");
         }
@@ -151,7 +151,7 @@ Task("Generate AppxManifest")
             Information("Using Canary configuration");
             content = content
                 .Replace("Snap Hutao Remastered", "Snap Hutao Remastered Canary")
-                .Replace("胡桃重制版", "胡桃重制版 Canary")
+                .Replace("胡桃重制版", "胡桃重制版 Canary");
                 //.Replace("SnapHutaoRemasteringProject", "SnapHutaoRemasteringProject CI");
             content = System.Text.RegularExpressions.Regex.Replace(content, "  Name=\"([^\"]*)\"", "  Name=\"52127695-c6a7-406e-916a-693b905e8ba7\"");
         }

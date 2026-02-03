@@ -22,10 +22,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          ref: develop
+          ref: dev
           fetch-depth: 0
 
-      - name: Merge all branches into develop locally
+      - name: Merge all branches into dev locally
         id: merge
         run: |
           $continue = $true
@@ -33,10 +33,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin '+refs/heads/*:refs/remotes/origin/*'
-          git checkout origin/develop
+          git checkout origin/dev
           $response = curl -s https://api.github.com/repos/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/pulls?state=open
           $refs = $response | ConvertFrom-Json | Where-Object { $_.draft -eq $false } | ForEach-Object { $_.head.ref }
-          if ($refs.Count -eq 0 -or ($refs.Count -eq 1 -and $refs -eq "l10n_develop")) {
+          if ($refs.Count -eq 0 -or ($refs.Count -eq 1 -and $refs -eq "l10n_dev")) {
               echo "No PRs to merge"
               $continue = $false
               echo "continue=$continue" >> $Env:GITHUB_OUTPUT
@@ -44,8 +44,8 @@ jobs:
           }
 
           foreach ($ref in $refs) {
-              echo "Merging $ref into develop"
-              git merge "origin/$ref" --strategy=ort --allow-unrelated-histories -m "Merge $ref into develop"
+              echo "Merging $ref into dev"
+              git merge "origin/$ref" --strategy=ort --allow-unrelated-histories -m "Merge $ref into dev"
           }
 
           echo "continue=$continue" >> $Env:GITHUB_OUTPUT

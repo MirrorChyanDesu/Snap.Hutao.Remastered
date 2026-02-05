@@ -22,7 +22,7 @@ internal sealed partial class NativeProcess : IProcess
 
     public HWND MainWindowHandle { get => process.MainWindowHandle; }
 
-    public bool HasExited { get => process.GetExitCodeProcess(out _); }
+    public bool HasExited { get => !process.GetExitCodeProcess(out _); }
 
     public int ExitCode
     {

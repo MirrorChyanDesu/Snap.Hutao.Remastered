@@ -134,8 +134,7 @@
                                         <StackPanel
                                             Grid.Row="0"
                                             Grid.Column="1"
-                                            VerticalAlignment="Center"
-                                            Spacing="12">
+                                            VerticalAlignment="Center">
                                             <cwc:UniformGrid
                                                 VerticalAlignment="Center"
                                                 ColumnSpacing="8"
@@ -178,17 +177,18 @@
                                     HeaderIcon="{shuxm:FontIcon Glyph=&#xE895;}"
                                     IsClickEnabled="True"/>
 
+                                <cwc:SettingsCard
+                                    ActionIconToolTip="{shuxm:ResourceString Name=ViewPageSettingCreateDesktopShortcutAction}"
+                                    Command="{Binding CreateDesktopShortcutCommand}"
+                                    Description="{shuxm:ResourceString Name=ViewPageSettingCreateDesktopShortcutDescription}"
+                                    Header="{shuxm:ResourceString Name=ViewPageSettingCreateDesktopShortcutHeader}"
+                                    IsClickEnabled="True"/>
+
                                 <cwc:SettingsExpander
                                     Header="{shuxm:ResourceString Name=ViewPageSettingElevatedModeHeader}"
                                     HeaderIcon="{shuxm:FontIcon Glyph=&#xE7EF;}"
                                     IsExpanded="True">
                                     <cwc:SettingsExpander.Items>
-                                        <cwc:SettingsCard
-                                            ActionIconToolTip="{shuxm:ResourceString Name=ViewPageSettingCreateDesktopShortcutAction}"
-                                            Command="{Binding CreateDesktopShortcutCommand}"
-                                            Description="{shuxm:ResourceString Name=ViewPageSettingCreateDesktopShortcutDescription}"
-                                            Header="{shuxm:ResourceString Name=ViewPageSettingCreateDesktopShortcutHeader}"
-                                            IsClickEnabled="True"/>
                                         <cwc:SettingsCard
                                             Description="{shuxm:ResourceString Name=ViewPageSettingAutoRestartAsAdminDescription}"
                                             Header="{shuxm:ResourceString Name=ViewPageSettingAutoRestartAsAdminHeader}"

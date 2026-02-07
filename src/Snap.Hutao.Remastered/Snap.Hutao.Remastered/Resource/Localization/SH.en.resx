@@ -3180,7 +3180,7 @@ Space Available: {2}</value>
     <value>Create</value>
   </data>
   <data name="ViewPageSettingCreateDesktopShortcutDescription" xml:space="preserve">
-    <value>Create desktop shortcut with administrator privilege</value>
+    <value>Create desktop shortcut</value>
   </data>
   <data name="ViewPageSettingCreateDesktopShortcutHeader" xml:space="preserve">
     <value>Create Desktop Shortcut</value>

@@ -117,7 +117,7 @@ internal sealed partial class SettingViewModel : Abstraction.ViewModel, INavigat
     {
         SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateUI("Create desktop shortcut for elevated launch", "SettingViewModel.Command"));
 
-        _ = shellLinkInterop.TryCreateDesktopShortcutForElevatedLaunch()
+        _ = shellLinkInterop.TryCreateDesktopShortcut()
             ? messenger.Send(InfoBarMessage.Success(SH.ViewModelSettingActionComplete))
             : messenger.Send(InfoBarMessage.Warning(SH.ViewModelSettingCreateDesktopShortcutFailed));
     }

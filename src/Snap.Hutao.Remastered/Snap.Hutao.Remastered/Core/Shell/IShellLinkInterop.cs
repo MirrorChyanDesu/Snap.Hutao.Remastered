@@ -5,5 +5,5 @@ namespace Snap.Hutao.Remastered.Core.Shell;
 
 internal interface IShellLinkInterop
 {
-    bool TryCreateDesktopShortcutForElevatedLaunch();
+    bool TryCreateDesktopShortcut();
 }

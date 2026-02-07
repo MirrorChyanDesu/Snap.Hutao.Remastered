@@ -3,25 +3,26 @@
 
 using Snap.Hutao.Remastered.Core.IO;
 using System.IO;
+using Windows.ApplicationModel;
 
 namespace Snap.Hutao.Remastered.Core.Shell;
 
 [Service(ServiceLifetime.Transient, typeof(IShellLinkInterop))]
 internal sealed class ShellLinkInterop : IShellLinkInterop
 {
-    public bool TryCreateDesktopShortcutForElevatedLaunch()
+    public bool TryCreateDesktopShortcut()
     {
         string targetLogoPath = HutaoRuntime.GetDataDirectoryFile("ShellLinkLogo.ico");
-        string elevatedLauncherPath = HutaoRuntime.GetDataDirectoryFile("Snap.Hutao.Remastered.Elevated.Launcher.exe");
 
         try
         {
             InstalledLocation.CopyFileFromApplicationUri("ms-appx:///Assets/Logo.ico", targetLogoPath);
-            InstalledLocation.CopyFileFromApplicationUri("ms-appx:///Snap.Hutao.Remastered.Elevated.Launcher.exe", elevatedLauncherPath);
 
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string target = Path.Combine(desktop, $"{SH.FormatAppNameAndVersion(HutaoRuntime.Version)}.lnk");
-            FileSystem.CreateLink(elevatedLauncherPath, HutaoRuntime.FamilyName, targetLogoPath, target);
+
+            FileSystem.CreateLink("hutao://", "", targetLogoPath, target);
+
             return true;
         }
         catch

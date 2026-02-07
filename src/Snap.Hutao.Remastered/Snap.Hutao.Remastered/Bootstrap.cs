@@ -69,7 +69,7 @@ public static partial class Bootstrap
             // By adding the using statement, we can dispose the injected services when closing
             using (ServiceProvider serviceProvider = DependencyInjection.Initialize())
             {
-                Thread.CurrentThread.Name = "Snap Hutao Application Main Thread";
+                Thread.CurrentThread.Name = "Snap Hutao Remastered Application Main Thread";
 
                 // Check if we should restart as administrator
                 if (ShouldRestartAsAdmin(serviceProvider))

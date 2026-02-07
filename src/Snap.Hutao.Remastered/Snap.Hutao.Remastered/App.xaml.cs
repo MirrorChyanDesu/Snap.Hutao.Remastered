@@ -33,6 +33,7 @@ public sealed partial class App : Application
         
         Snap.Hutao.Remastered is a open source software developed by DGP Studio.
         Copyright (C) 2022 - 2025 DGP Studio, All Rights Reserved.
+        Copyright (C) 2026 SnapHutaoRemasteringProject, All Rights Reserved.
         ----------------------------------------------------------------
         """;
 

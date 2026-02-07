@@ -65,11 +65,6 @@
                                     <HyperlinkButton
                                         HorizontalAlignment="Stretch"
                                         HorizontalContentAlignment="Left"
-                                        Content="{shuxm:ResourceString Name=ViewPageSettingTranslateNavigate}"
-                                        NavigateUri="{StaticResource DocumentLink_Translate}"/>
-                                    <HyperlinkButton
-                                        HorizontalAlignment="Stretch"
-                                        HorizontalContentAlignment="Left"
                                         Content="{shuxm:ResourceString Name=ViewPageSettingSponsorNavigate}"
                                         NavigateUri="{StaticResource DocumentLink_Sponsor}"/>
                                 </cwc:UniformGrid>
@@ -156,11 +151,6 @@
                                                     HorizontalContentAlignment="Left"
                                                     Content="{shuxm:ResourceString Name=ViewPageSettingFeedbackNavigate}"
                                                     NavigateUri="{StaticResource DocumentLink_BugReport}"/>
-                                                <HyperlinkButton
-                                                    HorizontalAlignment="Stretch"
-                                                    HorizontalContentAlignment="Left"
-                                                    Content="{shuxm:ResourceString Name=ViewPageSettingTranslateNavigate}"
-                                                    NavigateUri="{StaticResource DocumentLink_Translate}"/>
                                                 <HyperlinkButton
                                                     HorizontalAlignment="Stretch"
                                                     HorizontalContentAlignment="Left"

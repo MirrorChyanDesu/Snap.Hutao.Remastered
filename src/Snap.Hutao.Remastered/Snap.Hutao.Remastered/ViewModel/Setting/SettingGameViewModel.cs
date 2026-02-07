@@ -28,6 +28,12 @@ internal sealed partial class SettingGameViewModel : Abstraction.ViewModel
         set => LocalSetting.Set(SettingKeys.LaunchForceUsingTouchScreen, value);
     }
 
+    public bool AutoSignInEnabled
+    {
+        get => LocalSetting.Get(SettingKeys.AutoSignInEnabled, false);
+        set => LocalSetting.Set(SettingKeys.AutoSignInEnabled, value);
+    }
+
     [Command("DeleteGameWebCacheCommand")]
     private void DeleteGameWebCache()
     {

@@ -25,8 +25,8 @@
     </tr>
     <tr>
       <td align="center" style="padding:0 10px;">
-        <a href="https://ci.appveyor.com/project/SnapHutaoRemasteringProject/snap-hutao-remastered">
-          <img src="https://ci.appveyor.com/api/projects/status/n4s40t9llru4si9y?svg=true" alt="Build Status"/>
+        <a href="https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/actions/workflows/canary.yml">
+          <img src="https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/actions/workflows/canary.yml/badge.svg" alt="Build Status"/>
         </a>
       </td>
       <td align="center" style="padding:0 10px;">

@@ -24,6 +24,10 @@ internal sealed class HutaoResponse : Web.Response.Response, ILocalizableRespons
 
     public override string ToString()
     {
+        if (this.GetLocalizationMessageOrDefault() == null)
+        {
+            return string.Format(SH.WebResponse, ReturnCode, Message);
+        }
         return SH.FormatWebResponse(ReturnCode, this.GetLocalizationMessageOrDefault());
     }
 }

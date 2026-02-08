@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>결과를 찾을 수 없음</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>삭제</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>모두 선택</value>
   </data>
@@ -2858,18 +2855,6 @@
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>원소 폭발 클로즈업 제거</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>캐릭터/파티 구성/기원/기행과 같은 특수 인터페이스의 시야를 수정합니다.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>특수 인터페이스 수정</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>'시야 조정'을 활성화하면 모든 장면의 안개 표시는 '안개 제거' 스위치의 상태를 따릅니다. '특수 인터페이스 수정'도 동시에 활성화된 경우, 원래 시야가 30 이하일 때 안개 렌더링을 강제로 비활성화합니다. 이렇게 하면 정상적인 기원/기행/캐릭터 등 인터페이스를 볼 수 있지만, 일부 스토리에 진입할 때도 안개가 강제로 비활성화됩니다. 이는 소프트웨어 버그가 아니므로 저희에게 보고하지 마세요.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>시야와 안개</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>지도 인터페이스 왼쪽 상단의 퀘스트 알림 강제 제거</value>
   </data>
@@ -3988,5 +3973,11 @@
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>모니터 ID</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>특수 인터페이스 수정</value>
   </data>
 </root>

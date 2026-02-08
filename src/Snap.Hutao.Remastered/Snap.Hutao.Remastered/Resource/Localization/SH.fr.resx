@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Aucun résultat trouvé</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Tout sélectionner</value>
   </data>
@@ -2858,18 +2855,6 @@ Espace disponible : {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Supprimer le gros plan de l'explosion élémentaire</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Corrige la vue pour les interfaces spéciales comme les personnages, les configurations d'équipe, les vœux, le Passe de bataille, etc.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Correction de l'interface spéciale</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>Après avoir activé « Ajuster le champ de vision », l'affichage du brouillard dans toutes les scènes suivra l'état du commutateur « Supprimer le brouillard ». Si « Correction d'interface spéciale » est également activée, le rendu du brouillard sera forcément désactivé lorsque le champ de vision d'origine est inférieur ou égal à 30. Cela vous permettra de voir les interfaces normales des vœux/compagnonnage/personnages, mais désactivera également forcément le brouillard lors de certaines cinématiques. Ce n'est pas un bogue du logiciel, ne nous le signalez pas.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Vision et brouillard</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Suppression forcée de l'indication de mission dans le coin supérieur gauche de l'interface de la carte</value>
   </data>
@@ -3988,5 +3973,11 @@ Espace disponible : {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>ID du moniteur</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Correction de l'interface spéciale</value>
   </data>
 </root>

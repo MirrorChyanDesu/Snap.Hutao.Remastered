@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>ไม่พบผลลัพธ์</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>ลบ</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>เลือกทั้งหมด</value>
   </data>
@@ -2858,18 +2855,6 @@
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>ลบการถ่ายภาพระยะใกล้ของท่าไม้ตาย</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>แก้ไขมุมมองสำหรับอินเทอร์เฟซพิเศษ เช่น การกำหนดค่าตัวละคร/ทีม/คำอธิษฐาน/Battle Pass</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>การแก้ไขอินเทอร์เฟซพิเศษ</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>เมื่อเปิดใช้งาน "ปรับวิสัยทัศน์" การแสดงหมอกในทุกฉากจะปฏิบัติตามสถานะของสวิตช์ "ลบหมอก" หากเปิดใช้งาน "การแก้ไขอินเทอร์เฟซพิเศษ" ด้วย จะปิดการแสดงผลหมอกโดยบังคับเมื่อวิสัยทัศน์เดิมน้อยกว่าหรือเท่ากับ 30 ซึ่งจะทำให้คุณเห็นอินเทอร์เฟซปกติเช่นการอธิษฐาน/บันทึกการเดินทาง/ตัวละคร แต่จะปิดการแสดงผลหมอกโดยบังคับเมื่อเข้าสู่บางเรื่องราว นี่ไม่ใช่ข้อบกพร่องของซอฟต์แวร์ อย่ารายงานให้เราทราบ</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>วิสัยทัศน์และหมอก</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>บังคับลบคำแนะนำภารกิจที่มุมซ้ายบนของอินเทอร์เฟซแผนที่</value>
   </data>
@@ -3988,5 +3973,11 @@
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>หมายเลขจอภาพ</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>การแก้ไขอินเทอร์เฟซพิเศษ</value>
   </data>
 </root>

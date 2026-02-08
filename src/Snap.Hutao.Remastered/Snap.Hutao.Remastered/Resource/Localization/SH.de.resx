@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Keine Ergebnisse gefunden</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Alle auswählen</value>
   </data>
@@ -2858,18 +2855,6 @@ Verfügbarer Speicherplatz: {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Elementarausbruch-Animation deaktivieren</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Behebt die Ansicht für spezielle Oberflächen wie Charakter-/Teamkonfiguration/Wünsche/Battle Pass</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Spezielle Oberflächenkorrektur</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>Nach dem Aktivieren von „Sichtfeld anpassen“ folgt die Nebelanzeige in allen Szenen dem Status des Schalters „Nebel entfernen“. Wenn gleichzeitig „Spezielle Oberflächenkorrektur“ aktiviert ist, wird die Nebelwiedergabe deaktiviert, wenn das ursprüngliche Sichtfeld kleiner oder gleich 30 ist. Dadurch sehen Sie normale Oberflächen wie Wünschen/Reiseroute/Charaktere usw., aber beim Betreten einiger Handlungsstränge wird der Nebel ebenfalls deaktiviert. Dies ist kein Softwarefehler, melden Sie ihn uns nicht.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Sichtfeld und Nebel</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Erzwingen Sie das Entfernen der Aufgabenbenachrichtigung in der oberen linken Ecke der Kartenoberfläche</value>
   </data>
@@ -3988,5 +3973,11 @@ Verfügbarer Speicherplatz: {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>Monitor-ID</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Spezielle Oberflächenkorrektur</value>
   </data>
 </root>

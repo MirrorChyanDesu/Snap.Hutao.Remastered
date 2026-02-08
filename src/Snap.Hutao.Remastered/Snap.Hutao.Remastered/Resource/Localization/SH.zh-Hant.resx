@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>找不到結果</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>刪除</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>選擇全部</value>
   </data>
@@ -2858,18 +2855,6 @@
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>移除元素爆發鏡頭特寫</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>修正角色/隊伍設定/祈願/紀行等特殊介面的視野</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>特殊介面修正</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>啟用「調整視野」後，所有場景下的迷霧顯示將會遵循「移除迷霧」開關的狀態。若同時啟用了「特殊介面修正」，則會在原始視野小於等於 30 時，強制禁用迷霧渲染。這會讓你看到正常的祈願/紀行/角色等介面，但是在進入部分劇情時也會強制禁用迷霧。這不屬於軟體 BUG，不要向我們回報。</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>視野與迷霧</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>強制移除地圖介面左上角的任務提示</value>
   </data>
@@ -3991,5 +3976,11 @@
   </data>
   <data name="ViewCardSignInAutoSignIn" xml:space="preserve">
     <value>自動簽到</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>特殊介面修正</value>
   </data>
 </root>

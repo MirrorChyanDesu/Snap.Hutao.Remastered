@@ -97,7 +97,7 @@ internal sealed partial class LaunchOptions : DbStoreOptions, IRestrictedGamePat
     public IObservableProperty<float> TargetFov { get => field ??= CreateProperty(SettingKeys.LaunchTargetFov, 45f); }
 
     [field: MaybeNull]
-    public IObservableProperty<bool> FixLowFovScene { get => field ??= CreateProperty(SettingKeys.LaunchFixLowFovScene, true); }
+    public IObservableProperty<bool> DisablePlayerPerspective { get => field ??= CreateProperty(SettingKeys.LaunchDisablePlayerPerspective, true); }
 
     [field: MaybeNull]
     public IObservableProperty<bool> DisableFog { get => field ??= CreateProperty(SettingKeys.LaunchDisableFogRendering, false); }

@@ -16,7 +16,7 @@ internal struct IslandEnvironment
 
     public BOOL EnableSetFieldOfView;
     public float FieldOfView;
-    public BOOL FixLowFovScene;
+    public BOOL DisablePlayerPerspective;
     public BOOL DisableFog;
     public BOOL EnableSetTargetFrameRate;
     public int TargetFrameRate;

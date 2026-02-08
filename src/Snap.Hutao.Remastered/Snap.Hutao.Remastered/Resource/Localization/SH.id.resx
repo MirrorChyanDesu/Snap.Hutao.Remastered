@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Tidak ada hasil yang ditemukan</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Hapus</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Pilih Semua</value>
   </data>
@@ -2858,18 +2855,6 @@ Ruang Tersedia: {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Hapus Close-up Kamera Elemen Burst</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Perbaiki tampilan antarmuka khusus seperti Karakter/Konfigurasi Tim/Wish/Battle Pass</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Perbaikan Antarmuka Khusus</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>Setelah mengaktifkan "Sesuaikan Penglihatan", tampilan kabut di semua adegan akan mengikuti status sakelar "Hapus Kabut". Jika "Koreksi Antarmuka Khusus" juga diaktifkan, rendering kabut akan dinonaktifkan secara paksa ketika penglihatan asli kurang dari atau sama dengan 30. Ini akan memungkinkan Anda melihat antarmuka Doa/Buku Perjalanan/Karakter yang normal, tetapi juga akan menonaktifkan kabut secara paksa saat memasuki beberapa alur cerita. Ini bukan BUG perangkat lunak, jangan laporkan kepada kami.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Penglihatan dan Kabut</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Paksa menghapus petunjuk misi di sudut kiri atas antarmuka peta</value>
   </data>
@@ -3988,5 +3973,11 @@ Ruang Tersedia: {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>ID Monitor</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Perbaikan Antarmuka Khusus</value>
   </data>
 </root>

@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Результаты не найдены</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Выбрать все</value>
   </data>
@@ -2856,24 +2853,6 @@
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Отключить анимацию элементального взрыва</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Исправление обзора для особых интерфейсов, таких как персонаж/состав отряда/молитва/боевой пропуск</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Исправление особых интерфейсов</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>После включения функции «Регулировка обзора» отображение тумана во всех сценах будет соответствовать состоянию переключателя «Удалить туман».
-
-⚠️ Если одновременно включена опция «Исправление специальных интерфейсов», то при исходном обзоре ≤ 30 рендеринг тумана будет принудительно отключен.
-
-Это позволит видеть нормально интерфейсы, такие как желания/путешествия/персонажи, но при входе в некоторые сюжетные сцены туман также будет принудительно отключен.
-
-❗ Это не является ошибкой программы, поэтому не отправляйте нам отчёты об ошибках.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Обзор и туман</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Принудительно удалить подсказку задания в верхнем левом углу карты</value>
   </data>
@@ -3992,5 +3971,11 @@
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>ID Монитора</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Исправление особых интерфейсов</value>
   </data>
 </root>

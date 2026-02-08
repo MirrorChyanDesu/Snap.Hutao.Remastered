@@ -716,42 +716,13 @@
                                         ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameUnlockFpsDescription}"
                                         Value="{Binding LaunchOptions.TargetFps.Value, Mode=TwoWay}"/>
                                     <ToggleSwitch
-                                        x:Name="FixLowFovSceneToggleSwitch"
+                                        x:Name="DisablePlayerPerspectiveToggleSwitch"
                                         Grid.Row="1"
                                         Grid.Column="2"
-                                        IsEnabled="{Binding LaunchOptions.IsSetFieldOfViewEnabled}"
-                                        IsOn="{Binding LaunchOptions.FixLowFovScene.Value, Mode=TwoWay}"
-                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameFixLowFovSceneDescription}">
-                                        <mxi:Interaction.Behaviors>
-                                            <shuxb:ToggleSwitchHeaderHitTestVisibleBehavior/>
-                                        </mxi:Interaction.Behaviors>
-                                        <ToggleSwitch.Header>
-                                            <StackPanel Orientation="Horizontal" Spacing="4">
-                                                <TextBlock Text="{shuxm:ResourceString Name=ViewPageLaunchGameFixLowFovSceneHeader}"/>
-                                                <Button Padding="1,1,0.5,0.5" VerticalAlignment="Center">
-                                                    <mxi:Interaction.Behaviors>
-                                                        <mxi:EventTriggerBehavior EventName="Click">
-                                                            <mxi:EventTriggerBehavior.Actions>
-                                                                <shuxba:ShowTeachingTipAction TeachingTip="{x:Bind FixLowFovTeachingTip}"/>
-                                                            </mxi:EventTriggerBehavior.Actions>
-                                                        </mxi:EventTriggerBehavior>
-                                                    </mxi:Interaction.Behaviors>
-                                                    <FontIcon
-                                                        FontSize="12"
-                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                        Glyph="&#xE946;"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </ToggleSwitch.Header>
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameDisablePlayerPerspectiveDescription}"
+                                        IsOn="{Binding LaunchOptions.DisablePlayerPerspective.Value, Mode=TwoWay}"
+                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameDisablePlayerPerspectiveDescription}">
                                     </ToggleSwitch>
-                                    <TeachingTip
-                                        x:Name="FixLowFovTeachingTip"
-                                        Title="{shuxm:ResourceString Name=ViewPageLaunchGameFixLowFovSceneTeachingTipTitle}"
-                                        Grid.Row="2"
-                                        Grid.Column="0"
-                                        IsLightDismissEnabled="True"
-                                        Subtitle="{shuxm:ResourceString Name=ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle}"
-                                        Target="{x:Bind FixLowFovSceneToggleSwitch}"/>
 
                                     <ToggleSwitch
                                         x:Name="HideQuestBannerToggleSwitch"
@@ -874,6 +845,12 @@
                                     <ToggleSwitch
                                         Grid.Row="4"
                                         Grid.Column="0"
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandUsingTouchScreenHeader}"
+                                        IsEnabled="{Binding LaunchOptions.IsGameRunning.Value, Converter={StaticResource BoolNegationConverter}}"
+                                        IsOn="{Binding LaunchOptions.UsingTouchScreen.Value, Mode=TwoWay}"/>
+                                    <ToggleSwitch
+                                        Grid.Row="4"
+                                        Grid.Column="1"
                                         Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDebugModeHeader}"
                                         IsOn="{Binding LaunchOptions.DebugMode.Value, Mode=TwoWay}"
                                         ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDebugModeDescription}"/>
@@ -882,17 +859,10 @@
                                     <ToggleSwitch
                                         Visibility="Collapsed"
                                         Grid.Row="4"
-                                        Grid.Column="1"
+                                        Grid.Column="2"
                                         Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHidePlayerInfoHeader}"
                                         IsOn="{Binding LaunchOptions.HidePlayerInfo.Value, Mode=TwoWay}"
                                         ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHidePlayerInfoDescription}"/>
-                                    <ToggleSwitch
-                                        Visibility="Collapsed"
-                                        Grid.Row="4"
-                                        Grid.Column="2"
-                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandUsingTouchScreenHeader}"
-                                        IsEnabled="{Binding LaunchOptions.IsGameRunning.Value, Converter={StaticResource BoolNegationConverter}}"
-                                        IsOn="{Binding LaunchOptions.UsingTouchScreen.Value, Mode=TwoWay}"/>
 
                                     <ToggleSwitch
                                         Visibility="Collapsed"

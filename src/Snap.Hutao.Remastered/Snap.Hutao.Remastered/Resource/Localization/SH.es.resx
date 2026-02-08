@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>No se encontraron resultados</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Seleccionar todo</value>
   </data>
@@ -2858,18 +2855,6 @@ Espacio disponible: {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Deshabilitar animación de ráfaga elemental</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Corregir la vista para interfaces especiales como Configuración de Personaje/Equipo, Deseos/Pase de Batalla</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Corrección de interfaz especial</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>Después de habilitar "Ajustar Campo de Visión", la visualización de niebla en todas las escenas seguirá el estado del interruptor "Eliminar Niebla". Si también está habilitada la "Corrección de Interfaz Especial", se deshabilitará forzosamente el renderizado de niebla cuando el campo de visión original sea menor o igual a 30. Esto te permitirá ver interfaces normales como Oraciones/Compendio/Personajes, pero también deshabilitará forzosamente la niebla al entrar en algunas historias. Esto no es un error del software, no nos lo reportes.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Visión y Niebla</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Forzar la eliminación de la notificación de misión en la esquina superior izquierda del mapa</value>
   </data>
@@ -3988,5 +3973,11 @@ Espacio disponible: {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>ID del monitor</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Corrección de interfaz especial</value>
   </data>
 </root>

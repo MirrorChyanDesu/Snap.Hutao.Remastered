@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Nessun risultato trovato</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Seleziona tutto</value>
   </data>
@@ -2858,18 +2855,6 @@ Spazio disponibile: {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Rimuovi il primo piano della telecamera per l'abilità elementale</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Correzione della visuale per interfacce speciali come Configurazione personaggio/squadra, Desiderio e Pass battaglia</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Correzione interfaccia speciale</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>Dopo aver attivato "Regola campo visivo", la visualizzazione della nebbia in tutte le scene seguirà lo stato dell'interruttore "Rimuovi nebbia". Se "Correzione interfaccia speciale" è attivata, il rendering della nebbia verrà forzatamente disabilitato quando il campo visivo originale è inferiore o uguale a 30. Questo ti permetterà di vedere le interfacce normali come Desiderio/Pass battaglia/Personaggio, ma disabiliterà forzatamente la nebbia durante alcune trame. Questo non è un BUG del software, non segnalarcelo.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Visione e Nebbia</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Rimuovi forzatamente il promemoria della missione nell'angolo in alto a sinistra della mappa</value>
   </data>
@@ -3988,5 +3973,11 @@ Spazio disponibile: {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>ID monitor</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Correzione interfaccia speciale</value>
   </data>
 </root>

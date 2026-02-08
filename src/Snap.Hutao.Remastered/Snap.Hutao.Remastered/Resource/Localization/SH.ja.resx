@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>検索結果なし</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>削除</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>すべて選択</value>
   </data>
@@ -2860,18 +2857,6 @@
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>元素爆発カットインを削除する</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>キャラクター/チーム編成/祈願/紀行などの特殊シーンを補正します</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>特殊シーンの補正</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>「視野調整」を有効にすると、全てのシーンで霧の表示は「霧を取り除く」スイッチの状態に従います。「特殊シーンの補正」も同時有効にした場合、元の視野が 30 以下のとき霧のレンダリングが強制的に無効化されます。これにより祈願/紀行/キャラクターなどの画面は正常に表示されますが、一部のストーリー進行時にも強制的に霧が無効化されます。これはアプリのバグではないため、報告しないでください。</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>視野と霧</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>マップ画面左上の任務ヒントを強制的に取り除きます</value>
   </data>
@@ -3990,5 +3975,11 @@
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>モニターID</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>特殊シーンの補正</value>
   </data>
 </root>

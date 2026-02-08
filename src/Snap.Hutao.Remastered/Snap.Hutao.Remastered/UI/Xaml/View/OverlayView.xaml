@@ -253,9 +253,9 @@
                                             <ToggleButton
                                                 Padding="8"
                                                 VerticalAlignment="Stretch"
-                                                IsChecked="{Binding LaunchOptions.FixLowFovScene.Value, Mode=TwoWay}"
+                                                IsChecked="{Binding LaunchOptions.DisablePlayerPerspective.Value, Mode=TwoWay}"
                                                 Style="{ThemeResource DefaultToggleButtonStyle}"
-                                                ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameFixLowFovSceneHeader}">
+                                                ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameDisablePlayerPerspectiveDescription}">
                                                 <FontIcon FontSize="16" Glyph="&#xF19D;"/>
                                             </ToggleButton>
                                             <ToggleButton

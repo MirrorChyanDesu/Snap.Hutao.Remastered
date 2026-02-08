@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Sonuç bulunamadı</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Sil</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Tümünü Seç</value>
   </data>
@@ -2858,18 +2855,6 @@ Kullanılabilir Alan: {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Element Patlaması yakın çekimini kaldır</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Karakter/Takım Yapılandırması/Dilek/Savaş Bileti gibi özel arayüzlerin görüş alanını düzeltin</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Özel Arayüz Düzeltmesi</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>"Görüşü Ayarla" etkinleştirildiğinde, tüm sahnelerdeki sis görüntüsü "Sisi Kaldır" anahtarının durumunu takip edecektir. Eğer "Özel Arayüz Düzeltmesi" de etkinleştirilmişse, orijinal görüş 30 veya daha az olduğunda sis oluşturma zorunlu olarak devre dışı bırakılacaktır. Bu, normal Dilek/Gezi Günlüğü/Karakter vb. arayüzlerini görmenizi sağlayacak, ancak bazı hikayelere girildiğinde de sisi zorunlu olarak devre dışı bırakacaktır. Bu bir yazılım HATASI değildir, bize bildirmeyin.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Görüş ve Sis</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Harita arayüzünün sol üst köşesindeki görev uyarısını zorla kaldır</value>
   </data>
@@ -3988,5 +3973,11 @@ Kullanılabilir Alan: {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>Monitör Kimliği</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Özel Arayüz Düzeltmesi</value>
   </data>
 </root>

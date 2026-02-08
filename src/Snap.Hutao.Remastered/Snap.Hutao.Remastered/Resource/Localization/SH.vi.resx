@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Không tìm thấy kết quả</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Xóa</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Chọn tất cả</value>
   </data>
@@ -2858,18 +2855,6 @@ Dung lượng còn trống: {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Loại bỏ cảnh cận cảnh kỹ năng nguyên tố</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Sửa lỗi tầm nhìn cho các giao diện đặc biệt như Nhân vật/Đội hình/Cầu nguyện/Nhật ký hành trình</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Sửa giao diện đặc biệt</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>Sau khi bật "Điều chỉnh tầm nhìn", việc hiển thị sương mù trong tất cả cảnh sẽ tuân theo trạng thái của công tắc "Loại bỏ sương mù". Nếu đồng thời bật "Sửa lỗi giao diện đặc biệt", việc kết xuất sương mù sẽ bị buộc tắt khi tầm nhìn gốc nhỏ hơn hoặc bằng 30. Điều này sẽ cho phép bạn nhìn thấy giao diện Cầu Nguyện/Kỷ Hành/Nhân Vật bình thường, nhưng cũng sẽ buộc tắt sương mù khi vào một số đoạn cốt truyện. Đây không phải là lỗi phần mềm, đừng phản hồi với chúng tôi.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Tầm nhìn và Sương mù</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Buộc loại bỏ gợi ý nhiệm vụ ở góc trên bên trái giao diện bản đồ</value>
   </data>
@@ -3988,5 +3973,11 @@ Dung lượng còn trống: {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>ID Màn Hình</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Sửa giao diện đặc biệt</value>
   </data>
 </root>

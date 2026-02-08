@@ -147,9 +147,6 @@
   <data name="ControlAutoSuggestBoxNotFoundValue" xml:space="preserve">
     <value>Nenhum resultado</value>
   </data>
-  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
-    <value>Excluir</value>
-  </data>
   <data name="ControlAutoSuggestTokenBoxSelectAllMenuItem" xml:space="preserve">
     <value>Selecionar tudo</value>
   </data>
@@ -2858,18 +2855,6 @@ Espaço disponível: {2}</value>
   <data name="ViewPageLaunchGameEventCameraMoveHotSwitchHeader" xml:space="preserve">
     <value>Remover close-up de explosão elemental</value>
   </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneDescription" xml:space="preserve">
-    <value>Correção da visão em interfaces especiais, como Personagem/Configuração de equipe/Desejo/Passe de batalha</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneHeader" xml:space="preserve">
-    <value>Correção de interface especial</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipSubtitle" xml:space="preserve">
-    <value>Depois de ativar "Ajustar Campo de Visão", a exibição de neblina em todas as cenas seguirá o estado do interruptor "Remover Neblina". Se "Correção de Interface Especial" também estiver ativada, a renderização de neblina será forçadamente desativada quando o campo de visão original for menor ou igual a 30. Isto permitirá que veja interfaces normais de Desejo/Passes de Batalha/Personagens, mas também forçará a desativação da neblina ao entrar em algumas histórias. Isto não é um BUG do software, não nos reporte.</value>
-  </data>
-  <data name="ViewPageLaunchGameFixLowFovSceneTeachingTipTitle" xml:space="preserve">
-    <value>Visão e Neblina</value>
-  </data>
   <data name="ViewPageLaunchGameHideQuestBannerHotSwitchDescription" xml:space="preserve">
     <value>Remoção forçada do aviso de missão no canto superior esquerdo da interface do mapa</value>
   </data>
@@ -3988,5 +3973,11 @@ Espaço disponível: {2}</value>
   </data>
   <data name="WindowIdentifyMonitorHeader" xml:space="preserve">
     <value>ID do monitor</value>
+  </data>
+  <data name="ControlAutoSuggestTokenBoxRemoveMenuItem" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>Correção de interface especial</value>
   </data>
 </root>

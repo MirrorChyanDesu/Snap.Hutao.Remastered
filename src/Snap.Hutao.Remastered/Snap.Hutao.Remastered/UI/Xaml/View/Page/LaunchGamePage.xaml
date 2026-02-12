@@ -864,7 +864,7 @@
 
                                     <!-- Hidden items should be at the end -->
                                     <ToggleSwitch
-                                        Visibility="Collapsed"
+                                        Visibility="{Binding IsDeveloperAndLoggedIn, Converter={StaticResource BoolToVisibilityConverter}}"
                                         Grid.Row="5"
                                         Grid.Column="0"
                                         Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHidePlayerInfoHeader}"

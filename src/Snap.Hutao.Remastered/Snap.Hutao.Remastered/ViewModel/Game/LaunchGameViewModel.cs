@@ -14,6 +14,7 @@ using Snap.Hutao.Remastered.Service.Game.Locator;
 using Snap.Hutao.Remastered.Service.Game.Package;
 using Snap.Hutao.Remastered.Service.Game.PathAbstraction;
 using Snap.Hutao.Remastered.Service.Game.Scheme;
+using Snap.Hutao.Remastered.Service.Hutao;
 using Snap.Hutao.Remastered.Service.Navigation;
 using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.Service.User;
@@ -36,6 +37,7 @@ internal sealed partial class LaunchGameViewModel : Abstraction.ViewModel, IView
     private readonly IUserService userService;
     private readonly ITaskContext taskContext;
     private readonly IMessenger messenger;
+    private readonly HutaoUserOptions hutaoUserOptions;
 
     [GeneratedConstructor]
     public partial LaunchGameViewModel(IServiceProvider serviceProvider);
@@ -71,6 +73,8 @@ internal sealed partial class LaunchGameViewModel : Abstraction.ViewModel, IView
     public IReadOnlyObservableProperty<bool> GamePathEntryValid { get => field ??= Property.Observe(LaunchOptions.GamePathEntry, static entry => !string.IsNullOrEmpty(entry?.Path)).WithValueChangedCallback(static (v, vm) => vm.HandleGamePathEntryChangeAsync().SafeForget(), this); }
 
     public IReadOnlyObservableProperty<bool> IsIslandConnected { get => GameLifeCycle.IsIslandConnected.AsReadOnly(); }
+
+    public bool IsDeveloperAndLoggedIn => hutaoUserOptions.IsLoggedIn && hutaoUserOptions.IsDeveloper;
 
     public async ValueTask<bool> ReceiveAsync(INavigationExtraData data, CancellationToken token)
     {

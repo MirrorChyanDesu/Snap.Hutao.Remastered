@@ -63,8 +63,6 @@ You can download the latest version installer from GitHub Releases page to insta
 
 ---
 
----
-
 ## 🛠️ 贡献 / Contribute
 
 - [向我们提交 PR / Make Pull Requests](https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/pulls)  
@@ -75,6 +73,8 @@ You can download the latest version installer from GitHub Releases page to insta
 ## 资源
 
 **官网：**  
+https//snaphutaorp.org/
+**备胎：**  
 https//snap.hutaorp.org/  
 
 **元数据仓库：**  

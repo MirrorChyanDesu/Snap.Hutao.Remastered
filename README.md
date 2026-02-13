@@ -73,10 +73,10 @@ You can download the latest version installer from GitHub Releases page to insta
 ## 资源
 
 **官网：**  
-https//snaphutaorp.org/
+https://snaphutaorp.org/
 
 **备胎：**  
-https//snap.hutaorp.org/  
+https://snap.hutaorp.org/  
 
 **元数据仓库：**  
 https//github.com/SnapHutaoRemasteringProject/Snap.Metadata  

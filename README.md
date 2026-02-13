@@ -74,6 +74,7 @@ You can download the latest version installer from GitHub Releases page to insta
 
 **官网：**  
 https//snaphutaorp.org/
+
 **备胎：**  
 https//snap.hutaorp.org/  
 

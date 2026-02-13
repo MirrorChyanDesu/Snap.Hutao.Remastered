@@ -38,6 +38,7 @@
                                     <RowDefinition/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <Image
                                     Grid.Row="0"
@@ -75,6 +76,13 @@
                                     Opacity="0.7"
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     Text="Copyright © 2022 - 2025 DGP Studio. All Rights Reserved."/>
+                                <TextBlock
+                                    Grid.Row="3"
+                                     Margin="8"
+                                     HorizontalAlignment="Center"
+                                     Opacity="0.7"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Copyright © 2026 SnapHutaoRemasteringProject. All Rights Reserved."/>
                             </Grid>
 
                             <cwc:SettingsCard

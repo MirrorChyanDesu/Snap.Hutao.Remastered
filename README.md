@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./res/HutaoLogo3/MSIX Logo.png" alt="Snap Hutao Remastered Banner" width="600"/>
+  <img src="https://snaphutaorp.org/assets/logo.png" alt="Snap Hutao Remastered Banner" width="600"/>
 </p>
 
 <h1 align="center">Snap Hutao Remastered</h1>

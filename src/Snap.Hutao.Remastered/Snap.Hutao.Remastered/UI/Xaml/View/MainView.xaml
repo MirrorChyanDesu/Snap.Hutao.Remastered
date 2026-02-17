@@ -197,8 +197,8 @@
 
                     <NavigationViewItem
                         shuxc:NavigationViewItemHelper.NavigateTo="shuxvp:PluginPage"
-                        Content="插件管理"
-                        Icon="{shuxm:FontIcon Glyph=&#xE74C;}"/>
+                        Content="{shuxm:ResourceString Name=ViewPluginHeader}"
+                        Icon="{shuxm:BitmapIcon Source=ms-appx:///Resource/Navigation/Plugin.png}"/>
 
                     <NavigationViewItemHeader Content="{shuxm:ResourceString Name=ViewToolHeader}"/>
 

@@ -56,7 +56,7 @@ public sealed partial class PluginViewModel : Abstraction.ViewModel
         try
         {
 
-            ValueResult<bool, ValueFile> file = fileSystem.PickFile("选择插件文件", "HutaoPlugin", "*.hutao");
+            ValueResult<bool, ValueFile> file = fileSystem.PickFile(SH.ServicePluginPickFileTitle, "HutaoPlugin", "*.hutao");
             if (!file.IsOk)
             {
                 return;
@@ -72,7 +72,7 @@ public sealed partial class PluginViewModel : Abstraction.ViewModel
         }
         catch (Exception ex)
         {
-            messenger.Send(InfoBarMessage.Error("安装插件失败", ex));
+            messenger.Send(InfoBarMessage.Error(SH.ServicePluginInstallFailed, ex));
         }
     }
 
@@ -140,8 +140,8 @@ public sealed partial class PluginViewModel : Abstraction.ViewModel
 
         ContentDialogResult result = await contentDialogFactory
             .CreateForConfirmCancelAsync(
-                $"卸载插件 {plugin.Manifest.Name}",
-                $"确定要卸载插件 {plugin.Manifest.Name} 吗？此操作不可恢复。")
+                SH.FormatServicePluginUninstallTitle(plugin.Manifest.Name),
+                SH.FormatServicePluginUninstallDescription(plugin.Manifest.Name))
             .ConfigureAwait(false);
 
         if (result is ContentDialogResult.Primary)

@@ -4063,7 +4063,7 @@
     <value>插件'{0}'安装成功</value>
   </data>
   <data name="ServicePluginInstallFailed" xml:space="preserve">
-    <value>插件安装失败</value>
+    <value>安装插件失败</value>
   </data>
   <data name="ServicePluginLoadDirectoryNotFound" xml:space="preserve">
     <value>插件目录'{0}'未找到</value>
@@ -4109,5 +4109,92 @@
   </data>
   <data name="ServicePluginEnablingSuccess" xml:space="preserve">
     <value>插件'{0}'启用成功</value>
+  </data>
+  <data name="ViewPluginHeader" xml:space="preserve">
+    <value>插件管理</value>
+  </data>
+  <data name="ViewPagePluginInstallButton" xml:space="preserve">
+    <value>安装插件</value>
+  </data>
+  <data name="ViewPagePluginRefreshButton" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="ViewPagePluginOpenDirectoryButton" xml:space="preserve">
+    <value>打开插件目录</value>
+  </data>
+  <data name="ViewPagePluginTotalText" xml:space="preserve">
+    <value>共</value>
+  </data>
+  <data name="ViewPagePluginCountText" xml:space="preserve">
+    <value>个插件</value>
+  </data>
+  <data name="ViewPagePluginEmptyTitle" xml:space="preserve">
+    <value>暂无插件</value>
+  </data>
+  <data name="ViewPagePluginEmptyDescription" xml:space="preserve">
+    <value>点击"安装插件"按钮来添加你的第一个插件</value>
+  </data>
+  <data name="ViewPagePluginEnableButton" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="ViewPagePluginDisableButton" xml:space="preserve">
+    <value>禁用</value>
+  </data>
+  <data name="ViewPagePluginSettingsButton" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="ViewPagePluginUninstallButton" xml:space="preserve">
+    <value>卸载</value>
+  </data>
+  <data name="ViewPagePluginStatusEnabled" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="ViewPagePluginStatusDisabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="ViewPagePluginSettingBackButton" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="ViewPagePluginSettingTitle" xml:space="preserve">
+    <value>插件设置</value>
+  </data>
+  <data name="ViewPagePluginSettingEmptyTitle" xml:space="preserve">
+    <value>暂无设置</value>
+  </data>
+  <data name="ViewPagePluginSettingEmptyDescription" xml:space="preserve">
+    <value>此插件没有可配置的设置</value>
+  </data>
+  <data name="ViewPagePluginSettingStringPlaceholder" xml:space="preserve">
+    <value>请输入文本</value>
+  </data>
+  <data name="ViewPagePluginSettingIntPlaceholder" xml:space="preserve">
+    <value>请输入整数</value>
+  </data>
+  <data name="ViewPagePluginSettingToggleOff" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="ViewPagePluginSettingToggleOn" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="ViewPagePluginSettingDefaultPlaceholder" xml:space="preserve">
+    <value>请输入值</value>
+  </data>
+  <data name="ViewPagePluginSettingSaveButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="ViewPagePluginSettingResetButton" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="ViewPagePluginSettingDefaultValueText" xml:space="preserve">
+    <value>默认值: </value>
+  </data>
+  <data name="ServicePluginPickFileTitle" xml:space="preserve">
+    <value>选择插件文件</value>
+  </data>
+  <data name="ServicePluginUninstallTitle" xml:space="preserve">
+    <value>卸载插件 {0}</value>
+  </data>
+  <data name="ServicePluginUninstallDescription" xml:space="preserve">
+    <value>确定要卸载插件 {0} 吗？此操作不可恢复。</value>
   </data>
 </root>

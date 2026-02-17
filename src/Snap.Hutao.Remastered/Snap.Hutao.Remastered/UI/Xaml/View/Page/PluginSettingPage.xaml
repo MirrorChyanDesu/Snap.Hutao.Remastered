@@ -53,13 +53,13 @@
                         <StackPanel Orientation="Horizontal" Padding="16" Spacing="12">
                             <Button
                                 Command="{Binding GoBackCommand}"
-                                Content="返回"
+                                Content="{shuxm:ResourceString Name=ViewPagePluginSettingBackButton}"
                                 Style="{StaticResource DefaultButtonStyle}">
                                 <Button.ContentTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE72B;"/>
-                                            <TextBlock Text="返回"/>
+                                            <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginSettingBackButton}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </Button.ContentTemplate>
@@ -73,7 +73,7 @@
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                Text="插件设置"/>
+                                Text="{shuxm:ResourceString Name=ViewPagePluginSettingTitle}"/>
                         </StackPanel>
                     </Border>
                 </Border>
@@ -96,11 +96,11 @@
                                     <TextBlock
                                     HorizontalAlignment="Center"
                                     Style="{StaticResource SubtitleTextBlockStyle}"
-                                    Text="暂无设置"/>
+                                    Text="{shuxm:ResourceString Name=ViewPagePluginSettingEmptyTitle}"/>
                                     <TextBlock
                                     HorizontalAlignment="Center"
                                     Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                    Text="此插件没有可配置的设置"/>
+                                    Text="{shuxm:ResourceString Name=ViewPagePluginSettingEmptyDescription}"/>
                                 </StackPanel>
                             </shuxc:StandardView.EmptyContent>
 
@@ -143,26 +143,26 @@
                                                             <!-- 字符串类型 -->
                                                             <TextBox
                                                             Text="{Binding CurrentValue, Mode=TwoWay}"
-                                                            PlaceholderText="请输入文本"
+                                                            PlaceholderText="{shuxm:ResourceString Name=ViewPagePluginSettingStringPlaceholder}"
                                                             Visibility="{Binding Converter={StaticResource StringTypeConverter}}"/>
                                                             
                                                             <!-- 整数类型 -->
                                                             <NumberBox
                                                             Value="{Binding CurrentValue, Mode=TwoWay}"
-                                                            PlaceholderText="请输入整数"
+                                                            PlaceholderText="{shuxm:ResourceString Name=ViewPagePluginSettingIntPlaceholder}"
                                                             Visibility="{Binding Converter={StaticResource Int32TypeConverter}}"/>
                                                             
                                                             <!-- 布尔类型 -->
                                                             <ToggleSwitch
                                                             IsOn="{Binding CurrentValue, Mode=TwoWay}"
-                                                            OffContent="关"
-                                                            OnContent="开"
+                                                            OffContent="{shuxm:ResourceString Name=ViewPagePluginSettingToggleOff}"
+                                                            OnContent="{shuxm:ResourceString Name=ViewPagePluginSettingToggleOn}"
                                                             Visibility="{Binding Converter={StaticResource BooleanTypeConverter}}"/>
                                                             
                                                             <!-- 默认类型 -->
                                                             <TextBox
                                                             Text="{Binding CurrentValue, Mode=TwoWay}"
-                                                            PlaceholderText="请输入值"
+                                                            PlaceholderText="{shuxm:ResourceString Name=ViewPagePluginSettingDefaultPlaceholder}"
                                                             Visibility="{Binding Converter={StaticResource DefaultTypeConverter}}"/>
                                                         </StackPanel>
                                                         <!-- 操作按钮 -->
@@ -170,13 +170,13 @@
                                                             <Button
                                                             Command="{Binding ElementName=Root, Path=DataContext.SaveSettingCommand}"
                                                             CommandParameter="{Binding}"
-                                                            Content="保存"
+                                                            Content="{shuxm:ResourceString Name=ViewPagePluginSettingSaveButton}"
                                                             Style="{StaticResource AccentButtonStyle}"/>
                                                             
                                                             <Button
                                                             Command="{Binding ElementName=Root, Path=DataContext.ResetSettingCommand}"
                                                             CommandParameter="{Binding}"
-                                                            Content="重置"
+                                                            Content="{shuxm:ResourceString Name=ViewPagePluginSettingResetButton}"
                                                             Style="{StaticResource DefaultButtonStyle}"/>
                                                         </StackPanel>
                                                     </Grid>
@@ -187,7 +187,7 @@
                                                     Margin="0,4,0,0"
                                                     Style="{StaticResource CaptionTextBlockStyle}"
                                                     Foreground="{ThemeResource TextFillColorTertiaryBrush}">
-                                                    <Run Text="默认值: "/>
+                                                    <Run Text="{shuxm:ResourceString Name=ViewPagePluginSettingDefaultValueText}"/>
                                                     <Run Text="{Binding DefaultValue}"/>
                                                     </TextBlock>
                                                 </Grid>

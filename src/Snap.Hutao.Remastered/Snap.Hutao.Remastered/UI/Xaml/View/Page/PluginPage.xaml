@@ -33,9 +33,19 @@
         <SolidColorBrush x:Key="SettingsCardBackgroundPressed" Color="Transparent"/>
         <!--  ReSharper restore Xaml.RedundantResource  -->
 
+        <Style
+            x:Key="DangerButtonStyle"
+            BasedOn="{StaticResource DefaultButtonStyle}"
+            TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource SystemFillColorCritical}"/>
+            <Setter Property="Foreground" Value="{ThemeResource TextOnAccentFillColorPrimary}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemFillColorCritical}"/>
+        </Style>
+
         <cwconv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <cwconv:BoolNegationConverter x:Key="BoolNegationConverter"/>
         <local:ListToStringConverter x:Key="ListToStringConverter"/>
+        <local:BoolToStringConverter x:Key="BoolToStringConverter"/>
         
         <DataTemplate x:Key="PluginItemTemplate">
             <Border Style="{ThemeResource BorderCardStyle}" Padding="12">
@@ -94,7 +104,7 @@
                             <TextBlock
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Foreground="{Binding IsEnabled, Converter={StaticResource BoolToColorConverter}}"
-                                Text="{Binding IsEnabled, Converter={StaticResource BoolToStatusConverter}}"/>
+                                Text="{Binding IsEnabled, Converter={StaticResource BoolToStringConverter}}"/>
                         </StackPanel>
                     </StackPanel>
                     
@@ -103,38 +113,43 @@
                         <Button
                             Command="{Binding ElementName=Root, Path=DataContext.EnablePluginCommand}"
                             CommandParameter="{Binding}"
-                            Content="启用"
                             Style="{StaticResource AccentButtonStyle}"
-                            Visibility="{Binding IsEnabled, Converter={StaticResource BoolNegationConverter}}"/>
+                            Visibility="{Binding IsEnabled, Converter={StaticResource BoolNegationConverter}}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginEnableButton}"/>
+                            </StackPanel>
+                        </Button>
                         <Button
                             Command="{Binding ElementName=Root, Path=DataContext.DisablePluginCommand}"
                             CommandParameter="{Binding}"
-                            Content="禁用"
-                            Style="{StaticResource DefaultButtonStyle}"
-                            Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            Style="{StaticResource DangerButtonStyle}"
+                            Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginDisableButton}"/>
+                            </StackPanel>
+                        </Button>
                         <Button
                             Command="{Binding ElementName=Root, Path=DataContext.OpenPluginSettingsCommand}"
                             CommandParameter="{Binding}"
-                            Content="设置"
-                            Style="{StaticResource DefaultButtonStyle}"/>
+                            Style="{StaticResource DefaultButtonStyle}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon Glyph="&#xE713;"/>
+                                <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginSettingsButton}"/>
+                            </StackPanel>
+                        </Button>
                         <Button
                             Command="{Binding ElementName=Root, Path=DataContext.UninstallPluginCommand}"
                             CommandParameter="{Binding}"
-                            Content="卸载"
-                            Style="{StaticResource DefaultButtonStyle}"/>
+                            Style="{StaticResource DefaultButtonStyle}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon Glyph="&#xE74D;"/>
+                                <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginUninstallButton}"/>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </Grid>
             </Border>
         </DataTemplate>
-        
-        <cwconv:BoolToObjectConverter x:Key="BoolToStatusConverter">
-            <cwconv:BoolToObjectConverter.TrueValue>
-                <x:String>已启用</x:String>
-            </cwconv:BoolToObjectConverter.TrueValue>
-            <cwconv:BoolToObjectConverter.FalseValue>
-                <x:String>已禁用</x:String>
-            </cwconv:BoolToObjectConverter.FalseValue>
-        </cwconv:BoolToObjectConverter>
         
         <cwconv:BoolToObjectConverter x:Key="BoolToColorConverter">
             <cwconv:BoolToObjectConverter.TrueValue>
@@ -169,13 +184,13 @@
                         <StackPanel Orientation="Horizontal" Padding="16" Spacing="12">
                             <Button
                                 Command="{Binding InstallPluginCommand}"
-                                Content="安装插件"
+                                Content="{shuxm:ResourceString Name=ViewPagePluginInstallButton}"
                                 Style="{StaticResource AccentButtonStyle}">
                                 <Button.ContentTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE710;"/>
-                                            <TextBlock Text="安装插件"/>
+                                            <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginInstallButton}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </Button.ContentTemplate>
@@ -183,13 +198,13 @@
                             
                             <Button
                                 Command="{Binding RefreshPluginsCommand}"
-                                Content="刷新"
+                                Content="{shuxm:ResourceString Name=ViewPagePluginRefreshButton}"
                                 Style="{StaticResource DefaultButtonStyle}">
                                 <Button.ContentTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE72C;"/>
-                                            <TextBlock Text="刷新"/>
+                                            <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginRefreshButton}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </Button.ContentTemplate>
@@ -197,13 +212,13 @@
                             
                             <Button
                                 Command="{Binding OpenPluginDirectoryCommand}"
-                                Content="打开插件目录"
+                                Content="{shuxm:ResourceString Name=ViewPagePluginOpenDirectoryButton}"
                                 Style="{StaticResource DefaultButtonStyle}">
                                 <Button.ContentTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <FontIcon Glyph="&#xE8DA;"/>
-                                            <TextBlock Text="打开插件目录"/>
+                                            <TextBlock Text="{shuxm:ResourceString Name=ViewPagePluginOpenDirectoryButton}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </Button.ContentTemplate>
@@ -212,9 +227,9 @@
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}">
-                                <Run Text="共"/>
+                                <Run Text="{shuxm:ResourceString Name=ViewPagePluginTotalText}"/>
                                 <Run Text="{Binding Plugins.Count}"/>
-                                <Run Text="个插件"/>
+                                <Run Text="{shuxm:ResourceString Name=ViewPagePluginCountText}"/>
                             </TextBlock>
                         </StackPanel>
                     </Border>
@@ -237,11 +252,11 @@
                                     <TextBlock
                                         HorizontalAlignment="Center"
                                         Style="{StaticResource SubtitleTextBlockStyle}"
-                                        Text="暂无插件"/>
+                                        Text="{shuxm:ResourceString Name=ViewPagePluginEmptyTitle}"/>
                                     <TextBlock
                                         HorizontalAlignment="Center"
                                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Text="点击“安装插件”按钮来添加你的第一个插件"/>
+                                        Text="{shuxm:ResourceString Name=ViewPagePluginEmptyDescription}"/>
                                 </StackPanel>
                             </shuxc:StandardView.EmptyContent>
                             

@@ -1172,6 +1172,9 @@ Space Available: {2}</value>
   <data name="ServiceYaeWaitForGameResponseMessage" xml:space="preserve">
     <value>Waiting for game data</value>
   </data>
+  <data name="UIViewMainTitleBarBackgroundActivityAction" xml:space="preserve">
+    <value>Background Tasks</value>
+  </data>
   <data name="UIViewPageAvatarPropertyRecommendedAppendProperties" xml:space="preserve">
     <value>Additional Property Recommendation</value>
   </data>
@@ -3974,6 +3977,12 @@ Space Available: {2}</value>
   <data name="ViewCardSignInAutoSignInDescription" xml:space="preserve">
     <value>Enable automatic sign-in at application start</value>
   </data>
+  <data name="ViewPageSettingAutoRestartAsAdminHeader" xml:space="preserve">
+    <value>Auto Restart as Admin</value>
+  </data>
+  <data name="ViewPageSettingAutoRestartAsAdminDescription" xml:space="preserve">
+    <value>Auto Restart as Admin when Launch</value>
+  </data>
   <data name="ViewPageLaunchGameIslandDisplayPaimonHeader" xml:space="preserve">
     <value>Display Paimon in Game</value>
   </data>
@@ -4004,10 +4013,160 @@ Space Available: {2}</value>
   <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
     <value>Special Interface Fix</value>
   </data>
+  <data name="ServicePluginEnablingPluginFailed" xml:space="preserve">
+    <value>An exception occurred while enabling the plugin</value>
+  </data>
+  <data name="ServicePluginDisablingPluginFailed" xml:space="preserve">
+    <value>An exception occurred while disabling the plugin</value>
+  </data>
+  <data name="ServicePluginInstallFileNotFound" xml:space="preserve">
+    <value>Plugin file not found</value>
+  </data>
+  <data name="ServicePluginInstallInvalidFileType" xml:space="preserve">
+    <value>Invalid plugin file type, expected .hutao or .hutaodisabled file</value>
+  </data>
+  <data name="ServicePluginInstallManifestNotFound" xml:space="preserve">
+    <value>manifest.json file not found in the plugin file</value>
+  </data>
+  <data name="ServicePluginInstallInvalidManifest" xml:space="preserve">
+    <value>Plugin manifest.json file is invalid or missing ID</value>
+  </data>
+  <data name="ServicePluginInstallSuccess" xml:space="preserve">
+    <value>Plugin '{0}' installed successfully</value>
+  </data>
+  <data name="ServicePluginInstallFailed" xml:space="preserve">
+    <value>Failed to install plugin</value>
+  </data>
+  <data name="ServicePluginLoadDirectoryNotFound" xml:space="preserve">
+    <value>Plugin directory '{0}' not found</value>
+  </data>
+  <data name="ServicePluginLoadManifestNotFound" xml:space="preserve">
+    <value>manifest.json file for plugin '{0}' not found</value>
+  </data>
+  <data name="ServicePluginLoadDllNotFound" xml:space="preserve">
+    <value>DLL file for plugin '{0}' not found</value>
+  </data>
+  <data name="ServicePluginLoadSuccess" xml:space="preserve">
+    <value>Plugin '{0}' loaded successfully</value>
+  </data>
+  <data name="ServicePluginLoadFailed" xml:space="preserve">
+    <value>Plugin loading failed</value>
+  </data>
+  <data name="ServicePluginNotFound" xml:space="preserve">
+    <value>Plugin '{0}' not found</value>
+  </data>
+  <data name="ServicePluginInstallAlreadyExists" xml:space="preserve">
+    <value>Plugin '{0}' is already installed</value>
+  </data>
+  <data name="ServicePluginLoadMainTypeNotFound" xml:space="preserve">
+    <value>Main class for plugin '{0}' not found</value>
+  </data>
+  <data name="ServicePluginLoadInvalidManifest" xml:space="preserve">
+    <value>Plugin '{0}' has an invalid manifest file</value>
+  </data>
+  <data name="ServicePluginDisableSuccess" xml:space="preserve">
+    <value>Plugin '{0}' disabled successfully</value>
+  </data>
+  <data name="ServicePluginDeleteSuccess" xml:space="preserve">
+    <value>Plugin '{0}' uninstalled successfully</value>
+  </data>
+  <data name="ServicePluginDeleteFailed" xml:space="preserve">
+    <value>An error occurred while uninstalling plugin '{0}'</value>
+  </data>
   <data name="ServerPassportServiceInternalException" xml:space="preserve">
     <value>Register failed, server error, please contact developer to fix it</value>
   </data>
   <data name="ServerRecordInternalException" xml:space="preserve">
     <value>Failed to upload Sprial Abyss record, server error, please contact developer to fix it</value>
+  </data>
+  <data name="ServicePluginEnablingSuccess" xml:space="preserve">
+    <value>Plugin '{0}' enabled successfully</value>
+  </data>
+  <data name="ViewPluginHeader" xml:space="preserve">
+    <value>Plugin</value>
+  </data>
+  <data name="ViewPagePluginInstallButton" xml:space="preserve">
+    <value>Install Plugin</value>
+  </data>
+  <data name="ViewPagePluginRefreshButton" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ViewPagePluginOpenDirectoryButton" xml:space="preserve">
+    <value>Open Plugin Directory</value>
+  </data>
+  <data name="ViewPagePluginTotalText" xml:space="preserve">
+    <value>Total: </value>
+  </data>
+  <data name="ViewPagePluginCountText" xml:space="preserve">
+    <value> plugins</value>
+  </data>
+  <data name="ViewPagePluginEmptyTitle" xml:space="preserve">
+    <value>No Plugins</value>
+  </data>
+  <data name="ViewPagePluginEmptyDescription" xml:space="preserve">
+    <value>Click "Install Plugin" to add your first plugin</value>
+  </data>
+  <data name="ViewPagePluginEnableButton" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="ViewPagePluginDisableButton" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="ViewPagePluginSettingsButton" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ViewPagePluginUninstallButton" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="ViewPagePluginStatusEnabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="ViewPagePluginStatusDisabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="ViewPagePluginSettingBackButton" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="ViewPagePluginSettingTitle" xml:space="preserve">
+    <value>Plugin Settings</value>
+  </data>
+  <data name="ViewPagePluginSettingEmptyTitle" xml:space="preserve">
+    <value>No Settings</value>
+  </data>
+  <data name="ViewPagePluginSettingEmptyDescription" xml:space="preserve">
+    <value>This plugin has no configurable settings</value>
+  </data>
+  <data name="ViewPagePluginSettingStringPlaceholder" xml:space="preserve">
+    <value>Enter text</value>
+  </data>
+  <data name="ViewPagePluginSettingIntPlaceholder" xml:space="preserve">
+    <value>Enter integer</value>
+  </data>
+  <data name="ViewPagePluginSettingToggleOff" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="ViewPagePluginSettingToggleOn" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="ViewPagePluginSettingDefaultPlaceholder" xml:space="preserve">
+    <value>Enter value</value>
+  </data>
+  <data name="ViewPagePluginSettingSaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ViewPagePluginSettingResetButton" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ViewPagePluginSettingDefaultValueText" xml:space="preserve">
+    <value>Default: </value>
+  </data>
+  <data name="ServicePluginPickFileTitle" xml:space="preserve">
+    <value>Select Plugin File</value>
+  </data>
+  <data name="ServicePluginUninstallTitle" xml:space="preserve">
+    <value>Uninstall Plugin {0}</value>
+  </data>
+  <data name="ServicePluginUninstallDescription" xml:space="preserve">
+    <value>Are you sure you want to uninstall plugin {0}? This action cannot be undone.</value>
   </data>
 </root>

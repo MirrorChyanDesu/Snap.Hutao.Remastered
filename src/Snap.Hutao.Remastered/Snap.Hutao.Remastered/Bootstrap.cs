@@ -7,7 +7,6 @@ using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Core.Security.Principal;
 using Snap.Hutao.Remastered.Factory.Process;
 using Snap.Hutao.Remastered.Service;
-using Snap.Hutao.Remastered.Service.Plugin;
 using Snap.Hutao.Remastered.Win32;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -35,6 +34,13 @@ public static partial class Bootstrap
     [STAThread]
     private static void Main(string[] args)
     {
+        // Check if we should restart as administrator
+        if (ShouldRestartAsAdmin())
+        {
+            RestartAsAdministrator();
+            return;
+        }
+
         if (Mutex.TryOpenExisting(LockName, out _))
         {
             return;
@@ -68,16 +74,9 @@ public static partial class Bootstrap
             ComWrappersSupport.InitializeComWrappers();
 
             // By adding the using statement, we can dispose the injected services when closing
-            using (ServiceProvider serviceProvider = DependencyInjection.Initialize())
+            using (ServiceProvider serviceProvider = DependencyInjection.Initialize(true))
             {
                 Thread.CurrentThread.Name = "Snap Hutao Remastered Application Main Thread";
-
-                // Check if we should restart as administrator
-                if (ShouldRestartAsAdmin(serviceProvider))
-                {
-                    RestartAsAdministrator();
-                    return;
-                }
 
                 // If you hit a COMException REGDB_E_CLASSNOTREG (0x80040154) during debugging
                 // You can delete bin and obj folder and then rebuild.
@@ -112,11 +111,11 @@ public static partial class Bootstrap
         return principal.IsInRole(WindowsBuiltInRole.Administrator);
     }
 
-    private static bool ShouldRestartAsAdmin(IServiceProvider serviceProvider)
+    private static bool ShouldRestartAsAdmin()
     {
         try
         {
-            AppOptions appOptions = serviceProvider.GetRequiredService<AppOptions>();
+            AppOptions appOptions = DependencyInjection.Initialize().GetRequiredService<AppOptions>();
             return !IsRunningAsAdministrator() && appOptions.AutoRestartAsAdmin.Value;
         }
         catch (Exception ex)

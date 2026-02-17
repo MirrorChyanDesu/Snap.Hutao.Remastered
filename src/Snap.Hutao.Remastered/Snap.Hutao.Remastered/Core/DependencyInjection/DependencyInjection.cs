@@ -16,7 +16,7 @@ namespace Snap.Hutao.Remastered.Core.DependencyInjection;
 
 public static class DependencyInjection
 {
-    public static ServiceProvider Initialize()
+    public static ServiceProvider Initialize(bool isDefault = false)
     {
         IServiceCollection services = new ServiceCollection()
 
@@ -47,7 +47,10 @@ public static class DependencyInjection
 
         ServiceProvider serviceProvider = services.BuildServiceProvider(new ServiceProviderOptions { ValidateOnBuild = true, ValidateScopes = true });
 
-        Ioc.Default.ConfigureServices(serviceProvider);
+        if (isDefault)
+        {
+            Ioc.Default.ConfigureServices(serviceProvider);
+        }
 
         serviceProvider.InitializeCulture();
         serviceProvider.InitializeNotification();

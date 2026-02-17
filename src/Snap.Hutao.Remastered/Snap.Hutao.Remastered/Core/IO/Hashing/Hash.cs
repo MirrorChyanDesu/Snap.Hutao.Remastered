@@ -1,6 +1,8 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
+using Snap.Hutao.Remastered.Win32;
+using Snap.Hutao.Remastered.Win32.Foundation;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -31,9 +33,21 @@ public static class Hash
 
     public static async ValueTask<string> FileToHexStringAsync(HashAlgorithmName hashAlgorithm, string filePath, CancellationToken token = default)
     {
-        using (FileStream stream = File.OpenRead(filePath))
+        // First try to open the file directly
+        try
         {
-            return await ToHexStringAsync(hashAlgorithm, stream, token).ConfigureAwait(false);
+            using (FileStream stream = File.OpenRead(filePath))
+            {
+                return await ToHexStringAsync(hashAlgorithm, stream, token).ConfigureAwait(false);
+            }
+        }
+        catch (IOException ex) when (HutaoNative.IsWin32(ex.HResult, WIN32_ERROR.ERROR_ENCRYPTION_FAILED))
+        {
+            // File is encrypted, copy to temp file and hash
+            using (TempFileStream tempStream = TempFileStream.CopyFrom(filePath, FileMode.Open, FileAccess.Read))
+            {
+                return await ToHexStringAsync(hashAlgorithm, tempStream, token).ConfigureAwait(false);
+            }
         }
     }
 }

@@ -53,22 +53,39 @@ public abstract partial class AbstractUIGF40ExportService : IUIGFExportService
 
         IGachaLogRepository gachaLogRepository = serviceProvider.GetRequiredService<IGachaLogRepository>();
 
-        ImmutableArray<UIGFEntry<Hk4eItem>>.Builder results = ImmutableArray.CreateBuilder<UIGFEntry<Hk4eItem>>(uids.Length);
+        ImmutableArray<UIGFEntry<Hk4eItem>>.Builder hk4eResults = ImmutableArray.CreateBuilder<UIGFEntry<Hk4eItem>>(uids.Length);
+        ImmutableArray<UIGFEntry<Hk4eUGCItem>>.Builder hk4eUgcResults = ImmutableArray.CreateBuilder<UIGFEntry<Hk4eUGCItem>>(uids.Length);
+        
         foreach (ref readonly uint uid in uids.AsSpan())
         {
             GachaArchive? archive = gachaLogRepository.GetGachaArchiveByUid($"{uid}");
             ArgumentNullException.ThrowIfNull(archive);
+            
+            // Export standard gacha items
             ImmutableArray<GachaItem> dbItems = gachaLogRepository.GetGachaItemImmutableArrayByArchiveId(archive.InnerId);
-            UIGFEntry<Hk4eItem> entry = new()
+            UIGFEntry<Hk4eItem> hk4eEntry = new()
             {
                 Uid = uid,
                 TimeZone = 0,
                 List = dbItems.SelectAsArray(Hk4eItem.From),
             };
+            hk4eResults.Add(hk4eEntry);
 
-            results.Add(entry);
+            // Export beyond gacha (UGC) items
+            ImmutableArray<BeyondGachaItem> beyondDbItems = gachaLogRepository.GetBeyondGachaItemImmutableArrayByArchiveId(archive.InnerId);
+            if (beyondDbItems.Length > 0)
+            {
+                UIGFEntry<Hk4eUGCItem> hk4eUgcEntry = new()
+                {
+                    Uid = uid,
+                    TimeZone = 0,
+                    List = beyondDbItems.SelectAsArray(item => item.ToHk4eUGCItem()),
+                };
+                hk4eUgcResults.Add(hk4eUgcEntry);
+            }
         }
 
-        uigf.Hk4e = results.ToImmutable();
+        uigf.Hk4e = hk4eResults.ToImmutable();
+        uigf.Hkrpg = hk4eUgcResults.ToImmutable();
     }
 }

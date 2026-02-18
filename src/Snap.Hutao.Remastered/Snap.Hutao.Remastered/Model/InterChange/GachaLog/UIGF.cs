@@ -16,4 +16,12 @@ public sealed class UIGF
     // ReSharper disable once InconsistentNaming
     [JsonPropertyName("hk4e")]
     public ImmutableArray<UIGFEntry<Hk4eItem>> Hk4e { get; set; }
+
+    // ReSharper disable once InconsistentNaming
+    [JsonPropertyName("hkrpg")]
+    public ImmutableArray<UIGFEntry<Hk4eUGCItem>> Hkrpg { get; set; } = [];
+
+    // ReSharper disable once InconsistentNaming
+    [JsonPropertyName("hk4e_ugc")]
+    public ImmutableArray<UIGFEntry<Hk4eItem>> Hk4eUgc { get; set; } = [];
 }

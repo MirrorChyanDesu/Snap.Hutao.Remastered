@@ -116,4 +116,39 @@ public sealed partial class GachaLogRepository : IGachaLogRepository
     {
         return this.ImmutableArray<GachaArchive, string>(query => query.Select(archive => archive.Uid));
     }
+
+    public void AddBeyondGachaItemRange(IEnumerable<BeyondGachaItem> items)
+    {
+        this.AddRange(items);
+    }
+
+    public void RemoveBeyondGachaItemRangeByArchiveIdAndOpGachaTypeNewerThanEndId(Guid archiveId, OpGachaType opGachaType, long endId)
+    {
+        this.Delete<BeyondGachaItem>(i => i.ArchiveId == archiveId && i.OpGachaType == opGachaType && i.Id >= endId);
+    }
+
+    public ImmutableArray<BeyondGachaItem> GetBeyondGachaItemImmutableArrayByArchiveId(Guid archiveId)
+    {
+        return this.ImmutableArray<BeyondGachaItem, BeyondGachaItem>(query => query.Where(i => i.ArchiveId == archiveId).OrderBy(i => i.Id));
+    }
+
+    public long GetNewestBeyondGachaItemIdByArchiveIdAndOpGachaType(Guid archiveId, OpGachaType opGachaType)
+    {
+        BeyondGachaItem? item = this.Query<BeyondGachaItem, BeyondGachaItem?>(query => query
+            .Where(i => i.ArchiveId == archiveId && i.OpGachaType == opGachaType)
+            .OrderByDescending(i => i.Id)
+            .FirstOrDefault());
+
+        return item?.Id ?? 0L;
+    }
+
+    public long GetOldestBeyondGachaItemIdByArchiveIdAndOpGachaType(Guid archiveId, OpGachaType opGachaType)
+    {
+        BeyondGachaItem? item = this.Query<BeyondGachaItem, BeyondGachaItem?>(query => query
+            .Where(i => i.ArchiveId == archiveId && i.OpGachaType == opGachaType)
+            .OrderBy(i => i.Id)
+            .FirstOrDefault());
+
+        return item?.Id ?? long.MaxValue;
+    }
 }

@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace Snap.Hutao.Remastered.Service.GachaLog;
 
-public interface IGachaLogRepository : IRepository<GachaArchive>, IRepository<GachaItem>
+public interface IGachaLogRepository : IRepository<GachaArchive>, IRepository<GachaItem>, IRepository<BeyondGachaItem>
 {
     void AddGachaArchive(GachaArchive archive);
 
@@ -36,4 +36,15 @@ public interface IGachaLogRepository : IRepository<GachaArchive>, IRepository<Ga
     long GetOldestGachaItemIdByArchiveId(Guid archiveId);
 
     long GetOldestGachaItemIdByArchiveIdAndQueryType(Guid archiveId, GachaType queryType);
+
+    // Beyond Gacha (UGC) methods
+    void AddBeyondGachaItemRange(IEnumerable<BeyondGachaItem> items);
+
+    void RemoveBeyondGachaItemRangeByArchiveIdAndOpGachaTypeNewerThanEndId(Guid archiveId, OpGachaType opGachaType, long endId);
+
+    ImmutableArray<BeyondGachaItem> GetBeyondGachaItemImmutableArrayByArchiveId(Guid archiveId);
+
+    long GetNewestBeyondGachaItemIdByArchiveIdAndOpGachaType(Guid archiveId, OpGachaType opGachaType);
+
+    long GetOldestBeyondGachaItemIdByArchiveIdAndOpGachaType(Guid archiveId, OpGachaType opGachaType);
 }

@@ -1,6 +1,7 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Controls;
 using Snap.Hutao.Remastered.Core.IO;
 using Snap.Hutao.Remastered.Core.Logging;
@@ -31,6 +32,21 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
     public partial SettingGachaLogViewModel(IServiceProvider serviceProvider);
 
     public partial AppOptions AppOptions { get; }
+
+    [ObservableProperty]
+    private UIGFVersion selectedUIGFVersion = UIGFVersion.UIGF41;
+
+    public ImmutableArray<UIGFVersion> UIGFVersions { get; } = [UIGFVersion.UIGF40, UIGFVersion.UIGF41];
+
+    public string GetUIGFVersionDisplayName(UIGFVersion version)
+    {
+        return version switch
+        {
+            UIGFVersion.UIGF40 => "v4.0",
+            UIGFVersion.UIGF41 => "v4.1",
+            _ => version.ToString(),
+        };
+    }
 
     [Command("ImportUIGFJsonCommand")]
     private async Task ImportUIGFJsonAsync()
@@ -133,6 +149,7 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
         {
             FilePath = file,
             GachaArchiveUids = uids,
+            Version = SelectedUIGFVersion,
         };
 
         try

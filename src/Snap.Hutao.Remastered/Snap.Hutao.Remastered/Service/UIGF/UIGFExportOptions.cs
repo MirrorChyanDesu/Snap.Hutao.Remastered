@@ -10,4 +10,6 @@ public sealed class UIGFExportOptions
     public required string FilePath { get; set; }
 
     public required ImmutableArray<uint> GachaArchiveUids { get; set; }
+
+    public UIGFVersion Version { get; set; } = UIGFVersion.UIGF41;
 }

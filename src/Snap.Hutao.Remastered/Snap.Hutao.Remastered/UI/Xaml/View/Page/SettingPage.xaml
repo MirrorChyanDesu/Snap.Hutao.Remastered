@@ -10,6 +10,7 @@
     xmlns:mxi="using:Microsoft.Xaml.Interactivity"
     xmlns:shuxb="using:Snap.Hutao.Remastered.UI.Xaml.Behavior"
     xmlns:shuxc="using:Snap.Hutao.Remastered.UI.Xaml.Control"
+    xmlns:shuxdc="using:Snap.Hutao.Remastered.UI.Xaml.Data.Converter"
     xmlns:shuxm="using:Snap.Hutao.Remastered.UI.Xaml.Markup"
     xmlns:shvs="using:Snap.Hutao.Remastered.ViewModel.Setting"
     d:DataContext="{d:DesignInstance shvs:SettingViewModel}"
@@ -19,6 +20,10 @@
     <mxi:Interaction.Behaviors>
         <shuxb:InvokeCommandOnLoadedBehavior Command="{Binding LoadCommand}"/>
     </mxi:Interaction.Behaviors>
+
+    <Page.Resources>
+        <shuxdc:UIGFVersionToStringConverter x:Key="UIGFVersionToStringConverter"/>
+    </Page.Resources>
 
     <Grid x:Name="SettingPageGrid">
         <ScrollViewer x:Name="RootScrollViewer" Style="{StaticResource TwoPanelScrollViewerStyle}">
@@ -798,6 +803,16 @@
                                     HeaderIcon="{shuxm:FontIcon Glyph=&#xE8AF;}">
                                     <StackPanel Orientation="Horizontal" Spacing="3">
                                         <HyperlinkButton Content="{shuxm:ResourceString Name=ViewPageSettingUIGFUpgradeLegacyVersionContent}" NavigateUri="https://upgrader.uigf.org/"/>
+                                        <ComboBox
+                                            MinWidth="100"
+                                            ItemsSource="{Binding UIGFVersions}"
+                                            SelectedItem="{Binding SelectedUIGFVersion, Mode=TwoWay}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Converter={StaticResource UIGFVersionToStringConverter}}"/>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
                                         <Button
                                             Command="{Binding ExportUIGFJsonCommand}"
                                             Content="{shuxm:ResourceString Name=ViewPageSettingUIGFExportContent}"

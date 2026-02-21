@@ -11,16 +11,27 @@ namespace Snap.Hutao.Remastered.Service.UIGF;
 
 public abstract partial class AbstractUIGF40ImportService : IUIGFImportService
 {
-    private readonly IServiceProvider serviceProvider;
-    private readonly ITaskContext taskContext;
+    protected readonly IServiceProvider serviceProvider;
+    protected readonly ITaskContext taskContext;
+    protected readonly IUIGFService uigfService;
 
     [GeneratedConstructor]
     public partial AbstractUIGF40ImportService(IServiceProvider serviceProvider);
 
-    public async ValueTask ImportAsync(UIGFImportOptions importOptions, CancellationToken token = default)
+    public virtual async ValueTask ImportAsync(UIGFImportOptions importOptions, CancellationToken token = default)
     {
         await taskContext.SwitchToBackgroundAsync();
         ImportGachaArchives(importOptions.UIGF.Hk4e, importOptions.GachaArchiveUids);
+    }
+
+    public bool Parse(string json, out Model.InterChange.GachaLog.UIGF? uigf)
+    {
+        if (uigfService.Parse(json, out uigf) && uigf is not null)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void ImportGachaArchives(ImmutableArray<UIGFEntry<Hk4eItem>> entries, HashSet<uint> uids)

@@ -1,12 +1,14 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
+
 namespace Snap.Hutao.Remastered.Service.UIGF;
 
 [Service(ServiceLifetime.Singleton, typeof(IUIGFService))]
 public sealed partial class UIGFService : IUIGFService
 {
     private readonly IServiceProvider serviceProvider;
+    private readonly JsonSerializerOptions jsonOptions;
 
     [GeneratedConstructor]
     public partial UIGFService(IServiceProvider serviceProvider);
@@ -29,5 +31,24 @@ public sealed partial class UIGFService : IUIGFService
 
         IUIGFImportService importService = serviceProvider.GetRequiredKeyedService<IUIGFImportService>(version);
         return importService.ImportAsync(importOptions, token);
+    }
+
+    public bool Parse(string json, out Model.InterChange.GachaLog.UIGF? uigf)
+    {
+        try
+        {
+            uigf = JsonSerializer.Deserialize<Model.InterChange.GachaLog.UIGF>(json, jsonOptions);
+
+            if (uigf!.Info.Version == "v4.2")
+            {
+                uigf = JsonSerializer.Deserialize<Model.InterChange.GachaLog.UIGF42>(json, jsonOptions);
+            }
+            return true;
+        }
+        catch
+        {
+            uigf = null;
+            return false;
+        }
     }
 }

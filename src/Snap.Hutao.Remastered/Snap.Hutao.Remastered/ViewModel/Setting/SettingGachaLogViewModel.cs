@@ -3,7 +3,6 @@
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Controls;
-using Snap.Hutao.Remastered.Core.IO;
 using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Factory.ContentDialog;
 using Snap.Hutao.Remastered.Factory.Picker;
@@ -14,6 +13,7 @@ using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.Service.UIGF;
 using Snap.Hutao.Remastered.UI.Xaml.View.Dialog;
 using System.Collections.Immutable;
+using System.IO;
 
 namespace Snap.Hutao.Remastered.ViewModel.Setting;
 
@@ -34,8 +34,7 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
     public partial AppOptions AppOptions { get; }
 
     [ObservableProperty]
-    private UIGFVersion selectedUIGFVersion = UIGFVersion.UIGF42;
-
+    public partial UIGFVersion SelectedUIGFVersion { get; set; } = UIGFVersion.UIGF42;
     public ImmutableArray<UIGFVersion> UIGFVersions { get; } = [UIGFVersion.UIGF40, UIGFVersion.UIGF41, UIGFVersion.UIGF42];
 
     [Command("ImportUIGFJsonCommand")]
@@ -55,14 +54,14 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
             return;
         }
 
-        if (await file.DeserializeFromJsonNoThrowAsync<UIGF>(jsonOptions).ConfigureAwait(false) is not (true, { } uigf))
+        if (!uigfService.Parse(await File.ReadAllTextAsync(file), out UIGF? uigf))
         {
             messenger.Send(InfoBarMessage.Error(SH.ViewModelImportWarningTitle, SH.ViewModelImportWarningMessage));
 
             return;
         }
 
-        if (uigf.Hk4e.IsDefaultOrEmpty)
+        if (uigf!.Hk4e.IsDefaultOrEmpty)
         {
             messenger.Send(InfoBarMessage.Warning(SH.ViewModelUIGFImportNoHk4eEntry));
             return;
@@ -118,7 +117,7 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
         FileSystemPickerOptions pickerOptions = new()
         {
             Title = SH.ViewModelGachaLogUIGFExportPickerTitle,
-            DefaultFileName = "Snap Hutao UIGF.json",
+            DefaultFileName = $"Snap Hutao Remastered {SelectedUIGFVersion.ToString()}.json",
             FilterName = SH.ViewModelGachaLogExportFileType,
             FilterType = "*.json",
         };

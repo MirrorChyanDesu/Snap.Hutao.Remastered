@@ -235,11 +235,11 @@
                             Padding="4,2"
                             VerticalAlignment="Stretch"
                             BorderThickness="0"
-                            IsChecked="{Binding LaunchOptions.IsSetFieldOfViewEnabled, Mode=TwoWay}"
+                            IsChecked="{Binding LaunchOptions.IsSetFieldOfViewEnabled.Value, Mode=TwoWay}"
                             ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameTargetFovHeader}">
                             <ToggleSplitButton.Flyout>
                                 <Flyout FlyoutPresenterStyle="{ThemeResource FlyoutPresenterPadding4Style}" ShouldConstrainToRootBounds="False">
-                                    <ContentControl IsEnabled="{Binding LaunchOptions.IsSetFieldOfViewEnabled}">
+                                    <ContentControl IsEnabled="{Binding LaunchOptions.IsSetFieldOfViewEnabled.Value}">
                                         <StackPanel Orientation="Horizontal" Spacing="4">
                                             <Slider
                                                 Width="120"

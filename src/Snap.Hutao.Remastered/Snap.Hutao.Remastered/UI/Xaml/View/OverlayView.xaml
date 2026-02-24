@@ -205,11 +205,11 @@
                                     <ContentControl IsEnabled="{Binding LaunchOptions.IsSetTargetFrameRateEnabled.Value}">
                                         <StackPanel Orientation="Horizontal" Spacing="4">
                                             <Slider
-                                                Width="180"
+                                                Width="240"
                                                 Margin="12,0"
                                                 VerticalAlignment="Center"
                                                 LargeChange="10"
-                                                Maximum="120"
+                                                Maximum="160"
                                                 Minimum="1"
                                                 SmallChange="1"
                                                 Value="{Binding LaunchOptions.TargetFps.Value, Mode=TwoWay}"/>
@@ -332,6 +332,29 @@
                                     Style="{ThemeResource CaptionTextBlockStyle}"
                                     Text="99"/>
                                 <FontIcon FontSize="16" Glyph="&#xE894;"/>
+                            </Grid>
+                        </ToggleButton>
+                        <ToggleButton
+                            Padding="8"
+                            VerticalAlignment="Stretch"
+                            BorderThickness="0"
+                            Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                            IsChecked="{Binding LaunchOptions.DisplayPaimon.Value, Mode=TwoWay}"
+                            ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewOverlayDisplayPaimonToolTip}">
+                            <Grid>
+                                <ImageIcon Source="ms-appx:///Resource/Icon/UI_Icon_Paimon.png"/>
+                            </Grid>
+                        </ToggleButton>
+                        <ToggleButton
+                            Padding="8"
+                            VerticalAlignment="Stretch"
+                            BorderThickness="0"
+                            Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                            IsChecked="{Binding LaunchOptions.HideGrass.Value, Mode=TwoWay}"
+                            ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewOverlayHideGrassToolTip}">
+                            <Grid>
+                                <ImageIcon Source="ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Grass.png"/>
+                                <FontIcon FontSize="26" Glyph="&#xE894;"/>
                             </Grid>
                         </ToggleButton>
                     </StackPanel>

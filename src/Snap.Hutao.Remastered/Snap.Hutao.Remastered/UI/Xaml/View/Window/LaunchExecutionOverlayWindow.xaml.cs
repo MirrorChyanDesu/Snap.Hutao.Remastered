@@ -33,7 +33,7 @@ public sealed partial class LaunchExecutionOverlayWindow : Microsoft.UI.Xaml.Win
         AppWindow.Title = "SnapHutaoLaunchExecutionOverlay";
         AppWindow.SafeIsShowInSwitchers(false);
 
-        SizeInt32 size = ScaledSizeInt32.CreateForWindow(386, 56, this);
+        SizeInt32 size = ScaledSizeInt32.CreateForWindow(476, 56, this);
 
         // Thanks to @Scighost for the following code
         if (AppWindow.Presenter is OverlappedPresenter presenter)

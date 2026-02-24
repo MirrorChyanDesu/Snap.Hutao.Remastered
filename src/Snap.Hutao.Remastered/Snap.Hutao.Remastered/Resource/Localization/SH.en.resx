@@ -4190,4 +4190,10 @@ Space Available: {2}</value>
   <data name="ServiceGachaLogFactoryBeyondPermanentWishName" xml:space="preserve">
     <value>Encounter Echoes</value>
   </data>
+  <data name="ViewOverlayDisplayPaimonToolTip" xml:space="preserve">
+    <value>Display Paimon</value>
+  </data>
+  <data name="ViewOverlayHideGrassToolTip" xml:space="preserve">
+    <value>Hide Grass</value>
+  </data>
 </root>

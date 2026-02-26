@@ -109,8 +109,6 @@ public struct HookFunctionOffsets
     [JsonConverter(typeof(HexStringToNintConverter))]
     public uint GameUpdate;
     [JsonConverter(typeof(HexStringToNintConverter))]
-    public uint PtrToStringAnsi;
-    [JsonConverter(typeof(HexStringToNintConverter))]
     public uint GetPlayerID;
     [JsonConverter(typeof(HexStringToNintConverter))]
     public uint SetText;
@@ -130,6 +128,8 @@ public struct HookFunctionOffsets
     public uint GetText;
     [JsonConverter(typeof(HexStringToNintConverter))]
     public uint GetName;
+    [JsonConverter(typeof(HexStringToNintConverter))]
+    public uint CheckCanOpenMap;
 #pragma warning restore CS0649
 }
 

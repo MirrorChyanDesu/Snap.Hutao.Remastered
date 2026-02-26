@@ -215,12 +215,6 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
         ]).ConfigureAwait(false);
 
 
-        // Initialize auto sign-in
-        await Task.WhenAll(
-        [
-            serviceProvider.GetRequiredService<IAutoSignInService>().InitializeAsync().AsTask()
-        ]).ConfigureAwait(false);
-
         SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Initialization completed", "Application"));
     }
 

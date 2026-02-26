@@ -4,6 +4,7 @@
 using Snap.Hutao.Remastered.Core.DependencyInjection.Abstraction;
 using Snap.Hutao.Remastered.Model.Entity.Extension;
 using Snap.Hutao.Remastered.UI.Xaml.Data;
+using Snap.Hutao.Remastered.ViewModel.User;
 using Snap.Hutao.Remastered.Web.Hoyolab;
 using Snap.Hutao.Remastered.Web.Hoyolab.Bbs.User;
 using Snap.Hutao.Remastered.Web.Hoyolab.Passport;
@@ -19,6 +20,7 @@ public sealed partial class UserInitializationService : IUserInitializationServi
     private readonly IProfilePictureService profilePictureService;
     private readonly IServiceProvider serviceProvider;
     private readonly ITaskContext taskContext;
+    private readonly IAutoSignInService autoSignInService;
 
     [GeneratedConstructor]
     public partial UserInitializationService(IServiceProvider serviceProvider);
@@ -206,6 +208,13 @@ public sealed partial class UserInitializationService : IUserInitializationServi
 
         await userFingerprintService.TryInitializeAsync(user, token).ConfigureAwait(false);
         await profilePictureService.TryInitializeAsync(user, token).ConfigureAwait(false);
+
+        // 自动签到
+        foreach(UserGameRole gameRole in user.UserGameRoles)
+        {
+            UserAndUid userAndUid = UserAndUid.From(user.Entity, gameRole.GameUid);
+            await autoSignInService.InitializeAsync(userAndUid, token);
+        }
 
         return user.IsInitialized = true;
     }

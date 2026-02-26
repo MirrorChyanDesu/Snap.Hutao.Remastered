@@ -1,10 +1,10 @@
-namespace Snap.Hutao.Remastered.Service.SignIn;
+using Snap.Hutao.Remastered.ViewModel.User;
 
 public interface IAutoSignInService
 {
-    ValueTask InitializeAsync(CancellationToken token = default);
+    ValueTask InitializeAsync(UserAndUid userAndUid, CancellationToken token = default);
 
-    ValueTask RunOnceAsync(CancellationToken token = default);
+    ValueTask RunOnceAsync(UserAndUid userAndUid, CancellationToken token = default);
 
     bool IsEnabled { get; set; }
 }

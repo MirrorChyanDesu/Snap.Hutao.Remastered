@@ -21,7 +21,7 @@ public sealed class ShellLinkInterop : IShellLinkInterop
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string target = Path.Combine(desktop, $"{SH.FormatAppNameAndVersion(HutaoRuntime.Version)}.lnk");
 
-            FileSystem.CreateLink("hutao://", "", targetLogoPath, target);
+            FileSystem.CreateLink("shell:appsFolder\\E8B6E2B3-D2A0-4435-A81D-2A16AAF405C8_k3erpsn8bwzzy!App", "", targetLogoPath, target);
 
             return true;
         }

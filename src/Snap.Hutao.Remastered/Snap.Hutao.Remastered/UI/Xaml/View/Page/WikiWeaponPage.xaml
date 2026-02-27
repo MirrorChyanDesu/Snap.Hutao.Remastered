@@ -21,7 +21,8 @@
     xmlns:shvw="using:Snap.Hutao.Remastered.ViewModel.Wiki"
     d:DataContext="{d:DesignInstance Type=shvw:WikiWeaponViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Name="RootPage">
     <mxi:Interaction.Behaviors>
         <shuxb:InvokeCommandOnLoadedBehavior Command="{Binding LoadCommand}"/>
     </mxi:Interaction.Behaviors>
@@ -70,6 +71,15 @@
 
         <DataTemplate x:Key="WeaponListTemplate" x:DataType="shmmw:Weapon">
             <Grid>
+                <Grid.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem
+                            Command="{Binding Path=DataContext.CultivateCommand, ElementName=RootPage}"
+                            CommandParameter="{Binding}"
+                            Icon="{shuxm:FontIcon Glyph=&#xE8EF;}"
+                            Text="{shuxm:ResourceString Name=ViewPageCultivateCalculate}"/>
+                    </MenuFlyout>
+                </Grid.ContextFlyout>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
@@ -146,6 +156,15 @@
 
         <DataTemplate x:Key="WeaponGridTemplate" x:DataType="shmmw:Weapon">
             <shuxcc:VerticalCard Width="82">
+                <shuxcc:VerticalCard.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem
+                            Command="{Binding Path=DataContext.CultivateCommand, ElementName=RootPage}"
+                            CommandParameter="{Binding}"
+                            Icon="{shuxm:FontIcon Glyph=&#xE8EF;}"
+                            Text="{shuxm:ResourceString Name=ViewPageCultivateCalculate}"/>
+                    </MenuFlyout>
+                </shuxcc:VerticalCard.ContextFlyout>
                 <shuxcc:VerticalCard.Top>
                     <shuxc:ItemIcon Icon="{Binding Icon, Converter={StaticResource EquipIconConverter}, Mode=OneWay}" Quality="{Binding Quality}"/>
                 </shuxcc:VerticalCard.Top>

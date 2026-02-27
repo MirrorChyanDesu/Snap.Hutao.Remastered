@@ -15,13 +15,6 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                        <Grid.ContextFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem IsEnabled="False" Text="{TemplateBinding SourceName}"/>
-                                <MenuFlyoutItem IsEnabled="False" Text="{TemplateBinding CachedName}"/>
-                                <MenuFlyoutItem Command="{Binding CopyToClipboardCommand, RelativeSource={RelativeSource TemplatedParent}}" Text="{shuxm:ResourceString Name=UIXamlControlCachedImageCopyImage}"/>
-                            </MenuFlyout>
-                        </Grid.ContextFlyout>
                         <Image
                             Name="Image"
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"

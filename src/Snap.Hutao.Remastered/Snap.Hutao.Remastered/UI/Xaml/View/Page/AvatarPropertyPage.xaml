@@ -20,7 +20,8 @@
     xmlns:shva="using:Snap.Hutao.Remastered.ViewModel.AvatarProperty"
     d:DataContext="{d:DesignInstance shva:AvatarPropertyViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Name="RootPage">
 
     <mxi:Interaction.Behaviors>
         <shuxb:InvokeCommandOnLoadedBehavior Command="{Binding LoadCommand}"/>
@@ -82,6 +83,15 @@
 
             <DataTemplate x:Key="AvatarGridViewTemplate" x:DataType="shva:AvatarView">
                 <Grid Style="{ThemeResource GridShimmerStyle}">
+                    <Grid.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem
+                                Command="{Binding Path=DataContext.CultivateCommand, ElementName=RootPage}"
+                                CommandParameter="{Binding}"
+                                Icon="{shuxm:FontIcon Glyph=&#xE8EF;}"
+                                Text="{shuxm:ResourceString Name=ViewPageCultivateCalculate}"/>
+                        </MenuFlyout>
+                    </Grid.ContextFlyout>
 
                     <Border
                         Grid.ColumnSpan="3"
@@ -190,6 +200,15 @@
 
             <DataTemplate x:Key="AvatarListViewTemplate" x:DataType="shva:AvatarView">
                 <Grid>
+                    <Grid.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem
+                                Command="{Binding Path=DataContext.CultivateCommand, ElementName=RootPage}"
+                                CommandParameter="{Binding}"
+                                Icon="{shuxm:FontIcon Glyph=&#xE8EF;}"
+                                Text="{shuxm:ResourceString Name=ViewPageCultivateCalculate}"/>
+                        </MenuFlyout>
+                    </Grid.ContextFlyout>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>

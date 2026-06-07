@@ -141,13 +141,15 @@ public sealed partial class UpdateService : IUpdateService
         {
             HutaoUserOptions hutaoUserOptions = scope.ServiceProvider.GetRequiredService<HutaoUserOptions>();
 
-            string commandLine = new CommandLineBuilder()
-                .Append("--update")
-                .Append("--api-key", await hutaoUserOptions.GetAccessTokenAsync().ConfigureAwait(false))
-                .ToString();
+            CommandLineBuilder commandLineBuilder = new();
+            commandLineBuilder.Append("--update");
+            if (hutaoUserOptions.IsLoggedIn)
+            {
+                commandLineBuilder.Append("--api-key", await hutaoUserOptions.GetAccessTokenAsync().ConfigureAwait(false));
+            }
 
             // The updater will request UAC permissions itself
-            ProcessFactory.StartUsingShellExecute(commandLine, updaterTargetPath);
+            ProcessFactory.StartUsingShellExecute(commandLineBuilder.ToString(), updaterTargetPath);
         }
     }
 }

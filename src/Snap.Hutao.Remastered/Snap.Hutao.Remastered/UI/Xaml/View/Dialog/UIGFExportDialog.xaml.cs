@@ -14,10 +14,15 @@ public sealed partial class UIGFExportDialog : ContentDialog
     private readonly IContentDialogFactory contentDialogFactory;
     private ImmutableArray<uint> selectedUids = [];
 
-    public UIGFExportDialog(IServiceProvider serviceProvider, ImmutableArray<uint> uids)
+    public UIGFExportDialog(IServiceProvider serviceProvider, ImmutableArray<uint> uids, bool isLegacyVersion = false)
     {
         InitializeComponent();
         contentDialogFactory = serviceProvider.GetRequiredService<IContentDialogFactory>();
+
+        if (isLegacyVersion)
+        {
+            SelectionListView.SelectionMode = ListViewSelectionMode.Single;
+        }
 
         ItemsSource = uids.SelectAsArray(UIGFUidSelection.Create);
     }

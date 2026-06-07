@@ -68,7 +68,7 @@ public sealed partial class UIGF42ExportService : AbstractUIGF40ExportService
                 UIGFEntry<Hk4eUGCItem> hk4eUgcEntry = new()
                 {
                     Uid = uid,
-                    TimeZone = 0,
+                    TimeZone = InferRegionTimeZone(uid),
                     List = beyondDbItems.SelectAsArray(item => item.ToHk4eUGCItem(metadataContext.GetBeyondItem(item.ItemId))),
                 };
                 hk4eUgcResults.Add(hk4eUgcEntry);

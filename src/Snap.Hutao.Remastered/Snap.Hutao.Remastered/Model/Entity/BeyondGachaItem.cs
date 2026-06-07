@@ -78,7 +78,7 @@ public sealed class BeyondGachaItem
         {
             GachaType = GachaType,
             ItemId = ItemId,
-            Time = Time.UtcDateTime,
+            Time = Time.DateTime,
             Id = Id,
             ItemType = beyondItem.TypeDescription ?? string.Empty,
             ItemName = beyondItem.Name,

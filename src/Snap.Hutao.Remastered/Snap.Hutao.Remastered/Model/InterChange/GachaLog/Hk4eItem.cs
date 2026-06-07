@@ -43,17 +43,17 @@ public sealed class Hk4eItem : IJsonOnDeserialized
 
     [JsonPropertyName("uigf_gacha_type")]
     [JsonEnumHandling(JsonEnumHandling.NumberString)]
-    public required GachaType UIGFGachaType { get; init; }
+    public required UIGFGachaType UIGFGachaType { get; init; }
 
     public static Hk4eItem From(GachaItem item, string name, string itemType, string rankType)
     {
         return new()
         {
-            UIGFGachaType = item.QueryType,
+            UIGFGachaType = (UIGFGachaType)item.QueryType,
             GachaType = item.GachaType,
             ItemId = item.ItemId,
             Count = "1",
-            Time = item.Time.UtcDateTime,
+            Time = item.Time.DateTime,
             Name = name,
             ItemType = itemType,
             RankType = rankType,

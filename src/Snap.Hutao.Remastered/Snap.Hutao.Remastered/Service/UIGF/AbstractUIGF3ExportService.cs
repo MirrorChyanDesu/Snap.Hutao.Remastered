@@ -13,7 +13,7 @@ using System.IO;
 
 namespace Snap.Hutao.Remastered.Service.UIGF;
 
-public abstract partial class AbstractUIGF40ExportService : IUIGFExportService
+public abstract partial class AbstractUIGF3ExportService : IUIGFExportService
 {
     protected readonly JsonSerializerOptions jsonOptions;
     protected readonly IServiceProvider serviceProvider;
@@ -21,7 +21,7 @@ public abstract partial class AbstractUIGF40ExportService : IUIGFExportService
     protected readonly IMetadataService metadataService;
 
     [GeneratedConstructor]
-    public partial AbstractUIGF40ExportService(IServiceProvider serviceProvider);
+    public partial AbstractUIGF3ExportService(IServiceProvider serviceProvider);
 
     protected abstract string Version { get; }
 
@@ -31,18 +31,24 @@ public abstract partial class AbstractUIGF40ExportService : IUIGFExportService
 
         GachaLogServiceMetadataContext metadataContext = await metadataService.GetContextAsync<GachaLogServiceMetadataContext>(token).ConfigureAwait(false);
 
-        Model.InterChange.GachaLog.UIGF4 uigf = new()
+        // Legacy format only supports single UID
+        uint uid = exportOptions.GachaArchiveUids.Length > 0 ? exportOptions.GachaArchiveUids[0] : 0;
+
+        Model.InterChange.GachaLog.UIGF3 uigf = new()
         {
             Info = new()
             {
+                Uid = uid,
                 ExportApp = "Snap Hutao Remastered",
                 ExportAppVersion = $"{HutaoRuntime.Version}",
                 ExportTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds(),
-                Version = Version,
+                ExportTime = DateTimeOffset.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                UigfVersion = Version,
+                RegionTimeZone = InferRegionTimeZone(uid),
             },
         };
 
-        ExportGachaArchives(uigf, exportOptions.GachaArchiveUids, metadataContext);
+        ExportGachaItems(uigf, uid, metadataContext);
 
         using (FileStream stream = File.Create(exportOptions.FilePath))
         {
@@ -50,45 +56,31 @@ public abstract partial class AbstractUIGF40ExportService : IUIGFExportService
         }
     }
 
-    protected virtual void ExportGachaArchives(Model.InterChange.GachaLog.UIGF4 uigf, ImmutableArray<uint> uids, GachaLogServiceMetadataContext metadataContext)
+    protected virtual void ExportGachaItems(Model.InterChange.GachaLog.UIGF3 uigf, uint uid, GachaLogServiceMetadataContext metadataContext)
     {
-        if (uids.Length <= 0)
+        if (uid == 0)
         {
             return;
         }
 
         IGachaLogRepository gachaLogRepository = serviceProvider.GetRequiredService<IGachaLogRepository>();
 
-        ImmutableArray<UIGFEntry<Hk4eItem>>.Builder hk4eResults = ImmutableArray.CreateBuilder<UIGFEntry<Hk4eItem>>(uids.Length);
+        GachaArchive? archive = gachaLogRepository.GetGachaArchiveByUid($"{uid}");
+        ArgumentNullException.ThrowIfNull(archive);
 
-        foreach (ref readonly uint uid in uids.AsSpan())
+        ImmutableArray<GachaItem> dbItems = gachaLogRepository.GetGachaItemImmutableArrayByArchiveId(archive.InnerId);
+
+        uigf.List = dbItems.SelectAsArray(item =>
         {
-            GachaArchive? archive = gachaLogRepository.GetGachaArchiveByUid($"{uid}");
-            ArgumentNullException.ThrowIfNull(archive);
-
-            // Export standard gacha items
-            ImmutableArray<GachaItem> dbItems = gachaLogRepository.GetGachaItemImmutableArrayByArchiveId(archive.InnerId);
-
-            UIGFEntry<Hk4eItem> hk4eEntry = new()
+            INameQualityAccess nameQuality = metadataContext.GetNameQualityByItemId(item.ItemId);
+            string itemType = item.ItemId.StringLength switch
             {
-                Uid = uid,
-                TimeZone = InferRegionTimeZone(uid),
-                List = dbItems.SelectAsArray(item =>
-                {
-                    INameQualityAccess nameQuality = metadataContext.GetNameQualityByItemId(item.ItemId);
-                    string itemType = item.ItemId.StringLength switch
-                    {
-                        8U => SH.ModelInterchangeUIGFItemTypeAvatar,
-                        5U => SH.ModelInterchangeUIGFItemTypeWeapon,
-                        _ => string.Empty,
-                    };
-                    return Hk4eItem.From(item, nameQuality.Name, itemType, ((int)nameQuality.Quality).ToString());
-                }),
+                8U => SH.ModelInterchangeUIGFItemTypeAvatar,
+                5U => SH.ModelInterchangeUIGFItemTypeWeapon,
+                _ => string.Empty,
             };
-            hk4eResults.Add(hk4eEntry);
-        }
-
-        uigf.Hk4e = hk4eResults.ToImmutable();
+            return Hk4eItem.From(item, nameQuality.Name, itemType, ((int)nameQuality.Quality).ToString());
+        });
     }
 
     protected static int InferRegionTimeZone(uint uid)

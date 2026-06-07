@@ -35,7 +35,7 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
 
     [ObservableProperty]
     public partial UIGFVersion SelectedUIGFVersion { get; set; } = UIGFVersion.UIGF42;
-    public ImmutableArray<UIGFVersion> UIGFVersions { get; } = [UIGFVersion.UIGF40, UIGFVersion.UIGF41, UIGFVersion.UIGF42];
+    public ImmutableArray<UIGFVersion> UIGFVersions { get; } = [UIGFVersion.UIGF20, UIGFVersion.UIGF21, UIGFVersion.UIGF22, UIGFVersion.UIGF23, UIGFVersion.UIGF24, UIGFVersion.UIGF30, UIGFVersion.UIGF40, UIGFVersion.UIGF41, UIGFVersion.UIGF42];
 
     [Command("ImportUIGFJsonCommand")]
     private async Task ImportUIGFJsonAsync()
@@ -54,7 +54,7 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
             return;
         }
 
-        if (!uigfService.Parse(await File.ReadAllTextAsync(file), out UIGF? uigf))
+        if (!uigfService.Parse(await File.ReadAllTextAsync(file), out UIGF4? uigf))
         {
             messenger.Send(InfoBarMessage.Error(SH.ViewModelImportWarningTitle, SH.ViewModelImportWarningMessage));
 
@@ -128,7 +128,8 @@ public sealed partial class SettingGachaLogViewModel : Abstraction.ViewModel
         }
 
         ImmutableArray<uint> allUids = gachaLogRepository.GetGachaArchiveUidImmutableArray().SelectAsArray(uint.Parse);
-        UIGFExportDialog exportDialog = await contentDialogFactory.CreateInstanceAsync<UIGFExportDialog>(serviceProvider, allUids).ConfigureAwait(false);
+        bool isLegacyVersion = SelectedUIGFVersion is UIGFVersion.UIGF20 or UIGFVersion.UIGF21 or UIGFVersion.UIGF22 or UIGFVersion.UIGF23 or UIGFVersion.UIGF24 or UIGFVersion.UIGF30;
+        UIGFExportDialog exportDialog = await contentDialogFactory.CreateInstanceAsync<UIGFExportDialog>(serviceProvider, allUids, isLegacyVersion).ConfigureAwait(false);
         if (await exportDialog.GetSelectedUidsAsync().ConfigureAwait(false) is not (true, { } uids))
         {
             return;

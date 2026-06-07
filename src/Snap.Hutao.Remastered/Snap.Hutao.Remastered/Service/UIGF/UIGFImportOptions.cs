@@ -5,7 +5,7 @@ namespace Snap.Hutao.Remastered.Service.UIGF;
 
 public sealed class UIGFImportOptions
 {
-    public required Model.InterChange.GachaLog.UIGF UIGF { get; set; }
+    public required Model.InterChange.GachaLog.UIGF4 UIGF { get; set; }
 
     public required HashSet<uint> GachaArchiveUids { get; set; }
 }

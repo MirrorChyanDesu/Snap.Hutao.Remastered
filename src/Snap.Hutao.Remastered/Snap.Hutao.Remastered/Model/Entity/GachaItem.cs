@@ -62,7 +62,7 @@ public sealed class GachaItem
         {
             ArchiveId = archiveId,
             GachaType = item.GachaType,
-            QueryType = item.UIGFGachaType,
+            QueryType = (GachaType)item.UIGFGachaType,
             ItemId = item.ItemId,
             Time = new(item.Time, TimeSpan.FromHours(timezoneOffset)),
             Id = item.Id,

@@ -24,7 +24,7 @@ public abstract partial class AbstractUIGF40ImportService : IUIGFImportService
         ImportGachaArchives(importOptions.UIGF.Hk4e, importOptions.GachaArchiveUids);
     }
 
-    public bool Parse(string json, out Model.InterChange.GachaLog.UIGF? uigf)
+    public bool Parse(string json, out Model.InterChange.GachaLog.UIGF4? uigf)
     {
         if (uigfService.Parse(json, out uigf) && uigf is not null)
         {
@@ -74,7 +74,7 @@ public abstract partial class AbstractUIGF40ImportService : IUIGFImportService
             {
                 long trimId = gachaLogRepository.GetOldestGachaItemIdByArchiveIdAndQueryType(archiveId, queryType);
                 List<GachaItem> currentTypedList = entry.List
-                    .Where(item => item.UIGFGachaType == queryType && item.Id < trimId)
+                    .Where(item => item.UIGFGachaType == (UIGFGachaType)queryType && item.Id < trimId)
                     .OrderByDescending(item => item.Id)
                     .Select(item => GachaItem.From(archiveId, item, timeZone))
                     .ToList();

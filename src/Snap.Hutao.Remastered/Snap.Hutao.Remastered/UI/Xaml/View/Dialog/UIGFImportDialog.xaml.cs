@@ -9,14 +9,14 @@ using WinRT;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.View.Dialog;
 
-[DependencyProperty<UIGF>("UIGF")]
+[DependencyProperty<UIGF4>("UIGF")]
 [DependencyProperty<ImmutableArray<UIGFUidSelection>>("ItemsSource", NotNull = true)]
 public sealed partial class UIGFImportDialog : ContentDialog
 {
     private readonly IContentDialogFactory contentDialogFactory;
     private ImmutableArray<uint> selectedUids = [];
 
-    public UIGFImportDialog(IServiceProvider serviceProvider, UIGF uigf)
+    public UIGFImportDialog(IServiceProvider serviceProvider, UIGF4 uigf)
     {
         InitializeComponent();
         contentDialogFactory = serviceProvider.GetRequiredService<IContentDialogFactory>();

@@ -14,6 +14,12 @@ public sealed partial class UIGFVersionToStringConverter : IValueConverter
         {
             return version switch
             {
+                UIGFVersion.UIGF20 => "v2.0",
+                UIGFVersion.UIGF21 => "v2.1",
+                UIGFVersion.UIGF22 => "v2.2",
+                UIGFVersion.UIGF23 => "v2.3",
+                UIGFVersion.UIGF24 => "v2.4",
+                UIGFVersion.UIGF30 => "v3.0",
                 UIGFVersion.UIGF40 => "v4.0",
                 UIGFVersion.UIGF41 => "v4.1",
                 UIGFVersion.UIGF42 => "v4.2",
@@ -30,6 +36,12 @@ public sealed partial class UIGFVersionToStringConverter : IValueConverter
         {
             return str switch
             {
+                "v2.0" => UIGFVersion.UIGF20,
+                "v2.1" => UIGFVersion.UIGF21,
+                "v2.2" => UIGFVersion.UIGF22,
+                "v2.3" => UIGFVersion.UIGF23,
+                "v2.4" => UIGFVersion.UIGF24,
+                "v3.0" => UIGFVersion.UIGF30,
                 "v4.0" => UIGFVersion.UIGF40,
                 "v4.1" => UIGFVersion.UIGF41,
                 "v4.2" => UIGFVersion.UIGF42,

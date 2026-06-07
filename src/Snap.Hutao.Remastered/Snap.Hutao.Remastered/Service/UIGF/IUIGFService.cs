@@ -9,5 +9,5 @@ public interface IUIGFService
 
     ValueTask ImportAsync(UIGFImportOptions importOptions, CancellationToken token = default);
 
-    bool Parse(string json, out Model.InterChange.GachaLog.UIGF? uigf);
+    bool Parse(string json, out Model.InterChange.GachaLog.UIGF4? uigf);
 }

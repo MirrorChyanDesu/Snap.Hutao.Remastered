@@ -18,6 +18,15 @@ public sealed partial class BeyondStatisticsCard : UserControl
         InitializeComponent();
         CombinedModeToggle.Click += (sender, args) => ShowCombinedTotal = !ShowCombinedTotal;
         RegisterPropertyChangedCallback(ShowCombinedTotalProperty, OnShowCombinedTotalChanged);
+        DataContextChanged += OnDataContextChanged;
+    }
+
+    private void OnDataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+    {
+        if (args.NewValue is TypedWishSummary summary)
+        {
+            summary.ShowCombinedTotal = ShowCombinedTotal;
+        }
     }
 
     private static void OnShowCombinedTotalChanged(DependencyObject sender, DependencyProperty dp)

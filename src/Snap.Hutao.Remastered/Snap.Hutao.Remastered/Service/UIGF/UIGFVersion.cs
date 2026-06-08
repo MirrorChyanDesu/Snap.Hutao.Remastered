@@ -6,8 +6,6 @@ namespace Snap.Hutao.Remastered.Service.UIGF;
 public enum UIGFVersion
 {
     None,
-    UIGF20,
-    UIGF21,
     UIGF22,
     UIGF23,
     UIGF24,

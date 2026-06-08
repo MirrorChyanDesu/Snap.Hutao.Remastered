@@ -17,6 +17,7 @@ using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.Service.User;
 using Snap.Hutao.Remastered.UI.Xaml.Control.Card;
 using Snap.Hutao.Remastered.UI.Xaml.View.Card;
+using Snap.Hutao.Remastered.ViewModel.User;
 using Snap.Hutao.Remastered.Web;
 using Snap.Hutao.Remastered.Web.Hoyolab.Bbs.Home;
 using Snap.Hutao.Remastered.Web.Hoyolab.Hk4e.Common.Announcement;
@@ -34,7 +35,7 @@ namespace Snap.Hutao.Remastered.ViewModel.Home;
 
 [BindableCustomPropertyProvider]
 [Service(ServiceLifetime.Scoped)]
-internal sealed partial class AnnouncementViewModel : Abstraction.ViewModel
+internal sealed partial class AnnouncementViewModel : Abstraction.ViewModel, IRecipient<UserAndUidChangedMessage>
 {
     private readonly IAnnouncementService announcementService;
     private readonly IServiceProvider serviceProvider;
@@ -74,6 +75,22 @@ internal sealed partial class AnnouncementViewModel : Abstraction.ViewModel
     public bool IsHomeAnnouncementActivityCalendarPresented
     {
         get => LocalSetting.Get(SettingKeys.IsHomeAnnouncementActivityCalendarPresented, true);
+    }
+
+    public void Receive(UserAndUidChangedMessage message)
+    {
+        if (message.UserAndUid is { IsOversea: false } userAndUid)
+        {
+            RefreshActivityCalendarOnUserChangedAsync(userAndUid).SafeForget();
+        }
+        else
+        {
+            taskContext.InvokeOnMainThread(() =>
+            {
+                ActivityCalendar = default!;
+                DisplayedActivityCards = [];
+            });
+        }
     }
 
     [GeneratedRegex("act_id=(.*?)&")]
@@ -245,19 +262,7 @@ internal sealed partial class AnnouncementViewModel : Abstraction.ViewModel
                     return true;
                 }
 
-                IGameRecordClient gameRecordClient = scope.ServiceProvider
-                    .GetRequiredService<IOverseaSupportFactory<IGameRecordClient>>()
-                    .CreateFor(userAndUid);
-
-                Response<ActCalendar> response = await gameRecordClient.GetActCalendarAsync(userAndUid, token).ConfigureAwait(false);
-
-                if (ResponseValidator.TryValidateWithoutUINotification(response, out ActCalendar? calendar))
-                {
-                    await taskContext.SwitchToMainThreadAsync();
-                    ActivityCalendar = calendar;
-                    UpdateDisplayedActivityCards();
-                    DeferContentLoader?.Load(nameof(UI.Xaml.View.Page.AnnouncementPage.ActivityCalendarGrid));
-                }
+                await RefreshActivityCalendarCoreAsync(userAndUid, token).ConfigureAwait(false);
             }
 
             return true;
@@ -270,6 +275,44 @@ internal sealed partial class AnnouncementViewModel : Abstraction.ViewModel
         {
             MarkHomePendingForRetry();
             return false;
+        }
+    }
+
+    [SuppressMessage("", "SH003")]
+    private async ValueTask RefreshActivityCalendarOnUserChangedAsync(UserAndUid userAndUid)
+    {
+        try
+        {
+            await RefreshActivityCalendarCoreAsync(userAndUid, CancellationToken.None).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException)
+        {
+        }
+        catch (Exception ex) when (IsNetworkRelatedException(ex))
+        {
+        }
+    }
+
+    [SuppressMessage("", "SH003")]
+    private async ValueTask RefreshActivityCalendarCoreAsync(UserAndUid userAndUid, CancellationToken token)
+    {
+        if (!LocalSetting.Get(SettingKeys.IsHomeAnnouncementActivityCalendarPresented, true))
+        {
+            return;
+        }
+
+        IGameRecordClient gameRecordClient = serviceProvider
+            .GetRequiredService<IOverseaSupportFactory<IGameRecordClient>>()
+            .CreateFor(userAndUid);
+
+        Response<ActCalendar> response = await gameRecordClient.GetActCalendarAsync(userAndUid, token).ConfigureAwait(false);
+
+        if (ResponseValidator.TryValidateWithoutUINotification(response, out ActCalendar? calendar))
+        {
+            await taskContext.SwitchToMainThreadAsync();
+            ActivityCalendar = calendar;
+            UpdateDisplayedActivityCards();
+            DeferContentLoader?.Load(nameof(UI.Xaml.View.Page.AnnouncementPage.ActivityCalendarGrid));
         }
     }
 

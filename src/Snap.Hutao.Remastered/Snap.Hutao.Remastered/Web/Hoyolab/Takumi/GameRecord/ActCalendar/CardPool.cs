@@ -41,7 +41,10 @@ internal sealed class CardPool
     public JsonElement? EndTime { get; init; }
 
     [JsonIgnore]
-    public string FormattedDuration { get => $"{DateTimeOffset.FromUnixTimeSeconds(StartTimestamp).LocalDateTime:yyyy/MM/dd HH:mm} - {DateTimeOffset.FromUnixTimeSeconds(EndTimestamp).LocalDateTime:yyyy/MM/dd HH:mm}"; }
+    public string FormattedDuration { get => SH.FormatWebHoyolabGameRecordActCalendarDurationFormat(DateTimeOffset.FromUnixTimeSeconds(StartTimestamp).LocalDateTime, DateTimeOffset.FromUnixTimeSeconds(EndTimestamp).LocalDateTime); }
+
+    [JsonIgnore]
+    public string? FormattedStatus { get => PoolStatus.GetLocalizedDescription(SH.ResourceManager); }
 
     [JsonPropertyName("jump_url")]
     public required Uri JumpUrl { get; init; }

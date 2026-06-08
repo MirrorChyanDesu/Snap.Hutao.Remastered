@@ -4582,6 +4582,15 @@
   <data name="WebHoyolabGameRecordActCalendarTowerLocked" xml:space="preserve">
     <value>尚未解锁</value>
   </data>
+  <data name="WebHoyolabGameRecordActCalendarCardPoolStatusOngoing" xml:space="preserve">
+    <value>进行中</value>
+  </data>
+  <data name="WebHoyolabGameRecordActCalendarCardPoolStatusUpcoming" xml:space="preserve">
+    <value>待开启</value>
+  </data>
+  <data name="WebHoyolabGameRecordActCalendarDurationFormat" xml:space="preserve">
+    <value>{0:yyyy/MM/dd HH:mm} - {1:yyyy/MM/dd HH:mm}</value>
+  </data>
   <data name="WebHoyolabGameRecordActCalendarTowerStar" xml:space="preserve">
     <value>{0}/{1}</value>
   </data>

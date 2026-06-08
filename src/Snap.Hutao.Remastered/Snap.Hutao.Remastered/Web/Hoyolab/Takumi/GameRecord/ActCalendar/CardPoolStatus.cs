@@ -3,8 +3,12 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal enum CardPoolStatus
+[ExtendedEnum]
+public enum CardPoolStatus
 {
+    [LocalizationKey(nameof(SH.WebHoyolabGameRecordActCalendarCardPoolStatusUpcoming))]
     Upcoming = 1,
+
+    [LocalizationKey(nameof(SH.WebHoyolabGameRecordActCalendarCardPoolStatusOngoing))]
     Ongoing = 2,
 }

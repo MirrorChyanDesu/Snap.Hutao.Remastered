@@ -255,17 +255,29 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
 
         await taskContext.SwitchToBackgroundAsync();
 
-        // Services Initialization
+        // Phase 1: Critical-path initialization — must complete before window is considered ready
         await Task.WhenAll(
         [
             serviceProvider.GetRequiredService<HotKeyOptions>().InitializeAsync().AsTask(),
-            serviceProvider.GetRequiredService<HutaoUserOptions>().InitializeAsync().AsTask(),
-            serviceProvider.GetRequiredService<IMetadataService>().InitializepublicAsync().AsTask(),
             serviceProvider.GetRequiredService<IQuartzService>().StartAsync(),
-            serviceProvider.GetRequiredService<IPluginService>().LoadAllPluginsAsync()
         ]).ConfigureAwait(false);
 
-        SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Initialization completed", "Application"));
+        SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Core initialization completed", "Application"));
+
+        // Phase 2: Non-critical background initialization — runs without blocking window readiness
+        InitializeBackgroundServicesAsync().SafeForget();
+
+        async ValueTask InitializeBackgroundServicesAsync()
+        {
+            await Task.WhenAll(
+            [
+                serviceProvider.GetRequiredService<HutaoUserOptions>().InitializeAsync().AsTask(),
+                serviceProvider.GetRequiredService<IMetadataService>().InitializepublicAsync().AsTask(),
+                serviceProvider.GetRequiredService<IPluginService>().LoadAllPluginsAsync()
+            ]).ConfigureAwait(false);
+
+            SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Background initialization completed", "Application"));
+        }
     }
 
     private async ValueTask HandleProtocolActivationAsync(Uri uri, bool isRedirectTo)

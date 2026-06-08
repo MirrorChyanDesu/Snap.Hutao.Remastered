@@ -6,12 +6,13 @@ using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Core.Security.Principal;
 using Snap.Hutao.Remastered.Factory.Process;
-using Snap.Hutao.Remastered.Service;
+using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Win32;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using Windows.Storage;
 using WinRT;
 
 [assembly: DisableRuntimeMarshalling]
@@ -115,12 +116,21 @@ public static partial class Bootstrap
     {
         try
         {
-            AppOptions appOptions = DependencyInjection.Initialize().GetRequiredService<AppOptions>();
-            return !IsRunningAsAdministrator() && appOptions.AutoRestartAsAdmin.Value;
+            if (IsRunningAsAdministrator())
+            {
+                return false;
+            }
+
+            ApplicationDataContainer container = ApplicationData.Current.LocalSettings;
+            if (container.Values.TryGetValue(SettingKeys.AutoRestartAsAdmin, out object? value) && value is true)
+            {
+                return true;
+            }
+
+            return false;
         }
-        catch (Exception ex)
+        catch
         {
-            SentrySdk.CaptureException(ex);
             return false;
         }
     }

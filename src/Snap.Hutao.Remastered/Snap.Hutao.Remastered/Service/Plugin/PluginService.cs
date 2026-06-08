@@ -298,16 +298,21 @@ public partial class PluginService : IPluginService
 
     public async Task LoadAllPluginsAsync()
     {
-        foreach (DirectoryInfo tempDir in new DirectoryInfo(Path.GetTempPath()).GetDirectories("hutao_plugin_*"))
+        // Clean up stale plugin temp directories before loading
+        await Task.Run(() =>
         {
-            try
+            foreach (DirectoryInfo tempDir in new DirectoryInfo(Path.GetTempPath()).GetDirectories("hutao_plugin_*"))
             {
-                tempDir.Delete(true);
+                try
+                {
+                    tempDir.Delete(true);
+                }
+                catch
+                {
+                }
             }
-            catch
-            {
-            }
-        }
+        }).ConfigureAwait(false);
+
         try
         {
             if (!Directory.Exists(PluginsDirectory))

@@ -4588,7 +4588,7 @@
   <data name="WebHoyolabGameRecordActCalendarCardPoolStatusUpcoming" xml:space="preserve">
     <value>待开启</value>
   </data>
-  <data name="WebHoyolabGameRecordActCalendarDurationFormat" xml:space="preserve">
+  <data name="WebHoyolabGameRecordActCalendarDuration" xml:space="preserve">
     <value>{0:yyyy/MM/dd HH:mm} - {1:yyyy/MM/dd HH:mm}</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarTowerStar" xml:space="preserve">

@@ -41,7 +41,7 @@ internal sealed class CardPool
     public JsonElement? EndTime { get; init; }
 
     [JsonIgnore]
-    public string FormattedDuration { get => SH.FormatWebHoyolabGameRecordActCalendarDurationFormat(DateTimeOffset.FromUnixTimeSeconds(StartTimestamp).LocalDateTime, DateTimeOffset.FromUnixTimeSeconds(EndTimestamp).LocalDateTime); }
+    public string FormattedDuration { get => SH.FormatWebHoyolabGameRecordActCalendarDuration(DateTimeOffset.FromUnixTimeSeconds(StartTimestamp).LocalDateTime, DateTimeOffset.FromUnixTimeSeconds(EndTimestamp).LocalDateTime); }
 
     [JsonIgnore]
     public string? FormattedStatus { get => PoolStatus.GetLocalizedDescription(SH.ResourceManager); }

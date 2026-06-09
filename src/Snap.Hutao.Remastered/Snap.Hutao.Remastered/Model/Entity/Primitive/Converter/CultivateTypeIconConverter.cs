@@ -32,7 +32,7 @@ public sealed partial class CultivateTypeIconConverter : ValueConverter<Cultivat
             _ => throw HutaoException.NotSupported(),
         };
 
-        return $"ms-appx:///Resource/Icon/{filename}".ToUri();
+        return InstalledLocation.ToAbsoluteUri($"ms-appx:///Resource/Icon/{filename}");
     }
 
     public override Uri Convert(CultivateType from)

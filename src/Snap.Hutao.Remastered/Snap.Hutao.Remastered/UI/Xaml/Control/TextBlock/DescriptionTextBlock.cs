@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
+using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Model.Metadata;
 using Snap.Hutao.Remastered.UI.Xaml.Control.TextBlock.Syntax.MiHoYo;
 using Snap.Hutao.Remastered.UI.Xaml.Control.Theme;
@@ -27,13 +28,13 @@ namespace Snap.Hutao.Remastered.UI.Xaml.Control.TextBlock;
 [DependencyProperty<Style>("TextStyle", PropertyChangedCallbackName = nameof(OnTextStyleChanged))]
 public sealed partial class DescriptionTextBlock : ContentControl
 {
-    private static readonly BitmapImage BitmapSourceIce = new("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Ice.png".ToUri());
-    private static readonly BitmapImage BitmapSourceWater = new("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Water.png".ToUri());
-    private static readonly BitmapImage BitmapSourceFire = new("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Fire.png".ToUri());
-    private static readonly BitmapImage BitmapSourceElectric = new("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Electric.png".ToUri());
-    private static readonly BitmapImage BitmapSourceWind = new("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Wind.png".ToUri());
-    private static readonly BitmapImage BitmapSourceRock = new("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Rock.png".ToUri());
-    private static readonly BitmapImage BitmapSourceGrass = new("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Grass.png".ToUri());
+    private static readonly BitmapImage BitmapSourceIce = new(InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Ice.png"));
+    private static readonly BitmapImage BitmapSourceWater = new(InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Water.png"));
+    private static readonly BitmapImage BitmapSourceFire = new(InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Fire.png"));
+    private static readonly BitmapImage BitmapSourceElectric = new(InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Electric.png"));
+    private static readonly BitmapImage BitmapSourceWind = new(InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Wind.png"));
+    private static readonly BitmapImage BitmapSourceRock = new(InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Rock.png"));
+    private static readonly BitmapImage BitmapSourceGrass = new(InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/Icon/UI_Gcg_Buff_Common_Element_Grass.png"));
 
     public DescriptionTextBlock()
     {

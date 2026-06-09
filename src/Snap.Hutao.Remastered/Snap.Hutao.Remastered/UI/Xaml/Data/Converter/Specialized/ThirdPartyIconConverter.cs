@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Microsoft.UI.Xaml.Controls;
+using Snap.Hutao.Remastered.Core;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.Data.Converter.Specialized;
 
@@ -13,8 +14,8 @@ public sealed partial class ThirdPartyIconConverter : ValueConverter<string, Bit
     {
         Uri uri = from switch
         {
-            TwitterName => $"ms-appx:///Resource/ThirdParty/Twitter.png".ToUri(),
-            _ => $"ms-appx:///Resource/ThirdParty/{from}.png".ToUri(),
+            TwitterName => InstalledLocation.ToAbsoluteUri("ms-appx:///Resource/ThirdParty/Twitter.png"),
+            _ => InstalledLocation.ToAbsoluteUri($"ms-appx:///Resource/ThirdParty/{from}.png"),
         };
 
         return new()

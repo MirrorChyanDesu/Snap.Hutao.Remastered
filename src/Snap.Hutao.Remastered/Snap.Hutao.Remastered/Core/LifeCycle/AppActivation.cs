@@ -65,6 +65,15 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
                 await UnsynchronizedHandleActivationAsync(args).ConfigureAwait(false);
             }
 
+            // Bring the main window to foreground after handling redirect activation
+            await taskContext.SwitchToMainThreadAsync();
+            if (currentXamlWindowReference.Window is { } window)
+            {
+                window.SwitchTo();
+                window.AppWindow?.MoveInZOrderAtTop();
+                window.Activate();
+            }
+
             Interlocked.Exchange(ref isActivating, 0);
         }
     }

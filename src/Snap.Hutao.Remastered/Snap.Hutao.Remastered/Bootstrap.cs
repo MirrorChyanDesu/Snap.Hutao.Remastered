@@ -3,16 +3,16 @@
 
 using Microsoft.UI.Xaml;
 using Snap.Hutao.Remastered.Core;
+using Snap.Hutao.Remastered.Core.LifeCycle.InterProcess;
 using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Core.Security.Principal;
-using Snap.Hutao.Remastered.Factory.Process;
 using Snap.Hutao.Remastered.Core.Setting;
+using Snap.Hutao.Remastered.Factory.Process;
 using Snap.Hutao.Remastered.Win32;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Security.Principal;
-using Windows.Storage;
 using WinRT;
 
 [assembly: DisableRuntimeMarshalling]
@@ -24,12 +24,13 @@ public static partial class Bootstrap
 {
     private const string LockName = "SNAP_HUTAO_BOOTSTRAP_LOCK";
     private static readonly ApplicationInitializationCallback AppInitializationCallback = InitializeApp;
-    private static Mutex? mutex;
+    private static EventWaitHandle? instanceHandle;
 
     public static void UseNamedPipeRedirection()
     {
-        Debug.Assert(mutex is not null);
-        DisposableMarshal.DisposeAndClear(ref mutex);
+        // Clear the field without disposing so the kernel object stays alive
+        // for other processes to detect. The using() in Main() handles cleanup.
+        instanceHandle = null;
     }
 
     [STAThread]
@@ -42,26 +43,33 @@ public static partial class Bootstrap
             return;
         }
 
-        if (Mutex.TryOpenExisting(LockName, out _))
+        if (EventWaitHandle.TryOpenExisting(LockName, out _))
         {
-            return;
+            // Another instance is already running. Try a lightweight named pipe
+            // redirect and exit quickly; otherwise fall through to full startup
+            // (the pipe server may not be ready yet during first instance init).
+            if (PrivateNamedPipeClient.TryLightweightRedirect(args))
+            {
+                return;
+            }
+        }
+        else
+        {
+            try
+            {
+                instanceHandle = new EventWaitHandle(false, EventResetMode.ManualReset, LockName, out bool created);
+                Debug.Assert(created);
+                EventWaitHandleSecurity handleSecurity = new();
+                handleSecurity.AddAccessRule(new(SecurityIdentifiers.Everyone, EventWaitHandleRights.FullControl, AccessControlType.Allow));
+                instanceHandle.SetAccessControl(handleSecurity);
+            }
+            catch (WaitHandleCannotBeOpenedException)
+            {
+                return;
+            }
         }
 
-        try
-        {
-            MutexSecurity mutexSecurity = new();
-            mutexSecurity.AddAccessRule(new(SecurityIdentifiers.Everyone, MutexRights.FullControl, AccessControlType.Allow));
-            mutex = MutexAcl.Create(true, LockName, out bool created, mutexSecurity);
-            Debug.Assert(created);
-        }
-        catch (WaitHandleCannotBeOpenedException)
-        {
-            return;
-        }
-
-        // Although we 'using' mutex there, the actual disposal is done in AppActivation
-        // The using is just to ensure we dispose the mutex when the application exits
-        using (mutex)
+        using (instanceHandle)
         {
             if (!OSPlatformSupported())
             {
@@ -78,6 +86,9 @@ public static partial class Bootstrap
             using (ServiceProvider serviceProvider = DependencyInjection.Initialize(true))
             {
                 Thread.CurrentThread.Name = "Snap Hutao Remastered Application Main Thread";
+
+                // Register URL protocol for unpackaged mode
+                RuntimeEnvironment.TryRegisterProtocol();
 
                 // If you hit a COMException REGDB_E_CLASSNOTREG (0x80040154) during debugging
                 // You can delete bin and obj folder and then rebuild.
@@ -121,13 +132,7 @@ public static partial class Bootstrap
                 return false;
             }
 
-            ApplicationDataContainer container = ApplicationData.Current.LocalSettings;
-            if (container.Values.TryGetValue(SettingKeys.AutoRestartAsAdmin, out object? value) && value is true)
-            {
-                return true;
-            }
-
-            return false;
+            return LocalSetting.Get(SettingKeys.AutoRestartAsAdmin, false);
         }
         catch
         {
@@ -139,11 +144,8 @@ public static partial class Bootstrap
     {
         try
         {
-            string currentProcessPath = Environment.ProcessPath ?? Process.GetCurrentProcess().MainModule?.FileName!;
-            if (string.IsNullOrEmpty(currentProcessPath))
-            {
-                return;
-            }
+            string? currentProcessPath = Environment.ProcessPath ?? Process.GetCurrentProcess().MainModule?.FileName;
+            ArgumentNullException.ThrowIfNull(currentProcessPath);
 
             ProcessFactory.StartUsingShellExecuteRunAs(currentProcessPath);
             Environment.Exit(0);

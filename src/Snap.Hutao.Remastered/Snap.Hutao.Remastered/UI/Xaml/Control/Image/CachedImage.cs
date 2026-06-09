@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Media.Imaging;
+using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Caching;
 using Snap.Hutao.Remastered.Core.DataTransfer;
 using Snap.Hutao.Remastered.Core.ExceptionService;
@@ -76,6 +77,16 @@ public sealed partial class CachedImage : Microsoft.UI.Xaml.Controls.Control
     private static bool IsHttpUri(Uri uri)
     {
         return uri is { IsAbsoluteUri: true, Scheme: "http" or "https" };
+    }
+
+    private static Uri ResolveAppxUriForUnpackaged(Uri uri)
+    {
+        if (Core.RuntimeEnvironment.IsPackaged)
+        {
+            return uri;
+        }
+
+        return InstalledLocation.ToAbsoluteUri(uri);
     }
 
     private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -309,7 +320,7 @@ public sealed partial class CachedImage : Microsoft.UI.Xaml.Controls.Control
                         uri = new("ms-appx:///" + uri.OriginalString.TrimStart('/'));
                     }
 
-                    Uri? targetUri = uri.Scheme is "ms-appx" ? uri : await ProvideCachedResourceAsync(uri, token).ConfigureAwait(true);
+                    Uri? targetUri = uri.Scheme is "ms-appx" ? ResolveAppxUriForUnpackaged(uri) : await ProvideCachedResourceAsync(uri, token).ConfigureAwait(true);
                     if (!token.IsCancellationRequested)
                     {
                         // Only attach our image if we still have a valid request.

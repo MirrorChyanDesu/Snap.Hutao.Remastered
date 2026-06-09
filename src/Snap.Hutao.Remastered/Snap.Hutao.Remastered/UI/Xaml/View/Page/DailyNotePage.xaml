@@ -276,7 +276,7 @@
                                         Style="{ThemeResource ShimmerButtonStyle}"
                                         ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageDailyNoteAttendanceStatusInfo}"
                                         Visibility="{Binding DailyNote.DailyTask.AttendanceVisible, Mode=OneWay}">
-                                        <BitmapIcon ShowAsMonochrome="True" UriSource="ms-appx:///Resource/Icon/UI_IconSmall_EP.png"/>
+                                        <shuxm:BitmapIconExtension ShowAsMonochrome="True" Source="ms-appx:///Resource/Icon/UI_IconSmall_EP.png"/>
                                         <Button.Flyout>
                                             <Flyout FlyoutPresenterStyle="{StaticResource FlyoutPresenterPadding6Style}" Placement="BottomEdgeAlignedRight">
                                                 <Grid>

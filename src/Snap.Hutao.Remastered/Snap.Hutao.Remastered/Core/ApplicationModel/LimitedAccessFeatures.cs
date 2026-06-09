@@ -10,8 +10,8 @@ namespace Snap.Hutao.Remastered.Core.ApplicationModel;
 
 public static class LimitedAccessFeatures
 {
-    private static readonly string PackagePublisherId = Package.Current.Id.PublisherId;
-    private static readonly string PackageFamilyName = Package.Current.Id.FamilyName;
+    private static readonly string? PackagePublisherId;
+    private static readonly string? PackageFamilyName;
 
     private static readonly FrozenDictionary<string, string> Features = WinRTAdaptive.ToFrozenDictionary(
     [
@@ -67,8 +67,22 @@ public static class LimitedAccessFeatures
         KeyValuePair.Create("com.microsoft.windows.windowdecorations", "425261a8-7f73-4319-8a53-fc13f87e1717")
     ]);
 
-    public static LimitedAccessFeatureRequestResult TryUnlockFeature(string featureId)
+    static LimitedAccessFeatures()
     {
+        if (RuntimeEnvironment.IsPackaged)
+        {
+            PackagePublisherId = Package.Current.Id.PublisherId;
+            PackageFamilyName = Package.Current.Id.FamilyName;
+        }
+    }
+
+    public static LimitedAccessFeatureRequestResult? TryUnlockFeature(string featureId)
+    {
+        if (RuntimeEnvironment.IsUnpackaged || PackageFamilyName is null || PackagePublisherId is null)
+        {
+            return null;
+        }
+
         return Windows.ApplicationModel.LimitedAccessFeatures.TryUnlockFeature(featureId, GetToken(featureId), GetAttestation(featureId));
     }
 

@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
+using Snap.Hutao.Remastered.Core;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.Markup;
 
@@ -15,10 +16,12 @@ public sealed partial class BitmapIconExtension : MarkupExtension
 
     protected override object ProvideValue()
     {
+        Uri uri = RuntimeEnvironment.IsPackaged ? Source : InstalledLocation.ToAbsoluteUri(Source);
+
         return new BitmapIcon
         {
             ShowAsMonochrome = ShowAsMonochrome,
-            UriSource = Source,
+            UriSource = uri,
         };
     }
 }

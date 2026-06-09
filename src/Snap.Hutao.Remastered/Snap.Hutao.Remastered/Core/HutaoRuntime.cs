@@ -19,15 +19,19 @@ namespace Snap.Hutao.Remastered.Core;
 
 public static class HutaoRuntime
 {
-    public static Version Version { get; } = Package.Current.Id.Version.ToVersion();
+    public static Version Version { get; } = RuntimeEnvironment.IsPackaged ? Package.Current.Id.Version.ToVersion() : AppVersion.CurrentVersion;
 
     public static string UserAgent { get; } = $"Snap Hutao/{Version}";
 
     public static string DataDirectory { get; } = InitializeDataDirectory();
 
-    public static string LocalCacheDirectory { get; } = ApplicationData.Current.LocalCacheFolder.Path;
+    public static string LocalCacheDirectory { get; } = RuntimeEnvironment.IsPackaged
+        ? ApplicationData.Current.LocalCacheFolder.Path
+        : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"SnapHutaoRemastered\Cache");
 
-    public static string FamilyName { get; } = Package.Current.Id.FamilyName;
+    public static string FamilyName { get; } = RuntimeEnvironment.IsPackaged
+        ? Package.Current.Id.FamilyName
+        : "SnapHutaoRemastered";
 
     public static string DeviceId { get; } = InitializeDeviceId();
 
@@ -36,7 +40,8 @@ public static class HutaoRuntime
     public static bool IsProcessElevated { get; } = LocalSetting.Get(SettingKeys.OverrideElevationRequirement, false) || Environment.IsPrivilegedProcess;
 
     // Requires main thread
-    public static bool IsAppNotificationEnabled { get; } = AppNotificationManager.Default.Setting is AppNotificationSetting.Enabled;
+    public static bool IsAppNotificationEnabled { get; } = RuntimeEnvironment.IsPackaged
+        && AppNotificationManager.Default.Setting is AppNotificationSetting.Enabled;
 
     public static string? GetDisplayName()
     {
@@ -166,8 +171,12 @@ public static class HutaoRuntime
         }
 
         // Prefer LocalApplicationData
-        string localApplicationData = ApplicationData.Current.LocalFolder.Path;
-        string path = Path.GetFullPath(Path.Combine(localApplicationData, FolderName));
+        string localApplicationData = RuntimeEnvironment.IsPackaged
+            ? ApplicationData.Current.LocalFolder.Path
+            : Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+        string finalFolderName = RuntimeEnvironment.IsPackaged ? FolderName : "SnapHutaoRemastered";
+        string path = Path.GetFullPath(Path.Combine(localApplicationData, finalFolderName));
         try
         {
             Directory.CreateDirectory(path);

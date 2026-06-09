@@ -252,6 +252,11 @@ public sealed partial class NotifyIconController : IDisposable
     // Need more tests and feedbacks
     private static void UpdateMsixNotifyIconRegistryEntries()
     {
+        if (Core.RuntimeEnvironment.IsUnpackaged)
+        {
+            return;
+        }
+
         try
         {
             string? processPath = Environment.ProcessPath;

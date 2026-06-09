@@ -17,6 +17,11 @@ public sealed partial class PrivateNamedPipeClient : IDisposable
 
     public bool TryRedirectActivationTo(AppActivationArguments args)
     {
+        return TryRedirectActivationTo(HutaoActivationArguments.FromAppActivationArguments(args, isRedirected: true));
+    }
+
+    public bool TryRedirectActivationTo(HutaoActivationArguments hutaoArgs)
+    {
         if (!clientStream.TryConnectOnce())
         {
             return false;
@@ -41,7 +46,6 @@ public sealed partial class PrivateNamedPipeClient : IDisposable
             }
 
             // Redirect to previous instance
-            HutaoActivationArguments hutaoArgs = HutaoActivationArguments.FromAppActivationArguments(args, isRedirected: true);
             clientStream.WritePacketWithJsonContent(PrivateNamedPipe.PrivateVersion, PipePacketType.Request, PipePacketCommand.RedirectActivation, hutaoArgs);
             clientStream.WritePacket(PrivateNamedPipe.PrivateVersion, PipePacketType.SessionTermination, PipePacketCommand.None);
             clientStream.Flush();
@@ -51,6 +55,87 @@ public sealed partial class PrivateNamedPipeClient : IDisposable
         catch (IOException)
         {
             // Pipe is broken.
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Lightweight one-shot redirect from the second instance to the first,
+    /// without needing DI or the singleton pipe client. Called from <see cref="Bootstrap.Main"/>.
+    /// </summary>
+    /// <param name="args">The command-line arguments from Main().</param>
+    /// <returns>true if a redirect was sent; false if pipe unavailable.</returns>
+    public static bool TryLightweightRedirect(string[] args)
+    {
+        HutaoActivationArguments hutaoArgs;
+
+        // Determine activation kind from command-line arguments
+        if (args.Length > 0)
+        {
+            string? arg = args[0];
+            if (arg is not null && arg.StartsWith("hutao://", StringComparison.OrdinalIgnoreCase))
+            {
+                hutaoArgs = new()
+                {
+                    Kind = HutaoActivationKind.Protocol,
+                    ProtocolActivatedUri = new Uri(arg),
+                    IsRedirectTo = true,
+                };
+            }
+            else
+            {
+                // Regular launch with arguments
+                hutaoArgs = new()
+                {
+                    Kind = HutaoActivationKind.Launch,
+                    LaunchActivatedArguments = arg,
+                    IsRedirectTo = true,
+                };
+            }
+        }
+        else
+        {
+            // No arguments, treat as a regular launch to bring existing instance to foreground
+            hutaoArgs = new()
+            {
+                Kind = HutaoActivationKind.Launch,
+                LaunchActivatedArguments = string.Empty,
+                IsRedirectTo = true,
+            };
+        }
+
+        using NamedPipeClientStream clientStream = new(".", PrivateNamedPipe.PrivateName, PipeDirection.InOut, PipeOptions.Asynchronous | PipeOptions.WriteThrough);
+
+        try
+        {
+            clientStream.Connect(TimeSpan.Zero);
+        }
+        catch (TimeoutException)
+        {
+            return false;
+        }
+
+        try
+        {
+            clientStream.WritePacket(PrivateNamedPipe.PrivateVersion, PipePacketType.Request, PipePacketCommand.RequestElevationStatus);
+            clientStream.ReadPacket(out PipePacketHeader _, out ElevationStatusResponse? response);
+            ArgumentNullException.ThrowIfNull(response);
+
+            if (HutaoRuntime.IsProcessElevated && !response.IsElevated)
+            {
+                clientStream.WritePacket(PrivateNamedPipe.PrivateVersion, PipePacketType.SessionTermination, PipePacketCommand.Exit);
+                clientStream.Flush();
+                return false;
+            }
+
+            clientStream.WritePacketWithJsonContent(PrivateNamedPipe.PrivateVersion, PipePacketType.Request, PipePacketCommand.RedirectActivation, hutaoArgs);
+            clientStream.WritePacket(PrivateNamedPipe.PrivateVersion, PipePacketType.SessionTermination, PipePacketCommand.None);
+            clientStream.Flush();
+
+            return true;
+        }
+        catch (IOException)
+        {
             return false;
         }
     }

@@ -1,6 +1,7 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
+using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Model.Intrinsic;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.Data.Converter.Specialized;
@@ -9,6 +10,6 @@ public sealed partial class RoleCombatDifficultyIconConverter : ValueConverter<R
 {
     public override Uri Convert(RoleCombatDifficultyLevel from)
     {
-        return $"ms-appx:///Resource/Icon/UI_RoleCombat_Medal_S_{from:D}.png".ToUri();
+        return InstalledLocation.ToAbsoluteUri($"ms-appx:///Resource/Icon/UI_RoleCombat_Medal_S_{from:D}.png");
     }
 }

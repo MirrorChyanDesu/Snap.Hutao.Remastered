@@ -17,7 +17,7 @@ public sealed partial class HutaoDiagnostics : IHutaoDiagnostics
     [GeneratedConstructor]
     public partial HutaoDiagnostics(IServiceProvider serviceProvider);
 
-    public ApplicationDataContainer LocalSettings { get => ApplicationData.Current.LocalSettings; }
+    public DiagnosticsSettingsProvider LocalSettings { get; } = new();
 
     public async ValueTask<int> ExecuteSqlAsync(string sql)
     {

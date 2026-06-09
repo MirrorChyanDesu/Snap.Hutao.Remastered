@@ -20,7 +20,18 @@ public sealed class ShellLinkInterop : IShellLinkInterop
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string target = Path.Combine(desktop, $"{SH.AppName}.lnk");
 
-            FileSystem.CreateLink("shell:appsFolder\\E8B6E2B3-D2A0-4435-A81D-2A16AAF405C8_k3erpsn8bwzzy!App", "", targetLogoPath, target);
+            if (RuntimeEnvironment.IsPackaged)
+            {
+                // In packaged mode, use AUMID to reference the app
+                FileSystem.CreateLink($"shell:appsFolder\\{HutaoRuntime.FamilyName}!App", "", targetLogoPath, target);
+            }
+            else
+            {
+                // In unpackaged mode, point to the executable directly
+                string executablePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName
+                    ?? Path.Combine(AppContext.BaseDirectory, $"{System.Reflection.Assembly.GetEntryAssembly()?.GetName()?.Name}.exe");
+                FileSystem.CreateLink(executablePath, "", targetLogoPath, target);
+            }
 
             return true;
         }

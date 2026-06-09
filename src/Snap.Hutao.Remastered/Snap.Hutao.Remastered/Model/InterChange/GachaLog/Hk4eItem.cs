@@ -22,20 +22,20 @@ public sealed class Hk4eItem : IJsonOnDeserialized
     public required uint ItemId { get; init; }
 
     [JsonPropertyName("count")]
-    public required string Count { get; init; }
+    public string Count { get; init; } = "1";
 
     [JsonPropertyName("time")]
     [JsonConverter(typeof(SimpleDateTimeConverter))]
     public required DateTime Time { get; init; }
 
     [JsonPropertyName("name")]
-    public required string Name { get; init; }
+    public string? Name { get; init; }
 
     [JsonPropertyName("item_type")]
-    public required string ItemType { get; init; }
+    public string? ItemType { get; init; }
 
     [JsonPropertyName("rank_type")]
-    public required string RankType { get; init; }
+    public string? RankType { get; init; }
 
     [JsonPropertyName("id")]
     [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)]

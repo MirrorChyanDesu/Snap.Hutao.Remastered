@@ -43,6 +43,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
+      - name: Cake (MSIX)
+        id: cake
+        shell: pwsh
+        run: dotnet tool restore && dotnet cake
+        env:
+          VERSION_API_TOKEN: ${{ secrets.VERSION_API_TOKEN }}
+          CERTIFICATE: ${{ secrets.CERTIFICATE }}
+          PW: ${{ secrets.PW }}
+
       - name: Build installer
         id: build
         shell: cmd
@@ -51,11 +60,18 @@ jobs:
           CERTIFICATE: ${{ secrets.CERTIFICATE }}
           PW: ${{ secrets.PW }}
 
+      - name: Upload signed msix
+        if: success() && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v5
+        with:
+          name: Snap.Hutao.Remastered.Alpha-${{ steps.cake.outputs.version }}
+          path: ${{ github.workspace }}/src/output/Snap.Hutao.Remastered.Alpha-${{ steps.cake.outputs.version }}.msix
+
       - name: Upload installer
         if: success() && github.event_name != 'pull_request'
         uses: actions/upload-artifact@v5
         with:
-          name: Snap.Hutao.Remastered.Alpha-Setup
+          name: Snap.Hutao.Remastered.Alpha-Setup-${{ steps.cake.outputs.version }}
           path: ${{ github.workspace }}/publish/Snap.Hutao.Remastered-*.exe
 
       - name: Add summary
@@ -65,6 +81,9 @@ jobs:
           $summary = "
           > [!WARNING]
           > 该版本是由 CI 程序自动打包生成的 \`Alpha\` 测试版本，包含已经基本完工的新功能及问题修复
+
+          > [!IMPORTANT]
+          > 请先安装 **[SnapHutaoRemasteringProjectRootCA.cer](https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/raw/refs/heads/main/SnapHutaoRemasteringProjectRootCA.cer)** 到 **受信任的根证书颁发机构** 以安装测试版安装包
           "
           echo $summary >> $Env:GITHUB_STEP_SUMMARY
 

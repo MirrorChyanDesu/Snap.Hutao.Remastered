@@ -8,8 +8,7 @@
       "alwaysReinstallApp": false
     },
     "[Unpackaged] Snap.Hutao.Remastered": {
-      "commandName": "Project",
-      "commandLineArgs": "hutao://launch"
+      "commandName": "Project"
     }
   }
 }

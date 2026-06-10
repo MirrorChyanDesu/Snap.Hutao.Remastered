@@ -61,7 +61,7 @@
     <Delete Files="@(LibFiles)" />
   </Target>
 
-  <Target Name="CopyContentForUnpackaged" AfterTargets="Build">
+  <Target Name="CopyContentForUnpackaged" AfterTargets="Build;Publish">
     <ItemGroup>
       <_ResourceFiles Include="Resource\**\*" Exclude="Resource\Localization\**\*;Resource\Font\**\*" />
       <_AssetFiles Include="Assets\**\*" />

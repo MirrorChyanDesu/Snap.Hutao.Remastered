@@ -88,6 +88,11 @@ public sealed partial class App : Application
                     SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Application exiting on RedirectActivationTo", "Hutao"));
                     XamlApplicationLifetime.ActivationAndInitializationCompleted = true;
                     Exit();
+
+                    // base.Exit() may not fully terminate the process in unpackaged mode,
+                    // so force exit to guarantee the new instance terminates completely.
+                    SentrySdk.Flush();
+                    Environment.Exit(0);
                     return;
                 }
             }
@@ -107,6 +112,11 @@ public sealed partial class App : Application
                         SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Application exiting on RedirectActivationTo", "Hutao"));
                         XamlApplicationLifetime.ActivationAndInitializationCompleted = true;
                         Exit();
+
+                        // base.Exit() may not fully terminate the process in unpackaged mode,
+                        // so force exit to guarantee the new instance terminates completely.
+                        SentrySdk.Flush();
+                        Environment.Exit(0);
                         return;
                     }
 
@@ -130,7 +140,7 @@ public sealed partial class App : Application
             if (activatedEventArgs is null)
             {
                 // Fallback for unpackaged mode: treat as a simple launch
-                activation.ActivateAndInitialize(new() { Kind = HutaoActivationKind.Launch });
+                activation.ActivateAndInitialize(new() { Kind = HutaoActivationKind.Launch, LaunchActivatedArguments = string.Empty });
                 return;
             }
 

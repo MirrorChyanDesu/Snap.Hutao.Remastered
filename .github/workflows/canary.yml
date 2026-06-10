@@ -76,8 +76,8 @@ jobs:
 
       - name: Build installer
         if: ${{ steps.merge.outputs.continue == 'true' }}
-        shell: cmd
-        run: Installer\build-installer.cmd
+        shell: pwsh
+        run: Installer\build-installer.ps1
         env:
           CERTIFICATE: ${{ secrets.CERTIFICATE }}
           PW: ${{ secrets.PW }}

@@ -71,7 +71,7 @@ public sealed partial class App : Application
 
         try
         {
-            AppActivationArguments activatedEventArgs;
+            AppActivationArguments? activatedEventArgs;
 
             if (RuntimeEnvironment.IsPackaged)
             {
@@ -126,14 +126,13 @@ public sealed partial class App : Application
                     return;
                 }
 
-                activatedEventArgs = null!;
                 try
                 {
                     activatedEventArgs = AppInstance.GetCurrent().GetActivatedEventArgs();
                 }
                 catch
                 {
-                    activatedEventArgs = null!;
+                    activatedEventArgs = null;
                 }
             }
 

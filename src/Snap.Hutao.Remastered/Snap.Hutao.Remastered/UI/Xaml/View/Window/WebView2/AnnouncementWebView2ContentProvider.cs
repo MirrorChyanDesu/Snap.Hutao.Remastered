@@ -73,10 +73,7 @@ public sealed partial class AnnouncementWebView2ContentProvider : DependencyObje
 
     public void Unload()
     {
-        if (CoreWebView2 is not null)
-        {
-            CoreWebView2.WebMessageReceived -= OnWebMessageReceived;
-        }
+        CoreWebView2?.WebMessageReceived -= OnWebMessageReceived;
     }
 
     public RectInt32 InitializePosition(RectInt32 parentRect, double parentDpi)

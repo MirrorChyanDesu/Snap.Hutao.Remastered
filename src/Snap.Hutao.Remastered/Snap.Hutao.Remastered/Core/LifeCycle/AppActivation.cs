@@ -114,7 +114,7 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
                 // Show error and terminate instead of silently swallowing it.
                 HutaoNative.Instance.ShowErrorMessage("Activation Error", ex.ToString());
                 SentrySdk.CaptureException(ex);
-                SentrySdk.Flush();
+                await SentrySdk.FlushAsync();
                 ProcessFactory.KillCurrent();
             }
             finally

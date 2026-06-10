@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Snap.Hutao.Remastered.Core.Setting;
+using System.Runtime.CompilerServices;
 using Windows.Storage;
 
 namespace Snap.Hutao.Remastered.ViewModel.Guide;
@@ -124,7 +125,7 @@ public static class StaticResource
         ApplicationDataCompositeValue map = LocalSetting.Get(ContractMap, DefaultResourceVersionMap);
         foreach ((string key, object value) in LatestResourceVersionMap)
         {
-            if (!map.TryGetValue(key, out object current) || (int)value > (int)current)
+            if (!map.TryGetValue(key, out object current) || Unsafe.Unbox<int>(value) > Unsafe.Unbox<int>(current))
             {
                 result.Add(key);
             }

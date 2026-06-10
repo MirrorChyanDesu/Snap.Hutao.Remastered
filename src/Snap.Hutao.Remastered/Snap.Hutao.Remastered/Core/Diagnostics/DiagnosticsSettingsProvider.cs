@@ -3,7 +3,6 @@
 
 using System.Collections.Concurrent;
 using System.IO;
-using System.Text.Json;
 using Windows.Storage;
 
 namespace Snap.Hutao.Remastered.Core.Diagnostics;

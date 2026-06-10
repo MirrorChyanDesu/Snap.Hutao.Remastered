@@ -1,8 +1,6 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
-using System.Text.Json;
-
 namespace Snap.Hutao.Remastered.Model.InterChange.GachaLog;
 
 public sealed class UIGFView

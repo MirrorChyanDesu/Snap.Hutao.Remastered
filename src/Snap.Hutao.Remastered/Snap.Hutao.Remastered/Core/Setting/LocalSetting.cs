@@ -8,7 +8,6 @@ using Snap.Hutao.Remastered.Win32.Foundation;
 using System.Collections.Frozen;
 using System.Diagnostics;
 using System.IO;
-using System.Text.Json;
 using Windows.Storage;
 
 namespace Snap.Hutao.Remastered.Core.Setting;

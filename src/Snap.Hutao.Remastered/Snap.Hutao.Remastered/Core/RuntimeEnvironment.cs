@@ -3,7 +3,6 @@
 
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.IO;
 using Windows.ApplicationModel;
 
 namespace Snap.Hutao.Remastered.Core;

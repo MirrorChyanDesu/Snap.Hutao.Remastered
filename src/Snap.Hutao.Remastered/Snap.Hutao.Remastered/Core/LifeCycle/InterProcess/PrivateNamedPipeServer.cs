@@ -89,7 +89,6 @@ public sealed partial class PrivateNamedPipeServer : IDisposable
         while (serverStream.IsConnected && !token.IsCancellationRequested)
         {
             serverStream.ReadPacket(out PipePacketHeader header);
-            logger.LogInformation("Pipe packet: [Type:{Type}] [Command:{Command}]", header.Type, header.Command);
             switch (header.Type, header.Command)
             {
                 case (PipePacketType.Request, PipePacketCommand.RequestElevationStatus):
@@ -100,11 +99,6 @@ public sealed partial class PrivateNamedPipeServer : IDisposable
 
                 case (PipePacketType.Request, PipePacketCommand.RedirectActivation):
                     HutaoActivationArguments? hutaoArgs = serverStream.ReadJsonContent<HutaoActivationArguments>(in header);
-                    if (hutaoArgs is not null)
-                    {
-                        logger.LogInformation("Redirect activation: [Kind:{Kind}] [Arguments:{Arguments}]", hutaoArgs.Kind, hutaoArgs.LaunchActivatedArguments);
-                    }
-
                     messageDispatcher.RedirectedActivation(hutaoArgs);
                     break;
 

@@ -18,6 +18,7 @@ using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.Service.Update;
 using Snap.Hutao.Remastered.Win32;
 using Snap.Hutao.Remastered.Win32.Foundation;
+using System.Diagnostics;
 using Windows.Foundation;
 
 namespace Snap.Hutao.Remastered.ViewModel.Setting;
@@ -45,8 +46,6 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
     public partial SettingStorageViewModel Storage { get; }
 
     public partial SettingHotKeyViewModel HotKey { get; }
-
-    public partial SettingNetViewModel Net { get; }
 
     public partial SettingHomeViewModel Home { get; }
 
@@ -167,15 +166,12 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
         return false;
     }
 
-    protected override async ValueTask<bool> LoadOverrideAsync(CancellationToken token)
+    protected override ValueTask<bool> LoadOverrideAsync(CancellationToken token)
     {
-        MakeSubViewModel([Geetest, Appearance, Storage, HotKey, Net, Home, Game, GachaLog, WebView]);
+        MakeSubViewModel([Geetest, Appearance, Storage, HotKey, Home, Game, GachaLog, WebView]);
 
         Storage.CacheFolderView = new(taskContext, HutaoRuntime.LocalCacheDirectory);
         Storage.DataFolderView = new(taskContext, HutaoRuntime.DataDirectory);
-
-        await Net.InitializeGitRepositoryDomainOptionsAsync(token).ConfigureAwait(false);
-        await taskContext.SwitchToMainThreadAsync();
 
         UpdateInfo = updateService.UpdateInfo;
 
@@ -184,7 +180,7 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
             IsStartupAsAdminEnabled = true;
         }
 
-        return true;
+        return ValueTask.FromResult(true);
     }
 
     [Command("CheckUpdateCommand")]
@@ -213,7 +209,12 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
 
         try
         {
-            ProcessFactory.StartUsingShellExecuteRunAs($"shell:AppsFolder\\{HutaoRuntime.FamilyName}!App");
+            string? path = RuntimeEnvironment.IsUnpackaged
+                ? Environment.ProcessPath ?? Process.GetCurrentProcess().MainModule?.FileName
+                : $"shell:AppsFolder\\{HutaoRuntime.FamilyName}!App";
+
+            ArgumentNullException.ThrowIfNull(path);
+            ProcessFactory.StartUsingShellExecuteRunAs(path);
         }
         catch (Win32Exception ex)
         {

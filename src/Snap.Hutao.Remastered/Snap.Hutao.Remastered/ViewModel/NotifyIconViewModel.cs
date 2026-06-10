@@ -162,7 +162,12 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
 
         try
         {
-            ProcessFactory.StartUsingShellExecuteRunAs($"shell:AppsFolder\\{HutaoRuntime.FamilyName}!App");
+            string path = RuntimeEnvironment.IsUnpackaged
+                ? Environment.ProcessPath ?? Process.GetCurrentProcess().MainModule?.FileName
+                : $"shell:AppsFolder\\{HutaoRuntime.FamilyName}!App";
+
+            ArgumentNullException.ThrowIfNull(path);
+            ProcessFactory.StartUsingShellExecuteRunAs(path);
         }
         catch (Win32Exception ex)
         {

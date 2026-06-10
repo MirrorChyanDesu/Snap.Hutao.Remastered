@@ -76,12 +76,12 @@ echo.
 REM ------------------------------------------------------------
 REM Step 3: Sign all executables and DLLs in the publish output
 REM ------------------------------------------------------------
-if not "%CERTIFICATE%"=="" (
+if not "!CERTIFICATE!"=="" (
     echo [Step 3/7] Signing published binaries...
     echo.
 
     REM Decode base64 certificate to temp file
-    echo %CERTIFICATE% > "%CERT_FILE%.b64"
+    > "%CERT_FILE%.b64" echo(!CERTIFICATE!
     certutil -decode "%CERT_FILE%.b64" "%CERT_FILE%" >nul 2>&1
     del "%CERT_FILE%.b64" 2>nul
 
@@ -211,12 +211,12 @@ echo.
 REM ------------------------------------------------------------
 REM Step 7: Sign the installer
 REM ------------------------------------------------------------
-if not "%CERTIFICATE%"=="" (
+if not "!CERTIFICATE!"=="" (
     echo [Step 7/7] Signing installer...
     echo.
 
     REM Re-decode certificate for installer signing
-    echo %CERTIFICATE% > "%CERT_FILE%.b64"
+    > "%CERT_FILE%.b64" echo(!CERTIFICATE!
     certutil -decode "%CERT_FILE%.b64" "%CERT_FILE%" >nul 2>&1
     del "%CERT_FILE%.b64" 2>nul
 

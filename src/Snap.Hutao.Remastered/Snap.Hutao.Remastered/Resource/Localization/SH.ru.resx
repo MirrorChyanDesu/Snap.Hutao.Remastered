@@ -3435,9 +3435,6 @@
   <data name="ViewPageSettingSetGamePathHint" xml:space="preserve">
     <value>При настройке пути к игре, пожалуйста, выберите файл игры (YuanShen.exe или GenshinImpact.exe), а не лаунчер (launcher.exe)</value>
   </data>
-  <data name="ViewPageSettingGitRepositoryDomainLockDescription" xml:space="preserve">
-    <value>Рекомендуется автоматическое, если фактическая скорость неудовлетворительна, можно самостоятельно протестировать и установить перекрытие, при сбое узла настройки произойдет автоматическое откатывание.</value>
-  </data>
   <data name="ViewPageSettingShareSaveTypeDescription" xml:space="preserve">
     <value>Выберите режим сохранения изображения после нажатия кнопки «Поделиться»</value>
   </data>
@@ -3616,9 +3613,6 @@
     <value>Открыть папку</value>
   </data>
   <data name="ViewSettingHeader" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="ViewDialogGitSourcesSpeedTestDialogSettingButton" xml:space="preserve">
     <value>Настройки</value>
   </data>
   <data name="ViewSpiralAbyssAvatarAppearanceRankDescription" xml:space="preserve">
@@ -4211,11 +4205,5 @@
   </data>
   <data name="ViewModelMainNetworkRecoveredRetrying" xml:space="preserve">
     <value>Сеть восстановлена, автоматически повторная попытка.</value>
-  </data>
-  <data name="ViewModelSettingNetGitFriendlyNameCTCC" xml:space="preserve">
-    <value>Материковый Китай - Центральный Китай</value>
-  </data>
-  <data name="ViewModelSettingNetGitFriendlyNameCTSW" xml:space="preserve">
-    <value>Материковый Китай - Северо-запад</value>
   </data>
 </root>

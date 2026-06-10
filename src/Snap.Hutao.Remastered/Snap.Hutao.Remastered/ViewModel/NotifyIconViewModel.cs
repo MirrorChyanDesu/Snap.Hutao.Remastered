@@ -17,6 +17,7 @@ using Snap.Hutao.Remastered.UI.Windowing;
 using Snap.Hutao.Remastered.UI.Xaml.View.Window;
 using Snap.Hutao.Remastered.UI.Xaml.View.Window.WebView2;
 using Snap.Hutao.Remastered.Win32.Foundation;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -162,7 +163,7 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
 
         try
         {
-            string path = RuntimeEnvironment.IsUnpackaged
+            string? path = RuntimeEnvironment.IsUnpackaged
                 ? Environment.ProcessPath ?? Process.GetCurrentProcess().MainModule?.FileName
                 : $"shell:AppsFolder\\{HutaoRuntime.FamilyName}!App";
 

@@ -10,9 +10,6 @@ public sealed class GitRepository
     [JsonPropertyName("name")]
     public required string Name { get; set; }
 
-    [JsonPropertyName("friendly_name")]
-    public required string FriendlyName { get; set; }
-
     [JsonPropertyName("web_url")]
     public required Uri WebUrl { get; set; }
 

@@ -172,14 +172,6 @@ public static class SettingKeys
     public const string CompactWebView2WindowPreviousSourceUrl  = "Snap::Hutao::Web::WebView::Compact::PreviousSourceUrl";
     public const string WebView2VideoFastForwardOrRewindSeconds = "Snap::Hutao::Web::WebView::Video::FastForwardOrRewind::Seconds";
 
-    // Git mirrors
-    public const string GitRepositoryDomainOverride             = "Snap::Hutao::Web::Git::Repository::Domain::Override";
-    public const string GitRepositoryDomainCachedOptimal        = "Snap::Hutao::Web::Git::Repository::Domain::CachedOptimal";
-    public const string GitMirrorSpeedTestLastRun               = "Snap::Hutao::Web::Git::MirrorSpeedTest::LastRun";
-    public const string GitMirrorSpeedTestIntervalDays          = "Snap::Hutao::Web::Git::MirrorSpeedTest::IntervalDays";
-    public const string GitMirrorLastTestTimeUtc                = "Snap::Hutao::Web::Git::Mirror::LastTestTimeUtc";
-    public const string GitMirrorSourcesHash                    = "Snap::Hutao::Web::Git::Mirror::SourcesHash";
-
     // Auto Sign-In
     public const string AutoSignInEnabled                       = "Snap::Hutao::SignIn::AutoSignIn::Enabled";
 }

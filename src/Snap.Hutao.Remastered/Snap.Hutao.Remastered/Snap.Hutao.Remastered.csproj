@@ -62,15 +62,13 @@
     <Delete Files="@(LibFiles)" />
   </Target>
 
-  <Target Name="CopyContentForUnpackaged" AfterTargets="Build;Publish">
+  <Target Name="CopyContentForUnpackaged" AfterTargets="Build">
     <ItemGroup>
       <_ResourceFiles Include="Resource\**\*" Exclude="Resource\Localization\**\*;Resource\Font\**\*" />
       <_AssetFiles Include="Assets\**\*" />
     </ItemGroup>
     <Copy SourceFiles="@(_ResourceFiles)" DestinationFolder="$(OutDir)Resource\%(RecursiveDir)" SkipUnchangedFiles="true" />
     <Copy SourceFiles="@(_AssetFiles)" DestinationFolder="$(OutDir)Assets\%(RecursiveDir)" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="@(_ResourceFiles)" DestinationFolder="$(PublishDir)Resource\%(RecursiveDir)" SkipUnchangedFiles="true" Condition="'$(PublishDir)' != '' And '$(PublishDir)' != '$(OutputPath)'" />
-    <Copy SourceFiles="@(_AssetFiles)" DestinationFolder="$(PublishDir)Assets\%(RecursiveDir)" SkipUnchangedFiles="true" Condition="'$(PublishDir)' != '' And '$(PublishDir)' != '$(OutputPath)'" />
     <Message Text="Copying @(_ResourceFiles->Count()) resource files and @(_AssetFiles->Count()) asset files to $(OutDir)" Importance="high" />
   </Target>
 

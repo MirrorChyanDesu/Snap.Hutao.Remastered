@@ -57,9 +57,9 @@ Write-Host "Done."
 Write-Host ""
 
 # -----------------------------------------------------------
-# Step 2: Restore and publish the project
+# Step 2: Restore and build the project (use dotnet build like Cake)
 # -----------------------------------------------------------
-Write-Host "[Step 2/7] Restoring and publishing project..."
+Write-Host "[Step 2/7] Restoring and building project..."
 Write-Host ""
 
 Write-Host "dotnet restore..."
@@ -69,19 +69,32 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-Write-Host "dotnet publish..."
-& dotnet publish $ProjectFile `
+$BuildDir = Join-Path $RepoRoot 'src\Snap.Hutao.Remastered\Snap.Hutao.Remastered\bin\x64\Release\net10.0-windows10.0.26100.0\win-x64'
+
+Write-Host "dotnet build..."
+& dotnet build $ProjectFile `
     -c Release `
-    -r win-x64 `
     --self-contained true `
+    -p:Platform=x64 `
     -p:WindowsAppSDKSelfContained=true `
-    -o $PublishDir
+    -p:AppxPackageSigningEnabled=false `
+    -p:AppxBundle=Never
 if ($LASTEXITCODE -ne 0) {
-    Write-Error "dotnet publish failed."
+    Write-Error "dotnet build failed."
+    exit 1
+}
+
+Write-Host ""
+Write-Host "Copying build output to publish directory..."
+if (Test-Path $BuildDir) {
+    # Copy everything from build output (which is known to work) to Publish dir
+    Copy-Item -Path "$BuildDir\*" -Destination $PublishDir -Recurse -Force
+} else {
+    Write-Error "Build output directory not found: $BuildDir"
     exit 1
 }
 Write-Host ""
-Write-Host "Publish completed successfully."
+Write-Host "Build and copy completed successfully."
 Write-Host ""
 
 # -----------------------------------------------------------

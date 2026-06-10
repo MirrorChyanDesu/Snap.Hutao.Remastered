@@ -48,9 +48,9 @@ echo Done.
 echo.
 
 REM ------------------------------------------------------------
-REM Step 2: Restore and publish the project
+REM Step 2: Restore and build the project (use dotnet build like Cake)
 REM ------------------------------------------------------------
-echo [Step 2/7] Restoring and publishing project...
+echo [Step 2/7] Restoring and building project...
 echo.
 
 dotnet restore "%PROJECT_FILE%"
@@ -59,18 +59,30 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 
-dotnet publish "%PROJECT_FILE%" ^
+set BUILD_DIR=%REPO_ROOT%\src\Snap.Hutao.Remastered\Snap.Hutao.Remastered\bin\x64\Release\net10.0-windows10.0.26100.0\win-x64
+
+dotnet build "%PROJECT_FILE%" ^
     -c Release ^
-    -r win-x64 ^
     --self-contained true ^
+    -p:Platform=x64 ^
     -p:WindowsAppSDKSelfContained=true ^
-    -o "%PUBLISH_DIR%"
+    -p:AppxPackageSigningEnabled=false ^
+    -p:AppxBundle=Never
 if %ERRORLEVEL% neq 0 (
-    echo ERROR: dotnet publish failed.
+    echo ERROR: dotnet build failed.
+    exit /b 1
+)
+
+echo.
+echo Copying build output to publish directory...
+if exist "%BUILD_DIR%" (
+    xcopy /E /I /Y "%BUILD_DIR%\*" "%PUBLISH_DIR%"
+) else (
+    echo ERROR: Build output directory not found: %BUILD_DIR%
     exit /b 1
 )
 echo.
-echo Publish completed successfully.
+echo Build and copy completed successfully.
 echo.
 
 REM ------------------------------------------------------------

@@ -29,7 +29,6 @@ public static class StaticResource
         { "GachaEquipIcon", 0 },
         { "IconElement", 0 },
         { "ItemIcon", 0 },
-        { "LoadingPic", 0 },
         { "Mark", 0 },
         { "MonsterIcon", 0 },
         { "MonsterSmallIcon", 0 },
@@ -58,7 +57,6 @@ public static class StaticResource
         { "GachaEquipIcon", 4 },
         { "IconElement", 3 },
         { "ItemIcon", 4 },
-        { "LoadingPic", 2 },
         { "Mark", 0 },
         { "MonsterIcon", 3 },
         { "MonsterSmallIcon", 2 },
@@ -101,7 +99,17 @@ public static class StaticResource
 
         foreach ((string key, object value) in map)
         {
-            if ((int)value < (int)LatestResourceVersionMap[key])
+            if (value is not int currentVersion)
+            {
+                return true;
+            }
+
+            if (LatestResourceVersionMap[key] is not int latestVersion)
+            {
+                return true;
+            }
+
+            if (currentVersion < latestVersion)
             {
                 return true;
             }

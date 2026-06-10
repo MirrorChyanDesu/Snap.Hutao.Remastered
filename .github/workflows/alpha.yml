@@ -55,7 +55,7 @@ jobs:
       - name: Build installer
         id: build
         shell: pwsh
-        run: Installer\build-installer.ps1
+        run: dotnet cake build-installer.cake
         env:
           CERTIFICATE: ${{ secrets.CERTIFICATE }}
           PW: ${{ secrets.PW }}
@@ -71,7 +71,7 @@ jobs:
         if: success() && github.event_name != 'pull_request'
         uses: actions/upload-artifact@v5
         with:
-          name: Snap.Hutao.Remastered.Alpha-Setup-${{ steps.cake.outputs.version }}
+          name: Snap.Hutao.Remastered.Alpha-Setup-${{ steps.build.outputs.version }}
           path: ${{ github.workspace }}/publish/Snap.Hutao.Remastered-*.exe
 
       - name: Add summary

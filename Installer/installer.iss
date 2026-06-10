@@ -10,7 +10,9 @@
 
 #define MyAppName "Snap.Hutao.Remastered"
 #define MyAppShortName "Snap.Hutao.Remastered"
-#define MyAppVersion "1.19.4.0"
+#ifndef MyAppVersion
+  #define MyAppVersion "1.19.4.0"
+#endif
 #define MyAppPublisher "SnapHutaoRemasteringProject"
 #define MyAppURL "https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered"
 #define MyAppExeName "Snap.Hutao.Remastered.exe"

@@ -76,8 +76,9 @@ jobs:
 
       - name: Build installer
         if: ${{ steps.merge.outputs.continue == 'true' }}
+        id: installer
         shell: pwsh
-        run: Installer\build-installer.ps1
+        run: dotnet cake build-installer.cake
         env:
           CERTIFICATE: ${{ secrets.CERTIFICATE }}
           PW: ${{ secrets.PW }}

@@ -22,6 +22,7 @@ using Snap.Hutao.Remastered.UI.Xaml.View.Window;
 using Snap.Hutao.Remastered.ViewModel.Achievement;
 using Snap.Hutao.Remastered.ViewModel.Game;
 using Snap.Hutao.Remastered.ViewModel.Guide;
+using Snap.Hutao.Remastered.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -90,9 +91,9 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
             return;
         }
 
-        ActivateAndInitializeAsync().SafeForget();
+        PrivateActivateAndInitializeAsync().SafeForget();
 
-        async ValueTask ActivateAndInitializeAsync()
+        async ValueTask PrivateActivateAndInitializeAsync()
         {
             try
             {
@@ -106,6 +107,15 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
                     await UnsynchronizedHandleActivationAsync(args).ConfigureAwait(false);
                     await UnsynchronizedHandleInitializationAsync().ConfigureAwait(false);
                 }
+            }
+            catch (Exception ex)
+            {
+                // Activation failure is fatal — the process would run without a window.
+                // Show error and terminate instead of silently swallowing it.
+                HutaoNative.Instance.ShowErrorMessage("Activation Error", ex.ToString());
+                SentrySdk.CaptureException(ex);
+                SentrySdk.Flush();
+                ProcessFactory.KillCurrent();
             }
             finally
             {

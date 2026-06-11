@@ -1,0 +1,59 @@
+name: Snap Hutao Remastered Publish
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/Snap.Hutao.Remastered.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Publish (MSIX + Installer)
+        id: publish
+        shell: pwsh
+        run: dotnet tool restore && dotnet cake publish.cake
+        env:
+          PUBLISH_CERT: ${{ secrets.PUBLISH_CERT }}
+          PUBLISH_PW: ${{ secrets.PUBLISH_PW }}
+
+      - name: Upload MSIX
+        uses: actions/upload-artifact@v5
+        with:
+          name: Snap.Hutao.Remastered-${{ steps.publish.outputs.version }}
+          path: ${{ github.workspace }}/src/output/Snap.Hutao.Remastered-${{ steps.publish.outputs.version }}.msix
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v5
+        with:
+          name: Snap.Hutao.Remastered-Setup-${{ steps.publish.outputs.version }}
+          path: ${{ github.workspace }}/publish/Snap.Hutao.Remastered-*.exe
+
+      - name: Add summary
+        shell: pwsh
+        run: |
+          $summary = @"
+          ## Snap Hutao Remastered Release Build
+
+          - **Version:** ${{ steps.publish.outputs.version }}
+          - **MSIX:** Snap.Hutao.Remastered-${{ steps.publish.outputs.version }}.msix
+          - **Installer:** Snap.Hutao.Remastered-${{ steps.publish.outputs.version }}-Setup.exe
+          - **Signed:** Yes
+
+          > [!IMPORTANT]
+          > 这是正式发布版本，已签名，可直接安装使用。
+          "@
+          echo $summary >> $Env:GITHUB_STEP_SUMMARY

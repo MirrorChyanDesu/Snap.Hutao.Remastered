@@ -31,7 +31,7 @@ var pw = "pw";
 if (GitHubActions.IsRunningOnGitHubActions)
 {
     var certificateBase64 = HasEnvironmentVariable("PUBLISH_CERT") ? EnvironmentVariable("PUBLISH_CERT") : throw new Exception("Cannot find PUBLISH_CERT");
-    pw = HasEnvironmentVariable("PW") ? EnvironmentVariable("PW") : throw new Exception("Cannot find PW");
+    pw = HasEnvironmentVariable("PUBLISH_PW") ? EnvironmentVariable("PUBLISH_PW") : throw new Exception("Cannot find PUBLISH_PW");
     pfxPath = System.IO.Path.Combine(repoDir, "temp.pfx");
     System.IO.File.WriteAllBytes(pfxPath, System.Convert.FromBase64String(certificateBase64));
 
@@ -124,8 +124,9 @@ Task("Inner Sign")
     .Does(() =>
 {
     var signtool = System.IO.Path.Combine(winsdkBinPath, "signtool.exe");
-    var p = StartProcess(signtool,
-        $"sign /debug /v /as /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /f \"{pfxPath}\" /p \"{pw}\" \"{System.IO.Path.Combine(binPath, "*.exe")}\" \"{System.IO.Path.Combine(binPath, "*.dll")}\"");
+    var p = StartProcess(
+        signtool,
+        new ProcessSettings { Arguments = $"sign /debug /v /as /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /f \"{pfxPath}\" /p \"{pw}\" \"{System.IO.Path.Combine(binPath, "*.exe")}\" \"{System.IO.Path.Combine(binPath, "*.dll")}\"" });
 
     if (p != 0) { throw new InvalidOperationException($"Inner sign failed ({p})"); }
 });
@@ -139,7 +140,7 @@ Task("Build MSIX")
 {
     var makeappx = System.IO.Path.Combine(winsdkBinPath, "makeappx.exe");
     var msix = System.IO.Path.Combine(outputPath, $"Snap.Hutao.Remastered-{version}.msix");
-    var p = StartProcess(makeappx, $"pack /d \"{binPath}\" /p \"{msix}\"");
+    var p = StartProcess(makeappx, new ProcessSettings { Arguments = $"pack /d \"{binPath}\" /p \"{msix}\"" });
 
     if (p != 0) { throw new InvalidOperationException($"MSIX build failed ({p})"); }
     Information($"MSIX: {msix}");
@@ -152,7 +153,7 @@ Task("Sign MSIX")
 {
     var signtool = System.IO.Path.Combine(winsdkBinPath, "signtool.exe");
     var msix = System.IO.Path.Combine(outputPath, $"Snap.Hutao.Remastered-{version}.msix");
-    var p = StartProcess(signtool, $"sign /debug /v /a /fd SHA256 /f \"{pfxPath}\" /p \"{pw}\" \"{msix}\"");
+    var p = StartProcess(signtool, new ProcessSettings { Arguments = $"sign /debug /v /a /fd SHA256 /f \"{pfxPath}\" /p \"{pw}\" \"{msix}\"" });
 
     if (p != 0) { throw new InvalidOperationException($"MSIX sign failed ({p})"); }
 });
@@ -199,7 +200,7 @@ Task("Compile installer")
     if (string.IsNullOrEmpty(iscc)) { throw new Exception("Inno Setup not found"); }
 
     var iss = System.IO.Path.Combine(repoDir, "Installer", "installer.iss");
-    var p = StartProcess(iscc, $"/dMyAppVersion=\"{version}\" \"{iss}\"", new ProcessSettings { WorkingDirectory = repoDir });
+    var p = StartProcess(iscc, new ProcessSettings { Arguments = $"/dMyAppVersion=\"{version}\" \"{iss}\"", WorkingDirectory = repoDir });
 
     if (p != 0) { throw new InvalidOperationException($"Inno Setup failed ({p})"); }
     Information("Installer compiled.");
@@ -218,7 +219,7 @@ Task("Sign installer")
     var installerDir = System.IO.Path.Combine(repoDir, "publish");
     foreach (var installer in System.IO.Directory.GetFiles(installerDir, "Snap.Hutao.Remastered-*.exe"))
     {
-        var p = StartProcess(signtool, $"sign /debug /v /a /fd SHA256 /f \"{pfxPath}\" /p \"{pw}\" /tr http://timestamp.digicert.com /td SHA256 \"{installer}\"");
+        var p = StartProcess(signtool, new ProcessSettings { Arguments = $"sign /debug /v /a /fd SHA256 /f \"{pfxPath}\" /p \"{pw}\" /tr http://timestamp.digicert.com /td SHA256 \"{installer}\"" });
         Information(p == 0 ? $"Signed: {System.IO.Path.GetFileName(installer)}" : $"Failed: {System.IO.Path.GetFileName(installer)}");
     }
 });

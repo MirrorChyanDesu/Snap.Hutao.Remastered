@@ -143,6 +143,7 @@ public sealed partial class UpdateService : IUpdateService
 
             CommandLineBuilder commandLineBuilder = new();
             commandLineBuilder.Append("--update");
+            commandLineBuilder.Append("--installer-kind", RuntimeEnvironment.IsUnpackaged ? "Installer" : "Msix");
             if (hutaoUserOptions.IsLoggedIn)
             {
                 commandLineBuilder.Append("--api-key", await hutaoUserOptions.GetAccessTokenAsync().ConfigureAwait(false));

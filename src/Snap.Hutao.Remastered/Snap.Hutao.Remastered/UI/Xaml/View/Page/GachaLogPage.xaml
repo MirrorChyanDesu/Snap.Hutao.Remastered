@@ -349,6 +349,9 @@
             </Border>
         </shuxc:StandardView.EmptyContent>
         <Pivot x:Name="Pivot" Style="{ThemeResource CardPivotStyle}">
+            <mxi:Interaction.Behaviors>
+                <shuxb:PivotBeyondModeBehavior IsBeyondMode="{Binding IsBeyondMode}"/>
+            </mxi:Interaction.Behaviors>
             <Pivot.LeftHeader>
                 <shuxc:SizeRestrictedContentControl Margin="6,6,0,6">
                     <ComboBox

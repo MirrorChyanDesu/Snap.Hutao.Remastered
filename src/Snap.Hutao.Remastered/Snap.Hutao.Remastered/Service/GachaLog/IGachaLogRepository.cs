@@ -47,4 +47,6 @@ public interface IGachaLogRepository : IRepository<GachaArchive>, IRepository<Ga
     long GetNewestBeyondGachaItemIdByArchiveIdAndGachaType(Guid archiveId, GachaType GachaType);
 
     long GetOldestBeyondGachaItemIdByArchiveIdAndGachaType(Guid archiveId, GachaType GachaType);
+
+    ImmutableArray<Web.Hutao.GachaLog.GachaItem> GetHutaoBeyondGachaItemListByArchiveIdAndQueryTypeNewerThanEndId(Guid archiveId, GachaType queryType, long endId);
 }

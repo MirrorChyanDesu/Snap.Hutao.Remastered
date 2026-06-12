@@ -44,7 +44,14 @@ public sealed partial class GachaLogHutaoCloudService : IGachaLogHutaoCloudServi
             List<Web.Hutao.GachaLog.GachaItem> items = [];
             foreach ((GachaType type, long endId) in endIds)
             {
-                items.AddRange(gachaLogRepository.GetHutaoGachaItemListByArchiveIdAndQueryTypeNewerThanEndId(gachaArchive.InnerId, type, endId));
+                if (type is GachaType.UGCStandard or GachaType.UGCAvatarEventWish)
+                {
+                    items.AddRange(gachaLogRepository.GetHutaoBeyondGachaItemListByArchiveIdAndQueryTypeNewerThanEndId(gachaArchive.InnerId, type, endId));
+                }
+                else
+                {
+                    items.AddRange(gachaLogRepository.GetHutaoGachaItemListByArchiveIdAndQueryTypeNewerThanEndId(gachaArchive.InnerId, type, endId));
+                }
             }
 
             using (IServiceScope scope = serviceProvider.CreateScope())

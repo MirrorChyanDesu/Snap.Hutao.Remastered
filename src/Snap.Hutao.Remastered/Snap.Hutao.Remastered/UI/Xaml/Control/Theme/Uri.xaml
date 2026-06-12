@@ -40,4 +40,5 @@
     <x:String x:Key="UI_EmotionIcon433">https://api.snaphutaorp.org/static/raw/EmotionIcon/UI_EmotionIcon433.png</x:String>
     <x:String x:Key="UI_EmotionIcon445">https://api.snaphutaorp.org/static/raw/EmotionIcon/UI_EmotionIcon445.png</x:String>
     <x:String x:Key="UI_EmotionIcon585">https://api.snaphutaorp.org/static/raw/EmotionIcon/UI_EmotionIcon585.png</x:String>
+    <x:String x:Key="UI_EmotionIcon776">https://api.snaphutaorp.org/static/raw/EmotionIcon/UI_EmotionIcon776.png</x:String>
 </ResourceDictionary>

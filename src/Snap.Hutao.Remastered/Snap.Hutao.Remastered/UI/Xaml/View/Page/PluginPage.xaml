@@ -252,7 +252,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Spacing="16">
-                                    <shuxci:CachedImage Height="120" Source="{StaticResource UI_EmotionIcon52}"/>
+                                    <shuxci:CachedImage Height="120" Source="{StaticResource UI_EmotionIcon776}"/>
                                     <TextBlock
                                         HorizontalAlignment="Center"
                                         Style="{StaticResource SubtitleTextBlockStyle}"

@@ -94,6 +94,7 @@ Task("Build")
     .IsDependentOn("NuGet Restore")
     .IsDependentOn("Build binary package")
     .IsDependentOn("Copy files")
+    .IsDependentOn("Remove unused files")
     .IsDependentOn("Prepare installer output")
     .IsDependentOn("VC Redist")
     .IsDependentOn("Compile installer")
@@ -149,6 +150,28 @@ Task("Copy files")
         System.IO.Path.Combine(repoDir, "src", "Snap.Hutao.Remastered", "Snap.Hutao.Remastered", "Resource"),
         System.IO.Path.Combine(binPath, "Resource")
     );
+});
+
+Task("Remove unused files")
+    .IsDependentOn("Build binary package")
+    .Does(() =>
+{
+    Information("Removing unused files...");
+
+    var files = new[]
+    {
+        System.IO.Path.Combine(binPath, "App.xbf"),
+        System.IO.Path.Combine(binPath, "Snap.Hutao.Remastered.build.appxrecipe"),
+        System.IO.Path.Combine(binPath, "onnxruntime.dll"),
+    };
+
+    foreach (var file in files)
+    {
+        if (System.IO.File.Exists(file))
+        {
+            System.IO.File.Delete(file);
+        }
+    }
 });
 
 Task("Prepare installer output")

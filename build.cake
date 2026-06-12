@@ -239,6 +239,13 @@ Task("Remove unused files")
 
     Information("Removing appxrecipe...");
     System.IO.File.Delete(System.IO.Path.Combine(binPath, "Snap.Hutao.Remastered.build.appxrecipe"));
+
+    Information("Removing onnxruntime.dll...");
+    var onnxruntimePath = System.IO.Path.Combine(binPath, "onnxruntime.dll");
+    if (System.IO.File.Exists(onnxruntimePath))
+    {
+        System.IO.File.Delete(onnxruntimePath);
+    }
 });
 
 Task("Inner Sign")

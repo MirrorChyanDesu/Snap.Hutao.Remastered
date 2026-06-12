@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh issue:*)",
+      "Bash(find D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src -iname *Gacha* -type f)",
+      "Bash(grep -i \"item.cs$\")",
+      "Bash(grep -rn \"IsUp\\\\|IsGuarantee\\\\|isUp\\\\|isGuarantee\\\\|歪\\\\|50/50\\\\|FiftyFifty\\\\|fifty\" D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered --include=*.cs --exclude-dir=obj --exclude-dir=bin --exclude-dir=AppPackages)",
+      "Bash(find:*)",
+      "Bash(dotnet build:*)",
+      "Bash(ls:*)",
+      "Bash(grep -r Unsafe.As D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src --include=*.cs -l)",
+      "Bash(grep -r 'global using.*Runtime.CompilerServices' D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered/ --include=*.cs)",
+      "Bash(find D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src -type f \\\\\\(-iname *Passport* -o -iname *Login* -o -iname *Auth* -o -iname Bootstrap* -o -iname App.xaml.cs \\\\\\))",
+      "Bash(find D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered -type f \\\\\\(-iname *passport* -o -iname *login* -o -iname *auth* \\\\\\) \\\\\\(-iname *.cs -o -iname *.xaml \\\\\\))",
+      "Bash(find D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src -type f \\\\\\(-iname *refresh* -o -iname *retry* -o -iname *reconnect* \\\\\\) \\\\\\(-iname *.cs \\\\\\) -not -path */obj/* -not -path */bin/*)",
+      "Bash(find D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered -type f \\\\\\(-iname IAppActivation* -o -iname AppActivation* \\\\\\) -not -path */obj/* -not -path */bin/*)",
+      "Bash(2)",
+      "Bash(xargs grep:*)",
+      "Bash(grep -rl \"ActCalendar\\\\|GetActCalendar\\\\|act_calendar\" D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered --include=*.cs)",
+      "Bash(grep -rl \"GameRecordActCalendar\\\\|ActCalendar\" D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered --include=*.cs)",
+      "Bash(grep -rl GameRecordActCalendarb D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered --include=*.cs)",
+      "Bash(grep -rn \"GameRecordActCalendar\\\\b\\\\|GameRecordActCalendarPath\\\\b\" D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered --include=*.cs)",
+      "Bash(grep -n GameRecordActCalendar D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered/obj/x64/Debug/net10.0-windows10.0.26100.0/win-x64 --include=*.g.cs -r)",
+      "Bash(grep -rln \"GameRecordActCalendar\\\\b\\\\|act_calendar\\\\|actcalendar\" D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered/obj/x64/Debug --include=*.cs)",
+      "Bash(grep -rn 'class RoleIdServer' D:/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered --include=*.cs)",
+      "WebFetch(domain:github.com)",
+      "Bash(powershell -Command \"wget -UseBasicParsing 'https://raw.githubusercontent.com/Lyb001-Nahida/miyoushe-act-calendar/main/miyoushe_act_calendar.py' -OutFile '$env:TEMP\\\\act_calendar.py'; Get-Content '$env:TEMP\\\\act_calendar.py'\")",
+      "Bash(curl -sL https://raw.githubusercontent.com/Lyb001-Nahida/miyoushe-act-calendar/main/miyoushe_act_calendar.py)",
+      "Bash(dotnet ef:*)",
+      "Bash(cd:*)",
+      "Bash(dotnet test:*)",
+      "Bash(grep -rn \"CombinedMode\\\\|IsMerged\\\\|ShowCombinedModeToggle\\\\|IsCombined\\\\|CombinedPullCount\\\\|TotalPull\\\\|合并显示\\\\|限定金\" /d/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/src/Snap.Hutao.Remastered/Snap.Hutao.Remastered --include=*.cs --include=*.xaml)",
+      "Bash(grep:*)",
+      "Bash(git:*)",
+      "Bash(sed 's/.*ServiceLifetime\\\\.//')",
+      "Bash(sed 's/\\).*//')"
+    ]
+  }
+}

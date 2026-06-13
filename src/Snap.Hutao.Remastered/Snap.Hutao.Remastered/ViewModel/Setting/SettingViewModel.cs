@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.AppNotifications.Builder;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Logging;
+using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Core.Shell;
 using Snap.Hutao.Remastered.Factory.Process;
 using Snap.Hutao.Remastered.Service;
@@ -179,6 +180,10 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
         {
             IsStartupAsAdminEnabled = true;
         }
+
+        // Sync existing SQLite value to LocalSetting for Bootstrap to read on next startup.
+        // Bootstrap runs before DI/SQLite is initialized, so it can only read from LocalSetting.
+        LocalSetting.Set(SettingKeys.AutoRestartAsAdmin, AutoRestartAsAdminEnabled);
 
         return ValueTask.FromResult(true);
     }

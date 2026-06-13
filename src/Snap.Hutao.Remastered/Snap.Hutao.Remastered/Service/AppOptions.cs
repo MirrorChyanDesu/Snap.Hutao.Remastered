@@ -103,6 +103,10 @@ public sealed partial class AppOptions : DbStoreOptions
             appOptions.IsStartupAsAdminEnabled.Value = true;
         }
         // When AutoRestartAsAdmin is set to False, do NOT automatically change IsStartupAsAdminEnabled
+
+        // Sync to LocalSetting so Bootstrap.ShouldRestartAsAdmin() can read it on next startup.
+        // Bootstrap runs before DI/SQLite is initialized, so it can only read from LocalSetting (file/registry).
+        LocalSetting.Set(SettingKeys.AutoRestartAsAdmin, isAdminRestart);
     }
 
 }

@@ -72,6 +72,23 @@ public sealed class BeyondGachaItem
         };
     }
 
+    public static BeyondGachaItem From(Guid archiveId, Web.Hutao.GachaLog.GachaItem item)
+    {
+        return new()
+        {
+            ArchiveId = archiveId,
+            GachaType = item.GachaType,
+            QueryType = item.QueryType,
+            ItemId = item.ItemId,
+            Time = item.Time,
+            Id = item.Id,
+            ScheduleId = 0,
+            RankType = 0,
+            Uid = string.Empty,
+            IsUp = 0,
+        };
+    }
+
     public Hk4eUGCItem ToHk4eUGCItem(Metadata.Item.BeyondItem beyondItem)
     {
         return new()

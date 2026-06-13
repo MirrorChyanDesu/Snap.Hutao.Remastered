@@ -90,7 +90,23 @@ public sealed partial class GachaLogHutaoCloudService : IGachaLogHutaoCloudServi
         }
 
         Guid archiveId = archive.InnerId;
-        gachaLogRepository.AddGachaItemRange(array.SelectAsArray(static (i, archiveId) => Model.Entity.GachaItem.From(archiveId, i), archiveId));
+
+        List<Web.Hutao.GachaLog.GachaItem> regularItems = [];
+        List<Web.Hutao.GachaLog.GachaItem> beyondItems = [];
+        foreach (Web.Hutao.GachaLog.GachaItem item in array)
+        {
+            if (BeyondGachaLog.QueryTypes.Contains(item.QueryType))
+            {
+                beyondItems.Add(item);
+            }
+            else
+            {
+                regularItems.Add(item);
+            }
+        }
+
+        gachaLogRepository.AddGachaItemRange(regularItems.Select(item => Model.Entity.GachaItem.From(archiveId, item)));
+        gachaLogRepository.AddBeyondGachaItemRange(beyondItems.Select(item => BeyondGachaItem.From(archiveId, item)));
         return new(true, archive.InnerId);
     }
 
@@ -160,7 +176,9 @@ public sealed partial class GachaLogHutaoCloudService : IGachaLogHutaoCloudServi
         {
             if (archive is not null)
             {
-                endIds[type] = gachaLogRepository.GetOldestGachaItemIdByArchiveIdAndQueryType(archive.InnerId, type);
+                endIds[type] = type is GachaType.UGCStandard or GachaType.UGCAvatarEventWish
+                    ? gachaLogRepository.GetOldestBeyondGachaItemIdByArchiveIdAndGachaType(archive.InnerId, type)
+                    : gachaLogRepository.GetOldestGachaItemIdByArchiveIdAndQueryType(archive.InnerId, type);
             }
         }
 

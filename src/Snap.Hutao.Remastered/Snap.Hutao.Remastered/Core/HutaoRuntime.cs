@@ -127,6 +127,13 @@ public static class HutaoRuntime
         return string.Intern(directory);
     }
 
+    public static string GetWebView2UserDataDirectory()
+    {
+        string directory = Path.Combine(DataDirectory, "WebView2");
+        Directory.CreateDirectory(directory);
+        return directory;
+    }
+
     private static string InitializeDataDirectory()
     {
         // Delete the previous data folder if it exists

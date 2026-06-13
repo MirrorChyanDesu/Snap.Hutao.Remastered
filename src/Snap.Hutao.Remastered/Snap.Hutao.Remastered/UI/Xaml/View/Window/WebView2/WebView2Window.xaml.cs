@@ -5,6 +5,7 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.Web.WebView2.Core;
+using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.UI.Windowing;
 using Snap.Hutao.Remastered.UI.Windowing.Abstraction;
@@ -13,6 +14,7 @@ using Snap.Hutao.Remastered.Win32.Foundation;
 using System.Collections.Immutable;
 using System.IO;
 using System.Runtime.InteropServices;
+using RuntimeEnvironment = Snap.Hutao.Remastered.Core.RuntimeEnvironment;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.View.Window.WebView2;
 
@@ -154,7 +156,8 @@ public sealed partial class WebView2Window : Microsoft.UI.Xaml.Window,
                     {
                         AdditionalBrowserArguments = "--do-not-de-elevate",
                     };
-                    CoreWebView2Environment environment = await CoreWebView2Environment.CreateWithOptionsAsync(null, null, options);
+                    string? userDataFolder = RuntimeEnvironment.IsUnpackaged ? HutaoRuntime.GetWebView2UserDataDirectory() : null;
+                    CoreWebView2Environment environment = await CoreWebView2Environment.CreateWithOptionsAsync(null, userDataFolder, options);
                     await WebView.EnsureCoreWebView2Async(environment);
                 }
                 catch (SEHException)

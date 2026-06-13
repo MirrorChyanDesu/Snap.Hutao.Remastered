@@ -24,6 +24,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Windows.Graphics;
 using WinRT;
+using RuntimeEnvironment = Snap.Hutao.Remastered.Core.RuntimeEnvironment;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.View.Window.WebView2;
 
@@ -350,7 +351,8 @@ internal sealed partial class CompactWebView2Window : Microsoft.UI.Xaml.Window,
                     {
                         AdditionalBrowserArguments = "--do-not-de-elevate --autoplay-policy=no-user-gesture-required",
                     };
-                    CoreWebView2Environment environment = await CoreWebView2Environment.CreateWithOptionsAsync(null, null, options);
+                    string? userDataFolder = RuntimeEnvironment.IsUnpackaged ? HutaoRuntime.GetWebView2UserDataDirectory() : null;
+                    CoreWebView2Environment environment = await CoreWebView2Environment.CreateWithOptionsAsync(null, userDataFolder, options);
                     await WebView.EnsureCoreWebView2Async(environment);
                 }
                 catch (SEHException ex)

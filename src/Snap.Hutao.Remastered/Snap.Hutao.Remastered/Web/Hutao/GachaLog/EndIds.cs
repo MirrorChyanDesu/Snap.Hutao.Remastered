@@ -22,6 +22,12 @@ public sealed class EndIds
     [JsonPropertyName("500")]
     public long ChronicledWish { get; set; }
 
+    [JsonPropertyName("1000")]
+    public long UGCStandardWish { get; set; }
+
+    [JsonPropertyName("2000")]
+    public long UGCAvatarEventWish { get; set; }
+
     public long this[GachaType type]
     {
         get
@@ -33,6 +39,8 @@ public sealed class EndIds
                 GachaType.ActivityAvatar => AvatarEventWish,
                 GachaType.ActivityWeapon => WeaponEventWish,
                 GachaType.ActivityCity => ChronicledWish,
+                GachaType.UGCStandard => UGCStandardWish,
+                GachaType.UGCAvatarEventWish => UGCAvatarEventWish,
                 _ => 0,
             };
         }
@@ -56,6 +64,12 @@ public sealed class EndIds
                 case GachaType.ActivityCity:
                     ChronicledWish = value;
                     break;
+                case GachaType.UGCStandard:
+                    UGCStandardWish = value;
+                    break;
+                case GachaType.UGCAvatarEventWish:
+                    UGCAvatarEventWish = value;
+                    break;
             }
         }
     }
@@ -67,5 +81,7 @@ public sealed class EndIds
         yield return new(GachaType.ActivityAvatar, AvatarEventWish);
         yield return new(GachaType.ActivityWeapon, WeaponEventWish);
         yield return new(GachaType.ActivityCity, ChronicledWish);
+        yield return new(GachaType.UGCStandard, UGCStandardWish);
+        yield return new(GachaType.UGCAvatarEventWish, UGCAvatarEventWish);
     }
 }

@@ -35,14 +35,6 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
     private readonly IMetadataService metadataService;
     private readonly ITaskContext taskContext;
     private readonly IMessenger messenger;
-    public GachaLogPage gachaLogPage;
-    public Pivot pivot = null!;
-    public PivotItem pivotOverview = null!;
-    public PivotItem pivotCountdown = null!;
-    public PivotItem pivotHistory = null!;
-    public PivotItem pivotAvatar = null!;
-    public PivotItem pivotWeapon = null!;
-    public PivotItem pivotStatistics = null!;
 
     private bool suppressCurrentItemChangedHandling;
     private GachaLogServiceMetadataContext? metadataContext;
@@ -178,18 +170,6 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
 
     partial void OnIsBeyondModeChanged(bool value)
     {
-        pivot.Items.Clear();
-        pivot.Items.Add(pivotOverview);
-
-        if (!value)
-        {
-            pivot.Items.Add(pivotCountdown);
-            pivot.Items.Add(pivotHistory);
-            pivot.Items.Add(pivotAvatar);
-            pivot.Items.Add(pivotWeapon);
-            pivot.Items.Add(pivotStatistics);
-        }
-
         UpdateStatisticsAsync(Archives?.CurrentItem).SafeForget();
     }
 

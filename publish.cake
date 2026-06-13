@@ -107,6 +107,7 @@ Task("Remove unused files")
     {
         System.IO.Path.Combine(binPath, "App.xbf"),
         System.IO.Path.Combine(binPath, "Snap.Hutao.Remastered.build.appxrecipe"),
+        System.IO.Path.Combine(binPath, "onnxruntime.dll"),
     };
 
     foreach (var file in files)

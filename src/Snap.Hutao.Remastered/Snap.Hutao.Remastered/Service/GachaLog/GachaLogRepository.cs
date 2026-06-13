@@ -151,4 +151,23 @@ public sealed partial class GachaLogRepository : IGachaLogRepository
 
         return item?.Id ?? long.MaxValue;
     }
+
+    [SuppressMessage("", "IDE0305")]
+    public ImmutableArray<Web.Hutao.GachaLog.GachaItem> GetHutaoBeyondGachaItemListByArchiveIdAndQueryTypeNewerThanEndId(Guid archiveId, GachaType queryType, long endId)
+    {
+        return this.Query<BeyondGachaItem, ImmutableArray<Web.Hutao.GachaLog.GachaItem>>(query =>
+        [.. query
+            .Where(i => i.ArchiveId == archiveId && i.QueryType == queryType)
+            .OrderByDescending(i => i.Id)
+            .Where(i => i.Id > endId)
+            .Select(i => new Web.Hutao.GachaLog.GachaItem
+            {
+                GachaType = i.GachaType,
+                QueryType = i.QueryType,
+                ItemId = i.ItemId,
+                Time = i.Time,
+                Id = i.Id,
+            })
+        ]);
+    }
 }

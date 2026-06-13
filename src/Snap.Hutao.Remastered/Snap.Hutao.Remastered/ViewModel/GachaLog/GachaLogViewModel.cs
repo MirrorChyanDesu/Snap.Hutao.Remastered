@@ -229,35 +229,41 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
         {
             using (await EnterCriticalSectionAsync().ConfigureAwait(false))
             {
+                suppressCurrentItemChangedHandling = true;
+                GachaArchive? target = null;
+
                 try
                 {
-                    try
+                    ArgumentNullException.ThrowIfNull(metadataContext);
+
+                    if (IsBeyondMode)
                     {
-                        suppressCurrentItemChangedHandling = true;
-                        ArgumentNullException.ThrowIfNull(metadataContext);
-                        
-                        if (IsBeyondMode)
-                        {
-                            authkeyValid = await gachaLogService.RefreshBeyondGachaLogAsync(metadataContext, query, strategy, progress, CancellationToken).ConfigureAwait(false);
-                        }
-                        else
-                        {
-                            authkeyValid = await gachaLogService.RefreshGachaLogAsync(metadataContext, query, strategy, progress, CancellationToken).ConfigureAwait(false);
-                        }
+                        (authkeyValid, target) = await gachaLogService.RefreshBeyondGachaLogAsync(metadataContext, query, strategy, progress, CancellationToken).ConfigureAwait(false);
                     }
-                    finally
+                    else
                     {
-                        suppressCurrentItemChangedHandling = false;
-                        await UpdateStatisticsAsync(Archives?.CurrentItem).ConfigureAwait(false);
-                        await taskContext.SwitchToMainThreadAsync();
-                        IsInitialized = false;
-                        IsInitialized = true;
+                        (authkeyValid, target) = await gachaLogService.RefreshGachaLogAsync(metadataContext, query, strategy, progress, CancellationToken).ConfigureAwait(false);
                     }
                 }
                 catch (HutaoException ex)
                 {
                     authkeyValid = false;
                     messenger.Send(InfoBarMessage.Error(ex));
+                }
+                finally
+                {
+                    suppressCurrentItemChangedHandling = false;
+
+                    if (target is not null)
+                    {
+                        await UpdateStatisticsAsync(target).ConfigureAwait(false);
+                        await taskContext.SwitchToMainThreadAsync();
+                        Archives?.MoveCurrentTo(target);
+                    }
+                    else
+                    {
+                        await UpdateStatisticsAsync(Archives?.CurrentItem).ConfigureAwait(false);
+                    }
                 }
             }
         }
@@ -336,9 +342,6 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
         {
             suppressCurrentItemChangedHandling = false;
             await UpdateStatisticsAsync(Archives?.CurrentItem).ConfigureAwait(false);
-            await taskContext.SwitchToMainThreadAsync();
-            IsInitialized = false;
-            IsInitialized = true;
         }
     }
 

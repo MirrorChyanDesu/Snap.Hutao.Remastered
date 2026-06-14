@@ -151,6 +151,21 @@ public sealed partial class UpdateService : IUpdateService
 
             // The updater will request UAC permissions itself
             ProcessFactory.StartUsingShellExecute(commandLineBuilder.ToString(), updaterTargetPath);
+
+            if (RuntimeEnvironment.IsUnpackaged)
+            {
+                // After launching the deployer in unpackaged mode, the installer needs to
+                // replace the running executable files. Exit the main application to avoid
+                // file-in-use conflicts during installation.
+                ITaskContext taskContext = scope.ServiceProvider.GetRequiredService<ITaskContext>();
+                App app = serviceProvider.GetRequiredService<App>();
+                taskContext.InvokeOnMainThread(app.Exit);
+
+                // base.Exit() may not fully terminate the process in unpackaged mode,
+                // so force exit to guarantee the process terminates completely.
+                SentrySdk.Flush();
+                Environment.Exit(0);
+            }
         }
     }
 }

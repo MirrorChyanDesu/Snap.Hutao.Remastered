@@ -15,6 +15,7 @@ public sealed partial class PivotBeyondModeBehavior : BehaviorBase<Pivot>
 {
     private PivotItem? overviewItem;
     private readonly List<PivotItem> normalOnlyItems = [];
+    private bool isBeyondModeInitialized;
 
     protected override void OnAssociatedObjectLoaded()
     {
@@ -34,13 +35,13 @@ public sealed partial class PivotBeyondModeBehavior : BehaviorBase<Pivot>
             normalOnlyItems.Add((PivotItem)AssociatedObject.Items[i]);
         }
 
-        UpdatePivotItems(IsBeyondMode.GetValueOrDefault());
+        isBeyondModeInitialized = true;
     }
 
     private static void OnIsBeyondModeChanged(DependencyObject sender, DependencyPropertyChangedEventArgs _)
     {
         PivotBeyondModeBehavior behavior = sender.As<PivotBeyondModeBehavior>();
-        if (behavior.AssociatedObject is null || behavior.overviewItem is null)
+        if (behavior.AssociatedObject is null || behavior.overviewItem is null || !behavior.isBeyondModeInitialized)
         {
             return;
         }

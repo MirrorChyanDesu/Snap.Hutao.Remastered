@@ -61,6 +61,7 @@ public sealed partial class GachaLogService : IGachaLogService
                 WeaponWish = statistics.WeaponWish,
                 ChronicledWish = statistics.ChronicledWish,
                 StandardWish = statistics.StandardWish,
+                NoviceWish = statistics.NoviceWish,
                 BeyondStandardWish = statistics.BeyondStandardWish,
                 BeyondEventWish = statistics.BeyondEventWish,
                 HistoryWishes = statistics.HistoryWishes,

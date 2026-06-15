@@ -25,6 +25,7 @@ public readonly struct TypedWishSummaryBuilderContext
     private static readonly Func<GachaType, bool> IsAvatarEventWish = type => type is GachaType.ActivityAvatar or GachaType.SpecialActivityAvatar;
     private static readonly Func<GachaType, bool> IsWeaponEventWish = type => type is GachaType.ActivityWeapon;
     private static readonly Func<GachaType, bool> IsChronicledWish = type => type is GachaType.ActivityCity;
+    private static readonly Func<GachaType, bool> IsNoviceWish = type => type is GachaType.NewBie;
     private static readonly Func<GachaType, bool> IsBeyondStandardWish = type => type is GachaType.UGCStandard;
     private static readonly Func<GachaType, bool> IsBeyondEventWish = type => type is GachaType.UGCAvatarEventWish or GachaType.UGCActivityAvatarMaleOne or GachaType.UGCActivityAvatarMaleTwo or GachaType.UGCActivityAvatarFemaleOne or GachaType.UGCActivityAvatarFemaleTwo;
 
@@ -69,6 +70,11 @@ public readonly struct TypedWishSummaryBuilderContext
     public static TypedWishSummaryBuilderContext ChronicledWish(GachaStatisticsFactoryContext context)
     {
         return new(context.ServiceProvider, SH.ServiceGachaLogFactoryChronicledWishName, 90, 10, 0, IsChronicledWish, GachaDistributionType.Chronicled);
+    }
+
+    public static TypedWishSummaryBuilderContext NoviceWish(GachaStatisticsFactoryContext context)
+    {
+        return new(context.ServiceProvider, SH.ServiceGachaLogFactoryNoviceWishName, 90, 10, 0, IsNoviceWish, GachaDistributionType.Standard);
     }
 
     public static TypedWishSummaryBuilderContext BeyondStandardWish(GachaStatisticsFactoryContext context)

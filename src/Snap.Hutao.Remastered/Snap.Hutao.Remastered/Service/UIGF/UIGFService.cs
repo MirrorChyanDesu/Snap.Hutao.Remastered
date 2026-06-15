@@ -37,46 +37,31 @@ public sealed partial class UIGFService : IUIGFService
 
     public bool Parse(string json, out UIGF4? uigf)
     {
-        UIGFView view = UIGFView.Create(json);
-
-        if (view.IsLegacy)
-        {
-            try
-            {
-                UIGF3? legacy = JsonSerializer.Deserialize<UIGF3>(json, jsonOptions);
-                if (legacy is not null)
-                {
-                    uigf = ConvertFromLegacy(legacy);
-                    return true;
-                }
-            }
-            catch
-            {
-            }
-
-            uigf = null;
-            return false;
-        }
-
-        // v4.x format
+        uigf = null;
         try
         {
-            if (view.Version == "v4.2")
+            UIGFView view = UIGFView.Create(json);
+            if (view.Version is not null)
             {
-                uigf = JsonSerializer.Deserialize<UIGF42>(json, jsonOptions);
+                if (view.IsLegacy)
+                {
+                    UIGF3? legacy = JsonSerializer.Deserialize<UIGF3>(json, jsonOptions);
+                    if (legacy is not null)
+                    {
+                        uigf = ConvertFromLegacy(legacy);
+                    }
+                }
+                else
+                {
+                    uigf = JsonSerializer.Deserialize<UIGF42>(json, jsonOptions);
+                }
             }
-            else
-            {
-                uigf = JsonSerializer.Deserialize<UIGF4>(json, jsonOptions);
-            }
-
-            return uigf is not null;
         }
-        catch
+        catch(Exception ex)
         {
-            uigf = null;
-            return false;
+            //messenger.Send(InfoBarMessage.Error(SH.ViewModelImportWarningTitle, ex));
         }
+        return uigf is not null;
     }
 
     private static UIGF4 ConvertFromLegacy(UIGF3 legacy)

@@ -42,6 +42,7 @@ public sealed partial class GachaStatisticsFactory : IGachaStatisticsFactory
         TypedWishSummaryBuilder avatarWishBuilder = TypedWishSummaryBuilderContext.AvatarEventWish(context).CreateBuilder();
         TypedWishSummaryBuilder weaponWishBuilder = TypedWishSummaryBuilderContext.WeaponEventWish(context).CreateBuilder();
         TypedWishSummaryBuilder chronicledWishBuilder = TypedWishSummaryBuilderContext.ChronicledWish(context).CreateBuilder();
+        TypedWishSummaryBuilder noviceWishBuilder = TypedWishSummaryBuilderContext.NoviceWish(context).CreateBuilder();
         TypedWishSummaryBuilder beyondStandardWishBuilder = TypedWishSummaryBuilderContext.BeyondStandardWish(context).CreateBuilder();
         TypedWishSummaryBuilder beyondEventWishBuilder = TypedWishSummaryBuilderContext.BeyondEventWish(context).CreateBuilder();
         GachaStatisticsItemCounter itemCounter = new(context);
@@ -84,9 +85,10 @@ public sealed partial class GachaStatisticsFactory : IGachaStatisticsFactory
                         avatarWishBuilder.Track(item, avatar, isUp);
                         weaponWishBuilder.Track(item, avatar, isUp);
                         chronicledWishBuilder.Track(item, avatar, isUp);
+                        noviceWishBuilder.Track(item, avatar, isUp);
                         break;
                     }
-                
+
                 case 5U:
                     {
                         Weapon weapon = context.Metadata.GetWeapon(item.ItemId);
@@ -112,6 +114,7 @@ public sealed partial class GachaStatisticsFactory : IGachaStatisticsFactory
                         avatarWishBuilder.Track(item, weapon, isUp);
                         weaponWishBuilder.Track(item, weapon, isUp);
                         chronicledWishBuilder.Track(item, weapon, isUp);
+                        noviceWishBuilder.Track(item, weapon, isUp);
                         beyondStandardWishBuilder.Track(item, weapon, isUp);
                         beyondEventWishBuilder.Track(item, weapon, isUp);
                         break;
@@ -164,7 +167,7 @@ public sealed partial class GachaStatisticsFactory : IGachaStatisticsFactory
             }
         }
 
-        AsyncBarrier barrier = new(6);
+        AsyncBarrier barrier = new(7);
 
         ImmutableArray<HistoryWish> historyWishes =
         [
@@ -198,6 +201,7 @@ public sealed partial class GachaStatisticsFactory : IGachaStatisticsFactory
             AvatarWish = avatarWishBuilder.ToTypedWishSummary(barrier),
             WeaponWish = weaponWishBuilder.ToTypedWishSummary(barrier),
             ChronicledWish = chronicledWishBuilder.ToTypedWishSummary(barrier),
+            NoviceWish = noviceWishBuilder.ToTypedWishSummary(barrier),
             BeyondStandardWish = beyondStandardWish,
             BeyondEventWish = beyondEventWish,
         };

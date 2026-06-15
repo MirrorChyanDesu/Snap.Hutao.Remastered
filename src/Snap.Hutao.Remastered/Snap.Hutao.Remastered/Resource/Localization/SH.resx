@@ -956,6 +956,9 @@
   <data name="ServiceGachaLogFactoryChronicledWishName" xml:space="preserve">
     <value>集录祈愿</value>
   </data>
+  <data name="ServiceGachaLogFactoryNoviceWishName" xml:space="preserve">
+    <value>新手祈愿</value>
+  </data>
   <data name="ServiceGachaLogFactoryPermanentWishName" xml:space="preserve">
     <value>奔行世间</value>
   </data>

@@ -68,7 +68,6 @@ public sealed partial class LayoutSwitch : Segmented
     private static void OnRootUnload(object sender, RoutedEventArgs e)
     {
         LayoutSwitch selector = sender.As<LayoutSwitch>();
-        selector.UnregisterPropertyChangedCallback(SelectedIndexProperty, selector.selectedIndexChangedCallbackToken);
         selector.Unloaded -= selector.unloadedEventHandler;
     }
 

@@ -953,6 +953,9 @@
   <data name="ServiceGachaLogFactoryChronicledWishName" xml:space="preserve">
     <value>Chronicled Wish</value>
   </data>
+  <data name="ServiceGachaLogFactoryNoviceWishName" xml:space="preserve">
+    <value>Beginners' Wish</value>
+  </data>
   <data name="ServiceGachaLogFactoryPermanentWishName" xml:space="preserve">
     <value>Wanderlust Invocation</value>
   </data>
@@ -3972,7 +3975,7 @@ Space Available: {2}</value>
     <value>Chronicled Wish</value>
   </data>
   <data name="WebGachaConfigTypeNoviceWish" xml:space="preserve">
-    <value>Beginners' Wish</value>
+    <value>Novice Wish</value>
   </data>
   <data name="WebGachaConfigTypePermanentWish" xml:space="preserve">
     <value>Standard Wish</value>

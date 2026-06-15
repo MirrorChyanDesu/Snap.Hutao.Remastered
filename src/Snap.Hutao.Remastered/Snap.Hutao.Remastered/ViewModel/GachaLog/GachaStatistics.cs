@@ -16,6 +16,8 @@ public sealed class GachaStatistics
 
     public required TypedWishSummary StandardWish { get; init; }
 
+    public required TypedWishSummary NoviceWish { get; init; }
+
     public required TypedWishSummary BeyondStandardWish { get; init; }
 
     public required TypedWishSummary BeyondEventWish { get; init; }

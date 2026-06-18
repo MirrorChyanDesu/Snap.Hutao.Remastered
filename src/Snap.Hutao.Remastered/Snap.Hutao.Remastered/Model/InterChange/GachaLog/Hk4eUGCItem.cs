@@ -34,7 +34,7 @@ public class Hk4eUGCItem : IJsonOnDeserialized
     [JsonConverter(typeof(SimpleDateTimeConverter))]
     public required DateTime Time { get; init; }
 
-    [JsonPropertyName("gacha_type")]
+    [JsonPropertyName("op_gacha_type")]
     [JsonEnumHandling(JsonEnumHandling.NumberString)]
     public required GachaType GachaType { get; init; }
 

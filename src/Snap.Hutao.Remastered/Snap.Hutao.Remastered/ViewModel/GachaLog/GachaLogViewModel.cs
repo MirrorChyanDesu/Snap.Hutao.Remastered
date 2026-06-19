@@ -249,9 +249,6 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
                     {
                         suppressCurrentItemChangedHandling = false;
                         await UpdateStatisticsAsync(Archives?.CurrentItem).ConfigureAwait(false);
-                        await taskContext.SwitchToMainThreadAsync();
-                        IsInitialized = false;
-                        IsInitialized = true;
                     }
                 }
                 catch (HutaoException ex)

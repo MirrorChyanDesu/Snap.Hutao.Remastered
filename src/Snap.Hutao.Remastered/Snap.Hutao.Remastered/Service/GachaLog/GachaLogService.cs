@@ -87,7 +87,7 @@ public sealed partial class GachaLogService : IGachaLogService
         return statistics.ToImmutable();
     }
 
-    public async ValueTask<(bool AuthkeyValid, GachaArchive? Target)> RefreshGachaLogAsync(GachaLogServiceMetadataContext context, GachaLogQuery query, RefreshStrategyKind kind, IProgress<GachaLogFetchStatus> progress, CancellationToken token)
+    public async ValueTask<bool> RefreshGachaLogAsync(GachaLogServiceMetadataContext context, GachaLogQuery query, RefreshStrategyKind kind, IProgress<GachaLogFetchStatus> progress, CancellationToken token)
     {
         bool isLazy = kind switch
         {
@@ -98,10 +98,17 @@ public sealed partial class GachaLogService : IGachaLogService
 
         (bool authkeyValid, GachaArchive? target) = await FetchGachaLogsAsync(context, query, isLazy, progress, token).ConfigureAwait(false);
 
-        return (authkeyValid, target);
+        if (target is not null)
+        {
+            IAdvancedDbCollectionView<GachaArchive> localArchives = await GetArchiveCollectionAsync().ConfigureAwait(false);
+            await taskContext.SwitchToMainThreadAsync();
+            localArchives.MoveCurrentTo(target);
+        }
+
+        return authkeyValid;
     }
 
-    public async ValueTask<(bool AuthkeyValid, GachaArchive? Target)> RefreshBeyondGachaLogAsync(GachaLogServiceMetadataContext context, GachaLogQuery query, RefreshStrategyKind kind, IProgress<GachaLogFetchStatus> progress, CancellationToken token)
+    public async ValueTask<bool> RefreshBeyondGachaLogAsync(GachaLogServiceMetadataContext context, GachaLogQuery query, RefreshStrategyKind kind, IProgress<GachaLogFetchStatus> progress, CancellationToken token)
     {
         bool isLazy = kind switch
         {
@@ -112,7 +119,14 @@ public sealed partial class GachaLogService : IGachaLogService
 
         (bool authkeyValid, GachaArchive? target) = await FetchBeyondGachaLogsAsync(context, query, isLazy, progress, token).ConfigureAwait(false);
 
-        return (authkeyValid, target);
+        if (target is not null)
+        {
+            IAdvancedDbCollectionView<GachaArchive> localArchives = await GetArchiveCollectionAsync().ConfigureAwait(false);
+            await taskContext.SwitchToMainThreadAsync();
+            localArchives.MoveCurrentTo(target);
+        }
+
+        return authkeyValid;
     }
 
     public async ValueTask RemoveArchiveAsync(GachaArchive archive)

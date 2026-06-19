@@ -112,6 +112,7 @@ public sealed partial class TypedWishSummary : Wish, INotifyPropertyChanged
             if (item.IsUp)
             {
                 // Clone with LastPull = TotalCyclePull to display the combined total
+                // Double the threshold so the progress bar and color gradient work at 180 scale
                 result.Add(new()
                 {
                     Id = item.Id,
@@ -121,7 +122,7 @@ public sealed partial class TypedWishSummary : Wish, INotifyPropertyChanged
                     Quality = item.Quality,
                     IsUp = item.IsUp,
                     IsGuarantee = item.IsGuarantee,
-                    GuaranteeOrangeThreshold = item.GuaranteeOrangeThreshold,
+                    GuaranteeOrangeThreshold = item.GuaranteeOrangeThreshold * 2,
                     LastPull = item.TotalCyclePull,
                     TotalCyclePull = item.TotalCyclePull,
                     Color = item.Color,

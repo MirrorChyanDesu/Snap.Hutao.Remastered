@@ -953,6 +953,9 @@
   <data name="ServiceGachaLogFactoryChronicledWishName" xml:space="preserve">
     <value>集錄祈願</value>
   </data>
+  <data name="ServiceGachaLogFactoryNoviceWishName" xml:space="preserve">
+    <value>新手祈願</value>
+  </data>
   <data name="ServiceGachaLogFactoryPermanentWishName" xml:space="preserve">
     <value>奔行世間</value>
   </data>
@@ -3255,7 +3258,7 @@
     <value>以系統管理員身分重新啟動</value>
   </data>
   <data name="ViewPageSettingEmptyHistoryVisibleDescription" xml:space="preserve">
-    <value>在祈願紀錄頁面顯示或隱藏無記錄的歷史祈願活動</value>
+    <value>在「歷史」頁面中顯示無記錄的祈願活動</value>
   </data>
   <data name="ViewPageSettingEmptyHistoryVisibleHeader" xml:space="preserve">
     <value>無記錄的歷史祈願活動</value>
@@ -3265,6 +3268,12 @@
   </data>
   <data name="ViewPageSettingEmptyHistoryVisibleOn" xml:space="preserve">
     <value>顯示</value>
+  </data>
+  <data name="ViewPageSettingEmptyOverviewWishVisibleDescription" xml:space="preserve">
+    <value>在「總覽」頁面中顯示無記錄的祈願活動卡片</value>
+  </data>
+  <data name="ViewPageSettingEmptyOverviewWishVisibleHeader" xml:space="preserve">
+    <value>無記錄的祈願總覽</value>
   </data>
   <data name="ViewPageSettingFeedbackNavigate" xml:space="preserve">
     <value>前往回饋</value>
@@ -3504,7 +3513,7 @@
     <value>升級較早版本的 UIGF 檔案</value>
   </data>
   <data name="ViewPageSettingUnobtainedWishItemVisibleDescription" xml:space="preserve">
-    <value>在「祈願紀錄 - 角色」與「祈願紀錄 - 武器」中顯示未抽到的祈願物品</value>
+    <value>在「角色」與「武器」頁面中顯示未抽取到的祈願物品</value>
   </data>
   <data name="ViewPageSettingUnobtainedWishItemVisibleHeader" xml:space="preserve">
     <value>未抽取到的祈願物品</value>
@@ -4045,6 +4054,9 @@
   </data>
   <data name="ViewPageSettingAutoStartDescription" xml:space="preserve">
     <value>程式將在當前用戶登錄時啟動（修改需以管理員身份運行，且與始終以管理員身份運行一起勾選將始終保持管理員狀態）</value>
+  </data>
+  <data name="ViewControlStatisticsCardPurpleAveragePullText" xml:space="preserve">
+    <value>四星平均抽數</value>
   </data>
   <data name="ViewPageLaunchGameAdvancedStartOptionsHeader" xml:space="preserve">
     <value>自訂啟動</value>

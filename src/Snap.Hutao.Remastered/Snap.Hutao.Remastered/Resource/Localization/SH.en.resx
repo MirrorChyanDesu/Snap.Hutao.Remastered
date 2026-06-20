@@ -1302,7 +1302,7 @@ Space Available: {2}</value>
     <value>Pity</value>
   </data>
   <data name="ViewControlStatisticsCardOrangeAveragePullText" xml:space="preserve">
-    <value>Avg 5 Stars wish #</value>
+    <value>Avg 5 Stars wish</value>
   </data>
   <data name="ViewControlStatisticsCardOrangeText" xml:space="preserve">
     <value>5 Stars</value>
@@ -3261,16 +3261,22 @@ Space Available: {2}</value>
     <value>Restart with Administrator Mode</value>
   </data>
   <data name="ViewPageSettingEmptyHistoryVisibleDescription" xml:space="preserve">
-    <value>Show or hide wish event with no wish history</value>
+    <value>Display wish events with no records in "History"</value>
   </data>
   <data name="ViewPageSettingEmptyHistoryVisibleHeader" xml:space="preserve">
-    <value>Show Wish Event with No Wish History</value>
+    <value>Display History with No Wish Records</value>
   </data>
   <data name="ViewPageSettingEmptyHistoryVisibleOff" xml:space="preserve">
     <value>Hide</value>
   </data>
   <data name="ViewPageSettingEmptyHistoryVisibleOn" xml:space="preserve">
     <value>Show</value>
+  </data>
+  <data name="ViewPageSettingEmptyOverviewWishVisibleDescription" xml:space="preserve">
+    <value>Display overview cards with no records in "Overview"</value>
+  </data>
+  <data name="ViewPageSettingEmptyOverviewWishVisibleHeader" xml:space="preserve">
+    <value>Display Overview with No Wish Records</value>
   </data>
   <data name="ViewPageSettingFeedbackNavigate" xml:space="preserve">
     <value>Feedback</value>
@@ -3510,10 +3516,10 @@ Space Available: {2}</value>
     <value>Upgrade earlier version of UIGF files</value>
   </data>
   <data name="ViewPageSettingUnobtainedWishItemVisibleDescription" xml:space="preserve">
-    <value>Display Undrawn Items in "Wish Export - Characters" and "Wish Export - Weapons"</value>
+    <value>Display undrawn items in "Characters" and "Weapons"</value>
   </data>
   <data name="ViewPageSettingUnobtainedWishItemVisibleHeader" xml:space="preserve">
-    <value>Undrawn Wish Items</value>
+    <value>Display Undrawn Wish Items</value>
   </data>
   <data name="ViewPageSettingWebViewHeader" xml:space="preserve">
     <value>WebView</value>
@@ -4236,7 +4242,7 @@ Space Available: {2}</value>
     <value>Instant auto-swap between keyboard/mouse and gamepad</value>
   </data>
   <data name="ViewControlStatisticsCardPurpleAveragePullText" xml:space="preserve">
-    <value>Avg 4 Stars wish #</value>
+    <value>Avg 4 Stars wish</value>
   </data>
   <data name="ViewPageGachaLogSwitchToBeyondGachaModeHeader" xml:space="preserve">
     <value>Odes</value>

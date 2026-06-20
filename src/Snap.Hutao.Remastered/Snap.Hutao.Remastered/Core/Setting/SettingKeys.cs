@@ -84,6 +84,7 @@ public static class SettingKeys
     public const string ResinStatisticsSelectedDropDistribution = "Snap::Hutao::Cultivation::ResinStatistics::DropDistribution";
 
     // GachaLog
+    public const string IsEmptyOverviewVisible      = "Snap::Hutao::GachaLog::Overview::EmptyVisible";
     public const string IsEmptyHistoryWishVisible   = "Snap::Hutao::GachaLog::HistoryWish::EmptyVisible";
     public const string IsUnobtainedWishItemVisible = "Snap::Hutao::GachaLog::UnobtainedItem::Visible";
 

@@ -424,7 +424,7 @@
                     ItemContainerStyle="{StaticResource NoneSelectionListViewItemStyle}"
                     ItemTemplate="{StaticResource SummaryListTemplate}"
                     ItemsSource="{Binding DisplayList}"
-                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
                     SelectionMode="None"/>
             </cwcont:Case>
             <cwcont:Case Value="Grid">
@@ -434,7 +434,7 @@
                     ItemContainerStyle="{StaticResource NoneSelectionGridViewItemStyle}"
                     ItemTemplate="{ThemeResource OrangeGridTemplate}"
                     ItemsSource="{Binding DisplayList}"
-                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
                     SelectionMode="None"/>
             </cwcont:Case>
         </cwcont:SwitchPresenter>

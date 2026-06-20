@@ -9,6 +9,7 @@ using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Factory.ContentDialog;
 using Snap.Hutao.Remastered.Factory.Progress;
 using Snap.Hutao.Remastered.Model.Entity;
+using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.Service.GachaLog;
 using Snap.Hutao.Remastered.Service.GachaLog.QueryProvider;
 using Snap.Hutao.Remastered.Service.Metadata;
@@ -38,6 +39,7 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
 
     private bool suppressCurrentItemChangedHandling;
     private GachaLogServiceMetadataContext? metadataContext;
+    private AppOptions? appOptions;
 
     [GeneratedConstructor]
     public partial GachaLogViewModel(IServiceProvider serviceProvider);
@@ -67,6 +69,7 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
             if (SetProperty(ref field, value))
             {
                 field?.HistoryWishes.MoveCurrentToFirst();
+                UpdateCardVisibility();
             }
         }
     }
@@ -76,6 +79,29 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
 
     [ObservableProperty]
     public partial bool IsBeyondMode { get; set; }
+
+    private AppOptions AppOptions => appOptions ??= serviceProvider.GetRequiredService<AppOptions>();
+
+    [ObservableProperty]
+    public partial bool IsAvatarWishCardVisible { get; set; } = true;
+
+    [ObservableProperty]
+    public partial bool IsWeaponWishCardVisible { get; set; } = true;
+
+    [ObservableProperty]
+    public partial bool IsStandardWishCardVisible { get; set; } = true;
+
+    [ObservableProperty]
+    public partial bool IsChronicledWishCardVisible { get; set; } = true;
+
+    [ObservableProperty]
+    public partial bool IsNoviceWishCardVisible { get; set; } = true;
+
+    [ObservableProperty]
+    public partial bool IsBeyondStandardWishCardVisible { get; set; } = true;
+
+    [ObservableProperty]
+    public partial bool IsBeyondEventWishCardVisible { get; set; } = true;
 
     protected override async ValueTask<bool> LoadOverrideAsync(CancellationToken token)
     {
@@ -109,11 +135,18 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
         {
         }
 
+        AppOptions.IsEmptyOverviewVisible.PropertyChanged += OnIsEmptyOverviewVisibleChanged;
+
         return false;
     }
 
     protected override void UninitializeOverride()
     {
+        if (appOptions is not null)
+        {
+            appOptions.IsEmptyOverviewVisible.PropertyChanged -= OnIsEmptyOverviewVisibleChanged;
+        }
+
         using (Archives?.SuppressChangeCurrentItem())
         {
             Archives = default;
@@ -170,7 +203,35 @@ public sealed partial class GachaLogViewModel : Abstraction.ViewModel
 
     partial void OnIsBeyondModeChanged(bool value)
     {
+        UpdateCardVisibility();
         UpdateStatisticsAsync(Archives?.CurrentItem).SafeForget();
+    }
+
+    private void OnIsEmptyOverviewVisibleChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName is "Value")
+        {
+            UpdateCardVisibility();
+        }
+    }
+
+    private void UpdateCardVisibility()
+    {
+        if (Statistics is null)
+        {
+            return;
+        }
+
+        bool showEmpty = AppOptions.IsEmptyOverviewVisible.Value;
+
+        IsAvatarWishCardVisible = !IsBeyondMode && (showEmpty || Statistics.AvatarWish.TotalCount > 0);
+        IsWeaponWishCardVisible = !IsBeyondMode && (showEmpty || Statistics.WeaponWish.TotalCount > 0);
+        IsStandardWishCardVisible = !IsBeyondMode && (showEmpty || Statistics.StandardWish.TotalCount > 0);
+        IsChronicledWishCardVisible = !IsBeyondMode && (showEmpty || Statistics.ChronicledWish.TotalCount > 0);
+        IsNoviceWishCardVisible = !IsBeyondMode && (showEmpty || Statistics.NoviceWish.TotalCount > 0);
+
+        IsBeyondStandardWishCardVisible = IsBeyondMode && (showEmpty || Statistics.BeyondStandardWish.TotalCount > 0);
+        IsBeyondEventWishCardVisible = IsBeyondMode && (showEmpty || Statistics.BeyondEventWish.TotalCount > 0);
     }
 
     private async ValueTask PrivateRefreshAsync(RefreshOptionKind optionKind)

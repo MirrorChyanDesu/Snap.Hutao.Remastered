@@ -886,6 +886,15 @@
                             <StackPanel Spacing="{ThemeResource SettingsCardSpacing}">
                                 <TextBlock Style="{StaticResource SettingsCardHeaderTextBlockStyle}" Text="{shuxm:ResourceString Name=ViewPageSettingGachaLogHeader}"/>
                                 <cwc:SettingsCard
+                                    Description="{shuxm:ResourceString Name=ViewPageSettingEmptyOverviewWishVisibleDescription}"
+                                    Header="{shuxm:ResourceString Name=ViewPageSettingEmptyOverviewWishVisibleHeader}"
+                                    HeaderIcon="{shuxm:FontIcon Glyph=&#xE8FD;}">
+                                    <ToggleSwitch
+                                        IsOn="{Binding AppOptions.IsEmptyOverviewVisible.Value, Mode=TwoWay}"
+                                        OffContent="{shuxm:ResourceString Name=ViewPageSettingEmptyHistoryVisibleOff}"
+                                        OnContent="{shuxm:ResourceString Name=ViewPageSettingEmptyHistoryVisibleOn}"/>
+                                </cwc:SettingsCard>
+                                <cwc:SettingsCard
                                     Description="{shuxm:ResourceString Name=ViewPageSettingEmptyHistoryVisibleDescription}"
                                     Header="{shuxm:ResourceString Name=ViewPageSettingEmptyHistoryVisibleHeader}"
                                     HeaderIcon="{shuxm:FontIcon Glyph=&#xE81C;}">

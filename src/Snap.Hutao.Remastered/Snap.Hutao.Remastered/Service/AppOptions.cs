@@ -54,6 +54,9 @@ public sealed partial class AppOptions : DbStoreOptions
     public ImmutableArray<NameValue<LastWindowCloseBehavior>> LastWindowCloseBehaviors { get; } = ImmutableCollectionsNameValue.FromEnum<LastWindowCloseBehavior>(static @enum => @enum.GetLocalizedDescription(SH.ResourceManager, CultureInfo.CurrentCulture) ?? string.Empty);
 
     [field: MaybeNull]
+    public IObservableProperty<bool> IsEmptyOverviewVisible { get => field ??= CreateProperty(SettingKeys.IsEmptyOverviewVisible, false); }
+
+    [field: MaybeNull]
     public IObservableProperty<bool> IsEmptyHistoryWishVisible { get => field ??= CreateProperty(SettingKeys.IsEmptyHistoryWishVisible, false); }
 
     [field: MaybeNull]

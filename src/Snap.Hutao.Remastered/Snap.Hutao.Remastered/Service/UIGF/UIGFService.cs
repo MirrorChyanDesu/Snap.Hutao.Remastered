@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Snap.Hutao.Remastered.Model.InterChange.GachaLog;
+using Snap.Hutao.Remastered.Service.Notification;
 
 namespace Snap.Hutao.Remastered.Service.UIGF;
 
@@ -10,6 +11,7 @@ public sealed partial class UIGFService : IUIGFService
 {
     private readonly IServiceProvider serviceProvider;
     private readonly JsonSerializerOptions jsonOptions;
+    private readonly IMessenger messenger;
 
     [GeneratedConstructor]
     public partial UIGFService(IServiceProvider serviceProvider);
@@ -38,9 +40,10 @@ public sealed partial class UIGFService : IUIGFService
     public bool Parse(string json, out UIGF4? uigf)
     {
         uigf = null;
+        UIGFView? view = null;
         try
         {
-            UIGFView view = UIGFView.Create(json);
+            view = UIGFView.Create(json);
             if (view.Version is not null)
             {
                 if (view.IsLegacy)
@@ -59,7 +62,7 @@ public sealed partial class UIGFService : IUIGFService
         }
         catch(Exception ex)
         {
-            //messenger.Send(InfoBarMessage.Error(SH.ViewModelImportWarningTitle, ex));
+            messenger.Send(InfoBarMessage.Error($"uigf version: {view?.Version}", ex));
         }
         return uigf is not null;
     }

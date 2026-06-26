@@ -1,8 +1,10 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
+using Microsoft.UI.Input;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.Windows.AppNotifications.Builder;
 using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Service;
@@ -53,6 +55,27 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
 
     public ImmutableArray<FrameworkElement> TitleBarPassthrough { get => []; }
 
+    private void RootGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        PointerPointProperties props = e.GetCurrentPoint(null).Properties;
+
+        if (props.IsXButton1Pressed)
+        {
+            if (MainView.ContentFrame.CanGoBack)
+            {
+                MainView.ContentFrame.GoBack();
+                e.Handled = true;
+            }
+        }
+        else if (props.IsXButton2Pressed)
+        {
+            if (MainView.ContentFrame.CanGoForward)
+            {
+                MainView.ContentFrame.GoForward();
+                e.Handled = true;
+            }
+        }
+    }
 
     public void OnWindowClosing(out bool cancel)
     {

@@ -264,15 +264,16 @@ public sealed partial class AutoSuggestTokenBox : ListViewBase
         }
         else
         {
-            args.Cancel = true;
+            args.Item = new SearchToken(SearchTokenKind.None, args.TokenText, 0);
         }
     }
 
     public void OnTokenItemAdded(AutoSuggestTokenBox sender, object args)
     {
-        if (args is SearchToken { Kind: SearchTokenKind.None } token)
+        if (ReferenceEquals(args, SearchToken.NotFound))
         {
-            ItemsSource.As<IList>().Remove(token);
+            ItemsSource.As<IList>().Remove(args);
+            return;
         }
 
         RefreshTokenCounter();

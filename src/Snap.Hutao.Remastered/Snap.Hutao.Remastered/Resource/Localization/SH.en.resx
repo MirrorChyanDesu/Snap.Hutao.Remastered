@@ -3540,7 +3540,7 @@ Space Available: {2}</value>
     <value>Ascension Materials</value>
   </data>
   <data name="ViewPageWiKiAvatarAutoSuggestBoxPlaceHolder" xml:space="preserve">
-    <value>Filter Character</value>
+    <value>Filter Characters</value>
   </data>
   <data name="ViewPageWiKiAvatarChineseCVNameTitle" xml:space="preserve">
     <value>Chinese VA</value>
@@ -3619,6 +3619,9 @@ Space Available: {2}</value>
   </data>
   <data name="ViewPageWikiMonsterDropItems" xml:space="preserve">
     <value>Drop Items</value>
+  </data>
+  <data name="ViewPageWiKiMonsterAutoSuggestBoxPlaceHolder" xml:space="preserve">
+    <value>Filter Monsters</value>
   </data>
   <data name="ViewPeriodHeader" xml:space="preserve">
     <value>Schedule</value>

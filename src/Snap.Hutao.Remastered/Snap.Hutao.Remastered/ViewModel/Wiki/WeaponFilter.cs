@@ -55,6 +55,9 @@ public static class WeaponFilter
                 case SearchTokenKind.Weapon:
                     matches.Add(tokens.Contains(weapon.Name));
                     break;
+                case SearchTokenKind.None:
+                    matches.Add(tokens.Any(token => weapon.Name.Contains(token, StringComparison.OrdinalIgnoreCase)));
+                    break;
                 default:
                     matches.Add(false);
                     break;

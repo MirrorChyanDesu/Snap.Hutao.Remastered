@@ -3,6 +3,7 @@
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using Snap.Hutao.Remastered.Model.Metadata.Avatar;
+using Snap.Hutao.Remastered.Model.Metadata.Monster;
 using Snap.Hutao.Remastered.Model.Metadata.Weapon;
 using System.Collections.Frozen;
 using System.Collections.Immutable;
@@ -42,5 +43,10 @@ public sealed partial class SearchData : ObservableObject
     public static SearchData CreateForWikiWeapon(ImmutableArray<Weapon> array)
     {
         return new(SearchTokens.GetForWikiWeapon(array));
+    }
+
+    public static SearchData CreateForWikiMonster(ImmutableArray<Monster> array)
+    {
+        return new(SearchTokens.GetForWikiMonster(array));
     }
 }

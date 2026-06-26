@@ -15,4 +15,5 @@ public enum SearchTokenKind
     BodyType,
     Avatar,
     Weapon,
+    Monster,
 }

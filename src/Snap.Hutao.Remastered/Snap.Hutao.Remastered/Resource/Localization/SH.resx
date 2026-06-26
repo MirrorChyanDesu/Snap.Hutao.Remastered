@@ -3627,6 +3627,9 @@
   <data name="ViewPageWikiMonsterDropItems" xml:space="preserve">
     <value>掉落物品</value>
   </data>
+  <data name="ViewPageWiKiMonsterAutoSuggestBoxPlaceHolder" xml:space="preserve">
+    <value>筛选怪物</value>
+  </data>
   <data name="ViewPeriodHeader" xml:space="preserve">
     <value>周期</value>
   </data>

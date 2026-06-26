@@ -13,6 +13,7 @@
     xmlns:shmmm="using:Snap.Hutao.Remastered.Model.Metadata.Monster"
     xmlns:shuxb="using:Snap.Hutao.Remastered.UI.Xaml.Behavior"
     xmlns:shuxc="using:Snap.Hutao.Remastered.UI.Xaml.Control"
+    xmlns:shuxca="using:Snap.Hutao.Remastered.UI.Xaml.Control.AutoSuggestBox"
     xmlns:shuxcc="using:Snap.Hutao.Remastered.UI.Xaml.Control.Card"
     xmlns:shuxci="using:Snap.Hutao.Remastered.UI.Xaml.Control.Image"
     xmlns:shuxct="using:Snap.Hutao.Remastered.UI.Xaml.Control.TextBlock"
@@ -27,6 +28,25 @@
     </mxi:Interaction.Behaviors>
 
     <Page.Resources>
+        <DataTemplate x:Key="TokenTemplate" x:DataType="shuxca:SearchToken">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <shuxci:CachedImage
+                    Grid.Column="0"
+                    Width="22"
+                    Height="22"
+                    Margin="0,0,8,0"
+                    Source="{Binding SideIconUri, Mode=OneWay}"/>
+                <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Text="{Binding Value}"/>
+            </Grid>
+        </DataTemplate>
+
         <DataTemplate x:Key="MonsterListTemplate" x:DataType="shmmm:Monster">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -121,6 +141,25 @@
                                 Margin="6,8,0,0"
                                 LocalSettingKeySuffixForCurrent="WikiMonsterPage.Monsters"/>
                         </CommandBar.Content>
+                        <AppBarElementContainer>
+                            <shuxca:AutoSuggestTokenBox
+                                Width="600"
+                                Height="44"
+                                Margin="6,-2,6,6"
+                                HorizontalAlignment="Right"
+                                VerticalContentAlignment="Center"
+                                AvailableTokens="{Binding SearchData.AvailableTokens}"
+                                FilterCommand="{Binding FilterCommand}"
+                                ItemsSource="{Binding SearchData.FilterTokens, Mode=TwoWay}"
+                                MaximumTokens="5"
+                                PlaceholderText="{shuxm:ResourceString Name=ViewPageWiKiMonsterAutoSuggestBoxPlaceHolder}"
+                                QueryIcon="{cw:FontIconSource Glyph=&#xE721;}"
+                                Style="{StaticResource DefaultAutoSuggestTokenBoxStyle}"
+                                SuggestedItemTemplate="{StaticResource TokenTemplate}"
+                                SuggestedItemsSource="{Binding SearchData.AvailableTokens.Values}"
+                                Text="{Binding SearchData.FilterToken, Mode=TwoWay}"
+                                TokenItemTemplate="{StaticResource TokenTemplate}"/>
+                        </AppBarElementContainer>
                     </CommandBar>
                 </Border>
             </Border>

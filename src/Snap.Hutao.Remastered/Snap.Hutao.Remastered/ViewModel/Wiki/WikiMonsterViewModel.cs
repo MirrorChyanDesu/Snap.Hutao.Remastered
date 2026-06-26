@@ -7,6 +7,7 @@ using Snap.Hutao.Remastered.Model.Metadata.Item;
 using Snap.Hutao.Remastered.Model.Metadata.Monster;
 using Snap.Hutao.Remastered.Service.Metadata;
 using Snap.Hutao.Remastered.Service.Metadata.ContextAbstraction;
+using Snap.Hutao.Remastered.UI.Xaml.Control.AutoSuggestBox;
 using Snap.Hutao.Remastered.UI.Xaml.Data;
 using System.Collections.Immutable;
 
@@ -46,6 +47,9 @@ public sealed partial class WikiMonsterViewModel : Abstraction.ViewModel
     [ObservableProperty]
     public partial BaseValueInfo? BaseValueInfo { get; set; }
 
+    [ObservableProperty]
+    public partial SearchData? SearchData { get; set; }
+
     protected override async ValueTask<bool> LoadOverrideAsync(CancellationToken token)
     {
         if (await metadataService.InitializeAsync().ConfigureAwait(false))
@@ -60,12 +64,14 @@ public sealed partial class WikiMonsterViewModel : Abstraction.ViewModel
                 }
 
                 List<Monster> ordered = [.. metadataContext.Monsters.OrderBy(m => m.DescribeId.Value)];
+                SearchData searchData = SearchData.CreateForWikiMonster([.. ordered]);
 
                 using (await EnterCriticalSectionAsync().ConfigureAwait(false))
                 {
                     IAdvancedCollectionView<Monster> monstersView = ordered.AsAdvancedCollectionView();
 
                     await taskContext.SwitchToMainThreadAsync();
+                    SearchData = searchData;
                     Monsters = monstersView;
                     Monsters.MoveCurrentToFirst();
                 }
@@ -83,6 +89,22 @@ public sealed partial class WikiMonsterViewModel : Abstraction.ViewModel
     private void OnCurrentMonsterChanged(object? sender, object? e)
     {
         UpdateBaseValueInfo(Monsters?.CurrentItem);
+    }
+
+    [Command("FilterCommand")]
+    private void ApplyFilter()
+    {
+        if (Monsters is null)
+        {
+            return;
+        }
+
+        Monsters.Filter = MonsterFilter.Compile(SearchData);
+
+        if (Monsters.CurrentItem is null)
+        {
+            Monsters.MoveCurrentToFirst();
+        }
     }
 
     private void UpdateBaseValueInfo(Monster? monster)

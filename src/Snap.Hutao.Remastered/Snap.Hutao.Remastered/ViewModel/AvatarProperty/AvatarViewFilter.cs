@@ -50,6 +50,9 @@ public static class AvatarViewFilter
                     }
 
                     break;
+                case SearchTokenKind.None:
+                    matches.Add(tokens.Any(token => avatarView.Name.Contains(token, StringComparison.OrdinalIgnoreCase)));
+                    break;
                 default:
                     matches.Add(false);
                     break;

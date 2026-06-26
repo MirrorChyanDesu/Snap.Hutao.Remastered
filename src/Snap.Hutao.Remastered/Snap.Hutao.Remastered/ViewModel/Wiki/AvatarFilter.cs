@@ -69,6 +69,9 @@ public static class AvatarFilter
                 case SearchTokenKind.Avatar:
                     matches.Add(tokens.Contains(avatar.Name));
                     break;
+                case SearchTokenKind.None:
+                    matches.Add(tokens.Any(token => avatar.Name.Contains(token, StringComparison.OrdinalIgnoreCase)));
+                    break;
                 default:
                     matches.Add(false);
                     break;

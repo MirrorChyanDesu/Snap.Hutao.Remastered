@@ -7,6 +7,7 @@ using Snap.Hutao.Remastered.Model.Intrinsic;
 using Snap.Hutao.Remastered.Model.Intrinsic.Frozen;
 using Snap.Hutao.Remastered.Model.Metadata.Avatar;
 using Snap.Hutao.Remastered.Model.Metadata.Converter;
+using Snap.Hutao.Remastered.Model.Metadata.Monster;
 using Snap.Hutao.Remastered.Model.Metadata.Weapon;
 using System.Collections.Frozen;
 using System.Collections.Immutable;
@@ -63,4 +64,12 @@ public static class SearchTokens
             .. WeaponTypeTokens,
         ]);
     }
+    public static FrozenDictionary<string, SearchToken> GetForWikiMonster(ImmutableArray<Monster> array)
+    {
+        return WinRTAdaptive.ToFrozenDictionary(
+        [
+            .. array.Select((monster, index) => KeyValuePair.Create(monster.Name, new SearchToken(SearchTokenKind.Monster, monster.Name, index, sideIconUri: MonsterIconConverter.IconNameToUri(monster.Icon)))),
+        ]);
+    }
+
 }

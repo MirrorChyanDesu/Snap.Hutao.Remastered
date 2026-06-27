@@ -65,10 +65,7 @@ public sealed partial class ServerDomainRedirectHandler : DelegatingHandler
             // Backup mode: rewrite primary domain → backup domain in redirects
             return url.Replace("snaphutaorp.org", "hutaorp.org");
         }
-        else
-        {
-            // Primary mode: rewrite backup domain → primary domain in redirects
-            return url.Replace("hutaorp.org", "snaphutaorp.org");
-        }
+
+        return url;
     }
 }

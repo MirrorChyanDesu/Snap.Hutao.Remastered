@@ -28,4 +28,5 @@ public sealed partial class SettingWebViewViewModel : Abstraction.ViewModel
             }
         }
     }
+
 }

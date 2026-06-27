@@ -14,9 +14,11 @@ using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Core.Shell;
 using Snap.Hutao.Remastered.Factory.Process;
 using Snap.Hutao.Remastered.Service;
+using Snap.Hutao.Remastered.Model;
 using Snap.Hutao.Remastered.Service.Navigation;
 using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.Service.Update;
+using Snap.Hutao.Remastered.Web;
 using Snap.Hutao.Remastered.Win32;
 using Snap.Hutao.Remastered.Win32.Foundation;
 using System.Diagnostics;
@@ -60,6 +62,19 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
 
     [ObservableProperty]
     public partial string? UpdateInfo { get; set; }
+
+    // TODO: Replace with IObservableProperty
+    public NameValue<ServerDomainMode>? SelectedServerDomainMode
+    {
+        get => field ??= AppOptions.ServerDomainModes.Single(t => t.Value == AppOptions.ServerDomainMode.Value);
+        set
+        {
+            if (SetProperty(ref field, value) && value is not null)
+            {
+                AppOptions.ServerDomainMode.Value = value.Value;
+            }
+        }
+    }
 
     public bool AutoRestartAsAdminEnabled
     {

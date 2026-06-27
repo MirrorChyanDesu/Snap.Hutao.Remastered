@@ -172,6 +172,7 @@ public static class SettingKeys
     public const string CompactWebView2WindowInactiveOpacity    = "Snap::Hutao::Web::WebView::Compact::InactiveOpacity";
     public const string CompactWebView2WindowPreviousSourceUrl  = "Snap::Hutao::Web::WebView::Compact::PreviousSourceUrl";
     public const string WebView2VideoFastForwardOrRewindSeconds = "Snap::Hutao::Web::WebView::Video::FastForwardOrRewind::Seconds";
+    public const string ServerDomainMode                        = "Snap::Hutao::Web::ServerDomainMode";
 
     // Auto Sign-In
     public const string AutoSignInEnabled                       = "Snap::Hutao::SignIn::AutoSignIn::Enabled";

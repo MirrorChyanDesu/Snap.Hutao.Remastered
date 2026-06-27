@@ -4290,4 +4290,19 @@
   <data name="ViewPageSettingHomeAnnouncementActPreviewHeader" xml:space="preserve">
     <value>是否顯示未在進行中的遊戲內版本活動事件</value>
   </data>
+  <data name="ViewPageSettingNetworkHeader" xml:space="preserve">
+    <value>網路</value>
+  </data>
+  <data name="ViewPageSettingServerDomainModeHeader" xml:space="preserve">
+    <value>伺服器網域</value>
+  </data>
+  <data name="ViewPageSettingServerDomainModeDescription" xml:space="preserve">
+    <value>選擇主網域或備用網域。主網域因 SSL 連線問題失敗時將自動切換到備用網域</value>
+  </data>
+  <data name="WebServerDomainModePrimary" xml:space="preserve">
+    <value>主網域 (snaphutaorp.org)</value>
+  </data>
+  <data name="WebServerDomainModeBackup" xml:space="preserve">
+    <value>備用網域 (snap.hutaorp.org)</value>
+  </data>
 </root>

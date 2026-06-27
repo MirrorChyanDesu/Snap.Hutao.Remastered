@@ -11,6 +11,7 @@ using Snap.Hutao.Remastered.Service.Abstraction;
 using Snap.Hutao.Remastered.Service.BackgroundImage;
 using Snap.Hutao.Remastered.UI.Xaml.Media.Backdrop;
 using Snap.Hutao.Remastered.Web.Bridge;
+using Snap.Hutao.Remastered.Web;
 using Snap.Hutao.Remastered.Web.Hoyolab;
 using System.Collections.Immutable;
 using System.Diagnostics;
@@ -51,6 +52,8 @@ public sealed partial class AppOptions : DbStoreOptions
 
     public ImmutableArray<NameValue<BridgeShareSaveType>> BridgeShareSaveTypes { get; } = ImmutableCollectionsNameValue.FromEnum<BridgeShareSaveType>(type => type.GetLocalizedDescription(SH.ResourceManager, CultureInfo.CurrentCulture) ?? string.Empty);
 
+    public ImmutableArray<NameValue<ServerDomainMode>> ServerDomainModes { get; } = ImmutableCollectionsNameValue.FromEnum<ServerDomainMode>(mode => mode.GetLocalizedDescription(SH.ResourceManager, CultureInfo.CurrentCulture) ?? string.Empty);
+
     public ImmutableArray<NameValue<LastWindowCloseBehavior>> LastWindowCloseBehaviors { get; } = ImmutableCollectionsNameValue.FromEnum<LastWindowCloseBehavior>(static @enum => @enum.GetLocalizedDescription(SH.ResourceManager, CultureInfo.CurrentCulture) ?? string.Empty);
 
     [field: MaybeNull]
@@ -82,6 +85,28 @@ public sealed partial class AppOptions : DbStoreOptions
 
     [field: MaybeNull]
     public IObservableProperty<BridgeShareSaveType> BridgeShareSaveType { get => field ??= CreateProperty(SettingKeys.BridgeShareSaveType, Web.Bridge.BridgeShareSaveType.CopyToClipboard); }
+
+    [field: MaybeNull]
+    public IObservableProperty<ServerDomainMode> ServerDomainMode
+    {
+        get
+        {
+            if (field is null)
+            {
+                ServerDomainMode initial = UnsafeLocalSetting.Get(SettingKeys.ServerDomainMode, Web.ServerDomainMode.Primary);
+                field = new ObservablePropertyValueChangedCallbackWrapper<ServerDomainMode>(new ObservableProperty<ServerDomainMode>(initial), OnServerDomainModeChanged);
+                ServerDomain.SetMode(initial);
+            }
+
+            return field;
+        }
+    }
+
+    private static void OnServerDomainModeChanged(ServerDomainMode mode)
+    {
+        ServerDomain.SetMode(mode);
+        UnsafeLocalSetting.Set(SettingKeys.ServerDomainMode, mode);
+    }
 
     [field: MaybeNull]
     public IObservableProperty<TimeSpan> CalendarServerTimeZoneOffset { get => field ??= CreatePropertyForStructUsingCustom(SettingKeys.CalendarServerTimeZoneOffset, ServerRegionTimeZone.CommonOffset, TimeSpan.Parse, static v => v.ToString()); }

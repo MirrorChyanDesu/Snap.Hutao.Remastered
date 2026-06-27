@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Snap.Hutao.Remastered.Core.ExceptionService;
+using Snap.Hutao.Remastered.Web;
 using Snap.Hutao.Remastered.Web.Request.Builder;
 using System.Net.Http;
 using System.Runtime.ExceptionServices;
@@ -40,6 +41,17 @@ public sealed partial class RetryHttpHandler : DelegatingHandler
             catch (HttpRequestException ex)
             {
                 response?.Dispose();
+
+                // Detect SSL connection error → auto switch to backup domain + rewrite request URL
+                NetworkError networkError = HttpRequestExceptionHandling.HttpRequestExceptionToNetworkError(ex);
+                if (networkError is NetworkError.ERR_SECURE_CONNECTION_RESET
+                                 or NetworkError.ERR_SECURE_CONNECTION_ERROR
+                                 or NetworkError.ERR_SECURE_CONNECTION_ABORTED)
+                {
+                    ServerDomain.TryAutoFallback();
+                    RewriteToBackupDomain(request);
+                }
+
                 dispatch = ExceptionDispatchInfo.Capture(ex);
                 request.Resurrect();
             }
@@ -49,5 +61,18 @@ public sealed partial class RetryHttpHandler : DelegatingHandler
 
         dispatch?.Throw();
         throw HutaoException.InvalidOperation("Unexpected request retry state");
+    }
+
+    private static void RewriteToBackupDomain(HttpRequestMessage request)
+    {
+        if (request.RequestUri is Uri uri)
+        {
+            string original = uri.OriginalString;
+            string rewritten = original.Replace("snaphutaorp.org", "hutaorp.org");
+            if (rewritten != original)
+            {
+                request.RequestUri = new Uri(rewritten);
+            }
+        }
     }
 }

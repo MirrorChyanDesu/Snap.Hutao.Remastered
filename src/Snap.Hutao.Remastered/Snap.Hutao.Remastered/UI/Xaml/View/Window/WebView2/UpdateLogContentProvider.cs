@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.Web.WebView2.Core;
 using Snap.Hutao.Remastered.Service;
+using Snap.Hutao.Remastered.Web;
 using Windows.Graphics;
 using Windows.System;
 
@@ -24,10 +25,11 @@ public sealed class UpdateLogContentProvider : IWebView2ContentProvider
         languageCode = serviceProvider.GetRequiredService<CultureOptions>().LanguageCode;
 
         ArgumentNullException.ThrowIfNull(CoreWebView2);
-        CoreWebView2.AddWebResourceRequestedFilter("https://snaphutaorp.org/statements/latest.html", CoreWebView2WebResourceContext.Document);
+        string updateLogUrl = $"{ServerDomain.GetRootDomain()}/statements/latest.html";
+        CoreWebView2.AddWebResourceRequestedFilter(updateLogUrl, CoreWebView2WebResourceContext.Document);
         CoreWebView2.NewWindowRequested += OnNewWindowRequested;
         CoreWebView2.WebResourceRequested += OnWebResourceRequested;
-        CoreWebView2.Navigate("https://snaphutaorp.org/statements/latest.html");
+        CoreWebView2.Navigate(updateLogUrl);
         return ValueTask.CompletedTask;
     }
 

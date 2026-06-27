@@ -4509,4 +4509,16 @@ Space Available: {2}</value>
   <data name="ViewPageSettingNetworkHeader" xml:space="preserve">
     <value>Network</value>
   </data>
+  <data name="ViewPageSettingServerDomainModeHeader" xml:space="preserve">
+    <value>Server Domain</value>
+  </data>
+  <data name="ViewPageSettingServerDomainModeDescription" xml:space="preserve">
+    <value>Select primary or backup server domain. Will auto-switch to backup when SSL connection fails on the primary domain.</value>
+  </data>
+  <data name="WebServerDomainModePrimary" xml:space="preserve">
+    <value>Primary (snaphutaorp.org)</value>
+  </data>
+  <data name="WebServerDomainModeBackup" xml:space="preserve">
+    <value>Backup (snap.hutaorp.org)</value>
+  </data>
 </root>

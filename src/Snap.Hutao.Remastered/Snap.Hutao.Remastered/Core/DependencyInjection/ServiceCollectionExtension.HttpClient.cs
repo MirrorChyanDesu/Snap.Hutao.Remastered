@@ -36,7 +36,9 @@ public static partial class ServiceCollectionExtension
                             SocketsHttpHandler typedHandler = Unsafe.As<SocketsHttpHandler>(handler);
                             typedHandler.UseProxy = true;
                             typedHandler.Proxy = HttpProxyUsingSystemProxy.Instance;
+                            typedHandler.AllowAutoRedirect = false;
                         })
+                        .AddHttpMessageHandler<ServerDomainRedirectHandler>()
                         .AddHttpMessageHandler<RetryHttpHandler>();
                 })
                 .AddHttpClients();

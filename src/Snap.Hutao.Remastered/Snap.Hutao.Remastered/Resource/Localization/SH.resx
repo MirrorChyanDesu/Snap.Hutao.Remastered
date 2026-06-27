@@ -4627,4 +4627,16 @@
   <data name="ModelIntrinsicAssociationTypeHVision" xml:space="preserve">
     <value>魔女会</value>
   </data>
+  <data name="ViewPageSettingServerDomainModeHeader" xml:space="preserve">
+    <value>服务器域名</value>
+  </data>
+  <data name="ViewPageSettingServerDomainModeDescription" xml:space="preserve">
+    <value>选择主域名或备用域名。主域名因 SSL 连接问题失败时将自动切换到备用域名</value>
+  </data>
+  <data name="WebServerDomainModePrimary" xml:space="preserve">
+    <value>主域名 (snaphutaorp.org)</value>
+  </data>
+  <data name="WebServerDomainModeBackup" xml:space="preserve">
+    <value>备用域名 (hutaorp.org)</value>
+  </data>
 </root>

@@ -5,13 +5,13 @@ namespace Snap.Hutao.Remastered.Web.Endpoint.Hutao;
 
 public static class StaticResourcesEndpoints
 {
-    public static string Root { get => "https://api.snaphutaorp.org"; }
+    public static string Root { get => ServerDomain.GetApiRoot(); }
 
-    public static Uri UIIconNone { get; } = StaticRaw("Bg", "UI_Icon_None.png").ToUri();
+    public static Uri UIIconNone { get => StaticRaw("Bg", "UI_Icon_None.png").ToUri(); }
 
-    public static Uri UIItemIconNone { get; } = StaticRaw("Bg", "UI_ItemIcon_None.png").ToUri();
+    public static Uri UIItemIconNone { get => StaticRaw("Bg", "UI_ItemIcon_None.png").ToUri(); }
 
-    public static Uri UIAvatarIconSideNone { get; } = StaticRaw("AvatarIcon", "UI_AvatarIcon_Side_None.png").ToUri();
+    public static Uri UIAvatarIconSideNone { get => StaticRaw("AvatarIcon", "UI_AvatarIcon_Side_None.png").ToUri(); }
 
     public static string StaticRaw(string category, string fileName)
     {

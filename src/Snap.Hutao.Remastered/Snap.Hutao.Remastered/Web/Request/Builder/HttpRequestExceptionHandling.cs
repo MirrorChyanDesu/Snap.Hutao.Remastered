@@ -3,6 +3,7 @@
 
 using Snap.Hutao.Remastered.Core.ExceptionService;
 using Snap.Hutao.Remastered.Web.Endpoint.Hutao;
+using Snap.Hutao.Remastered.Web;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -68,6 +69,12 @@ public static class HttpRequestExceptionHandling
                 builder.AppendLine(networkError.ToString());
                 switch (networkError)
                 {
+                    case NetworkError.ERR_SECURE_CONNECTION_RESET:
+                    case NetworkError.ERR_SECURE_CONNECTION_ERROR:
+                    case NetworkError.ERR_SECURE_CONNECTION_ABORTED:
+                        builder.AppendLine(ex.Message);
+                        ServerDomain.TryAutoFallback();
+                        break;
                     case NetworkError.ERR_SECURE_CONNECTION_AUTHENTICATION_ERROR:
                         builder.AppendLine(ex.InnerException?.Message); // AuthenticationException has more details
                         break;

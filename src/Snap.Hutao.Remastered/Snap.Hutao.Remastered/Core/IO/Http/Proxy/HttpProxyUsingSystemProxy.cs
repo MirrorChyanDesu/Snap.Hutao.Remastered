@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using Snap.Hutao.Remastered.Web;
 using Snap.Hutao.Remastered.Win32;
 using System.Diagnostics;
 using System.Net;
@@ -15,7 +16,7 @@ public sealed partial class HttpProxyUsingSystemProxy : ObservableObject, IWebPr
 {
     private const string ProxySettingPath = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections";
 
-    private static readonly Uri ProxyTestDestination = "https://snaphutaorp.org".ToUri();
+    private static readonly Lazy<Uri> ProxyTestDestination = new(static () => ServerDomain.GetRootDomain().ToUri());
 
     // ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
     private readonly HutaoNativeRegistryNotification native;
@@ -33,7 +34,7 @@ public sealed partial class HttpProxyUsingSystemProxy : ObservableObject, IWebPr
 
     public string DisplayProxyUri { get => CurrentProxyUri ?? SH.ViewPageFeedbackCurrentProxyNoProxyDescription; }
 
-    public string? CurrentProxyUri { get => GetProxy(ProxyTestDestination)?.AbsoluteUri; }
+    public string? CurrentProxyUri { get => GetProxy(ProxyTestDestination.Value)?.AbsoluteUri; }
 
     public IWebProxy InnerProxy
     {

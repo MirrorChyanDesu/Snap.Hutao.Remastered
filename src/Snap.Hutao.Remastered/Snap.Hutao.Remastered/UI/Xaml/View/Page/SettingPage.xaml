@@ -414,6 +414,26 @@
                         </Border>
                     </Border>
 
+                    <!--  服务器域名  -->
+                    <Border cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Padding="16" Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <StackPanel Spacing="{ThemeResource SettingsCardSpacing}">
+                                <TextBlock Style="{StaticResource SettingsCardHeaderTextBlockStyle}" Text="{shuxm:ResourceString Name=ViewPageSettingNetworkHeader}"/>
+                                <cwc:SettingsCard
+                                    Description="{shuxm:ResourceString Name=ViewPageSettingServerDomainModeDescription}"
+                                    Header="{shuxm:ResourceString Name=ViewPageSettingServerDomainModeHeader}"
+                                    HeaderIcon="{shuxm:FontIcon Glyph=&#xE774;}">
+                                    <shuxc:SizeRestrictedContentControl>
+                                        <ComboBox
+                                            DisplayMemberPath="Name"
+                                            ItemsSource="{Binding AppOptions.ServerDomainModes}"
+                                            SelectedItem="{Binding SelectedServerDomainMode, Mode=TwoWay}"/>
+                                    </shuxc:SizeRestrictedContentControl>
+                                </cwc:SettingsCard>
+                            </StackPanel>
+                        </Border>
+                    </Border>
+
                     <!--  存储空间  -->
                     <Border cw:Effects.Shadow="{ThemeResource CompatCardShadow}" DataContext="{Binding Storage}">
                         <Border Padding="16" Style="{ThemeResource AcrylicBorderCardStyle}">

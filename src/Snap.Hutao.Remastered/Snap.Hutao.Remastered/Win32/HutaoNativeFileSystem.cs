@@ -16,6 +16,7 @@ public sealed unsafe class HutaoNativeFileSystem
     private readonly ObjectReference<Vftbl2>? objRef2;
     private readonly ObjectReference<Vftbl3>? objRef3;
     private readonly ObjectReference<Vftbl4>? objRef4;
+    private readonly ObjectReference<Vftbl5>? objRef5;
 
     public HutaoNativeFileSystem(ObjectReference<Vftbl> objRef)
     {
@@ -23,6 +24,7 @@ public sealed unsafe class HutaoNativeFileSystem
         objRef.TryAs(typeof(Vftbl2).GUID, out objRef2);
         objRef.TryAs(typeof(Vftbl3).GUID, out objRef3);
         objRef.TryAs(typeof(Vftbl4).GUID, out objRef4);
+        objRef.TryAs(typeof(Vftbl5).GUID, out objRef5);
     }
 
     public void RenameItem(ReadOnlySpan<char> filePath, ReadOnlySpan<char> newName)
@@ -250,6 +252,21 @@ public sealed unsafe class HutaoNativeFileSystem
         }
     }
 
+    public string? ResolveLink(ReadOnlySpan<char> lnkPath)
+    {
+        if (objRef5 is null)
+        {
+            return null;
+        }
+
+        fixed (char* pLnkPath = lnkPath)
+        {
+            nint pTargetPath = default;
+            Marshal.ThrowExceptionForHR(objRef5.Vftbl.ResolveLink(objRef5.ThisPtr, pLnkPath, (HutaoString.Vftbl**)&pTargetPath));
+            return pTargetPath != default ? HutaoString.AttachAbi(ref pTargetPath).Value : null;
+        }
+    }
+
     [Guid(HutaoNativeMethods.IID_IHutaoNativeFileSystem)]
     public readonly struct Vftbl
     {
@@ -296,6 +313,15 @@ public sealed unsafe class HutaoNativeFileSystem
 #pragma warning disable CS0649
         public readonly IUnknownVftbl IUnknownVftbl;
         public readonly delegate* unmanaged[Stdcall]<nint, PCWSTR, PCWSTR, BOOL, HRESULT> CopyFileAllowDecryptedDestination;
+#pragma warning restore CS0649
+    }
+
+    [Guid(HutaoNativeMethods.IID_IHutaoNativeFileSystem5)]
+    private readonly struct Vftbl5
+    {
+#pragma warning disable CS0649
+        public readonly IUnknownVftbl IUnknownVftbl;
+        public readonly delegate* unmanaged[Stdcall]<nint, PCWSTR, HutaoString.Vftbl**, HRESULT> ResolveLink;
 #pragma warning restore CS0649
     }
 }

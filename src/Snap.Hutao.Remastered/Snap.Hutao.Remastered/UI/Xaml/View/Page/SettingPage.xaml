@@ -380,6 +380,14 @@
                                         <!--  SettingsExpander uses ItemsRepeater, where first item will behave abnormally in binding  -->
                                         <cwc:SettingsCard Header="{shuxm:ResourceString Name=ViewPageSettingBackgroundImageLocalFolderCopyrightHeader}" Visibility="{Binding BackgroundImageOptions.Wallpaper, Converter={StaticResource EmptyObjectToBoolRevertConverter}}"/>
                                         <cwc:SettingsCard
+                                            ActionIcon="{shuxm:FontIcon Glyph=&#xE76C;}"
+                                            ActionIconToolTip="{shuxm:ResourceString Name=ViewPageSettingBackgroundImageSetFolderAction}"
+                                            Command="{Binding SetBackgroundImageFolderCommand}"
+                                            Description="{Binding AppOptions.BackgroundImagePath.Value}"
+                                            Header="{shuxm:ResourceString Name=ViewPageSettingBackgroundImageCustomFolderHeader}"
+                                            IsClickEnabled="True"
+                                            Visibility="{Binding BackgroundImageOptions.Wallpaper, Converter={StaticResource EmptyObjectToBoolRevertConverter}}"/>
+                                        <cwc:SettingsCard
                                             Description="{Binding BackgroundImageOptions.Wallpaper.Author}"
                                             Header="{shuxm:ResourceString Name=ViewPageSettingBackgroundImageCopyrightHeader}"
                                             IsClickEnabled="True"

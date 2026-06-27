@@ -80,6 +80,11 @@ public static class FileSystem
         Native.CreateLink(fileLocation, arguments, iconLocation, fileName);
     }
 
+    public static string? ResolveLink(string lnkPath)
+    {
+        return Native.ResolveLink(lnkPath);
+    }
+
     public static bool PickFile(HWND hWnd, string? title, string? defaultFileName, string? fileFilterName, string? fileFilterType, out string? path)
     {
         return Native.PickFile(hWnd, title, defaultFileName, fileFilterName, fileFilterType, out path);

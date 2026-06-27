@@ -75,6 +75,9 @@ public sealed partial class AppOptions : DbStoreOptions
     public IObservableProperty<BackgroundImageType> BackgroundImageType { get => field ??= CreateProperty(SettingKeys.BackgroundImageType, BackgroundImage.BackgroundImageType.None); }
 
     [field: MaybeNull]
+    public IObservableProperty<string> BackgroundImagePath { get => field ??= CreateProperty(SettingKeys.BackgroundImagePath, string.Empty); }
+
+    [field: MaybeNull]
     public IObservableProperty<Region> Region { get => field ??= CreatePropertyForStructUsingCustom(SettingKeys.AnnouncementRegion, Web.Hoyolab.Region.CNGF01, Web.Hoyolab.Region.FromRegionString, Web.Hoyolab.Region.ToRegionString); }
 
     [field: MaybeNull]

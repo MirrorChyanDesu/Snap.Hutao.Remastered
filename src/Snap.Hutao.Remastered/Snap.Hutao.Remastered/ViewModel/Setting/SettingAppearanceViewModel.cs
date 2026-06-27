@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
+using Snap.Hutao.Remastered.Factory.Picker;
 using Snap.Hutao.Remastered.Model;
 using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.Service.BackgroundImage;
@@ -24,6 +25,10 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
     public partial AppOptions AppOptions { get; }
 
     public partial BackgroundImageOptions BackgroundImageOptions { get; }
+
+    public partial IFileSystemPickerInteraction FileSystemPickerInteraction { get; }
+
+    public partial ITaskContext TaskContext { get; }
 
     // TODO: Replace with IObservableProperty
     public NameCultureInfoValue? SelectedCulture
@@ -103,5 +108,22 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
                 AppOptions.LastWindowCloseBehavior.Value = value.Value;
             }
         }
+    }
+
+    [Command("SetBackgroundImageFolderCommand")]
+    private async Task SetBackgroundImageFolderAsync()
+    {
+        ValueResult<bool, string?> result = FileSystemPickerInteraction.PickFolder(SH.ViewPageSettingBackgroundImagePickFolderTitle);
+        if (result.TryGetValue(out string? path))
+        {
+            await TaskContext.SwitchToMainThreadAsync();
+            AppOptions.BackgroundImagePath.Value = path;
+        }
+    }
+
+    [Command("ResetBackgroundImageFolderCommand")]
+    private void ResetBackgroundImageFolder()
+    {
+        AppOptions.BackgroundImagePath.Value = string.Empty;
     }
 }

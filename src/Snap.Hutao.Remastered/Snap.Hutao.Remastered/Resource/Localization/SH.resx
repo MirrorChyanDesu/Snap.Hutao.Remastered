@@ -3177,6 +3177,15 @@
   <data name="ViewPageSettingBackgroundImageLocalFolderCopyrightHeader" xml:space="preserve">
     <value>当前背景为本地图片，如遇版权问题由用户个人负责</value>
   </data>
+  <data name="ViewPageSettingBackgroundImageCustomFolderHeader" xml:space="preserve">
+    <value>自定义背景图片文件夹</value>
+  </data>
+  <data name="ViewPageSettingBackgroundImagePickFolderTitle" xml:space="preserve">
+    <value>选择背景图片文件夹</value>
+  </data>
+  <data name="ViewPageSettingBackgroundImageSetFolderAction" xml:space="preserve">
+    <value>选择文件夹</value>
+  </data>
   <data name="ViewPageSettingCacheFolderHeader" xml:space="preserve">
     <value>缓存 文件夹</value>
   </data>

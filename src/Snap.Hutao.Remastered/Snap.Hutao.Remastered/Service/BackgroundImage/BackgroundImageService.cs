@@ -28,6 +28,7 @@ public sealed partial class BackgroundImageService : IBackgroundImageService
     private readonly AppOptions appOptions;
 
     private HashSet<string>? availableBackgroundPathSet;
+    private string? currentBackgroundFolder;
 
     [GeneratedConstructor]
     public partial BackgroundImageService(IServiceProvider serviceProvider);
@@ -118,16 +119,34 @@ public sealed partial class BackgroundImageService : IBackgroundImageService
         {
             case BackgroundImageType.LocalFolder:
                 {
+                    string backgroundFolder = string.IsNullOrEmpty(appOptions.BackgroundImagePath.Value)
+                        ? HutaoRuntime.GetDataBackgroundDirectory()
+                        : appOptions.BackgroundImagePath.Value;
+
+                    // Invalidate cache if folder changed
+                    if (!string.Equals(backgroundFolder, currentBackgroundFolder, StringComparison.Ordinal))
+                    {
+                        availableBackgroundPathSet = null;
+                        currentBackgroundFolder = backgroundFolder;
+                    }
+
                     if (availableBackgroundPathSet is not { Count: > 0 })
                     {
-                        string backgroundFolder = HutaoRuntime.GetDataBackgroundDirectory();
+                        IEnumerable<string> imageFiles = Directory
+                            .EnumerateFiles(backgroundFolder, "*", SearchOption.AllDirectories)
+                            .Where(path => AllowedFormats.Contains(Path.GetExtension(path)));
 
-                        availableBackgroundPathSet =
-                        [
-                            .. Directory
-                                .EnumerateFiles(backgroundFolder, "*", SearchOption.AllDirectories)
-                                .Where(path => AllowedFormats.Contains(Path.GetExtension(path)))
-                        ];
+                        IEnumerable<string> shortcutTargets = Directory
+                            .EnumerateFiles(backgroundFolder, "*.lnk", SearchOption.AllDirectories)
+                            .Select(FileSystem.ResolveLink)
+                            .Where(target => target is not null)
+                            .SelectMany(target =>
+                                Directory.Exists(target!)
+                                    ? Directory.EnumerateFiles(target!, "*", SearchOption.TopDirectoryOnly)
+                                        .Where(p => AllowedFormats.Contains(Path.GetExtension(p)))
+                                    : AllowedFormats.Contains(Path.GetExtension(target!)) ? (string[])[target!] : []);
+
+                        availableBackgroundPathSet = [.. imageFiles.Concat(shortcutTargets)];
 
                         // Why > 1: If only one file in the folder, don't change background
                         if (previous is not null && availableBackgroundPathSet.Count > 1)

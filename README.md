@@ -123,4 +123,4 @@ https://api.snaphutaorp.org/
 
 ![Alt](https://repobeats.axiom.co/api/embed/9876638ea2cec2a214a07632390215e57f4ecc40.svg "Repobeats analytics image")
 
-[![Star History Chart](https://api.star-history.com/svg?repos=SnapHutaoRemasteringProject/Snap.Hutao.Remastered&type=Date)](https://star-history.com/#SnapHutaoRemasteringProject/Snap.Hutao.Remastered&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=SnapHutaoRemasteringProject/Snap.Hutao.Remastered&type=Date)](https://api.star-history.com/chart?repos=SnapHutaoRemasteringProject/Snap.Hutao.Remastered&type=date&legend=top-left&sealed_token=pFvNPg2Hqrpv7DLuDncVVsZUDd5ggm-Rgu38AObI3FvzcThAWOaJOpYhJgPOpceGNGFA-I-U-SXsEgosgGF4tBBbe19ngFjnZgGCOf_mUmLRaTS2LouPxA)

@@ -4628,7 +4628,16 @@
     <value>待开启</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarDuration" xml:space="preserve">
-    <value>{0:yyyy/MM/dd HH:mm} - {1:yyyy/MM/dd HH:mm}</value>
+  <value>{0} 至 {1}</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaLocalFolder" xml:space="preserve">
+    <value>本地文件夹</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaOfficialLauncherVideo" xml:space="preserve">
+    <value>官方启动器视频</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarTowerStar" xml:space="preserve">
     <value>{0}/{1}</value>
@@ -4680,5 +4689,14 @@
   </data>
   <data name="ModelIntrinsicAssociationTypeSnezhnayaStar" xml:space="preserve">
     <value>愚人众</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoHeader" xml:space="preserve">
+    <value>视频背景</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoIsLoopingHeader" xml:space="preserve">
+    <value>是否循环播放</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoIsMutedHeader" xml:space="preserve">
+    <value>是否静音播放</value>
   </data>
 </root>

@@ -4530,4 +4530,7 @@ Space Available: {2}</value>
   <data name="WebServerDomainModeBackup" xml:space="preserve">
     <value>Backup (snap.hutaorp.org)</value>
   </data>
+  <data name="ViewPageSettingBackgroundVideoHeader" xml:space="preserve">
+    <value>Wallpaper Video</value>
+  </data>
 </root>

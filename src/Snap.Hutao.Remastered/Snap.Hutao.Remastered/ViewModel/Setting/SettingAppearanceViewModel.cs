@@ -4,9 +4,11 @@
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
 using Snap.Hutao.Remastered.Factory.Picker;
+using System.Collections.Immutable;
 using Snap.Hutao.Remastered.Model;
 using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.Service.BackgroundImage;
+using Snap.Hutao.Remastered.Service.BackgroundMediaPlayer;
 using Snap.Hutao.Remastered.UI.Xaml;
 using Snap.Hutao.Remastered.UI.Xaml.Control.Theme;
 using Snap.Hutao.Remastered.UI.Xaml.Media.Backdrop;
@@ -25,6 +27,92 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
     public partial AppOptions AppOptions { get; }
 
     public partial BackgroundImageOptions BackgroundImageOptions { get; }
+
+    public partial BackgroundMediaPlayerOptions BackgroundMediaPlayerOptions { get; }
+
+    public partial IMessenger Messenger { get; }
+
+    // Background media UI bindings
+    public ImmutableArray<NameValue<BackgroundMediaType>> BackgroundMediaTypes => [
+        new NameValue<BackgroundMediaType>("None", BackgroundMediaType.None),
+            new NameValue<BackgroundMediaType>("LocalFolder", BackgroundMediaType.LocalFolder),
+            new NameValue<BackgroundMediaType>("HutaoWeb", BackgroundMediaType.HutaoWeb)
+    ];
+
+    // TODO: Replace with IObservableProperty
+    public NameValue<BackgroundMediaType>? SelectedBackgroundMediaType
+    {
+        get => field ??= Selection.Initialize(BackgroundMediaTypes, BackgroundMediaPlayerOptions.BackgroundMediaType);
+        set
+        {
+            if (SetProperty(ref field, value) && value is not null)
+            {
+                BackgroundMediaPlayerOptions.BackgroundMediaType = value.Value;
+                Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
+            }
+        }
+    }
+
+    public string? BackgroundMediaPath
+    {
+        get => BackgroundMediaPlayerOptions.BackgroundMediaPath;
+        set
+        {
+            if (BackgroundMediaPlayerOptions.BackgroundMediaPath == value)
+            {
+                return;
+            }
+
+            BackgroundMediaPlayerOptions.BackgroundMediaPath = value;
+            OnPropertyChanged();
+            Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
+        }
+    }
+
+    public bool IsLooping
+    {
+        get => BackgroundMediaPlayerOptions.IsLooping;
+        set
+        {
+            if (BackgroundMediaPlayerOptions.IsLooping == value) return;
+            BackgroundMediaPlayerOptions.IsLooping = value;
+            OnPropertyChanged();
+            Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
+        }
+    }
+
+    public bool IsMuted
+    {
+        get => BackgroundMediaPlayerOptions.IsMuted;
+        set
+        {
+            if (BackgroundMediaPlayerOptions.IsMuted == value) return;
+            BackgroundMediaPlayerOptions.IsMuted = value;
+            OnPropertyChanged();
+            Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
+        }
+    }
+
+    [Command("SetBackgroundMediaFolderCommand")]
+    private async Task SetBackgroundMediaFolderAsync()
+    {
+        ValueResult<bool, string?> result = FileSystemPickerInteraction.PickFolder("Select background media folder");
+        if (result.TryGetValue(out string? path))
+        {
+            await TaskContext.SwitchToMainThreadAsync();
+            BackgroundMediaPlayerOptions.BackgroundMediaPath = path;
+            OnPropertyChanged(nameof(BackgroundMediaPath));
+            Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
+        }
+    }
+
+    [Command("ResetBackgroundMediaFolderCommand")]
+    private void ResetBackgroundMediaFolder()
+    {
+        BackgroundMediaPlayerOptions.BackgroundMediaPath = string.Empty;
+        OnPropertyChanged(nameof(BackgroundMediaPath));
+        Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
+    }
 
     public partial IFileSystemPickerInteraction FileSystemPickerInteraction { get; }
 

@@ -51,6 +51,18 @@
             </mxi:Interaction.Behaviors>
         </Image>
 
+        <MediaPlayerElement
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Opacity="0"
+            Stretch="UniformToFill"
+            UseLayoutRounding="False">
+            <mxi:Interaction.Behaviors>
+                <shuxb:ServiceRecipientMediaPlayerElementPresenterBehavior x:Name="MediaPlayerElementRecipient"/>
+                <shuxb:PeriodicInvokeCommandOrOnActualThemeChangedBehavior Command="{x:Bind MediaPlayerElementRecipient.UpdateMediaPlayerElementCommand}" Period="0:5:0"/>
+            </mxi:Interaction.Behaviors>
+        </MediaPlayerElement>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

@@ -403,34 +403,30 @@
 
                                 <!--  Background Video  -->
                                 <cwc:SettingsExpander
+                                    Description="{shuxm:ResourceString Name=ViewPageSettingBackgroundVideoDescription}"
                                     Header="{shuxm:ResourceString Name=ViewPageSettingBackgroundVideoHeader}"
                                     HeaderIcon="{shuxm:FontIcon Glyph=&#xE714;}"
                                     IsExpanded="False">
                                     <shuxc:SizeRestrictedContentControl>
                                         <ComboBox
                                             DisplayMemberPath="Name"
-                                            ItemsSource="{Binding BackgroundMediaTypes}"
+                                            ItemsSource="{Binding AppOptions.BackgroundMediaTypes}"
                                             SelectedItem="{Binding SelectedBackgroundMediaType, Mode=TwoWay}"/>
                                     </shuxc:SizeRestrictedContentControl>
                                     <cwc:SettingsExpander.Items>
-                                        <cwc:SettingsCard Header="Local folder path">
-                                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                                <TextBox
-                                                    Width="240"
-                                                    PlaceholderText="Path or leave empty for default"
-                                                    Text="{Binding BackgroundMediaPath, Mode=TwoWay}"/>
-                                                <Button
-                                                    Command="{Binding SetBackgroundMediaFolderCommand}"
-                                                    Content="Browse..."
-                                                    Style="{ThemeResource SettingButtonStyle}"/>
-                                            </StackPanel>
-                                        </cwc:SettingsCard>
                                         <cwc:SettingsCard Header="{shuxm:ResourceString Name=ViewPageSettingBackgroundVideoIsMutedHeader}" HeaderIcon="{shuxm:FontIcon Glyph=&#xE8D6;}">
                                             <ToggleSwitch IsOn="{Binding IsMuted, Mode=TwoWay}"/>
                                         </cwc:SettingsCard>
                                         <cwc:SettingsCard Header="{shuxm:ResourceString Name=ViewPageSettingBackgroundVideoIsLoopingHeader}" HeaderIcon="{shuxm:FontIcon Glyph=&#xE8ED;}">
                                             <ToggleSwitch IsOn="{Binding IsLooping, Mode=TwoWay}"/>
                                         </cwc:SettingsCard>
+                                        <cwc:SettingsCard
+                                            ActionIcon="{shuxm:FontIcon Glyph=&#xE76C;}"
+                                            ActionIconToolTip="{shuxm:ResourceString Name=ViewPageSettingBackgroundVideoSetFolderAction}"
+                                            Command="{Binding SetBackgroundMediaFolderCommand}"
+                                            Description="{Binding BackgroundMediaPath}"
+                                            Header="{shuxm:ResourceString Name=ViewPageSettingBackgroundVideoCustomFolderHeader}"
+                                            IsClickEnabled="True"/>
                                     </cwc:SettingsExpander.Items>
                                 </cwc:SettingsExpander>
                                 <InfoBar
@@ -497,6 +493,14 @@
                                             Description="{shuxm:ResourceString Name=ViewPageSettingOpenBackgroundImageFolderDescription}"
                                             Header="{shuxm:ResourceString Name=ViewPageSettingOpenBackgroundImageFolderHeader}"
                                             IsClickEnabled="True"/>
+                                        <cwc:SettingsCard
+                                            Command="{Binding OpenBackgroundVideoFolderCommand}"
+                                            Description="{shuxm:ResourceString Name=ViewPageSettingOpenBackgroundVideoFolderDescription}"
+                                            Header="{shuxm:ResourceString Name=ViewPageSettingOpenBackgroundVideoFolderHeader}"
+                                            IsClickEnabled="True"/>
+                                        <cwc:SettingsCard
+                                            Description="{shuxm:ResourceString Name=ViewPageSettingStorageBackgroundVideoHint}"
+                                            IsClickEnabled="False"/>
                                         <cwc:SettingsCard
                                             ActionIcon="{shuxm:FontIcon Glyph=&#xE76C;}"
                                             ActionIconToolTip="{shuxm:ResourceString Name=ViewPageSettingStorageSetAction}"

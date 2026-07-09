@@ -4332,4 +4332,52 @@
   <data name="WebServerDomainModeBackup" xml:space="preserve">
     <value>備用網域 (snap.hutaorp.org)</value>
   </data>
+  <data name="ViewPageSettingBackgroundVideoHeader" xml:space="preserve">
+    <value>影片背景</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoDescription" xml:space="preserve">
+    <value>更改視窗的背景影片來源，優先級大於背景圖片</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaNone" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaLocalFolder" xml:space="preserve">
+    <value>本機隨機影片</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaOfficialLauncherVideo" xml:space="preserve">
+    <value>官方啟動器背景</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoIsLoopingHeader" xml:space="preserve">
+    <value>是否循環播放</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoIsMutedHeader" xml:space="preserve">
+    <value>是否靜音播放</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoLocalFolderPathHeader" xml:space="preserve">
+    <value>本機資料夾路徑</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoLocalFolderPathPlaceholder" xml:space="preserve">
+    <value>留空則使用預設目錄</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoBrowseButton" xml:space="preserve">
+    <value>瀏覽...</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoPickFolderTitle" xml:space="preserve">
+    <value>選擇背景影片資料夾</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoCustomFolderHeader" xml:space="preserve">
+    <value>自訂背景影片資料夾</value>
+  </data>
+  <data name="ViewPageSettingBackgroundVideoSetFolderAction" xml:space="preserve">
+    <value>設定背景影片資料夾</value>
+  </data>
+  <data name="ViewPageSettingOpenBackgroundVideoFolderHeader" xml:space="preserve">
+    <value>開啟背景影片資料夾</value>
+  </data>
+  <data name="ViewPageSettingOpenBackgroundVideoFolderDescription" xml:space="preserve">
+    <value>自定義背景影片，支援 mp4 / mkv / webm 格式</value>
+  </data>
+  <data name="ViewPageSettingStorageBackgroundVideoHint" xml:space="preserve">
+    <value>影片背景的設定優先級大於背景圖片</value>
+  </data>
 </root>

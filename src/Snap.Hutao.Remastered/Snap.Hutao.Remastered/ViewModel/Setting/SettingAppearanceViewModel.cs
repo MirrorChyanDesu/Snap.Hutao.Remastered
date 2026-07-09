@@ -4,7 +4,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
 using Snap.Hutao.Remastered.Factory.Picker;
-using System.Collections.Immutable;
+
 using Snap.Hutao.Remastered.Model;
 using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.Service.BackgroundImage;
@@ -32,17 +32,10 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
 
     public partial IMessenger Messenger { get; }
 
-    // Background media UI bindings
-    public ImmutableArray<NameValue<BackgroundMediaType>> BackgroundMediaTypes => [
-        new NameValue<BackgroundMediaType>("None", BackgroundMediaType.None),
-            new NameValue<BackgroundMediaType>("LocalFolder", BackgroundMediaType.LocalFolder),
-            new NameValue<BackgroundMediaType>("HutaoWeb", BackgroundMediaType.HutaoWeb)
-    ];
-
     // TODO: Replace with IObservableProperty
     public NameValue<BackgroundMediaType>? SelectedBackgroundMediaType
     {
-        get => field ??= Selection.Initialize(BackgroundMediaTypes, BackgroundMediaPlayerOptions.BackgroundMediaType);
+        get => field ??= Selection.Initialize(AppOptions.BackgroundMediaTypes, BackgroundMediaPlayerOptions.BackgroundMediaType);
         set
         {
             if (SetProperty(ref field, value) && value is not null)
@@ -96,7 +89,7 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
     [Command("SetBackgroundMediaFolderCommand")]
     private async Task SetBackgroundMediaFolderAsync()
     {
-        ValueResult<bool, string?> result = FileSystemPickerInteraction.PickFolder("Select background media folder");
+        ValueResult<bool, string?> result = FileSystemPickerInteraction.PickFolder(SH.ViewPageSettingBackgroundVideoPickFolderTitle);
         if (result.TryGetValue(out string? path))
         {
             await TaskContext.SwitchToMainThreadAsync();

@@ -56,7 +56,7 @@ public sealed partial class AppOptions : DbStoreOptions
         {
             BackgroundMediaType.None => SH.ViewPageSettingBackgroundMediaNone,
             BackgroundMediaType.LocalFolder => SH.ViewPageSettingBackgroundMediaLocalFolder,
-            BackgroundMediaType.HutaoWeb => SH.ViewPageSettingBackgroundMediaOfficialLauncherVideo,
+            BackgroundMediaType.OfficialLauncher => SH.ViewPageSettingBackgroundMediaOfficialLauncherVideo,
             _ => string.Empty
         });
 

@@ -51,6 +51,14 @@ public sealed partial class SettingStorageViewModel : Abstraction.ViewModel
         await Launcher.LaunchFolderPathAsync(folder);
     }
 
+    [Command("OpenBackgroundVideoFolderCommand")]
+    private static async Task OpenBackgroundVideoFolderAsync()
+    {
+        SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateUI("Open background video folder", "SettingStorageViewModel.Command"));
+        string folder = HutaoRuntime.GetDataBackgroundDirectory();
+        await Launcher.LaunchFolderPathAsync(folder);
+    }
+
     [Command("SetDataFolderCommand")]
     private async Task SetDataFolderAsync()
     {

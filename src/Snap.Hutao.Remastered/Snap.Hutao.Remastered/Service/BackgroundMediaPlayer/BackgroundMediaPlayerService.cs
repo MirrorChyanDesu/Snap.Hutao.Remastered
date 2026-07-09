@@ -3,8 +3,7 @@ using System.IO;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Caching;
 using Snap.Hutao.Remastered.Core.IO;
-using Snap.Hutao.Remastered.Web.Hutao.Wallpaper;
-using Snap.Hutao.Remastered.Web.Response;
+using Snap.Hutao.Remastered.Web.Hoyolab.HoyoPlay;
 using Windows.Media.Core;
 
 namespace Snap.Hutao.Remastered.Service.BackgroundMediaPlayer;
@@ -14,7 +13,7 @@ internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPla
 {
     private static readonly HashSet<string> AllowedVideoFormats = new(StringComparer.OrdinalIgnoreCase)
     {
-        ".mp4", ".m4v", ".mov", ".wmv", ".avi", ".webm"
+        ".mp4", ".mkv", ".webm", ".m4v", ".mov", ".wmv", ".avi"
     };
 
     private readonly BackgroundMediaPlayerOptions options;
@@ -69,93 +68,43 @@ internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPla
                                 element.Source = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(selected)));
                 break;
 
-            case BackgroundMediaType.HutaoWeb:
-                // If BackgroundMediaPath is a URL, try caching it and play from cache; fallback to streaming if cache fails.
+            case BackgroundMediaType.OfficialLauncher:
                 using (IServiceScope scope = serviceProvider.CreateScope())
                 {
-                    IImageCache? imageCache = scope.ServiceProvider.GetService<IImageCache>();
-
-                    if (!string.IsNullOrEmpty(options.BackgroundMediaPath) && Uri.IsWellFormedUriString(options.BackgroundMediaPath, UriKind.Absolute))
-                    {
-                        Uri targetUri = new Uri(options.BackgroundMediaPath);
-
-                        if (imageCache is not null)
-                        {
-                            try
-                            {
-                                ValueFile file = await imageCache.GetFileFromCacheAsync(targetUri).ConfigureAwait(false);
-
-                                // Verify cached file path is under Hutao cache directory and exists.
-                                string filePath = file.ToString();
-                                string cacheDir = HutaoRuntime.GetLocalCacheImageCacheDirectory();
-                                if (!Path.GetFullPath(filePath).StartsWith(Path.GetFullPath(cacheDir), StringComparison.OrdinalIgnoreCase) || !File.Exists(filePath))
-                                {
-                                    // If verification fails, remove and fallback to streaming.
-                                    try
-                                    {
-                                        imageCache.Remove(targetUri);
-                                    }
-                                    catch
-                                    {
-                                        // ignore remove failure
-                                    }
-
-                                    element.Source = MediaSource.CreateFromUri(targetUri);
-                                    break;
-                                }
-
-                                await taskContext.SwitchToMainThreadAsync();
-
-                                // Use file path as URI for local file playback.
-                                element.Source = MediaSource.CreateFromUri(new Uri(filePath));
-                                break;
-                            }
-                            catch
-                            {
-                                // ignore cache error and fallback to streaming
-                            }
-                        }
-
-                        element.Source = MediaSource.CreateFromUri(targetUri);
-                        break;
-                    }
-
-                    // No explicit URL provided: try to get wallpaper from Hutao wallpaper client and cache it
-                    HutaoWallpaperClient? wallpaperClient = scope.ServiceProvider.GetService<HutaoWallpaperClient>();
-                    if (wallpaperClient is not null)
+                    OfficialLauncherClient? launcherClient = scope.ServiceProvider.GetService<OfficialLauncherClient>();
+                    if (launcherClient is not null)
                     {
                         try
                         {
-                            Response<Wallpaper> resp = await wallpaperClient.GetTodayWallpaperAsync(token).ConfigureAwait(false);
-                            if (resp?.Data is { } wallpaper && wallpaper.Url is { } url)
+                            string? videoUrl = await launcherClient.GetBackgroundVideoUrlAsync(token).ConfigureAwait(false);
+                            if (!string.IsNullOrEmpty(videoUrl))
                             {
+                                IImageCache? imageCache = scope.ServiceProvider.GetService<IImageCache>();
+                                Uri targetUri = new(videoUrl);
+
                                 if (imageCache is not null)
                                 {
                                     try
                                     {
-                                        ValueFile file = await imageCache.GetFileFromCacheAsync(url).ConfigureAwait(false);
+                                        ValueFile file = await imageCache.GetFileFromCacheAsync(targetUri).ConfigureAwait(false);
 
                                         string filePath = file.ToString();
                                         string cacheDir = HutaoRuntime.GetLocalCacheImageCacheDirectory();
-                                        if (!Path.GetFullPath(filePath).StartsWith(Path.GetFullPath(cacheDir), StringComparison.OrdinalIgnoreCase) || !File.Exists(filePath))
+                                        if (Path.GetFullPath(filePath).StartsWith(Path.GetFullPath(cacheDir), StringComparison.OrdinalIgnoreCase) && File.Exists(filePath))
                                         {
-                                            try
-                                            {
-                                                imageCache.Remove(url);
-                                            }
-                                            catch
-                                            {
-                                                // ignore remove failure
-                                            }
-
-                                            element.Source = MediaSource.CreateFromUri(url);
+                                            await taskContext.SwitchToMainThreadAsync();
+                                            element.Source = MediaSource.CreateFromUri(new Uri(filePath));
                                             break;
                                         }
 
-                                        await taskContext.SwitchToMainThreadAsync();
-                                        // Use file:// style URI for local file playback
-                                        element.Source = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(filePath)));
-                                        break;
+                                        try
+                                        {
+                                            imageCache.Remove(targetUri);
+                                        }
+                                        catch
+                                        {
+                                            // ignore remove failure
+                                        }
                                     }
                                     catch
                                     {
@@ -163,7 +112,7 @@ internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPla
                                     }
                                 }
 
-                                element.Source = MediaSource.CreateFromUri(url);
+                                element.Source = MediaSource.CreateFromUri(targetUri);
                                 break;
                             }
                         }

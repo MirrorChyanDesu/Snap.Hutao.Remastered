@@ -1024,11 +1024,10 @@
                                     <ToggleSwitch
                                         Grid.Row="2"
                                         Grid.Column="2"
-                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameEnableInLevelClockPageSpeedUpHeader}"
-                                        IsOn="{Binding LaunchOptions.EnableInLevelClockPageSpeedUp.Value, Mode=TwoWay}"
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameDisablePlayerDiveMosaicHeader}"
+                                        IsOn="{Binding LaunchOptions.DisablePlayerDiveMosaic.Value, Mode=TwoWay}"
                                         OffContent="{shuxm:ResourceString Name=ViewPageLaunchGameDisableFogOff}"
-                                        OnContent="{shuxm:ResourceString Name=ViewPageLaunchGameDisableFogOn}"
-                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameEnableInLevelClockPageSpeedUpDescription}"/>
+                                        OnContent="{shuxm:ResourceString Name=ViewPageLaunchGameDisableFogOn}"/>
                                     <ToggleSwitch
                                         Grid.Row="3"
                                         Grid.Column="0"
@@ -1104,15 +1103,17 @@
                                     <ToggleSwitch
                                         Grid.Row="4"
                                         Grid.Column="1"
-                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandWeakMapCheckHeader}"
-                                        IsOn="{Binding LaunchOptions.WeakMapCheck.Value, Mode=TwoWay}"/>
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameEnableInLevelClockPageSpeedUpHeader}"
+                                        IsOn="{Binding LaunchOptions.EnableInLevelClockPageSpeedUp.Value, Mode=TwoWay}"
+                                        OffContent="{shuxm:ResourceString Name=ViewPageLaunchGameDisableFogOff}"
+                                        OnContent="{shuxm:ResourceString Name=ViewPageLaunchGameDisableFogOn}"
+                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameEnableInLevelClockPageSpeedUpDescription}"/>
 
                                     <ToggleSwitch
                                         Grid.Row="4"
                                         Grid.Column="2"
-                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDisplayPaimonHeader}"
-                                        IsOn="{Binding LaunchOptions.DisplayPaimon.Value, Mode=TwoWay}"
-                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDisplayPaimonDescription}"/>
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandWeakMapCheckHeader}"
+                                        IsOn="{Binding LaunchOptions.WeakMapCheck.Value, Mode=TwoWay}"/>
                                     <ToggleSwitch
                                         Grid.Row="5"
                                         Grid.Column="0"
@@ -1128,9 +1129,9 @@
                                     <ToggleSwitch
                                         Grid.Row="5"
                                         Grid.Column="2"
-                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHideGrassHeader}"
-                                        IsOn="{Binding LaunchOptions.HideGrass.Value, Mode=TwoWay}"
-                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHideGrassDescription}"/>
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDisplayPaimonHeader}"
+                                        IsOn="{Binding LaunchOptions.DisplayPaimon.Value, Mode=TwoWay}"
+                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDisplayPaimonDescription}"/>
 
                                     <ToggleSwitch
                                         Grid.Row="6"
@@ -1160,19 +1161,24 @@
                                     <ToggleSwitch
                                         Grid.Row="7"
                                         Grid.Column="2"
-                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDebugModeHeader}"
-                                        IsOn="{Binding LaunchOptions.DebugMode.Value, Mode=TwoWay}"
-                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDebugModeDescription}"/>
-
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHideGrassHeader}"
+                                        IsOn="{Binding LaunchOptions.HideGrass.Value, Mode=TwoWay}"
+                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHideGrassDescription}"/>
                                     <!--  Hidden items should be at the end  -->
                                     <ToggleSwitch
                                         Grid.Row="8"
                                         Grid.Column="0"
+                                        Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDebugModeHeader}"
+                                        IsOn="{Binding LaunchOptions.DebugMode.Value, Mode=TwoWay}"
+                                        ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandDebugModeDescription}"/>
+                                    <ToggleSwitch
+                                        Grid.Row="8"
+                                        Grid.Column="1"
                                         Header="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHidePlayerInfoHeader}"
                                         IsOn="{Binding LaunchOptions.HidePlayerInfo.Value, Mode=TwoWay}"
                                         ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameIslandHidePlayerInfoDescription}"
                                         Visibility="{Binding IsDeveloperAndLoggedIn, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                    
+
                                 </Grid>
                             </ContentControl>
                         </ScrollViewer>

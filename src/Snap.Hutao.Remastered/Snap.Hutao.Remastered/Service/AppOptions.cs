@@ -54,9 +54,9 @@ public sealed partial class AppOptions : DbStoreOptions
     public ImmutableArray<NameValue<BackgroundMediaType>> BackgroundMediaTypes { get; } = ImmutableCollectionsNameValue.FromEnum<BackgroundMediaType>(type =>
         type switch
         {
-            BackgroundMediaType.None => SH.ViewPageSettingBackgroundMediaNone,
-            BackgroundMediaType.LocalFolder => SH.ViewPageSettingBackgroundMediaLocalFolder,
-            BackgroundMediaType.OfficialLauncher => SH.ViewPageSettingBackgroundMediaOfficialLauncherVideo,
+            BackgroundMediaPlayer.BackgroundMediaType.None => SH.ViewPageSettingBackgroundMediaNone,
+            BackgroundMediaPlayer.BackgroundMediaType.LocalFolder => SH.ViewPageSettingBackgroundMediaLocalFolder,
+            BackgroundMediaPlayer.BackgroundMediaType.OfficialLauncher => SH.ViewPageSettingBackgroundMediaOfficialLauncherVideo,
             _ => string.Empty
         });
 
@@ -86,6 +86,18 @@ public sealed partial class AppOptions : DbStoreOptions
 
     [field: MaybeNull]
     public IObservableProperty<string> BackgroundImagePath { get => field ??= CreateProperty(SettingKeys.BackgroundImagePath, string.Empty); }
+
+    [field: MaybeNull]
+    public IObservableProperty<BackgroundMediaType> BackgroundMediaType { get => field ??= CreateProperty(SettingKeys.BackgroundMediaType, BackgroundMediaPlayer.BackgroundMediaType.None); }
+
+    [field: MaybeNull]
+    public IObservableProperty<string> BackgroundMediaPath { get => field ??= CreateProperty(SettingKeys.BackgroundMediaPath, string.Empty); }
+
+    [field: MaybeNull]
+    public IObservableProperty<bool> IsBackgroundMediaMuted { get => field ??= CreateProperty(SettingKeys.IsBackgroundMediaMuted, true); }
+
+    [field: MaybeNull]
+    public IObservableProperty<bool> IsBackgroundMediaLooping { get => field ??= CreateProperty(SettingKeys.IsBackgroundMediaLooping, true); }
 
     [field: MaybeNull]
     public IObservableProperty<Region> Region { get => field ??= CreatePropertyForStructUsingCustom(SettingKeys.AnnouncementRegion, Web.Hoyolab.Region.CNGF01, Web.Hoyolab.Region.FromRegionString, Web.Hoyolab.Region.ToRegionString); }

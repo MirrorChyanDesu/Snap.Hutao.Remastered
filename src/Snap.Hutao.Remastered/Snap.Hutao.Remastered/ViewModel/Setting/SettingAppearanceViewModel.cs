@@ -28,19 +28,17 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
 
     public partial BackgroundImageOptions BackgroundImageOptions { get; }
 
-    public partial BackgroundMediaPlayerOptions BackgroundMediaPlayerOptions { get; }
-
     public partial IMessenger Messenger { get; }
 
     // TODO: Replace with IObservableProperty
     public NameValue<BackgroundMediaType>? SelectedBackgroundMediaType
     {
-        get => field ??= Selection.Initialize(AppOptions.BackgroundMediaTypes, BackgroundMediaPlayerOptions.BackgroundMediaType);
+        get => field ??= Selection.Initialize(AppOptions.BackgroundMediaTypes, AppOptions.BackgroundMediaType.Value);
         set
         {
             if (SetProperty(ref field, value) && value is not null)
             {
-                BackgroundMediaPlayerOptions.BackgroundMediaType = value.Value;
+                AppOptions.BackgroundMediaType.Value = value.Value;
                 Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
             }
         }
@@ -48,15 +46,15 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
 
     public string? BackgroundMediaPath
     {
-        get => BackgroundMediaPlayerOptions.BackgroundMediaPath;
+        get => AppOptions.BackgroundMediaPath.Value;
         set
         {
-            if (BackgroundMediaPlayerOptions.BackgroundMediaPath == value)
+            if (AppOptions.BackgroundMediaPath.Value == value)
             {
                 return;
             }
 
-            BackgroundMediaPlayerOptions.BackgroundMediaPath = value;
+            AppOptions.BackgroundMediaPath.Value = value;
             OnPropertyChanged();
             Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
         }
@@ -64,11 +62,11 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
 
     public bool IsLooping
     {
-        get => BackgroundMediaPlayerOptions.IsLooping;
+        get => AppOptions.IsBackgroundMediaLooping.Value;
         set
         {
-            if (BackgroundMediaPlayerOptions.IsLooping == value) return;
-            BackgroundMediaPlayerOptions.IsLooping = value;
+            if (AppOptions.IsBackgroundMediaLooping.Value == value) return;
+            AppOptions.IsBackgroundMediaLooping.Value = value;
             OnPropertyChanged();
             Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
         }
@@ -76,11 +74,11 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
 
     public bool IsMuted
     {
-        get => BackgroundMediaPlayerOptions.IsMuted;
+        get => AppOptions.IsBackgroundMediaMuted.Value;
         set
         {
-            if (BackgroundMediaPlayerOptions.IsMuted == value) return;
-            BackgroundMediaPlayerOptions.IsMuted = value;
+            if (AppOptions.IsBackgroundMediaMuted.Value == value) return;
+            AppOptions.IsBackgroundMediaMuted.Value = value;
             OnPropertyChanged();
             Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
         }
@@ -93,7 +91,7 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
         if (result.TryGetValue(out string? path))
         {
             await TaskContext.SwitchToMainThreadAsync();
-            BackgroundMediaPlayerOptions.BackgroundMediaPath = path;
+            AppOptions.BackgroundMediaPath.Value = path;
             OnPropertyChanged(nameof(BackgroundMediaPath));
             Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
         }
@@ -102,7 +100,7 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
     [Command("ResetBackgroundMediaFolderCommand")]
     private void ResetBackgroundMediaFolder()
     {
-        BackgroundMediaPlayerOptions.BackgroundMediaPath = string.Empty;
+        AppOptions.BackgroundMediaPath.Value = string.Empty;
         OnPropertyChanged(nameof(BackgroundMediaPath));
         Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
     }

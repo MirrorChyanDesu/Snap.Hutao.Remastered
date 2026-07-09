@@ -3,6 +3,7 @@ using System.IO;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Caching;
 using Snap.Hutao.Remastered.Core.IO;
+using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.Web.Hoyolab.HoyoPlay;
 using Windows.Media.Core;
 
@@ -16,7 +17,7 @@ internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPla
         ".mp4", ".mkv", ".webm", ".m4v", ".mov", ".wmv", ".avi"
     };
 
-    private readonly BackgroundMediaPlayerOptions options;
+    private readonly AppOptions appOptions;
     private readonly IServiceProvider serviceProvider;
 
     [GeneratedConstructor]
@@ -38,14 +39,14 @@ internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPla
 
         if (element.MediaPlayer is not null)
         {
-            element.MediaPlayer.IsMuted = options.IsMuted;
-            element.MediaPlayer.IsLoopingEnabled = options.IsLooping;
+            element.MediaPlayer.IsMuted = appOptions.IsBackgroundMediaMuted.Value;
+            element.MediaPlayer.IsLoopingEnabled = appOptions.IsBackgroundMediaLooping.Value;
         }
 
-        switch (options.BackgroundMediaType)
+        switch (appOptions.BackgroundMediaType.Value)
         {
             case BackgroundMediaType.LocalFolder:
-                string folder = string.IsNullOrEmpty(options.BackgroundMediaPath) ? HutaoRuntime.GetDataBackgroundDirectory() : options.BackgroundMediaPath!;
+                string folder = string.IsNullOrEmpty(appOptions.BackgroundMediaPath.Value) ? HutaoRuntime.GetDataBackgroundDirectory() : appOptions.BackgroundMediaPath.Value!;
 
                 if (!Directory.Exists(folder))
                 {

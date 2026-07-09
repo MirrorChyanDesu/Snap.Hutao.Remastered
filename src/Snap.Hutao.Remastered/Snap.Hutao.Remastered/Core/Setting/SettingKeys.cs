@@ -28,6 +28,10 @@ public static class SettingKeys
     // UI
     public const string BackgroundImageType          = "Snap::Hutao::UI::BackgroundImage::Type";
     public const string BackgroundImagePath          = "Snap::Hutao::UI::BackgroundImage::Path";
+    public const string BackgroundMediaType          = "Snap::Hutao::UI::BackgroundMedia::Type";
+    public const string BackgroundMediaPath          = "Snap::Hutao::UI::BackgroundMedia::Path";
+    public const string IsBackgroundMediaMuted       = "Snap::Hutao::UI::BackgroundMedia::IsMuted";
+    public const string IsBackgroundMediaLooping     = "Snap::Hutao::UI::BackgroundMedia::IsLooping";
     public const string ElementTheme                 = "Snap::Hutao::UI::ElementTheme";
     public const string SystemBackdropType           = "Snap::Hutao::UI::SystemBackdropType";
     public const string GuideState                   = "Snap::Hutao::UI::Windowing::GuideWindow::State::1.17";

@@ -15,6 +15,8 @@ public sealed class LinkMetadataContext
 
     public ImmutableArray<ProudSkill> Skills { get; init; }
 
+    public ImmutableArray<Skill> Talents { get; init; }
+
     public ImmutableArray<ProudSkill> Inherents { get; init; }
 
     public bool TryGetNameAndDescription(MiHoYoSyntaxLinkKind kind, uint id, out string name, out string description)
@@ -38,6 +40,11 @@ public sealed class LinkMetadataContext
                 ProudSkill skill = Skills.Single(s => s.Id == id);
                 name = skill.Name;
                 description = skill.Description;
+                break;
+            case MiHoYoSyntaxLinkKind.Talent:
+                Skill talent = Talents.Single(s => s.Id == id);
+                name = talent.Name;
+                description = talent.Description;
                 break;
             default:
                 return false;

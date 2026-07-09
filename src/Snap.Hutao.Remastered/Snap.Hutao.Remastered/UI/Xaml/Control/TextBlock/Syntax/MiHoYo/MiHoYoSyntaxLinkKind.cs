@@ -8,5 +8,6 @@ public enum MiHoYoSyntaxLinkKind
     None,
     Name,
     Skill,
+    Talent,
     Inherent,
 }

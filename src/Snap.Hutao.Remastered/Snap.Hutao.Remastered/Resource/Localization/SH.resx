@@ -2426,6 +2426,12 @@
   <data name="ViewPageAvatarPropertyDefaultDescription" xml:space="preserve">
     <value>尚未获取任何角色信息</value>
   </data>
+  <data name="ViewPageAvatarPropertyUnlockedDescriptionOff" xml:space="preserve">
+    <value>强化前</value>
+  </data>
+  <data name="ViewPageAvatarPropertyUnlockedDescriptionOn" xml:space="preserve">
+    <value>强化后</value>
+  </data>
   <data name="ViewPageAvatarPropertyExportToTextLabel" xml:space="preserve">
     <value>导出文本到剪贴板</value>
   </data>

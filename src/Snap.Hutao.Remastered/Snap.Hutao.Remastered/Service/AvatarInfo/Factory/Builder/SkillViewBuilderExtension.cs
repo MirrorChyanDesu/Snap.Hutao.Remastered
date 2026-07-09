@@ -49,6 +49,13 @@ public static class SkillViewBuilderExtension
         return builder;
     }
 
+    public static TBuilder SetUnlockedDescription<TBuilder>(this TBuilder builder, string? unlockedDescription)
+        where TBuilder : ISkillViewBuilder
+    {
+        builder.View.UnlockedDescription = unlockedDescription;
+        return builder;
+    }
+
     public static TBuilder SetName<TBuilder>(this TBuilder builder, string name)
         where TBuilder : class, ISkillViewBuilder
     {

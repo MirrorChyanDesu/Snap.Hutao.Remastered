@@ -26,6 +26,13 @@ public static class ConstellationViewBuilderExtension
         return builder;
     }
 
+    public static TBuilder SetUnlockedDescription<TBuilder>(this TBuilder builder, string? unlockedDescription)
+        where TBuilder : IConstellationViewBuilder
+    {
+        builder.View.UnlockedDescription = unlockedDescription;
+        return builder;
+    }
+
     public static TBuilder SetName<TBuilder>(this TBuilder builder, string name)
         where TBuilder : class, IConstellationViewBuilder
     {

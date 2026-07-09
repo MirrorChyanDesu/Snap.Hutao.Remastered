@@ -39,6 +39,7 @@ public static class AvatarViewBuilderSkillExtension
                 .SetName(proudSkill.Name)
                 .SetIcon(SkillIconConverter.IconNameToUri(proudSkill.Icon))
                 .SetDescription(proudSkill.Description)
+                .SetUnlockedDescription(proudSkill.UnlockedDescription)
                 .SetGroupId(proudSkill.GroupId)
                 .SetLevel(LevelFormat.Format(state.NonExtraLeveledSkills[proudSkill.Id], state.ExtraLevels.GetValueOrDefault(proudSkill.Id)))
                 .SetLevelNumber(state.NonExtraLeveledSkills[proudSkill.Id])

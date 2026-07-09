@@ -46,12 +46,28 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <shuxct:DescriptionTextBlock
-                    Grid.ColumnSpan="{Binding ElementName=ProudSelector, Path=Visibility, Converter={StaticResource VisibilityToColumnSpanConverter}}"
-                    VerticalAlignment="Top"
-                    Description="{Binding Description}"
-                    LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
-                    TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                <StackPanel Grid.ColumnSpan="{Binding ElementName=ProudSelector, Path=Visibility, Converter={StaticResource VisibilityToColumnSpanConverter}}">
+                    <ToggleSwitch
+                        x:Name="SkillUnlockedToggle"
+                        HorizontalAlignment="Right"
+                        IsOn="True"
+                        OffContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOff}"
+                        OnContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOn}"
+                        Visibility="{Binding UnlockedDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
+                    <Grid>
+                        <shuxct:DescriptionTextBlock
+                            VerticalAlignment="Top"
+                            Description="{Binding Description}"
+                            LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
+                            TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                        <shuxct:DescriptionTextBlock
+                            VerticalAlignment="Top"
+                            Description="{Binding UnlockedDescription}"
+                            LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
+                            TextStyle="{StaticResource BodyTextBlockStyle}"
+                            Visibility="{Binding ElementName=SkillUnlockedToggle, Path=IsOn, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    </Grid>
+                </StackPanel>
                 <shuxvs:DescParamComboBox
                     x:Name="ProudSelector"
                     Grid.Column="1"
@@ -63,11 +79,26 @@
         </DataTemplate>
 
         <DataTemplate x:Key="TalentDataTemplate" x:DataType="shmma:Skill">
-            <shuxct:DescriptionTextBlock
-                Margin="0,12,0,0"
-                Description="{Binding Description}"
-                LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
-                TextStyle="{StaticResource BodyTextBlockStyle}"/>
+            <StackPanel Margin="0,12,0,0">
+                <ToggleSwitch
+                    x:Name="UnlockedTalentToggle"
+                    HorizontalAlignment="Right"
+                    IsOn="True"
+                    OffContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOff}"
+                    OnContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOn}"
+                    Visibility="{Binding UnlockedDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
+                <Grid>
+                    <shuxct:DescriptionTextBlock
+                        Description="{Binding Description}"
+                        LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
+                        TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                    <shuxct:DescriptionTextBlock
+                        Description="{Binding UnlockedDescription}"
+                        LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
+                        TextStyle="{StaticResource BodyTextBlockStyle}"
+                        Visibility="{Binding ElementName=UnlockedTalentToggle, Path=IsOn, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                </Grid>
+            </StackPanel>
         </DataTemplate>
 
         <DataTemplate x:Key="TokenTemplate" x:DataType="shuxca:SearchToken">

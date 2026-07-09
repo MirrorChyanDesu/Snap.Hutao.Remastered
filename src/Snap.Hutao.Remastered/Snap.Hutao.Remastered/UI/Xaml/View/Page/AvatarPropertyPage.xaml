@@ -271,10 +271,24 @@
                     </Button.Content>
                     <Button.Flyout>
                         <Flyout Placement="Bottom">
-                            <shuxct:DescriptionTextBlock
-                                MaxWidth="320"
-                                Description="{Binding Description}"
-                                TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                            <StackPanel MaxWidth="320">
+                                <ToggleSwitch
+                                    x:Name="UnlockedToggle"
+                                    HorizontalAlignment="Right"
+                                    IsOn="True"
+                                    OffContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOff}"
+                                    OnContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOn}"
+                                    Visibility="{Binding UnlockedDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
+                                <Grid>
+                                    <shuxct:DescriptionTextBlock
+                                        Description="{Binding Description}"
+                                        TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                                    <shuxct:DescriptionTextBlock
+                                        Description="{Binding UnlockedDescription}"
+                                        TextStyle="{StaticResource BodyTextBlockStyle}"
+                                        Visibility="{Binding ElementName=UnlockedToggle, Path=IsOn, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                </Grid>
+                            </StackPanel>
                         </Flyout>
                     </Button.Flyout>
                 </Button>
@@ -318,7 +332,17 @@
                                     <x:Double x:Key="SettingsCardMinHeight">0</x:Double>
                                     <!--  ReSharper restore Xaml.RedundantResource  -->
                                 </StackPanel.Resources>
-                                <shuxct:DescriptionTextBlock Description="{Binding Description}" TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                                <ToggleSwitch
+                                    x:Name="SkillUnlockedToggle"
+                                    HorizontalAlignment="Right"
+                                    IsOn="True"
+                                    OffContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOff}"
+                                    OnContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOn}"
+                                    Visibility="{Binding UnlockedDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
+                                <Grid>
+                                    <shuxct:DescriptionTextBlock Description="{Binding Description}" TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                                    <shuxct:DescriptionTextBlock Description="{Binding UnlockedDescription}" TextStyle="{StaticResource BodyTextBlockStyle}" Visibility="{Binding ElementName=SkillUnlockedToggle, Path=IsOn, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                </Grid>
                                 <ItemsControl Margin="0,12,0,0" ItemsSource="{Binding Info.Parameters}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>

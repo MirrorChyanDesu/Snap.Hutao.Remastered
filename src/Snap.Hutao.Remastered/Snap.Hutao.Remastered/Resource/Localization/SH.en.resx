@@ -2420,6 +2420,12 @@ Space Available: {2}</value>
   <data name="ViewPageAvatarPropertyDefaultDescription" xml:space="preserve">
     <value>No Character Data Fetched</value>
   </data>
+  <data name="ViewPageAvatarPropertyUnlockedDescriptionOff" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="ViewPageAvatarPropertyUnlockedDescriptionOn" xml:space="preserve">
+    <value>Unlocked</value>
+  </data>
   <data name="ViewPageAvatarPropertyExportToTextLabel" xml:space="preserve">
     <value>Export text to clipboard</value>
   </data>

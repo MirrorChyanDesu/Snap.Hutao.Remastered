@@ -6,4 +6,6 @@ namespace Snap.Hutao.Remastered.ViewModel.AvatarProperty;
 public sealed class ConstellationView : NameIconDescription
 {
     public bool IsActivated { get; set; }
+
+    public string? UnlockedDescription { get; set; }
 }

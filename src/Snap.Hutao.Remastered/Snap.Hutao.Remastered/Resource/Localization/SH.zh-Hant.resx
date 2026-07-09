@@ -2417,6 +2417,12 @@
   <data name="ViewPageAvatarPropertyDefaultDescription" xml:space="preserve">
     <value>尚未獲取任何角色資訊</value>
   </data>
+  <data name="ViewPageAvatarPropertyUnlockedDescriptionOff" xml:space="preserve">
+    <value>強化前</value>
+  </data>
+  <data name="ViewPageAvatarPropertyUnlockedDescriptionOn" xml:space="preserve">
+    <value>強化後</value>
+  </data>
   <data name="ViewPageAvatarPropertyExportToTextLabel" xml:space="preserve">
     <value>匯出文字到剪貼簿</value>
   </data>

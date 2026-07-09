@@ -86,7 +86,7 @@
 
             <DataTemplate x:Key="DownloadSummaryTemplate" x:DataType="shvg:DownloadSummary">
                 <Border
-                    Width="180"
+                    Width="240"
                     Margin="0,0,4,4"
                     Style="{StaticResource BorderCardStyle}">
                     <StackPanel Margin="8">
@@ -97,8 +97,11 @@
                             Value="{Binding ProgressValue}"/>
                         <TextBlock
                             Opacity="0.6"
-                            Style="{StaticResource CaptionTextBlockStyle}"
-                            Text="{Binding Description}"/>
+                            Style="{StaticResource CaptionTextBlockStyle}">
+                            <Run Text="{Binding Description}"/>
+                            <Run Text=" "/>
+                            <Run Text="{Binding Speed}"/>
+                        </TextBlock>
                     </StackPanel>
                 </Border>
             </DataTemplate>
@@ -658,14 +661,21 @@
                             ItemsSource="{Binding DownloadSummaries}"/>
                     </ScrollViewer>
 
-                    <TextBlock
-                        Grid.Row="2"
-                        Margin="16"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{shuxm:ResourceString Name=ViewGuideStepStaticResourceDownloadIncompleteHint}"/>
+                    <Grid Grid.Row="2" Margin="16">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource CaptionTextBlockStyle}"
+                            Text="{shuxm:ResourceString Name=ViewGuideStepStaticResourceDownloadIncompleteHint}"/>
+                        <Button
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{Binding SkipDownloadCommand}"
+                            Content="{shuxm:ResourceString Name=ViewModelGuideActionSkipDownload}"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Visibility="{Binding IsDownloading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    </Grid>
                 </Grid>
 
             </cwc:Case>

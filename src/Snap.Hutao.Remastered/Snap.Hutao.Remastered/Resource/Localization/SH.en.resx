@@ -2105,6 +2105,9 @@ Space Available: {2}</value>
   <data name="ViewModelGuideActionNext" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="ViewModelGuideActionSkipDownload" xml:space="preserve">
+    <value>Skip</value>
+  </data>
   <data name="ViewModelGuideActionStaticResourceBegin" xml:space="preserve">
     <value>Dowloading Assets</value>
   </data>
@@ -2350,6 +2353,15 @@ Space Available: {2}</value>
   </data>
   <data name="ViewModelWelcomeDownloadSummaryException" xml:space="preserve">
     <value>File Download Exceptions</value>
+  </data>
+  <data name="ViewModelWelcomeDownloadSummarySpeed" xml:space="preserve">
+    <value>{0}/s</value>
+  </data>
+  <data name="ViewModelWelcomeDownloadSummarySkipped" xml:space="preserve">
+    <value>Skipped</value>
+  </data>
+  <data name="ViewModelWelcomeDownloadSummaryStalled" xml:space="preserve">
+    <value>Download Timeout</value>
   </data>
   <data name="ViewModelWikiAvatarStrategyNotFound" xml:space="preserve">
     <value>No character guides found</value>

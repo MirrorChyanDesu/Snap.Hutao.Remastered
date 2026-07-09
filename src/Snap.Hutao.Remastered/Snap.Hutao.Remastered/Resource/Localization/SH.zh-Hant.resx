@@ -2102,6 +2102,9 @@
   <data name="ViewModelGuideActionNext" xml:space="preserve">
     <value>下一步</value>
   </data>
+  <data name="ViewModelGuideActionSkipDownload" xml:space="preserve">
+    <value>跳過</value>
+  </data>
   <data name="ViewModelGuideActionStaticResourceBegin" xml:space="preserve">
     <value>下載資源檔案中，請稍候</value>
   </data>
@@ -2347,6 +2350,15 @@
   </data>
   <data name="ViewModelWelcomeDownloadSummaryException" xml:space="preserve">
     <value>檔案下載異常</value>
+  </data>
+  <data name="ViewModelWelcomeDownloadSummarySpeed" xml:space="preserve">
+    <value>{0}/s</value>
+  </data>
+  <data name="ViewModelWelcomeDownloadSummarySkipped" xml:space="preserve">
+    <value>已跳過</value>
+  </data>
+  <data name="ViewModelWelcomeDownloadSummaryStalled" xml:space="preserve">
+    <value>下載超時</value>
   </data>
   <data name="ViewModelWikiAvatarStrategyNotFound" xml:space="preserve">
     <value>暫無該角色的攻略資訊</value>

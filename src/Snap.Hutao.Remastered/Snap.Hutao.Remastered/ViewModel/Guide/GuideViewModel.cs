@@ -3,6 +3,7 @@
 // Copyright (c) Snap Hutao RP. All rights reserved.
 // Licensed under the MIT license.
 
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Windows.AppLifecycle;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Logging;
@@ -206,6 +207,11 @@ public sealed partial class GuideViewModel : Abstraction.ViewModel
 
     public ObservableCollection<DownloadSummary>? DownloadSummaries { get; set => SetProperty(ref field, value); }
 
+    [ObservableProperty]
+    public partial bool IsDownloading { get; set; }
+
+    private CancellationTokenSource? downloadCts;
+
     private void OnAgreementStateChanged()
     {
         // 使用底层存储获取状态，避免访问 State getter 导致的副作用（State getter 会重置同意项）
@@ -291,19 +297,44 @@ public sealed partial class GuideViewModel : Abstraction.ViewModel
         }
     }
 
+    [Command("SkipDownloadCommand")]
+    private void SkipDownload()
+    {
+        SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateUI("Skip static resource download", "GuideViewModel.Command"));
+        downloadCts?.Cancel();
+        IsDownloading = false;
+    }
+
     [SuppressMessage("", "SH003")]
     private async Task DownloadStaticResourceAsync()
     {
         DownloadSummaries = GetUnfulfilledCategoryCollection(serviceProvider);
+        IsDownloading = true;
 
-        // Pass a collection copy, so that we can remove element in loop
-        await Parallel.ForEachAsync((DownloadSummary[])[.. DownloadSummaries], async (summary, token) =>
+        try
         {
-            if (await summary.DownloadAndExtractAsync().ConfigureAwait(true))
+            downloadCts = new CancellationTokenSource();
+            CancellationToken token = downloadCts.Token;
+
+            // Pass a collection copy, so that we can remove element in loop
+            await Parallel.ForEachAsync((DownloadSummary[])[.. DownloadSummaries], async (summary, ct) =>
             {
-                taskContext.InvokeOnMainThread(() => DownloadSummaries.Remove(summary));
-            }
-        }).ConfigureAwait(false);
+                if (await summary.DownloadAndExtractAsync(token).ConfigureAwait(true))
+                {
+                    taskContext.InvokeOnMainThread(() => DownloadSummaries.Remove(summary));
+                }
+            }).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException)
+        {
+            // User skipped, proceed to completion with whatever was downloaded
+        }
+        finally
+        {
+            IsDownloading = false;
+            downloadCts?.Dispose();
+            downloadCts = null;
+        }
 
         StaticResource.FulfillAll();
         UnsafeLocalSetting.Set(SettingKeys.GuideState, GuideState.Completed);

@@ -63,7 +63,10 @@ public sealed partial class DownloadSummary : ObservableObject
     [ObservableProperty]
     public partial double ProgressValue { get; set; }
 
-    public async ValueTask<bool> DownloadAndExtractAsync()
+    [ObservableProperty]
+    public partial string Speed { get; private set; } = string.Empty;
+
+    public async ValueTask<bool> DownloadAndExtractAsync(CancellationToken externalToken = default)
     {
         HttpRequestMessageBuilder builder = httpRequestMessageBuilderFactory
             .Create()
@@ -73,61 +76,119 @@ public sealed partial class DownloadSummary : ObservableObject
 
         try
         {
-            int retryTimes = 0;
-            while (retryTimes++ < 3)
+            using (CancellationTokenSource stallCts = new())
+            using (CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(externalToken, stallCts.Token))
             {
-                builder.Resurrect();
+                CancellationToken token = linkedCts.Token;
 
-                TimeSpan delay = default;
-                using (HttpRequestMessage message = builder.HttpRequestMessage)
+                // Stall detection: monitor bytes progress every 1s, cancel if stalled for 10s
+                long lastBytesRead = 0;
+                int stallSeconds = 0;
+                Task stallMonitorTask = Task.Run(async () =>
                 {
-                    using (HttpResponseMessage response = await httpClient.SendAsync(message, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false))
+                    try
                     {
-                        response.EnsureSuccessStatusCode();
-
-                        if (!AllowedMediaTypes.Contains(response.Content.Headers.ContentType?.MediaType))
+                        while (!token.IsCancellationRequested)
                         {
-                            await taskContext.SwitchToMainThreadAsync();
-                            Description = SH.ViewModelWelcomeDownloadSummaryContentTypeNotMatch;
-                        }
-                        else
-                        {
-                            long contentLength = response.Content.Headers.ContentLength ?? 0;
-                            using (Stream content = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                            await Task.Delay(1000, token).ConfigureAwait(false);
+                            long currentBytes = Interlocked.Read(ref _bytesReadDuringCopy);
+                            if (currentBytes == 0)
                             {
-                                using (TempFileStream tempStream = new(FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                                // Download hasn't started yet, keep waiting
+                                continue;
+                            }
+
+                            if (currentBytes == Volatile.Read(ref lastBytesRead))
+                            {
+                                stallSeconds++;
+                                if (stallSeconds >= 10)
                                 {
-                                    using (StreamCopyWorker worker = new(content, tempStream, contentLength))
-                                    {
-                                        await worker.CopyAsync(progress).ConfigureAwait(false);
-                                    }
-
-                                    await ExtractFilesAsync(tempStream).ConfigureAwait(false);
-
                                     await taskContext.SwitchToMainThreadAsync();
-                                    ProgressValue = 1;
-                                    Description = SH.ViewModelWelcomeDownloadSummaryComplete;
-                                    StaticResource.Fulfill(FileName);
-                                    return true;
+                                    Description = SH.ViewModelWelcomeDownloadSummaryStalled;
+                                    stallCts.Cancel();
+                                    break;
                                 }
                             }
-                        }
-
-                        if (response.Headers.RetryAfter?.Delta is { } retryAfter)
-                        {
-                            delay = retryAfter;
+                            else
+                            {
+                                stallSeconds = 0;
+                                Volatile.Write(ref lastBytesRead, currentBytes);
+                            }
                         }
                     }
+                    catch (OperationCanceledException)
+                    {
+                        // Token was cancelled, exit gracefully
+                    }
+                },
+                token);
+
+                int retryTimes = 0;
+                while (retryTimes++ < 3)
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    builder.Resurrect();
+
+                    TimeSpan delay = default;
+                    using (HttpRequestMessage message = builder.HttpRequestMessage)
+                    {
+                        using (HttpResponseMessage response = await httpClient.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(false))
+                        {
+                            response.EnsureSuccessStatusCode();
+
+                            if (!AllowedMediaTypes.Contains(response.Content.Headers.ContentType?.MediaType))
+                            {
+                                await taskContext.SwitchToMainThreadAsync();
+                                Description = SH.ViewModelWelcomeDownloadSummaryContentTypeNotMatch;
+                            }
+                            else
+                            {
+                                long contentLength = response.Content.Headers.ContentLength ?? 0;
+                                using (Stream content = await response.Content.ReadAsStreamAsync(token).ConfigureAwait(false))
+                                {
+                                    using (TempFileStream tempStream = new(FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                                    {
+                                        using (StreamCopyWorker worker = new(content, tempStream, contentLength))
+                                        {
+                                            await worker.CopyAsync(progress, token).ConfigureAwait(false);
+                                        }
+
+                                        token.ThrowIfCancellationRequested();
+
+                                        await ExtractFilesAsync(tempStream).ConfigureAwait(false);
+
+                                        await taskContext.SwitchToMainThreadAsync();
+                                        ProgressValue = 1;
+                                        Description = SH.ViewModelWelcomeDownloadSummaryComplete;
+                                        StaticResource.Fulfill(FileName);
+                                        return true;
+                                    }
+                                }
+                            }
+
+                            if (response.Headers.RetryAfter?.Delta is { } retryAfter)
+                            {
+                                delay = retryAfter;
+                            }
+                        }
+                    }
+
+                    await Task.Delay(delay, token).ConfigureAwait(false);
                 }
 
-                await Task.Delay(delay).ConfigureAwait(false);
+                return false;
             }
-
+        }
+        catch (OperationCanceledException)
+        {
+            await taskContext.SwitchToMainThreadAsync();
+            Description = SH.ViewModelWelcomeDownloadSummarySkipped;
             return false;
         }
         catch (Exception ex)
         {
-            if (ex is not (IOException or OperationCanceledException or UnauthorizedAccessException) &&
+            if (ex is not (IOException or UnauthorizedAccessException) &&
                 HttpRequestExceptionHandling.TryHandle(builder, ex, out StringBuilder message))
             {
                 messenger.Send(InfoBarMessage.Error(SH.ViewModelWelcomeDownloadSummaryException, message.ToString()));
@@ -144,10 +205,14 @@ public sealed partial class DownloadSummary : ObservableObject
         }
     }
 
+    private long _bytesReadDuringCopy;
+
     private void UpdateProgressStatus(StreamCopyStatus status)
     {
+        _bytesReadDuringCopy = status.BytesReadSinceCopyStart;
         Description = $"{Converters.ToFileSizeString(status.BytesReadSinceCopyStart)}/{Converters.ToFileSizeString(status.TotalBytes)}";
         ProgressValue = status.TotalBytes is 0 ? 0 : (double)status.BytesReadSinceCopyStart / status.TotalBytes;
+        Speed = string.Format(SH.ViewModelWelcomeDownloadSummarySpeed, Converters.ToFileSizeString(status.BytesReadSinceLastReport));
     }
 
     private async ValueTask ExtractFilesAsync(Stream stream)

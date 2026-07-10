@@ -14,4 +14,6 @@ public sealed class ParameterDescription
     public string Parameter { get; }
 
     public string Description { get; }
+
+    public bool IsSpecial { get; set; }
 }

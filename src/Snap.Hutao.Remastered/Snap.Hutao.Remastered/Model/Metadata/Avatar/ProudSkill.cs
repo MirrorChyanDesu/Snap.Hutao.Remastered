@@ -12,6 +12,10 @@ public sealed class ProudSkill : Skill, ITypedCalculableSource<ICalculableSkill,
 
     public required DescriptionsParameters Proud { get; init; }
 
+    public int[]? DescriptionList { get; init; }
+
+    public int[]? SpecialDescriptionList { get; init; }
+
     public static uint GetMaxLevel()
     {
         return 10U;

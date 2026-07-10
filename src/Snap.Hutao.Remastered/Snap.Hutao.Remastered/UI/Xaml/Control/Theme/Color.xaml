@@ -22,6 +22,10 @@
     <Color x:Key="PurpleDark2Color">#FF6A3893</Color>
     <Color x:Key="OrangeColor">#FFBC6932</Color>
     <Color x:Key="OrangeDark2Color">#FF6F3E1D</Color>
+    <Color x:Key="SpecialDescriptionBaseBackgroundColor">#30FFD700</Color>
+    <Color x:Key="SpecialDescriptionBaseBorderColor">#90FFD700</Color>
+    <Color x:Key="SpecialDescriptionSpecialBackgroundColor">#409370DB</Color>
+    <Color x:Key="SpecialDescriptionSpecialBorderColor">#909370DB</Color>
 
     <Color x:Key="GuaranteePullColor">#FF0063FF</Color>
     <Color x:Key="UpPullColor">#FFFFA400</Color>
@@ -42,4 +46,9 @@
     <SolidColorBrush x:Key="LightOnlyIconBackgroundColorBrush" Color="{ThemeResource LightOnlyIconBackgroundColor}"/>
     <SolidColorBrush x:Key="AvatarPropertyAddValueColorBrush" Color="{ThemeResource AvatarPropertyAddValueColor}"/>
     <SolidColorBrush x:Key="CultivationHighlightColorBrush" Color="{ThemeResource CultivationHighlightColor}"/>
+
+    <SolidColorBrush x:Key="SpecialDescriptionBaseBackgroundBrush" Color="{StaticResource SpecialDescriptionBaseBackgroundColor}"/>
+    <SolidColorBrush x:Key="SpecialDescriptionBaseBorderBrush" Color="{StaticResource SpecialDescriptionBaseBorderColor}"/>
+    <SolidColorBrush x:Key="SpecialDescriptionSpecialBackgroundBrush" Color="{StaticResource SpecialDescriptionSpecialBackgroundColor}"/>
+    <SolidColorBrush x:Key="SpecialDescriptionSpecialBorderBrush" Color="{StaticResource SpecialDescriptionSpecialBorderColor}"/>
 </ResourceDictionary>

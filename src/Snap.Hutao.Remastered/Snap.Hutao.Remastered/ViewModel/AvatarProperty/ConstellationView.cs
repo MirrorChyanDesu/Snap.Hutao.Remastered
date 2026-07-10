@@ -7,5 +7,5 @@ public sealed class ConstellationView : NameIconDescription
 {
     public bool IsActivated { get; set; }
 
-    public string? UnlockedDescription { get; set; }
+    public string? SpecialDescription { get; set; }
 }

@@ -13,7 +13,7 @@ public class Skill
 
     public required string Description { get; init; }
 
-    public string? UnlockedDescription { get; init; }
+    public string? SpecialDescription { get; init; }
 
     public required string Icon { get; init; }
 

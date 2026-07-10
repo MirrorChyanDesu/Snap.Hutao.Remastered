@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Snap.Hutao.Remastered.Core.Abstraction;
+using Snap.Hutao.Remastered.Model.Metadata;
 using Snap.Hutao.Remastered.Model.Metadata.Avatar;
 using Snap.Hutao.Remastered.Model.Metadata.Converter;
 using Snap.Hutao.Remastered.Model.Primitive;
@@ -39,13 +40,31 @@ public static class AvatarViewBuilderSkillExtension
                 .SetName(proudSkill.Name)
                 .SetIcon(SkillIconConverter.IconNameToUri(proudSkill.Icon))
                 .SetDescription(proudSkill.Description)
-                .SetUnlockedDescription(proudSkill.UnlockedDescription)
+                .SetSpecialDescription(proudSkill.SpecialDescription)
                 .SetGroupId(proudSkill.GroupId)
                 .SetLevel(LevelFormat.Format(state.NonExtraLeveledSkills[proudSkill.Id], state.ExtraLevels.GetValueOrDefault(proudSkill.Id)))
                 .SetLevelNumber(state.NonExtraLeveledSkills[proudSkill.Id])
-                .SetInfo(DescriptionsParametersDescriptor.Convert(proudSkill.Proud, state.SkillLevels[proudSkill.Id]))
+                .SetInfo(CreateLevelInfo(proudSkill.Proud, state.SkillLevels[proudSkill.Id]))
                 .View,
             state);
+    }
+
+    private static LevelParameters<string, ParameterDescription> CreateLevelInfo(DescriptionsParameters proud, uint level)
+    {
+        LevelParameters<string, ParameterDescription> info = DescriptionsParametersDescriptor.Convert(proud, level);
+
+        if (proud.SpecialDescriptionList is { Length: > 0 })
+        {
+            HashSet<int> specialSet = new(proud.SpecialDescriptionList);
+            if (proud.DescriptionList is { Length: > 0 })
+            {
+                specialSet.ExceptWith(proud.DescriptionList);
+            }
+            info = new(info.Level, info.Parameters.SelectAsArray((p, i) =>
+                specialSet.Contains(i + 1) ? new ParameterDescription(p.Parameter, p.Description) { IsSpecial = true } : p));
+        }
+
+        return info;
     }
 
     private sealed class SkillState

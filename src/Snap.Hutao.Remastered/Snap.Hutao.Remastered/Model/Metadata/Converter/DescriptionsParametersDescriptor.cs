@@ -23,7 +23,28 @@ public sealed partial class DescriptionsParametersDescriptor : ValueConverter<De
 
     public override IList<LevelParameters<string, ParameterDescription>> Convert(DescriptionsParameters from)
     {
-        return from.Parameters.Convert(from.Descriptions, GetParameterDescription);
+        ImmutableArray<LevelParameters<string, ParameterDescription>> result = from.Parameters.Convert(from.Descriptions, GetParameterDescription);
+
+        if (from.SpecialDescriptionList is { Length: > 0 })
+        {
+            HashSet<int> specialSet = new(from.SpecialDescriptionList);
+            if (from.DescriptionList is { Length: > 0 })
+            {
+                specialSet.ExceptWith(from.DescriptionList);
+            }
+
+            ImmutableArray<LevelParameters<string, ParameterDescription>>.Builder builder = ImmutableArray.CreateBuilder<LevelParameters<string, ParameterDescription>>(result.Length);
+            foreach (LevelParameters<string, ParameterDescription> item in result)
+            {
+                ImmutableArray<ParameterDescription> marked = item.Parameters.SelectAsArray((p, j) =>
+                    specialSet.Contains(j + 1) ? new ParameterDescription(p.Parameter, p.Description) { IsSpecial = true } : p);
+                builder.Add(new(item.Level, marked));
+            }
+
+            return builder.ToImmutable();
+        }
+
+        return result;
     }
 
     private static ImmutableArray<ParameterDescription> GetParameterDescription(ImmutableArray<string> descriptions, ImmutableArray<float> paramArray)

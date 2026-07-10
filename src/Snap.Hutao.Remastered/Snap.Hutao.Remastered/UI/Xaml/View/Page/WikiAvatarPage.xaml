@@ -47,26 +47,47 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.ColumnSpan="{Binding ElementName=ProudSelector, Path=Visibility, Converter={StaticResource VisibilityToColumnSpanConverter}}">
-                    <ToggleSwitch
-                        x:Name="SkillUnlockedToggle"
-                        HorizontalAlignment="Right"
-                        IsOn="True"
-                        OffContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOff}"
-                        OnContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOn}"
-                        Visibility="{Binding UnlockedDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
-                    <Grid>
+                    <Border
+                        Padding="8,4"
+                        CornerRadius="4"
+                        BorderThickness="1"
+                        Visibility="{Binding SpecialDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}">
+                        <Border.Background>
+                            <SolidColorBrush Color="{StaticResource SpecialDescriptionBaseBackgroundColor}"/>
+                        </Border.Background>
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="{StaticResource SpecialDescriptionBaseBorderColor}"/>
+                        </Border.BorderBrush>
                         <shuxct:DescriptionTextBlock
                             VerticalAlignment="Top"
                             Description="{Binding Description}"
                             LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
                             TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                    </Border>
+                    <shuxct:DescriptionTextBlock
+                        VerticalAlignment="Top"
+                        Description="{Binding Description}"
+                        LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
+                        TextStyle="{StaticResource BodyTextBlockStyle}"
+                        Visibility="{Binding SpecialDescription, Converter={StaticResource EmptyObjectToVisibilityRevertConverter}}"/>
+                    <Border
+                        Margin="0,8,0,0"
+                        Padding="8,4"
+                        CornerRadius="4"
+                        BorderThickness="1"
+                        Visibility="{Binding SpecialDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}">
+                        <Border.Background>
+                            <SolidColorBrush Color="{StaticResource SpecialDescriptionSpecialBackgroundColor}"/>
+                        </Border.Background>
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="{StaticResource SpecialDescriptionSpecialBorderColor}"/>
+                        </Border.BorderBrush>
                         <shuxct:DescriptionTextBlock
                             VerticalAlignment="Top"
-                            Description="{Binding UnlockedDescription}"
+                            Description="{Binding SpecialDescription}"
                             LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
-                            TextStyle="{StaticResource BodyTextBlockStyle}"
-                            Visibility="{Binding ElementName=SkillUnlockedToggle, Path=IsOn, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                    </Grid>
+                            TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                    </Border>
                 </StackPanel>
                 <shuxvs:DescParamComboBox
                     x:Name="ProudSelector"
@@ -80,24 +101,44 @@
 
         <DataTemplate x:Key="TalentDataTemplate" x:DataType="shmma:Skill">
             <StackPanel Margin="0,12,0,0">
-                <ToggleSwitch
-                    x:Name="UnlockedTalentToggle"
-                    HorizontalAlignment="Right"
-                    IsOn="True"
-                    OffContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOff}"
-                    OnContent="{shuxm:ResourceString Name=ViewPageAvatarPropertyUnlockedDescriptionOn}"
-                    Visibility="{Binding UnlockedDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
-                <Grid>
+                <Border
+                    Padding="8,4"
+                    CornerRadius="4"
+                    BorderThickness="1"
+                    Visibility="{Binding SpecialDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}">
+                    <Border.Background>
+                        <SolidColorBrush Color="{StaticResource SpecialDescriptionBaseBackgroundColor}"/>
+                    </Border.Background>
+                    <Border.BorderBrush>
+                        <SolidColorBrush Color="{StaticResource SpecialDescriptionBaseBorderColor}"/>
+                    </Border.BorderBrush>
                     <shuxct:DescriptionTextBlock
                         Description="{Binding Description}"
                         LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
                         TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                </Border>
+                <shuxct:DescriptionTextBlock
+                    Description="{Binding Description}"
+                    LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
+                    TextStyle="{StaticResource BodyTextBlockStyle}"
+                    Visibility="{Binding SpecialDescription, Converter={StaticResource EmptyObjectToVisibilityRevertConverter}}"/>
+                <Border
+                    Margin="0,8,0,0"
+                    Padding="8,4"
+                    CornerRadius="4"
+                    BorderThickness="1"
+                    Visibility="{Binding SpecialDescription, Converter={StaticResource EmptyObjectToVisibilityConverter}}">
+                    <Border.Background>
+                        <SolidColorBrush Color="{StaticResource SpecialDescriptionSpecialBackgroundColor}"/>
+                    </Border.Background>
+                    <Border.BorderBrush>
+                        <SolidColorBrush Color="{StaticResource SpecialDescriptionSpecialBorderColor}"/>
+                    </Border.BorderBrush>
                     <shuxct:DescriptionTextBlock
-                        Description="{Binding UnlockedDescription}"
+                        Description="{Binding SpecialDescription}"
                         LinkContext="{Binding DataContext.LinkContext, Source={StaticResource BindingProxy}}"
-                        TextStyle="{StaticResource BodyTextBlockStyle}"
-                        Visibility="{Binding ElementName=UnlockedTalentToggle, Path=IsOn, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                </Grid>
+                        TextStyle="{StaticResource BodyTextBlockStyle}"/>
+                </Border>
             </StackPanel>
         </DataTemplate>
 

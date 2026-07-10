@@ -50,7 +50,7 @@ public static class AvatarViewBuilderExtension
                 .SetName(talent.Name)
                 .SetIcon(SkillIconConverter.IconNameToUri(talent.Icon))
                 .SetDescription(talent.Description)
-                .SetUnlockedDescription(talent.UnlockedDescription)
+                .SetSpecialDescription(talent.SpecialDescription)
                 .SetIsActivated(activatedIds.Contains(talent.Id))
                 .View,
             activatedIds);

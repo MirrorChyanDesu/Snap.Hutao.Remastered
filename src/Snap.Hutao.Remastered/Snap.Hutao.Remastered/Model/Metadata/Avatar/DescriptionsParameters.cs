@@ -11,4 +11,8 @@ public sealed class DescriptionsParameters
     public required ImmutableArray<string> Descriptions { get; init; }
 
     public required IdLevelParametersCollection<ProudSkillId, SkillLevel, float> Parameters { get; init; }
+
+    public int[]? DescriptionList { get; init; }
+
+    public int[]? SpecialDescriptionList { get; init; }
 }

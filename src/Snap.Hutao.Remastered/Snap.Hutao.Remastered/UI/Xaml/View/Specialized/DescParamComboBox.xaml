@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cwc="using:CommunityToolkit.WinUI.Controls"
+    xmlns:cwconv="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:shmm="using:Snap.Hutao.Remastered.Model.Metadata"
@@ -26,14 +27,22 @@
         <SolidColorBrush x:Key="SettingsCardBackgroundPressed" Color="Transparent"/>
         <SolidColorBrush x:Key="SettingsCardBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}"/>
         <SolidColorBrush x:Key="ToggleButtonBackground" Color="{ThemeResource ControlAltFillColorSecondary}"/>
+
+        <cwconv:BoolToObjectConverter x:Key="BoolToSpecialBackgroundConverter"
+            TrueValue="{StaticResource SpecialDescriptionSpecialBackgroundBrush}">
+            <cwconv:BoolToObjectConverter.FalseValue>
+                <SolidColorBrush Color="Transparent"/>
+            </cwconv:BoolToObjectConverter.FalseValue>
+        </cwconv:BoolToObjectConverter>
         <!--  ReSharper restore Xaml.RedundantResource  -->
 
         <DataTemplate x:Key="ParameterDescriptionTemplate" x:DataType="shmm:ParameterDescription">
             <cwc:SettingsCard
-                MinHeight="40"
-                Padding="16,0,42,0"
-                BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
-                Header="{Binding Description}">
+                    MinHeight="40"
+                    Padding="16,0,42,0"
+                    BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                    Background="{Binding IsSpecial, Converter={StaticResource BoolToSpecialBackgroundConverter}}"
+                    Header="{Binding Description}">
                 <TextBlock Text="{Binding Parameter}"/>
             </cwc:SettingsCard>
         </DataTemplate>

@@ -17,7 +17,7 @@ public sealed class SkillView : NameIconDescription, ITypedCalculableSource<ICal
 
     public SkillGroupId GroupId { get; set; }
 
-    public string? UnlockedDescription { get; set; }
+    public string? SpecialDescription { get; set; }
 
     public ICalculableSkill ToCalculable(SkillType type)
     {

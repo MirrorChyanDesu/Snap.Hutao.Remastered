@@ -6,14 +6,17 @@ using Microsoft.Windows.AppLifecycle;
 using Microsoft.Windows.AppNotifications;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.ExceptionService;
+using Snap.Hutao.Remastered.Core.IO;
 using Snap.Hutao.Remastered.Core.LifeCycle;
 using Snap.Hutao.Remastered.Core.LifeCycle.InterProcess;
 using Snap.Hutao.Remastered.Core.Logging;
+using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Factory.Process;
 using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.UI.Xaml;
 using Snap.Hutao.Remastered.UI.Xaml.Control.Theme;
 using System.Diagnostics;
+using System.IO;
 
 namespace Snap.Hutao.Remastered;
 
@@ -98,6 +101,31 @@ public sealed partial class App : Application
             }
             else
             {
+                // In unpackaged mode, register toast notifications.
+                // This must happen before GetActivatedEventArgs() so WASDK can
+                // detect notification-based activations.
+                if (TryRegisterUnpackagedNotification())
+                {
+                    try
+                    {
+                        string displayName =
+#if DEBUG
+                            "Snap Hutao Remastered Dev";
+#else
+                            "Snap Hutao Remastered";
+#endif
+                        string iconPath = System.IO.Path.Combine(AppContext.BaseDirectory, "Assets", "Logo.ico");
+                        Uri iconUri = new(iconPath);
+
+                        AppNotificationManager.Default.Register(displayName, iconUri);
+                        AppNotificationManager.Default.NotificationInvoked += activation.NotificationInvoked;
+                    }
+                    catch
+                    {
+                        // Notification registration is best-effort in unpackaged mode
+                    }
+                }
+
                 // In unpackaged mode, AppNotification APIs are not available.
                 // AppInstance.GetCurrent() may also throw in some environments,
                 // and cannot reliably distinguish Launch from Protocol activation.
@@ -190,6 +218,46 @@ public sealed partial class App : Application
             LaunchActivatedArguments = arg,
             IsRedirectTo = true,
         };
+    }
+
+    /// <summary>
+    /// Create or update a Start Menu shortcut with the app's AUMID so that
+    /// WASDK can register the COM toast activator in unpackaged mode.
+    /// </summary>
+    private static bool TryRegisterUnpackagedNotification()
+    {
+        // WASDK scans the user's Start Menu Programs for shortcuts to
+        // associate the process with a toast activator AUMID.
+        string shortcutPath = System.IO.Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Programs),
+            "Snap.Hutao.Remastered.lnk");
+
+        string? exePath = Environment.ProcessPath;
+        if (string.IsNullOrEmpty(exePath))
+        {
+            return false;
+        }
+
+        try
+        {
+            if (!File.Exists(shortcutPath))
+            {
+                string? directory = System.IO.Path.GetDirectoryName(shortcutPath);
+                if (directory is not null)
+                {
+                    Directory.CreateDirectory(directory);
+                }
+            }
+
+            // Always overwrite to ensure AUMID and target are up to date
+            FileSystem.CreateLinkWithAppUserModelId(exePath, string.Empty, string.Empty, shortcutPath, HutaoRuntime.FamilyName);
+            LocalSetting.Set(SettingKeys.IsUnpackagedNotificationRegistered, true);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     [Conditional("DEBUG")]

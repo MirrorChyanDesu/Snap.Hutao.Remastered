@@ -17,6 +17,7 @@ public sealed unsafe class HutaoNativeFileSystem
     private readonly ObjectReference<Vftbl3>? objRef3;
     private readonly ObjectReference<Vftbl4>? objRef4;
     private readonly ObjectReference<Vftbl5>? objRef5;
+    private readonly ObjectReference<Vftbl6>? objRef6;
 
     public HutaoNativeFileSystem(ObjectReference<Vftbl> objRef)
     {
@@ -25,6 +26,7 @@ public sealed unsafe class HutaoNativeFileSystem
         objRef.TryAs(typeof(Vftbl3).GUID, out objRef3);
         objRef.TryAs(typeof(Vftbl4).GUID, out objRef4);
         objRef.TryAs(typeof(Vftbl5).GUID, out objRef5);
+        objRef.TryAs(typeof(Vftbl6).GUID, out objRef6);
     }
 
     public void RenameItem(ReadOnlySpan<char> filePath, ReadOnlySpan<char> newName)
@@ -267,6 +269,27 @@ public sealed unsafe class HutaoNativeFileSystem
         }
     }
 
+    public void CreateLinkWithAppUserModelId(ReadOnlySpan<char> fileLocation, ReadOnlySpan<char> arguments, ReadOnlySpan<char> iconLocation, ReadOnlySpan<char> fileName, ReadOnlySpan<char> appUserModelId)
+    {
+        HutaoException.ThrowIf(objRef6 is null, "IHutaoFileSystem6 is not supported");
+        fixed (char* pFileLocation = fileLocation)
+        {
+            fixed (char* pArguments = arguments)
+            {
+                fixed (char* pIconLocation = iconLocation)
+                {
+                    fixed (char* pFileName = fileName)
+                    {
+                        fixed (char* pAppUserModelId = appUserModelId)
+                        {
+                            Marshal.ThrowExceptionForHR(objRef6.Vftbl.CreateLinkWithAppUserModelId(objRef6.ThisPtr, pFileLocation, pArguments, pIconLocation, pFileName, pAppUserModelId));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     [Guid(HutaoNativeMethods.IID_IHutaoNativeFileSystem)]
     public readonly struct Vftbl
     {
@@ -322,6 +345,15 @@ public sealed unsafe class HutaoNativeFileSystem
 #pragma warning disable CS0649
         public readonly IUnknownVftbl IUnknownVftbl;
         public readonly delegate* unmanaged[Stdcall]<nint, PCWSTR, HutaoString.Vftbl**, HRESULT> ResolveLink;
+#pragma warning restore CS0649
+    }
+
+    [Guid(HutaoNativeMethods.IID_IHutaoNativeFileSystem6)]
+    private readonly struct Vftbl6
+    {
+#pragma warning disable CS0649
+        public readonly IUnknownVftbl IUnknownVftbl;
+        public readonly delegate* unmanaged[Stdcall]<nint, PCWSTR, PCWSTR, PCWSTR, PCWSTR, PCWSTR, HRESULT> CreateLinkWithAppUserModelId;
 #pragma warning restore CS0649
     }
 }

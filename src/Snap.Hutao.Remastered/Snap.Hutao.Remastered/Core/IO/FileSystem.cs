@@ -80,6 +80,11 @@ public static class FileSystem
         Native.CreateLink(fileLocation, arguments, iconLocation, fileName);
     }
 
+    public static void CreateLinkWithAppUserModelId(string fileLocation, string arguments, string iconLocation, string fileName, string appUserModelId)
+    {
+        Native.CreateLinkWithAppUserModelId(fileLocation, arguments, iconLocation, fileName, appUserModelId);
+    }
+
     public static string? ResolveLink(string lnkPath)
     {
         return Native.ResolveLink(lnkPath);

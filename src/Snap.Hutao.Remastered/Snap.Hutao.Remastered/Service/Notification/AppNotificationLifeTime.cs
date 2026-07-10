@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Microsoft.Windows.AppNotifications;
+using Snap.Hutao.Remastered.Core;
 
 namespace Snap.Hutao.Remastered.Service.Notification;
 

@@ -3,6 +3,7 @@
 
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
+using Snap.Hutao.Remastered.Core;
 
 namespace Snap.Hutao.Remastered.Extension;
 

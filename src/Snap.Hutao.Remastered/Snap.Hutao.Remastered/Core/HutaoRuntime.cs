@@ -31,7 +31,7 @@ public static class HutaoRuntime
 
     public static string FamilyName { get; } = RuntimeEnvironment.IsPackaged
         ? Package.Current.Id.FamilyName
-        : "SnapHutaoRemastered";
+        : "Snap.Hutao.Remastered";
 
     public static string DeviceId { get; } = InitializeDeviceId();
 
@@ -40,8 +40,7 @@ public static class HutaoRuntime
     public static bool IsProcessElevated { get; } = LocalSetting.Get(SettingKeys.OverrideElevationRequirement, false) || Environment.IsPrivilegedProcess;
 
     // Requires main thread
-    public static bool IsAppNotificationEnabled { get; } = RuntimeEnvironment.IsPackaged
-        && AppNotificationManager.Default.Setting is AppNotificationSetting.Enabled;
+    public static bool IsAppNotificationEnabled { get; } = AppNotificationManager.Default.Setting is AppNotificationSetting.Enabled;
 
     public static string? GetDisplayName()
     {

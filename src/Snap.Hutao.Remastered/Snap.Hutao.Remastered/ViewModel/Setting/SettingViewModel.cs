@@ -35,6 +35,7 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
     private readonly IUpdateService updateService;
     private readonly ITaskContext taskContext;
     private readonly IMessenger messenger;
+    private readonly ToastNotificationService toastNotificationService;
 
     private readonly WeakReference<ScrollViewer> weakScrollViewer = new(default!);
     private readonly WeakReference<Border> weakGachaLogBorder = new(default!);
@@ -223,7 +224,7 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
     }
 
     [Command("RestartAsElevatedCommand")]
-    private static void RestartAsElevated()
+    private void RestartAsElevated()
     {
         SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateUI("Restart as elevated", "NotifyIconViewModel.Command"));
 
@@ -243,7 +244,7 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
             {
                 try
                 {
-                    new AppNotificationBuilder().AddText(SH.ViewModelNotifyIconRestartAsElevatedErrorHint).Show();
+                    toastNotificationService.ShowText(SH.ViewModelNotifyIconRestartAsElevatedErrorHint);
                     return;
                 }
                 catch

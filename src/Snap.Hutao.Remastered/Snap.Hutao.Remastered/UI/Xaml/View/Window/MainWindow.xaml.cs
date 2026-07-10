@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.Windows.AppNotifications.Builder;
 using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Service;
+using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.UI.Shell;
 using Snap.Hutao.Remastered.UI.Windowing;
 using Snap.Hutao.Remastered.UI.Windowing.Abstraction;
@@ -119,9 +120,8 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
         {
             try
             {
-                new AppNotificationBuilder()
-                    .AddText(SH.CoreWindowingNotifyIconPromotedHint)
-                    .Show();
+                serviceProvider.GetRequiredService<ToastNotificationService>()
+                    .ShowText(SH.CoreWindowingNotifyIconPromotedHint);
             }
             catch
             {

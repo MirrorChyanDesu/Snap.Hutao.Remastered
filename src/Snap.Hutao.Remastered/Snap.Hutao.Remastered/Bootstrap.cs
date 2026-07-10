@@ -2,14 +2,17 @@
 // Licensed under the MIT license.
 
 using Microsoft.UI.Xaml;
+using Microsoft.Windows.AppNotifications;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.LifeCycle.InterProcess;
+using Snap.Hutao.Remastered.Core.LifeCycle.InterProcess.Model;
 using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Core.Security.Principal;
 using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Factory.Process;
 using Snap.Hutao.Remastered.Win32;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -36,6 +39,14 @@ public static partial class Bootstrap
     [STAThread]
     private static void Main(string[] args)
     {
+        // Check for toast notification helper process (non-elevated, launched via explorer.exe).
+        // The main elevated process creates a named pipe and writes the toast XML before
+        // launching this helper. If we can connect to the pipe, we're in helper mode.
+        if (TryHandleToastNotificationHelper())
+        {
+            return;
+        }
+
         // Check if we should restart as administrator
         if (ShouldRestartAsAdmin())
         {
@@ -154,6 +165,43 @@ public static partial class Bootstrap
         {
             SentrySdk.CaptureException(ex);
         }
+    }
+
+    private static bool TryHandleToastNotificationHelper()
+    {
+        using ToastNotificationPipeClient pipeClient = new();
+        ToastNotificationRequest? request = pipeClient.TryGetRequest();
+
+        if (request is null)
+        {
+            return false;
+        }
+
+        try
+        {
+            ComWrappersSupport.InitializeComWrappers();
+
+            string displayName =
+#if DEBUG
+                "Snap Hutao Remastered Dev";
+#else
+                "Snap Hutao Remastered";
+#endif
+            string iconPath = Path.Combine(AppContext.BaseDirectory, "Assets", "Logo.ico");
+            Uri iconUri = new(iconPath);
+
+            AppNotificationManager.Default.Register(displayName, iconUri);
+        }
+        catch
+        {
+            // Toast helper failure is non-fatal
+        }
+
+        AppNotificationManager.Default.Show(new AppNotification(request.RawXml));
+        Thread.Sleep(500);
+        AppNotificationManager.Default.Unregister();
+
+        return true;
     }
 
     private static bool OSPlatformSupported()

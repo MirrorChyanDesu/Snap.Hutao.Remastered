@@ -9,4 +9,5 @@ public static class PrivateNamedPipe
     public const int FullTrustVersion = 1;
     public const string PrivateName = "Snap.Hutao.Remastered.PrivateNamedPipe";
     public const string FullTrustName = "Snap.Hutao.Remastered.PrivateFullTrustNamedPipe";
+    public const string ToastPipeName = "Snap.Hutao.Remastered.ToastPipe";
 }

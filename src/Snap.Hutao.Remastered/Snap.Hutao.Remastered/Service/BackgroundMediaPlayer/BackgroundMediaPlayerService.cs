@@ -3,7 +3,6 @@ using System.IO;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Caching;
 using Snap.Hutao.Remastered.Core.IO;
-using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.Web.Hoyolab.HoyoPlay;
 using Windows.Media.Core;
 

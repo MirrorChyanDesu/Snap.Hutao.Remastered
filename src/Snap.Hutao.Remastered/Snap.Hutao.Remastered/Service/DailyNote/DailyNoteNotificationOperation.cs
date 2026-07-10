@@ -1,7 +1,6 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
-using Microsoft.Windows.AppNotifications;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.ExceptionService;
 using Snap.Hutao.Remastered.Core.LifeCycle;
@@ -9,7 +8,6 @@ using Snap.Hutao.Remastered.Model.Entity;
 using Snap.Hutao.Remastered.Service.DailyNote.NotifySuppression;
 using Snap.Hutao.Remastered.Service.Game;
 using Snap.Hutao.Remastered.Service.Notification;
-using System.Runtime.InteropServices;
 
 namespace Snap.Hutao.Remastered.Service.DailyNote;
 
@@ -21,6 +19,7 @@ public sealed partial class DailyNoteNotificationOperation
     private readonly ITaskContext taskContext;
     private readonly DailyNoteOptions options;
     private readonly IMessenger messenger;
+    private readonly ToastNotificationService toastNotificationService;
 
     [GeneratedConstructor]
     public partial DailyNoteNotificationOperation(IServiceProvider serviceProvider);
@@ -90,29 +89,15 @@ public sealed partial class DailyNoteNotificationOperation
                 </actions>
             </toast>
             """;
-        AppNotification notification;
-        try
-        {
-            notification = new(rawXml)
-            {
-                ExpiresOnReboot = true,
-            };
-        }
-        catch (COMException ex)
-        {
-            ExceptionAttachment.SetAttachment(ex, "raw.xml", rawXml);
-            throw;
-        }
-
         if (options.IsSilentWhenPlayingGame.Value && await GameLifeCycle.IsGameRunningAsync(taskContext).ConfigureAwait(false))
         {
-            notification.SuppressDisplay = true;
+            return;
         }
 
         await taskContext.SwitchToMainThreadAsync();
         try
         {
-            AppNotificationManager.Default.Show(notification);
+            toastNotificationService.Show(rawXml);
         }
         catch (Exception ex)
         {

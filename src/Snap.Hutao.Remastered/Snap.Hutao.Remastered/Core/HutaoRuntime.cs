@@ -40,7 +40,7 @@ public static class HutaoRuntime
     public static bool IsProcessElevated { get; } = LocalSetting.Get(SettingKeys.OverrideElevationRequirement, false) || Environment.IsPrivilegedProcess;
 
     // Requires main thread
-    public static bool IsAppNotificationEnabled { get; } = AppNotificationManager.Default.Setting is AppNotificationSetting.Enabled;
+    public static bool IsAppNotificationEnabled { get; } = AppNotificationManager.Default.Setting is AppNotificationSetting.Enabled or AppNotificationSetting.Unsupported;
 
     public static string? GetDisplayName()
     {

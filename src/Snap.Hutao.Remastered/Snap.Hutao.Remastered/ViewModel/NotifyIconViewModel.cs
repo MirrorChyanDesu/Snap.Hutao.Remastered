@@ -8,11 +8,11 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.Windows.AppNotifications.Builder;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.LifeCycle;
 using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Factory.Process;
+using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.UI.Windowing;
 using Snap.Hutao.Remastered.UI.Xaml.View.Window;
 using Snap.Hutao.Remastered.UI.Xaml.View.Window.WebView2;
@@ -34,6 +34,7 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
     private readonly ICurrentXamlWindowReference currentXamlWindowReference;
     private readonly IServiceProvider serviceProvider;
     private readonly App app;
+    private readonly ToastNotificationService toastNotificationService;
     private FlyoutBase? notifyIconContextMenu;
     private FrameworkElement? notifyIconContextMenuRoot;
 
@@ -157,7 +158,7 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
     }
 
     [Command("RestartAsElevatedCommand")]
-    private static void RestartAsElevated()
+    private void RestartAsElevated()
     {
         SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateUI("Restart as elevated", "NotifyIconViewModel.Command"));
 
@@ -177,7 +178,7 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
             {
                 try
                 {
-                    new AppNotificationBuilder().AddText(SH.ViewModelNotifyIconRestartAsElevatedErrorHint).Show();
+                    toastNotificationService.ShowText(SH.ViewModelNotifyIconRestartAsElevatedErrorHint);
                     return;
                 }
                 catch

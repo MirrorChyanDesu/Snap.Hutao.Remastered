@@ -97,7 +97,7 @@ public sealed partial class DailyNoteNotificationOperation
         await taskContext.SwitchToMainThreadAsync();
         try
         {
-            toastNotificationService.Show(rawXml);
+            ToastNotificationService.Show(rawXml);
         }
         catch (Exception ex)
         {

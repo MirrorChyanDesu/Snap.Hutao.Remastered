@@ -11,7 +11,7 @@ namespace Snap.Hutao.Remastered.Service.Notification;
 [Service(ServiceLifetime.Singleton)]
 public sealed partial class ToastNotificationService
 {
-    public void Show(string rawXml)
+    public static void Show(string rawXml)
     {
         if (HutaoRuntime.IsProcessElevated)
         {

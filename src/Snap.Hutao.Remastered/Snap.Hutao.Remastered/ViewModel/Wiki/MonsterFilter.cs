@@ -32,7 +32,7 @@ public static class MonsterFilter
                     matches.Add(tokens.Contains(monster.Name));
                     break;
                 case SearchTokenKind.None:
-                    matches.Add(tokens.Any(token => monster.Name.Contains(token, StringComparison.OrdinalIgnoreCase)));
+                    matches.Add(tokens.Any(token => monster.Name?.Contains(token, StringComparison.OrdinalIgnoreCase) == true));
                     break;
                 default:
                     matches.Add(false);

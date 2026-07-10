@@ -54,7 +54,7 @@ public sealed partial class SettingAppearanceViewModel : Abstraction.ViewModel
                 return;
             }
 
-            AppOptions.BackgroundMediaPath.Value = value;
+            AppOptions.BackgroundMediaPath.Value = value ?? string.Empty;
             OnPropertyChanged();
             Messenger.Send(new Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage());
         }

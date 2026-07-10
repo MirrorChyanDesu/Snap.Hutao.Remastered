@@ -17,6 +17,6 @@ public sealed partial class ProgressToColorConverter : ValueConverter<double, Br
         if (from >= 1.0)
             return new SolidColorBrush(Colors.Green);
 
-        return Application.Current.Resources["ProgressBarForeground"] as Brush;
+        return (Brush)Application.Current.Resources["ProgressBarForeground"];
     }
 }

@@ -68,7 +68,7 @@ public static class SearchTokens
     {
         return WinRTAdaptive.ToFrozenDictionary(
         [
-            .. array.Select((monster, index) => KeyValuePair.Create(monster.Name, new SearchToken(SearchTokenKind.Monster, monster.Name, index, sideIconUri: MonsterIconConverter.IconNameToUri(monster.Icon)))),
+            .. array.Select((monster, index) => KeyValuePair.Create(monster.Name!, new SearchToken(SearchTokenKind.Monster, monster.Name!, index, sideIconUri: MonsterIconConverter.IconNameToUri(monster.Icon)))),
         ]);
     }
 

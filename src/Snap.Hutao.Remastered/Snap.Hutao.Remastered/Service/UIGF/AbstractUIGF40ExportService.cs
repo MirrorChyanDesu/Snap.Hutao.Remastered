@@ -68,11 +68,12 @@ public abstract partial class AbstractUIGF40ExportService : IUIGFExportService
 
             // Export standard gacha items
             ImmutableArray<GachaItem> dbItems = gachaLogRepository.GetGachaItemImmutableArrayByArchiveId(archive.InnerId);
+            int timezone = InferRegionTimeZone(uid);
 
             UIGFEntry<Hk4eItem> hk4eEntry = new()
             {
                 Uid = uid,
-                TimeZone = InferRegionTimeZone(uid),
+                TimeZone = timezone,
                 List = dbItems.SelectAsArray(item =>
                 {
                     INameQualityAccess nameQuality = metadataContext.GetNameQualityByItemId(item.ItemId);
@@ -82,7 +83,7 @@ public abstract partial class AbstractUIGF40ExportService : IUIGFExportService
                         5U => SH.ModelInterchangeUIGFItemTypeWeapon,
                         _ => string.Empty,
                     };
-                    return Hk4eItem.From(item, nameQuality.Name, itemType, ((int)nameQuality.Quality).ToString());
+                    return Hk4eItem.From(item, nameQuality.Name, itemType, ((int)nameQuality.Quality).ToString(), timezone);
                 }),
             };
             hk4eResults.Add(hk4eEntry);

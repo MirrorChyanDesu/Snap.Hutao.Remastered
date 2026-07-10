@@ -4,6 +4,7 @@
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Model.Entity;
 using Snap.Hutao.Remastered.Model.InterChange.GachaLog;
+using Snap.Hutao.Remastered.Model.Metadata.Item;
 using Snap.Hutao.Remastered.Service.GachaLog;
 using Snap.Hutao.Remastered.Service.Metadata.ContextAbstraction;
 using System.Collections.Immutable;
@@ -63,13 +64,19 @@ public sealed partial class UIGF42ExportService : AbstractUIGF40ExportService
 
             // Export beyond gacha (UGC) items
             ImmutableArray<BeyondGachaItem> beyondDbItems = gachaLogRepository.GetBeyondGachaItemImmutableArrayByArchiveId(archive.InnerId);
+            int timezone = InferRegionTimeZone(uid);
+
             if (beyondDbItems.Length > 0)
             {
                 UIGFEntry<Hk4eUGCItem> hk4eUgcEntry = new()
                 {
                     Uid = uid,
-                    TimeZone = InferRegionTimeZone(uid),
-                    List = beyondDbItems.SelectAsArray(item => item.ToHk4eUGCItem(metadataContext.GetBeyondItem(item.ItemId))),
+                    TimeZone = timezone,
+                    List = beyondDbItems.SelectAsArray(item =>
+                    {
+                        BeyondItem beyondItem = metadataContext.GetBeyondItem(item.ItemId);
+                        return Hk4eUGCItem.From(item, beyondItem.Name, beyondItem.TypeDescription ?? string.Empty, ((int)beyondItem.RankLevel).ToString(), timezone);
+                    }),
                 };
                 hk4eUgcResults.Add(hk4eUgcEntry);
             }

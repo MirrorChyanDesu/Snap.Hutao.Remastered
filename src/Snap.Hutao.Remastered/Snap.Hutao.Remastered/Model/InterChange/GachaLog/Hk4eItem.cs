@@ -45,7 +45,7 @@ public sealed class Hk4eItem : IJsonOnDeserialized
     [JsonEnumHandling(JsonEnumHandling.NumberString)]
     public required UIGFGachaType UIGFGachaType { get; init; }
 
-    public static Hk4eItem From(GachaItem item, string name, string itemType, string rankType)
+    public static Hk4eItem From(GachaItem item, string name, string itemType, string rankType, int timezone)
     {
         return new()
         {
@@ -53,7 +53,7 @@ public sealed class Hk4eItem : IJsonOnDeserialized
             GachaType = item.GachaType,
             ItemId = item.ItemId,
             Count = "1",
-            Time = item.Time.DateTime,
+            Time = item.Time.DateTime.AddHours(timezone),
             Name = name,
             ItemType = itemType,
             RankType = rankType,

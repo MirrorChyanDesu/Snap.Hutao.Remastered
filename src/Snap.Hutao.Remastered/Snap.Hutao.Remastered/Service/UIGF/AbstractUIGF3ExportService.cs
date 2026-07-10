@@ -79,7 +79,7 @@ public abstract partial class AbstractUIGF3ExportService : IUIGFExportService
                 5U => SH.ModelInterchangeUIGFItemTypeWeapon,
                 _ => string.Empty,
             };
-            return Hk4eItem.From(item, nameQuality.Name, itemType, ((int)nameQuality.Quality).ToString());
+            return Hk4eItem.From(item, nameQuality.Name, itemType, ((int)nameQuality.Quality).ToString(), InferRegionTimeZone(uid));
         });
     }
 

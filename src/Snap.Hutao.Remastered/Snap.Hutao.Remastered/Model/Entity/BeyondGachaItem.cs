@@ -32,10 +32,6 @@ public sealed class BeyondGachaItem
 
     public long ScheduleId { get; set; }
 
-    public long RankType { get; set; }
-
-    public string Uid { get; set; } = default!;
-
     public int IsUp { get; set; }
 
     public static BeyondGachaItem From(Guid archiveId, BeyondGachaLogItem item)
@@ -49,26 +45,7 @@ public sealed class BeyondGachaItem
             Time = item.Time,
             Id = item.Id,
             ScheduleId = long.Parse(item.ScheduleId),
-            RankType = (long)item.RankType,
-            Uid = item.Uid,
             IsUp = item.IsUp,
-        };
-    }
-
-    public static BeyondGachaItem From(Guid archiveId, Hk4eUGCItem item, int timezoneOffset)
-    {
-        return new()
-        {
-            ArchiveId = archiveId,
-            GachaType = item.GachaType,
-            QueryType = item.GachaType.ToQueryType(),
-            ItemId = item.ItemId,
-            Time = new(item.Time, TimeSpan.FromHours(timezoneOffset)),
-            Id = item.Id,
-            ScheduleId = item.ScheduleId,
-            RankType = item.RankType,
-            Uid = string.Empty, // Hk4eUGCItem doesn't have Uid
-            IsUp = 0, // Hk4eUGCItem doesn't have IsUp
         };
     }
 
@@ -83,24 +60,21 @@ public sealed class BeyondGachaItem
             Time = item.Time,
             Id = item.Id,
             ScheduleId = 0,
-            RankType = 0,
-            Uid = string.Empty,
             IsUp = 0,
         };
     }
-
-    public Hk4eUGCItem ToHk4eUGCItem(Metadata.Item.BeyondItem beyondItem)
+    public static BeyondGachaItem From(Guid archiveId, Hk4eUGCItem item, int timezoneOffset)
     {
         return new()
         {
-            GachaType = GachaType,
-            ItemId = ItemId,
-            Time = Time.DateTime,
-            Id = Id,
-            ItemType = beyondItem.TypeDescription ?? string.Empty,
-            ItemName = beyondItem.Name,
-            ScheduleId = ScheduleId,
-            RankType = RankType,
+            ArchiveId = archiveId,
+            GachaType = item.GachaType,
+            QueryType = item.GachaType.ToQueryType(),
+            ItemId = item.ItemId,
+            Time = new(item.Time, TimeSpan.FromHours(timezoneOffset)),
+            Id = item.Id,
+            ScheduleId = item.ScheduleId,
+            IsUp = 0, // Hk4eUGCItem doesn't have IsUp
         };
     }
 }

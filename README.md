@@ -104,6 +104,12 @@ https://api.snaphutaorp.org/
 
 ---
 
+## Sponsors
+
+### [<img src="https://avatars.githubusercontent.com/u/34448643" alt="SignPath" width="48" /> Code signing provided by SignPath](https://signpath.org)
+
+Free code signing is provided by [SignPath.io](https://about.signpath.io), and the certificate is provided by [SignPath Foundation](https://signpath.org).
+
 ## ⚙️ 使用的技术栈 / Tech Stack
 
 - [CommunityToolkit/dotnet](https://github.com/CommunityToolkit/dotnet)  

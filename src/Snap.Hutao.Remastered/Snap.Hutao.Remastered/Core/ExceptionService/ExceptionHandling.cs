@@ -79,7 +79,7 @@ public sealed partial class ExceptionHandling
         // Handled has to be set to true, the control flow is returned after post
         e.Handled = true;
 
-        if (XamlApplicationLifetime.Exited)
+        if (XamlApplicationLifetime.Exiting || XamlApplicationLifetime.Exited)
         {
             return;
         }

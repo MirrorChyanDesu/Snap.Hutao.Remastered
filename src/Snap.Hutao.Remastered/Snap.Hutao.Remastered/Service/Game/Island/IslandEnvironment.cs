@@ -17,7 +17,6 @@ public struct IslandEnvironment
     public BOOL EnableSetFieldOfView;
     public float FieldOfView;
     public BOOL DisablePlayerPerspective;
-    public BOOL DisablePlayerDiveMosaic;
     public BOOL DisableFog;
     public BOOL EnableSetTargetFrameRate;
     public int TargetFrameRate;
@@ -41,6 +40,7 @@ public struct IslandEnvironment
     public BOOL EnableInLevelClockPageSpeedUp;
     public int CombineHotkey;
     public BOOL WeakMapCheck;
+    public BOOL DisablePlayerDiveMosaic;
 }
 
 public class HexStringToNintConverter : JsonConverter<nint>

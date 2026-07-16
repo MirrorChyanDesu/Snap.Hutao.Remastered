@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.UI.Xaml.View.Window;
 
-internal interface ISpeedGraph
+public interface ISpeedGraph
 {
     void ResetGraph();
 
@@ -12,7 +12,7 @@ internal interface ISpeedGraph
     void SetSpeed(double percent, ulong speed);
 }
 
-internal sealed class SpeedGraphAdapter(DevWinUI.SpeedGraph speedGraph) : ISpeedGraph
+public sealed class SpeedGraphAdapter(DevWinUI.SpeedGraph speedGraph) : ISpeedGraph
 {
     public void ResetGraph()
     {
@@ -30,9 +30,9 @@ internal sealed class SpeedGraphAdapter(DevWinUI.SpeedGraph speedGraph) : ISpeed
     }
 }
 
-internal static class GamePackageOperationSpeedGraphHelper
+public static class GamePackageOperationSpeedGraphHelper
 {
-    internal static void ResetSpeedGraph(ISpeedGraph speedGraph, ref ulong maxSpeed, ref long lastUpdateTimestamp)
+    public static void ResetSpeedGraph(ISpeedGraph speedGraph, ref ulong maxSpeed, ref long lastUpdateTimestamp)
     {
         speedGraph.ResetGraph();
         speedGraph.NormalGraph();
@@ -41,7 +41,7 @@ internal static class GamePackageOperationSpeedGraphHelper
         lastUpdateTimestamp = 0;
     }
 
-    internal static void UpdateSpeedGraph(ISpeedGraph speedGraph, ref ulong maxSpeed, ref long lastUpdateTimestamp, long totalBytes, long progressBytes, long speedBytesPerSecond, long currentTimestamp, TimeSpan updateInterval)
+    public static void UpdateSpeedGraph(ISpeedGraph speedGraph, ref ulong maxSpeed, ref long lastUpdateTimestamp, long totalBytes, long progressBytes, long speedBytesPerSecond, long currentTimestamp, TimeSpan updateInterval)
     {
         if (totalBytes <= 0)
         {

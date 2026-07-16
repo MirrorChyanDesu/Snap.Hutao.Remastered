@@ -10,7 +10,7 @@ using System.Net.Http;
 namespace Snap.Hutao.Remastered.Web.Hoyolab.HoyoPlay;
 
 [HttpClient(HttpClientConfiguration.Default)]
-internal sealed partial class OfficialLauncherClient
+public sealed partial class OfficialLauncherClient
 {
     private const string LauncherApiUrl = "https://hyp-api.mihoyo.com/hyp/hyp-connect/api/getAllGameBasicInfo?launcher_id=jGHBHlcOq1&language=zh-cn&game_id=1Z8W5NHUQb";
 

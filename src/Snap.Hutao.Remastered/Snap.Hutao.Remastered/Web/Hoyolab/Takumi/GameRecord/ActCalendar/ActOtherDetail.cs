@@ -3,6 +3,6 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal class ActOtherDetail
+public class ActOtherDetail
 {
 }

@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Snap.Hutao.Remastered.Service.Game.AdvancedStart.Model;
 
-internal sealed partial class AdvancedStartDelayedProgramEntry : ObservableObject
+public sealed partial class AdvancedStartDelayedProgramEntry : ObservableObject
 {
     public AdvancedStartDelayedProgramEntry(string name, string path, int delaySeconds)
     {

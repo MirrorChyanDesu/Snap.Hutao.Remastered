@@ -12,11 +12,11 @@ public sealed class UniformStaggeredItem
         Index = index;
     }
 
-    public double Top { get; internal set; }
+    public double Top { get; set; }
 
-    public double Height { get; internal set; }
+    public double Height { get; set; }
 
     public int Index { get; }
 
-    public UIElement? Element { get; internal set; }
+    public UIElement? Element { get; set; }
 }

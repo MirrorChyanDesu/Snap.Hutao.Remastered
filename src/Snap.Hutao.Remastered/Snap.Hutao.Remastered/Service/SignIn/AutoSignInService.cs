@@ -13,7 +13,7 @@ using Snap.Hutao.Remastered.Web.Hoyolab;
 namespace Snap.Hutao.Remastered.Service.SignIn;
 
 [Service(ServiceLifetime.Singleton, typeof(IAutoSignInService))]
-internal sealed partial class AutoSignInService : IAutoSignInService
+public sealed partial class AutoSignInService : IAutoSignInService
 {
     private static readonly TimeSpan FailureCooldown = TimeSpan.FromMinutes(10);
 

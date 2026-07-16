@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal enum ActLiBenDetailStatus
+public enum ActLiBenDetailStatus
 {
     // 今日未兑换
     NotExchangedToday = 1,

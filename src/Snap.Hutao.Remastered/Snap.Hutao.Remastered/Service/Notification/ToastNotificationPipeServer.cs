@@ -7,7 +7,7 @@ using System.IO.Pipes;
 
 namespace Snap.Hutao.Remastered.Service.Notification;
 
-internal sealed partial class ToastNotificationPipeServer : IDisposable
+public sealed partial class ToastNotificationPipeServer : IDisposable
 {
     private readonly NamedPipeServerStream pipeServer = new(PrivateNamedPipe.ToastPipeName, PipeDirection.Out, 1, PipeTransmissionMode.Byte);
     private bool isDisposed;

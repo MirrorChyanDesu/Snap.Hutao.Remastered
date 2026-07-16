@@ -10,7 +10,7 @@ using Windows.Media.Playback;
 namespace Snap.Hutao.Remastered.Service.BackgroundMediaPlayer;
 
 [Service(ServiceLifetime.Singleton, typeof(IBackgroundMediaPlayerService))]
-internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPlayerService
+public sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPlayerService
 {
     private static readonly HashSet<string> AllowedVideoFormats = new(StringComparer.OrdinalIgnoreCase)
     {

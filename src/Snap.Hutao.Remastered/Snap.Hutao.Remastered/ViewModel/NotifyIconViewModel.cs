@@ -27,7 +27,7 @@ using Windows.Storage.Streams;
 namespace Snap.Hutao.Remastered.ViewModel;
 
 [Service(ServiceLifetime.Singleton)]
-internal sealed partial class NotifyIconViewModel : ObservableObject
+public sealed partial class NotifyIconViewModel : ObservableObject
 {
     [FromKeyed(typeof(CompactWebView2Window))]
     private readonly ICurrentXamlWindowReference currentCompactWebView2WindowReference;
@@ -60,7 +60,7 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
         return CloseNotifyIconContextMenuWithAnimationAsync();
     }
 
-    internal void NotifyIconContextMenuClosed()
+    public void NotifyIconContextMenuClosed()
     {
         // Ensure next open has correct visual state.
         if (notifyIconContextMenuRoot is not null)
@@ -151,7 +151,7 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
         }
     }
 
-    internal void SetNotifyIconContextMenu(FlyoutBase flyout, FrameworkElement root)
+    public void SetNotifyIconContextMenu(FlyoutBase flyout, FrameworkElement root)
     {
         notifyIconContextMenu = flyout;
         notifyIconContextMenuRoot = root;
@@ -306,7 +306,7 @@ internal sealed partial class NotifyIconViewModel : ObservableObject
     public XamlRoot? XamlRoot { get; set; }
 }
 
-internal sealed partial class NotifyIconViewModel
+public sealed partial class NotifyIconViewModel
 {
     public static bool CanTakeScreenshot
     {

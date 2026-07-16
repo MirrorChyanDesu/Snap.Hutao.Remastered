@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Markup;
 namespace Snap.Hutao.Remastered.UI.Xaml.Control.Card;
 
 [ContentProperty(Name = nameof(Content))]
-internal sealed partial class TitleCard : Microsoft.UI.Xaml.Controls.Control
+public sealed partial class TitleCard : Microsoft.UI.Xaml.Controls.Control
 {
     public static readonly DependencyProperty TitleProperty =
         DependencyProperty.Register(nameof(Title), typeof(string), typeof(TitleCard), new PropertyMetadata(default(string), OnVisualPropertyChanged));

@@ -7,7 +7,7 @@ using Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
 namespace Snap.Hutao.Remastered.ViewModel.Home;
 
-internal sealed partial class ActivityTemplateSelector : DataTemplateSelector
+public sealed partial class ActivityTemplateSelector : DataTemplateSelector
 {
     private static readonly DataTemplate EmptyTemplate = new();
 

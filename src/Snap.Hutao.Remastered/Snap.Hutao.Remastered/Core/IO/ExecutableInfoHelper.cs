@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Snap.Hutao.Remastered.Core.IO;
 
-internal static class ExecutableInfoHelper
+public static class ExecutableInfoHelper
 {
     /// <summary>
     /// Get a friendly name for an executable file.

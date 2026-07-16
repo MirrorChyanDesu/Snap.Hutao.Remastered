@@ -5,9 +5,9 @@ using System.Diagnostics;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.View.Window;
 
-internal static class GamePackageOperationSpeedGraphPlayback
+public static class GamePackageOperationSpeedGraphPlayback
 {
-    internal static async Task RunAsync(ISpeedGraph speedGraph, Action<string> log, Func<TimeSpan, Task>? delayProvider = null, CancellationToken cancellationToken = default)
+    public static async Task RunAsync(ISpeedGraph speedGraph, Action<string> log, Func<TimeSpan, Task>? delayProvider = null, CancellationToken cancellationToken = default)
     {
         delayProvider ??= static _ => Task.CompletedTask;
 

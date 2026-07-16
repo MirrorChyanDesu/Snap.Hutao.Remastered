@@ -7,7 +7,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal class ActOther : Act
+public class ActOther : Act
 {
     [JsonPropertyName("other_act_detail")]
     public ActOtherDetail? OtherActDetail { get; init; }

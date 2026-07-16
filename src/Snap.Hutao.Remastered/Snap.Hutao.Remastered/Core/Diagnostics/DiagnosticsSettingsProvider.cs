@@ -24,7 +24,7 @@ public sealed class DiagnosticsSettingsProvider
         }
     }
 
-    internal DiagnosticsSettingsProvider()
+    public DiagnosticsSettingsProvider()
     {
         if (RuntimeEnvironment.IsUnpackaged && SettingsFilePath is not null)
         {

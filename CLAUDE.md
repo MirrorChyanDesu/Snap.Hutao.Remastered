@@ -105,6 +105,7 @@ src/
 - **Nullability:** Enabled; `[NotNullWhen(true)]`, `MaybeNull`, etc. used with static analysis
 - **Generated code:** Source generators for DI registration, constructors, MVVM; don't hand-wire these
 - **Unsafe:** `AllowUnsafeBlocks=true` — used for Win32 interop and performance-sensitive paths
+- **Visibility:** All classes should use `public` instead of `internal`
 
 ## Working in This Repo
 

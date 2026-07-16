@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal enum ActType
+public enum ActType
 {
     ActTypeNone = 0,
     ActTypeSignIn = 1,

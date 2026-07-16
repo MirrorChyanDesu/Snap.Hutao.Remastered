@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal enum ActSignInStatus
+public enum ActSignInStatus
 {
     // 今日未领取
     NotSignedInToday = 1,

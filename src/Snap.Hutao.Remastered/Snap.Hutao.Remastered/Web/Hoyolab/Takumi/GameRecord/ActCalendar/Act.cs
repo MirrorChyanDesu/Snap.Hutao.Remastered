@@ -14,7 +14,7 @@ namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 [JsonDerivedType(typeof(ActRoleCombat), nameof(ActType.ActTypeRoleCombat))]
 [JsonDerivedType(typeof(ActHardChallenge), nameof(ActType.ActTypeHardChallenge))]
 [JsonDerivedType(typeof(ActOther), nameof(ActType.ActTypeOther))]
-internal class Act
+public class Act
 {
     [JsonPropertyName("id")]
     public required int Id { get; init; }

@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal sealed class ActExploreDetail
+public sealed class ActExploreDetail
 {
     [JsonPropertyName("explore_percent")]
     public required int ExplorePercent { get; init; }

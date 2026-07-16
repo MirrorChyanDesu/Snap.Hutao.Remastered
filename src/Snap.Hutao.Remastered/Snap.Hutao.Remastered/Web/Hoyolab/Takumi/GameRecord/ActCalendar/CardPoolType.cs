@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal enum CardPoolType
+public enum CardPoolType
 {
     Avatar = 1,
     Weapon = 2,

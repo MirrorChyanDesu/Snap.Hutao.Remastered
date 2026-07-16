@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord;
 
-internal sealed class RoleIdServer
+public sealed class RoleIdServer
 {
     public RoleIdServer(PlayerUid uid)
     {

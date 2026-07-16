@@ -6,7 +6,7 @@ using Snap.Hutao.Remastered.Model.Primitive;
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal sealed class CardPoolAvatar : CardPoolItem
+public sealed class CardPoolAvatar : CardPoolItem
 {
     [JsonPropertyName("id")]
     public required AvatarId Id { get; set; }

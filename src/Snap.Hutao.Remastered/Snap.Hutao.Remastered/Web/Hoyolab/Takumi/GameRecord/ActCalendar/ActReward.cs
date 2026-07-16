@@ -6,7 +6,7 @@ using Snap.Hutao.Remastered.Model.Primitive;
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal sealed class ActReward
+public sealed class ActReward
 {
     [JsonPropertyName("item_id")]
     public required MaterialId ItemId { get; set; }

@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 namespace Snap.Hutao.Remastered.Service.Game.AdvancedStart;
 
 [Service(ServiceLifetime.Singleton)]
-internal sealed class AdvancedStartDelayedProgramStore
+public sealed class AdvancedStartDelayedProgramStore
 {
     private readonly IServiceProvider serviceProvider;
 

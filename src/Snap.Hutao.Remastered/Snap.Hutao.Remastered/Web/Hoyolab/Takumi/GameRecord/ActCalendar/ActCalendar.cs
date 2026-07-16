@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal sealed class ActCalendar
+public sealed class ActCalendar
 {
     [JsonPropertyName("avatar_card_pool_list")]
     public required ImmutableArray<CardPool> AvatarCardPoolList { get; init; } = [];

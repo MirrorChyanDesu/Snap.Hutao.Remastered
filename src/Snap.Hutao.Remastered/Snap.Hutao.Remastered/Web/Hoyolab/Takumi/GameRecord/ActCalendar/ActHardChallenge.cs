@@ -3,7 +3,7 @@
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal sealed class ActHardChallenge : Act
+public sealed class ActHardChallenge : Act
 {
     [JsonPropertyName("hard_challenge_detail")]
     public required ActHardChallengeDetail HardChallengeDetail { get; init; }

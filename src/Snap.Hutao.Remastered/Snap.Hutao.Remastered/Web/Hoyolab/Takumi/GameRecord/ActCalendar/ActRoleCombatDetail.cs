@@ -5,7 +5,7 @@ using Snap.Hutao.Remastered.Model.Intrinsic;
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Takumi.GameRecord.ActCalendar;
 
-internal sealed class ActRoleCombatDetail
+public sealed class ActRoleCombatDetail
 {
     [JsonPropertyName("is_unlock")]
     public required bool IsUnlock { get; init; }

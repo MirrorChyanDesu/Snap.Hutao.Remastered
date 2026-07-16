@@ -17,14 +17,14 @@ public sealed class UniformStaggeredLayoutState
         this.context = context;
     }
 
-    public double ColumnWidth { get; internal set; }
+    public double ColumnWidth { get; set; }
 
     public int NumberOfColumns
     {
         get => columnLayout.Count;
     }
 
-    public double RowSpacing { get; internal set; }
+    public double RowSpacing { get; set; }
 
     public void AddItemToColumn(UniformStaggeredItem item, int columnIndex)
     {

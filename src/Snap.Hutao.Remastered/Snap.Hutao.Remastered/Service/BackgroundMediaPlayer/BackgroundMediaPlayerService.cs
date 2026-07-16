@@ -5,6 +5,7 @@ using Snap.Hutao.Remastered.Core.Caching;
 using Snap.Hutao.Remastered.Core.IO;
 using Snap.Hutao.Remastered.Web.Hoyolab.HoyoPlay;
 using Windows.Media.Core;
+using Windows.Media.Playback;
 
 namespace Snap.Hutao.Remastered.Service.BackgroundMediaPlayer;
 
@@ -19,8 +20,20 @@ internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPla
     private readonly AppOptions appOptions;
     private readonly IServiceProvider serviceProvider;
 
+    private MediaPlayer? mediaPlayer;
+
     [GeneratedConstructor]
     public partial BackgroundMediaPlayerService(IServiceProvider serviceProvider);
+
+    public void Pause()
+    {
+        mediaPlayer?.Pause();
+    }
+
+    public void Play()
+    {
+        mediaPlayer?.Play();
+    }
 
     public async ValueTask UpdateMediaPlayerElementAsync(MediaPlayerElement element, CancellationToken token = default)
     {
@@ -41,6 +54,8 @@ internal sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPla
             element.MediaPlayer.IsMuted = appOptions.IsBackgroundMediaMuted.Value;
             element.MediaPlayer.IsLoopingEnabled = appOptions.IsBackgroundMediaLooping.Value;
         }
+
+        mediaPlayer = element.MediaPlayer;
 
         switch (appOptions.BackgroundMediaType.Value)
         {

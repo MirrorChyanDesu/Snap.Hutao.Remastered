@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.Windows.AppNotifications.Builder;
 using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Service;
+using Snap.Hutao.Remastered.Service.BackgroundMediaPlayer;
 using Snap.Hutao.Remastered.Service.Notification;
 using Snap.Hutao.Remastered.UI.Shell;
 using Snap.Hutao.Remastered.UI.Windowing;
@@ -48,6 +49,26 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
 
         closeBehaviorTraits = scope.ServiceProvider.GetRequiredService<LastWindowCloseBehaviorTraits>();
         app = scope.ServiceProvider.GetRequiredService<App>();
+
+        IBackgroundMediaPlayerService backgroundMediaPlayerService = serviceProvider.GetRequiredService<IBackgroundMediaPlayerService>();
+        OverlappedPresenterState previousState = OverlappedPresenterState.Restored;
+        AppWindow.Changed += (_, _) =>
+        {
+            if (AppWindow.Presenter is OverlappedPresenter presenter && presenter.State != previousState)
+            {
+                previousState = presenter.State;
+                switch (presenter.State)
+                {
+                    case OverlappedPresenterState.Minimized:
+                        backgroundMediaPlayerService.Pause();
+                        break;
+                    case OverlappedPresenterState.Restored:
+                    case OverlappedPresenterState.Maximized:
+                        backgroundMediaPlayerService.Play();
+                        break;
+                }
+            }
+        };
     }
 
     public SizeInt32 InitSize { get => ScaledSizeInt32.CreateForWindow(1200, 741, this); }

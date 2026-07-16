@@ -197,7 +197,11 @@ public static partial class Bootstrap
             // Toast helper failure is non-fatal
         }
 
-        AppNotificationManager.Default.Show(new AppNotification(request.RawXml));
+        AppNotification notification = new(request.RawXml)
+        {
+            SuppressDisplay = request.SuppressDisplay,
+        };
+        AppNotificationManager.Default.Show(notification);
         Thread.Sleep(500);
         AppNotificationManager.Default.Unregister();
 

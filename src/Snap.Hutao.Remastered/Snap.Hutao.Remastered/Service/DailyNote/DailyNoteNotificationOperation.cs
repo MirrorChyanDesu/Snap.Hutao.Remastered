@@ -19,7 +19,7 @@ public sealed partial class DailyNoteNotificationOperation
     private readonly ITaskContext taskContext;
     private readonly DailyNoteOptions options;
     private readonly IMessenger messenger;
-    private readonly ToastNotificationService toastNotificationService;
+    private readonly IToastNotificationService toastNotificationService;
 
     [GeneratedConstructor]
     public partial DailyNoteNotificationOperation(IServiceProvider serviceProvider);
@@ -89,15 +89,12 @@ public sealed partial class DailyNoteNotificationOperation
                 </actions>
             </toast>
             """;
-        if (options.IsSilentWhenPlayingGame.Value && await GameLifeCycle.IsGameRunningAsync(taskContext).ConfigureAwait(false))
-        {
-            return;
-        }
+        bool suppressDisplay = options.IsSilentWhenPlayingGame.Value && await GameLifeCycle.IsGameRunningAsync(taskContext).ConfigureAwait(false);
 
         await taskContext.SwitchToMainThreadAsync();
         try
         {
-            ToastNotificationService.Show(rawXml);
+            toastNotificationService.Show(rawXml, suppressDisplay);
         }
         catch (Exception ex)
         {

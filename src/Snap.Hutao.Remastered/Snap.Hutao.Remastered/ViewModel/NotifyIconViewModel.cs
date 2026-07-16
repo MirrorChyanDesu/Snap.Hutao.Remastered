@@ -34,7 +34,7 @@ public sealed partial class NotifyIconViewModel : ObservableObject
     private readonly ICurrentXamlWindowReference currentXamlWindowReference;
     private readonly IServiceProvider serviceProvider;
     private readonly App app;
-    private readonly ToastNotificationService toastNotificationService;
+    private readonly IToastNotificationService toastNotificationService;
     private FlyoutBase? notifyIconContextMenu;
     private FrameworkElement? notifyIconContextMenuRoot;
 

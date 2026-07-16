@@ -8,18 +8,20 @@ using System.Diagnostics;
 
 namespace Snap.Hutao.Remastered.Service.Notification;
 
-[Service(ServiceLifetime.Singleton)]
-public sealed partial class ToastNotificationService
+[Service(ServiceLifetime.Singleton, typeof(IToastNotificationService))]
+public sealed partial class ToastNotificationService : IToastNotificationService
 {
-    public static void Show(string rawXml)
+    public void Show(string rawXml, bool suppressDisplay = false)
     {
         if (HutaoRuntime.IsProcessElevated)
         {
-            LaunchToastHelper(rawXml);
+            LaunchToastHelper(rawXml, suppressDisplay);
         }
         else
         {
-            AppNotificationManager.Default.Show(new AppNotification(rawXml));
+            AppNotification notification = new(rawXml);
+            notification.SuppressDisplay = suppressDisplay;
+            AppNotificationManager.Default.Show(notification);
         }
     }
 
@@ -30,7 +32,7 @@ public sealed partial class ToastNotificationService
         Show(rawXml);
     }
 
-    private static void LaunchToastHelper(string rawXml)
+    private static void LaunchToastHelper(string rawXml, bool suppressDisplay)
     {
         string? exePath = Environment.ProcessPath;
         if (string.IsNullOrEmpty(exePath))
@@ -40,7 +42,7 @@ public sealed partial class ToastNotificationService
 
         try
         {
-            ToastNotificationRequest request = new(rawXml);
+            ToastNotificationRequest request = new(rawXml, suppressDisplay);
             using ToastNotificationPipeServer pipeServer = new();
 
             // Launch helper via explorer.exe so it runs non-elevated

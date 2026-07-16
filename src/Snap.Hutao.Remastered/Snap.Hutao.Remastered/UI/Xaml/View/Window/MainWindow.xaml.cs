@@ -141,7 +141,7 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
         {
             try
             {
-                serviceProvider.GetRequiredService<ToastNotificationService>()
+                serviceProvider.GetRequiredService<IToastNotificationService>()
                     .ShowText(SH.CoreWindowingNotifyIconPromotedHint);
             }
             catch

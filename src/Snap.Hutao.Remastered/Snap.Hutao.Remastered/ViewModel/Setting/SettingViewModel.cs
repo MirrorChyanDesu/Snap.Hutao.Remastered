@@ -35,7 +35,7 @@ public sealed partial class SettingViewModel : Abstraction.ViewModel, INavigatio
     private readonly IUpdateService updateService;
     private readonly ITaskContext taskContext;
     private readonly IMessenger messenger;
-    private readonly ToastNotificationService toastNotificationService;
+    private readonly IToastNotificationService toastNotificationService;
 
     private readonly WeakReference<ScrollViewer> weakScrollViewer = new(default!);
     private readonly WeakReference<Border> weakGachaLogBorder = new(default!);

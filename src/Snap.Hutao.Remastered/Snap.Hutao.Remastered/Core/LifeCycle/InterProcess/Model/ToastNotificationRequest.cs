@@ -5,10 +5,13 @@ namespace Snap.Hutao.Remastered.Core.LifeCycle.InterProcess.Model;
 
 public sealed class ToastNotificationRequest
 {
-    public ToastNotificationRequest(string rawXml)
+    public ToastNotificationRequest(string rawXml, bool suppressDisplay = false)
     {
         RawXml = rawXml;
+        SuppressDisplay = suppressDisplay;
     }
 
     public string RawXml { get; }
+
+    public bool SuppressDisplay { get; }
 }

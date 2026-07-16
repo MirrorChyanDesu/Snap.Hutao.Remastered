@@ -134,7 +134,7 @@ public sealed partial class UserInitializationService : IUserInitializationServi
         return false;
     }
 
-    private static async ValueTask<bool> TrySetUserUserInfoAsync(IServiceProvider serviceProvider, ViewModel.User.User user, CancellationToken token)
+    private static async ValueTask TrySetUserUserInfoAsync(IServiceProvider serviceProvider, ViewModel.User.User user, CancellationToken token)
     {
         IUserClient userClient = serviceProvider
             .GetRequiredService<IOverseaSupportFactory<IUserClient>>()
@@ -147,10 +147,15 @@ public sealed partial class UserInitializationService : IUserInitializationServi
         if (ResponseValidator.TryValidate(response, serviceProvider, out UserFullInfoWrapper? wrapper))
         {
             user.UserInfo = wrapper.UserInfo;
-            return true;
         }
-
-        return false;
+        else
+        {
+            user.UserInfo = new()
+            {
+                Uid = SH.ModelBindingUserInitializationFailed,
+                Nickname = SH.ModelBindingUserInitializationFailed,
+            };
+        }
     }
 
     private static async ValueTask<bool> TrySetUserUserGameRolesAsync(IServiceProvider serviceProvider, ViewModel.User.User user, CancellationToken token)
@@ -197,10 +202,7 @@ public sealed partial class UserInitializationService : IUserInitializationServi
                 return false;
             }
 
-            if (!await TrySetUserUserInfoAsync(serviceProvider, user, token).ConfigureAwait(false))
-            {
-                return false;
-            }
+            await TrySetUserUserInfoAsync(serviceProvider, user, token).ConfigureAwait(false);
 
             if (!await TrySetUserUserGameRolesAsync(serviceProvider, user, token).ConfigureAwait(false))
             {

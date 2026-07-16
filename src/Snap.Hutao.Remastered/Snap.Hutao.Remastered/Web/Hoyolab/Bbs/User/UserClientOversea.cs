@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Snap.Hutao.Remastered.Core.DependencyInjection.Annotation.HttpClient;
+using Snap.Hutao.Remastered.Core.IO.Http;
 using Snap.Hutao.Remastered.Web.Endpoint.Hoyolab;
 using Snap.Hutao.Remastered.Web.Request.Builder;
 using Snap.Hutao.Remastered.Web.Request.Builder.Abstraction;
@@ -29,6 +30,7 @@ public sealed partial class UserClientOversea : IUserClient
         HttpRequestMessageBuilder builder = httpRequestMessageBuilderFactory.Create()
             .SetRequestUri(apiEndpoints.UserFullInfoQuery(user.Aid))
             .SetUserCookieAndFpHeader(user, CookieType.LToken)
+            .SetOptions(RetryHttpHandler.DisableRetry, true)
             .Get();
 
         Response<UserFullInfoWrapper>? resp = await builder

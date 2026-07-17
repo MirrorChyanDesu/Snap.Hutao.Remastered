@@ -6,9 +6,9 @@ public interface IPluginService
 {
     Task<bool> InstallPluginAsync(string path);
 
-    Task<bool> LoadPluginAsync(string id);
+    Task<bool> LoadPluginAsync(string id, bool suppressNotification = false);
 
-    Task<bool> EnablePluginAsync(HutaoPlugin plugin);
+    Task<bool> EnablePluginAsync(HutaoPlugin plugin, bool suppressNotification = false);
 
     Task<bool> DisablePluginAsync(HutaoPlugin plugin); 
 

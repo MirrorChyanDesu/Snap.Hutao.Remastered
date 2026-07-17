@@ -62,7 +62,7 @@ public partial class PluginService : IPluginService
         }
     }
 
-    public async Task<bool> EnablePluginAsync(HutaoPlugin plugin)
+    public async Task<bool> EnablePluginAsync(HutaoPlugin plugin, bool suppressNotification = false)
     {
         SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Enabling plugin", category: "PluginService", data: new Dictionary<string, string>
         {
@@ -85,7 +85,11 @@ public partial class PluginService : IPluginService
             plugin.OnEnable();
             plugin.IsEnabled = true;
 
-            messenger.Send(InfoBarMessage.Success(SH.FormatServicePluginEnablingSuccess(plugin.Manifest.Name)));
+            if (!suppressNotification)
+            {
+                messenger.Send(InfoBarMessage.Success(SH.FormatServicePluginEnablingSuccess(plugin.Manifest.Name)));
+            }
+
             return true;
         }
         catch (Exception ex)
@@ -176,7 +180,7 @@ public partial class PluginService : IPluginService
         }
     }
 
-    public async Task<bool> LoadPluginAsync(string id)
+    public async Task<bool> LoadPluginAsync(string id, bool suppressNotification = false)
     {
         SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateInfo("Loading plugin", category: "PluginService", data: new Dictionary<string, string>
         {
@@ -188,7 +192,7 @@ public partial class PluginService : IPluginService
             HutaoPlugin? loadedPlugin = GetPluginById(id);
             if (loadedPlugin != null)
             {
-                return await EnablePluginAsync(loadedPlugin);
+                return await EnablePluginAsync(loadedPlugin, suppressNotification);
             }
 
             bool isEnabled = true;
@@ -270,10 +274,13 @@ public partial class PluginService : IPluginService
 
                 if (isEnabled)
                 {
-                    await EnablePluginAsync(plugin);
+                    await EnablePluginAsync(plugin, suppressNotification);
                 }
 
-                messenger.Send(InfoBarMessage.Success(SH.FormatServicePluginLoadSuccess(manifest.Name)));
+                if (!suppressNotification)
+                {
+                    messenger.Send(InfoBarMessage.Success(SH.FormatServicePluginLoadSuccess(manifest.Name)));
+                }
                 return true;
             }
             catch (Exception)
@@ -326,13 +333,13 @@ public partial class PluginService : IPluginService
             foreach (string pluginFile in enabledPluginFiles)
             {
                 string pluginId = Path.GetFileNameWithoutExtension(pluginFile);
-                await LoadPluginAsync(pluginId).ConfigureAwait(false);
+                await LoadPluginAsync(pluginId, suppressNotification: true).ConfigureAwait(false);
             }
 
             foreach (string pluginFile in disabledPluinFiles)
             {
                 string pluginId = Path.GetFileNameWithoutExtension(pluginFile);
-                await LoadPluginAsync(pluginId).ConfigureAwait(false);
+                await LoadPluginAsync(pluginId, suppressNotification: true).ConfigureAwait(false);
             }
         }
         catch

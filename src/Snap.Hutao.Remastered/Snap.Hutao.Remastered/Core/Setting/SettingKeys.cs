@@ -127,6 +127,7 @@ public static class SettingKeys
     public const string LaunchTargetFov                                  = "Snap::Hutao::Game::Island::FieldOfView";
     public const string LaunchIsSetFieldOfViewEnabled                    = "Snap::Hutao::Game::Island::FieldOfView::Enabled";
     public const string LaunchDisablePlayerPerspective                   = "Snap::Hutao::Game::Island::FieldOfView::DisablePlayerPerspective";
+    public const string LaunchDisablePlayerDiveMosaic                    = "Snap::Hutao::Game::Island::FieldOfView::DisablePlayerDiveMosaic";
     public const string LaunchDisableFogRendering                        = "Snap::Hutao::Game::Island::FieldOfView::DisableFogRendering";
     public const string LaunchIsSetTargetFrameRateEnabled                = "Snap::Hutao::Game::Island::FrameRate::Enabled";
     public const string LaunchTargetFps                                  = "Snap::Hutao::Game::Island::FrameRate";

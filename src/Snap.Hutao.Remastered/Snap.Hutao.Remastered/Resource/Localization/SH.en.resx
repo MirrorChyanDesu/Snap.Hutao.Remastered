@@ -4115,6 +4115,9 @@ Space Available: {2}</value>
   <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
     <value>Special Interface Fix</value>
   </data>
+  <data name="ViewPageLaunchGameDisablePlayerDiveMosaicHeader" xml:space="preserve">
+    <value>Remove Underwater Mosaic</value>
+  </data>
   <data name="ServicePluginEnablingPluginFailed" xml:space="preserve">
     <value>An exception occurred while enabling the plugin</value>
   </data>

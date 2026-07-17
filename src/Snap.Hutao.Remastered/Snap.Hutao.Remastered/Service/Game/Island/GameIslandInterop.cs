@@ -145,6 +145,7 @@ public sealed class GameIslandInterop : IGameIslandInterop
         pIslandEnvironment->EnableSetFieldOfView = options.IsSetFieldOfViewEnabled.Value;
         pIslandEnvironment->FieldOfView = options.TargetFov.Value;
         pIslandEnvironment->DisablePlayerPerspective = options.DisablePlayerPerspective.Value;
+        pIslandEnvironment->DisablePlayerDiveMosaic = options.DisablePlayerDiveMosaic.Value;
         pIslandEnvironment->DisableFog = options.DisableFog.Value;
         pIslandEnvironment->EnableSetTargetFrameRate = options.IsSetTargetFrameRateEnabled.Value;
         pIslandEnvironment->TargetFrameRate = options.TargetFps.Value;

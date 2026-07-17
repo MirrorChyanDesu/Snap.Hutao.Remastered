@@ -105,6 +105,9 @@ public sealed partial class LaunchOptions : DbStoreOptions, IRestrictedGamePathA
     public IObservableProperty<bool> DisablePlayerPerspective { get => field ??= CreateProperty(SettingKeys.LaunchDisablePlayerPerspective, true); }
 
     [field: MaybeNull]
+    public IObservableProperty<bool> DisablePlayerDiveMosaic { get => field ??= CreateProperty(SettingKeys.LaunchDisablePlayerDiveMosaic, false); }
+
+    [field: MaybeNull]
     public IObservableProperty<bool> DisableFog { get => field ??= CreateProperty(SettingKeys.LaunchDisableFogRendering, false); }
 
     [field: MaybeNull]

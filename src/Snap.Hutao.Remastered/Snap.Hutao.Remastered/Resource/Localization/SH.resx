@@ -4158,6 +4158,9 @@
   <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
     <value>反角色虚化</value>
   </data>
+  <data name="ViewPageLaunchGameDisablePlayerDiveMosaicHeader" xml:space="preserve">
+    <value>移除水下马赛克</value>
+  </data>
   <data name="ServicePluginEnablingPluginFailed" xml:space="preserve">
     <value>在启用插件时发生异常</value>
   </data>

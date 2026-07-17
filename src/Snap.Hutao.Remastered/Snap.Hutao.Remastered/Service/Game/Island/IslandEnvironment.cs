@@ -40,6 +40,7 @@ public struct IslandEnvironment
     public BOOL EnableInLevelClockPageSpeedUp;
     public int CombineHotkey;
     public BOOL WeakMapCheck;
+    public BOOL DisablePlayerDiveMosaic;
 }
 
 public class HexStringToNintConverter : JsonConverter<nint>

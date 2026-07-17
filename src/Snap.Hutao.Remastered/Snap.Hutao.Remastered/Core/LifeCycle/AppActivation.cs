@@ -135,6 +135,7 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
             case MainWindow:
                 if (await WaitWindowAsync<MainWindow>().ConfigureAwait(true) is not null)
                 {
+                    await WaitForContentLoadedAsync().ConfigureAwait(true);
                     INavigationService navigationService = serviceProvider.GetRequiredService<INavigationService>();
                     await navigationService.NavigateAsync<LaunchGamePage>(LaunchGameExtraData.CreateForUid(uid), true).ConfigureAwait(false);
                 }
@@ -158,6 +159,12 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
             case MainWindow:
                 if (await WaitWindowAsync<MainWindow>().ConfigureAwait(true) is not null)
                 {
+                    // When the window is newly created (tray-only mode), its visual tree
+                    // including the NavigationView behavior may not have loaded yet.
+                    // We must wait for it to load so the behavior registers for
+                    // NavigationNavigateMessage before we attempt to navigate.
+                    await WaitForContentLoadedAsync().ConfigureAwait(true);
+
                     if (isRedirectTo)
                     {
                         await LaunchGameAsync(uid).ConfigureAwait(false);
@@ -468,5 +475,24 @@ public sealed partial class AppActivation : IAppActivation, IAppActivationAction
         window.SwitchTo();
         window.AppWindow?.MoveInZOrderAtTop();
         return window;
+    }
+
+    private async ValueTask WaitForContentLoadedAsync()
+    {
+        if (currentXamlWindowReference.Window is not { Content: FrameworkElement content })
+        {
+            return;
+        }
+
+        if (content.IsLoaded)
+        {
+            return;
+        }
+
+        TaskCompletionSource tcs = new();
+        RoutedEventHandler handler = (_, _) => tcs.TrySetResult();
+        content.Loaded += handler;
+        await tcs.Task.ConfigureAwait(true);
+        content.Loaded -= handler;
     }
 }

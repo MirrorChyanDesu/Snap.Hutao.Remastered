@@ -80,7 +80,7 @@ public sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPlaye
                 }
 
                 // Ensure local file path uses file:// scheme for MediaSource
-                                element.Source = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(selected)));
+                element.Source = MediaSource.CreateFromUri(new Uri(Path.GetFullPath(selected)));
                 break;
 
             case BackgroundMediaType.OfficialLauncher:

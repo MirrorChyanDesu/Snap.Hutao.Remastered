@@ -101,6 +101,11 @@ public static partial class Bootstrap
                 // Register URL protocol for unpackaged mode
                 RuntimeEnvironment.TryRegisterProtocol();
 
+                Microsoft.UI.Xaml.Settings.XamlOptionalChanges.EnableChange(Microsoft.UI.Xaml.Settings.XamlChangeId.DefaultStyleOptimizations);
+                Microsoft.UI.Xaml.Settings.XamlOptionalChanges.EnableChange(Microsoft.UI.Xaml.Settings.XamlChangeId.DeferContextFlyoutInit);
+                Microsoft.UI.Xaml.Settings.XamlOptionalChanges.EnableChange(Microsoft.UI.Xaml.Settings.XamlChangeId.IconNoGridOptimization);
+                Microsoft.UI.Xaml.Settings.XamlOptionalChanges.EnableChange(Microsoft.UI.Xaml.Settings.XamlChangeId.OptimizeApplyStyles);
+
                 // If you hit a COMException REGDB_E_CLASSNOTREG (0x80040154) during debugging
                 // You can delete bin and obj folder and then rebuild.
                 // In a Desktop app this runs a message pump publicly,

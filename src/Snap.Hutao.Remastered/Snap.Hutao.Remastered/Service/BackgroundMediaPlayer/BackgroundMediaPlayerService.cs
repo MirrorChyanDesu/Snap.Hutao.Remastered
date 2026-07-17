@@ -35,6 +35,15 @@ public sealed partial class BackgroundMediaPlayerService : IBackgroundMediaPlaye
         mediaPlayer?.Play();
     }
 
+    public void Stop()
+    {
+        if (mediaPlayer is not null)
+        {
+            mediaPlayer.Source = null;
+            mediaPlayer = null;
+        }
+    }
+
     public async ValueTask UpdateMediaPlayerElementAsync(MediaPlayerElement element, CancellationToken token = default)
     {
         if (element is null)

@@ -5,7 +5,6 @@ using Microsoft.UI.Input;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.Windows.AppNotifications.Builder;
 using Snap.Hutao.Remastered.Core.Setting;
 using Snap.Hutao.Remastered.Service;
 using Snap.Hutao.Remastered.Service.BackgroundMediaPlayer;
@@ -27,6 +26,7 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
 {
     private readonly LastWindowCloseBehaviorTraits closeBehaviorTraits;
     private readonly App app;
+    private readonly IBackgroundMediaPlayerService backgroundMediaPlayerService;
 
     public static MainWindow Instance { get; private set; } = null!;
 
@@ -49,26 +49,7 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
 
         closeBehaviorTraits = scope.ServiceProvider.GetRequiredService<LastWindowCloseBehaviorTraits>();
         app = scope.ServiceProvider.GetRequiredService<App>();
-
-        IBackgroundMediaPlayerService backgroundMediaPlayerService = serviceProvider.GetRequiredService<IBackgroundMediaPlayerService>();
-        OverlappedPresenterState previousState = OverlappedPresenterState.Restored;
-        AppWindow.Changed += (_, _) =>
-        {
-            if (AppWindow.Presenter is OverlappedPresenter presenter && presenter.State != previousState)
-            {
-                previousState = presenter.State;
-                switch (presenter.State)
-                {
-                    case OverlappedPresenterState.Minimized:
-                        backgroundMediaPlayerService.Pause();
-                        break;
-                    case OverlappedPresenterState.Restored:
-                    case OverlappedPresenterState.Maximized:
-                        backgroundMediaPlayerService.Play();
-                        break;
-                }
-            }
-        };
+        backgroundMediaPlayerService = serviceProvider.GetRequiredService<IBackgroundMediaPlayerService>();
     }
 
     public SizeInt32 InitSize { get => ScaledSizeInt32.CreateForWindow(1200, 741, this); }
@@ -126,6 +107,8 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
 
     public void OnWindowClosed()
     {
+        backgroundMediaPlayerService.Stop();
+
         if (XamlApplicationLifetime.Exiting)
         {
             return;

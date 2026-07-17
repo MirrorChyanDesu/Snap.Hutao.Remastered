@@ -9,4 +9,6 @@ public interface IBackgroundMediaPlayerService
     void Pause();
 
     void Play();
+
+    void Stop();
 }

@@ -3,6 +3,7 @@
 
 using CommunityToolkit.WinUI.Animations;
 using CommunityToolkit.WinUI.Behaviors;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Snap.Hutao.Remastered.Core.Logging;
@@ -15,6 +16,7 @@ using Snap.Hutao.Remastered.Service.BackgroundMediaPlayer;
 using Snap.Hutao.Remastered.UI.Content;
 using Snap.Hutao.Remastered.UI.Xaml.Control.Theme;
 using Snap.Hutao.Remastered.UI.Xaml.Media.Animation;
+using Snap.Hutao.Remastered.UI.Xaml.View.Window;
 using System.Runtime.InteropServices;
 
 namespace Snap.Hutao.Remastered.UI.Xaml.Behavior;
@@ -24,6 +26,8 @@ public sealed partial class ServiceRecipientMediaPlayerElementPresenterBehavior 
     private readonly CancellationTokenSource unloadCts = new();
 
     private IBackgroundMediaPlayerService? backgroundMediaPlayerService;
+    private AppWindow? appWindow;
+    private OverlappedPresenterState previousState = OverlappedPresenterState.Restored;
 
     public void Dispose()
     {
@@ -39,18 +43,73 @@ public sealed partial class ServiceRecipientMediaPlayerElementPresenterBehavior 
             messenger.Register<Snap.Hutao.Remastered.Service.BackgroundMediaPlayer.Message.BackgroundMediaOptionsChangedMessage>(this);
             PrivateUpdateMediaPlayerElementAsync(unloadCts.Token).SafeForget();
         }
+
+        if (MainWindow.Instance.AppWindow is { } window)
+        {
+            appWindow = window;
+            if (window.Presenter is OverlappedPresenter presenter)
+            {
+                previousState = presenter.State;
+            }
+
+            window.Changed += OnAppWindowChanged;
+        }
     }
 
     protected override bool Uninitialize()
     {
+        if (appWindow is not null)
+        {
+            appWindow.Changed -= OnAppWindowChanged;
+            appWindow = null;
+        }
+
         unloadCts.Cancel();
+
+        if (AssociatedObject is { } mediaElement)
+        {
+            mediaElement.Source = null;
+            mediaElement.SetMediaPlayer(null);
+        }
+
         if (AssociatedObject.XamlRoot.XamlContext()?.ServiceProvider is { } serviceProvider)
         {
             IMessenger messenger = serviceProvider.GetRequiredService<IMessenger>();
             messenger.UnregisterAll(this);
         }
 
+        backgroundMediaPlayerService?.Stop();
+
         return base.Uninitialize();
+    }
+
+    private void OnAppWindowChanged(AppWindow sender, AppWindowChangedEventArgs args)
+    {
+        if (XamlApplicationLifetime.Exiting)
+        {
+            return;
+        }
+
+        if (sender.Presenter is OverlappedPresenter presenter && presenter.State != previousState)
+        {
+            previousState = presenter.State;
+            switch (presenter.State)
+            {
+                case OverlappedPresenterState.Minimized:
+                    backgroundMediaPlayerService?.Stop();
+                    if (AssociatedObject is { } mediaElement)
+                    {
+                        mediaElement.Source = null;
+                        mediaElement.SetMediaPlayer(null);
+                    }
+
+                    break;
+                case OverlappedPresenterState.Restored:
+                case OverlappedPresenterState.Maximized:
+                    PrivateUpdateMediaPlayerElementAsync(unloadCts.Token).SafeForget();
+                    break;
+            }
+        }
     }
 
     [Command("UpdateMediaPlayerElementCommand")]
@@ -73,6 +132,11 @@ public sealed partial class ServiceRecipientMediaPlayerElementPresenterBehavior 
 
         try
         {
+            if (XamlApplicationLifetime.Exiting)
+            {
+                return;
+            }
+
             await AnimationBuilder
                 .Create()
                 .Opacity(
@@ -82,11 +146,6 @@ public sealed partial class ServiceRecipientMediaPlayerElementPresenterBehavior 
                     easingMode: EasingMode.EaseInOut)
                 .StartAsync(mediaElement, token)
                 .ConfigureAwait(false);
-
-            if (XamlApplicationLifetime.Exiting)
-            {
-                return;
-            }
 
             await backgroundMediaPlayerService.UpdateMediaPlayerElementAsync(mediaElement, token).ConfigureAwait(false);
 

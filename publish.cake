@@ -27,6 +27,9 @@ Information($"Version: {version}");
 
 var pfxPath = "pfxPath";
 var pw = "pw";
+const string codeSigningCertificateThumbprint = "414B476BD7F21B4E8DF2665B1F7DA12F564DB9DD";
+const string CodeSigningCertificatePathArgumentName = "CodeSigningCertificatePath";
+var codeSigningCertificatePath = System.IO.Path.Combine(repoDir, "temp-code-signing.cer");
 
 if (GitHubActions.IsRunningOnGitHubActions)
 {
@@ -184,9 +187,49 @@ Task("VC Redist")
     Information("Downloaded VC_redist.x64.exe");
 });
 
+Task("Export code signing certificate")
+    .WithCriteria(GitHubActions.IsRunningOnGitHubActions)
+    .Does(() =>
+{
+    using (var certificate = System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12FromFile(
+        pfxPath,
+        pw,
+        System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.EphemeralKeySet))
+    {
+        string thumbprint = certificate.Thumbprint.Replace(" ", string.Empty).ToUpperInvariant();
+        if (!string.Equals(thumbprint, codeSigningCertificateThumbprint, System.StringComparison.Ordinal))
+        {
+            throw new InvalidOperationException($"Unexpected code-signing certificate thumbprint: {thumbprint}");
+        }
+
+        bool isCertificateAuthority = certificate.Extensions
+            .OfType<System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension>()
+            .Any(extension => extension.CertificateAuthority);
+        if (isCertificateAuthority)
+        {
+            throw new InvalidOperationException("The installer trust certificate must not be a CA certificate.");
+        }
+
+        bool supportsCodeSigning = certificate.Extensions
+            .OfType<System.Security.Cryptography.X509Certificates.X509EnhancedKeyUsageExtension>()
+            .SelectMany(extension => extension.EnhancedKeyUsages.Cast<System.Security.Cryptography.Oid>())
+            .Any(oid => string.Equals(oid.Value, "1.3.6.1.5.5.7.3.3", System.StringComparison.Ordinal));
+        if (!supportsCodeSigning)
+        {
+            throw new InvalidOperationException("The installer trust certificate must have the code-signing EKU.");
+        }
+
+        System.IO.File.WriteAllBytes(
+            codeSigningCertificatePath,
+            certificate.Export(System.Security.Cryptography.X509Certificates.X509ContentType.Cert));
+        Information($"Exported code-signing certificate: {codeSigningCertificatePath}");
+    }
+});
+
 Task("Compile installer")
     .IsDependentOn("Prepare installer output")
     .IsDependentOn("VC Redist")
+    .IsDependentOn("Export code signing certificate")
     .Does(() =>
 {
     var iscc = Context.Tools.Resolve("iscc.exe")?.FullPath;
@@ -201,7 +244,10 @@ Task("Compile installer")
     if (string.IsNullOrEmpty(iscc)) { throw new Exception("Inno Setup not found"); }
 
     var iss = System.IO.Path.Combine(repoDir, "Installer", "installer.iss");
-    var p = StartProcess(iscc, new ProcessSettings { Arguments = $"/dMyAppVersion=\"{version}\" \"{iss}\"", WorkingDirectory = repoDir });
+    var codeSigningCertificatePathArgument = System.IO.File.Exists(codeSigningCertificatePath)
+        ? $"/d{CodeSigningCertificatePathArgumentName}=\"{codeSigningCertificatePath}\" "
+        : string.Empty;
+    var p = StartProcess(iscc, new ProcessSettings { Arguments = $"/dMyAppVersion=\"{version}\" {codeSigningCertificatePathArgument}\"{iss}\"", WorkingDirectory = repoDir });
 
     if (p != 0) { throw new InvalidOperationException($"Inno Setup failed ({p})"); }
     Information("Installer compiled.");

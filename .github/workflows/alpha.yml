@@ -78,7 +78,7 @@ jobs:
         if: success() && github.event_name != 'pull_request'
         uses: actions/upload-artifact@v7
         with:
-          name: Snap.Hutao.Remastered.Alpha-CodeSigningCertificate-${{ steps.build.outputs.version }}
+          name: Snap.Hutao.Remastered.Alpha-SnapHutaoRemasteringProject-${{ steps.build.outputs.version }}
           path: ${{ github.workspace }}/temp-code-signing.cer
 
       - name: Add summary
@@ -90,7 +90,7 @@ jobs:
           > 该版本是由 CI 程序自动打包生成的 \`Alpha\` 测试版本，包含已经基本完工的新功能及问题修复
 
           > [!IMPORTANT]
-          > 安装器不会修改 CA 信任。直接旁加载 MSIX 时，部署管理员应使用 CodeSigningCertificate 工件在本地计算机的受信任人员存储中预置信任叶证书。
+          > 请先安装 **[SnapHutaoRemasteringProjectRootCA.cer](https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/raw/refs/heads/main/SnapHutaoRemasteringProjectRootCA.cer)** 到 **受信任的根证书颁发机构** 以安装测试版安装包
           "
           echo $summary >> $Env:GITHUB_STEP_SUMMARY
 

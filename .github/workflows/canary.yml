@@ -101,7 +101,7 @@ jobs:
         if: ${{ success() && steps.merge.outputs.continue == 'true' }}
         uses: actions/upload-artifact@v7
         with:
-          name: Snap.Hutao.Remastered.Canary-CodeSigningCertificate-${{ steps.installer.outputs.version }}
+          name: Snap.Hutao.Remastered.Canary-SnapHutaoRemasteringProject-${{ steps.installer.outputs.version }}
           path: ${{ github.workspace }}/temp-code-signing.cer
 
       - name: Add summary
@@ -113,7 +113,7 @@ jobs:
           > 该版本是由 CI 程序自动打包生成的 \`Canary\` 测试版本，包含新功能原型及问题修复
 
           > [!IMPORTANT]
-          > 安装器不会修改 CA 信任。直接旁加载 MSIX 时，部署管理员应使用 CodeSigningCertificate 工件在本地计算机的受信任人员存储中预置信任叶证书。
+          > 请先安装 **[SnapHutaoRemasteringProjectRootCA.cer](https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/raw/refs/heads/main/SnapHutaoRemasteringProjectRootCA.cer)** 到 **受信任的根证书颁发机构** 以安装测试版安装包
           "
 
           echo $summary >> $Env:GITHUB_STEP_SUMMARY

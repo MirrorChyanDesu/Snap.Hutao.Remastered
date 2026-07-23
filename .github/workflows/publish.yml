@@ -45,7 +45,7 @@ jobs:
       - name: Upload code-signing certificate
         uses: actions/upload-artifact@v7
         with:
-          name: Snap.Hutao.Remastered-CodeSigningCertificate-${{ steps.publish.outputs.version }}
+          name: Snap.Hutao.Remastered-SnapHutaoRemasteringProject-${{ steps.publish.outputs.version }}
           path: ${{ github.workspace }}/temp-code-signing.cer
 
       - name: Add summary

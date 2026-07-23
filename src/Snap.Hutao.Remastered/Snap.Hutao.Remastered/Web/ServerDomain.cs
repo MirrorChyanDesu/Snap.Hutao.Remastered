@@ -1,7 +1,6 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
-using Snap.Hutao.Remastered.Core.Setting;
 
 namespace Snap.Hutao.Remastered.Web;
 
@@ -33,15 +32,13 @@ public static class ServerDomain
     }
 
     /// <summary>
-    /// Auto fallback: switch to backup domain and persist to LocalSetting.
-    /// During early startup LocalSetting may not be available; only the in-memory state is set.
+    /// Auto fallback: switch to backup domain in-memory only, without persisting the setting.
     /// </summary>
     public static void TryAutoFallback()
     {
         if (currentMode is ServerDomainMode.Primary)
         {
             currentMode = ServerDomainMode.Backup;
-            UnsafeLocalSetting.Set(SettingKeys.ServerDomainMode, ServerDomainMode.Backup);
         }
     }
 

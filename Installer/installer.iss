@@ -19,7 +19,6 @@
 #define MyAppAssocName "Hutao Protocol"
 #define MyAppAssocExt ".hutao"
 #define MyAppAssocKey "hutao"
-#define CodeSigningCertificateThumbprint "414B476BD7F21B4E8DF2665B1F7DA12F564DB9DD"
 #define CodeSigningCertificateFileName "SnapHutaoRemasteringProjectCodeSigning.cer"
 
 #define PublishDir "Publish"
@@ -116,6 +115,7 @@ begin
   end;
 end;
 
+#ifdef CodeSigningCertificatePath
 function CertificateExistsInTrustedPeople: Boolean;
 begin
   Result := RegKeyExists(
@@ -123,7 +123,6 @@ begin
     'SOFTWARE\Microsoft\SystemCertificates\TrustedPeople\Certificates\' + CodeSigningCertificateThumbprint);
 end;
 
-#ifdef CodeSigningCertificatePath
 procedure InstallCodeSigningCertificate;
 var
   CertPath: string;
@@ -163,7 +162,6 @@ begin
     Log('Failed to install the code-signing certificate in TrustedPeople. Exit code: ' + IntToStr(ResultCode));
   end;
 end;
-#endif
 
 procedure RemoveInstallerOwnedCodeSigningCertificate;
 var
@@ -210,6 +208,7 @@ begin
     Log('Failed to remove installer-owned code-signing certificate from TrustedPeople. Exit code: ' + IntToStr(ResultCode));
   end;
 end;
+#endif
 
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
@@ -225,10 +224,12 @@ procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
   DataDir: string;
 begin
+#ifdef CodeSigningCertificatePath
   if CurUninstallStep = usUninstall then
   begin
     RemoveInstallerOwnedCodeSigningCertificate;
   end;
+#endif
 
   if (CurUninstallStep = usPostUninstall) and not UninstallSilent then
   begin

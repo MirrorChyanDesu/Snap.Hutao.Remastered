@@ -27,8 +27,9 @@ Information($"Version: {version}");
 
 var pfxPath = "pfxPath";
 var pw = "pw";
-const string codeSigningCertificateThumbprint = "414B476BD7F21B4E8DF2665B1F7DA12F564DB9DD";
+string codeSigningCertificateThumbprint = "";
 const string CodeSigningCertificatePathArgumentName = "CodeSigningCertificatePath";
+const string CodeSigningCertificateThumbprintArgumentName = "CodeSigningCertificateThumbprint";
 var codeSigningCertificatePath = System.IO.Path.Combine(repoDir, "temp-code-signing.cer");
 
 if (GitHubActions.IsRunningOnGitHubActions)
@@ -196,12 +197,6 @@ Task("Export code signing certificate")
         pw,
         System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.EphemeralKeySet))
     {
-        string thumbprint = certificate.Thumbprint.Replace(" ", string.Empty).ToUpperInvariant();
-        if (!string.Equals(thumbprint, codeSigningCertificateThumbprint, System.StringComparison.Ordinal))
-        {
-            throw new InvalidOperationException($"Unexpected code-signing certificate thumbprint: {thumbprint}");
-        }
-
         bool isCertificateAuthority = certificate.Extensions
             .OfType<System.Security.Cryptography.X509Certificates.X509BasicConstraintsExtension>()
             .Any(extension => extension.CertificateAuthority);
@@ -219,10 +214,12 @@ Task("Export code signing certificate")
             throw new InvalidOperationException("The installer trust certificate must have the code-signing EKU.");
         }
 
+        codeSigningCertificateThumbprint = certificate.Thumbprint.Replace(" ", string.Empty).ToUpperInvariant();
+
         System.IO.File.WriteAllBytes(
             codeSigningCertificatePath,
             certificate.Export(System.Security.Cryptography.X509Certificates.X509ContentType.Cert));
-        Information($"Exported code-signing certificate: {codeSigningCertificatePath}");
+        Information($"Exported code-signing certificate: {codeSigningCertificatePath} (thumbprint: {codeSigningCertificateThumbprint})");
     }
 });
 
@@ -247,7 +244,10 @@ Task("Compile installer")
     var codeSigningCertificatePathArgument = System.IO.File.Exists(codeSigningCertificatePath)
         ? $"/d{CodeSigningCertificatePathArgumentName}=\"{codeSigningCertificatePath}\" "
         : string.Empty;
-    var p = StartProcess(iscc, new ProcessSettings { Arguments = $"/dMyAppVersion=\"{version}\" {codeSigningCertificatePathArgument}\"{iss}\"", WorkingDirectory = repoDir });
+    var codeSigningCertificateThumbprintArgument = !string.IsNullOrEmpty(codeSigningCertificateThumbprint)
+        ? $"/d{CodeSigningCertificateThumbprintArgumentName}=\"{codeSigningCertificateThumbprint}\" "
+        : string.Empty;
+    var p = StartProcess(iscc, new ProcessSettings { Arguments = $"/dMyAppVersion=\"{version}\" {codeSigningCertificatePathArgument}{codeSigningCertificateThumbprintArgument}\"{iss}\"", WorkingDirectory = repoDir });
 
     if (p != 0) { throw new InvalidOperationException($"Inno Setup failed ({p})"); }
     Information("Installer compiled.");

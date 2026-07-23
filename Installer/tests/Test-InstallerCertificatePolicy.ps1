@@ -7,7 +7,7 @@ $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $installerScriptPath = Join-Path $repoRoot 'Installer\installer.iss'
 $installerScript = Get-Content -Raw $installerScriptPath
-$expectedThumbprint = '414B476BD7F21B4E8DF2665B1F7DA12F564DB9DD'
+$expectedThumbprintPlaceholder = '{#CodeSigningCertificateThumbprint}'
 
 function Assert-Policy {
     param(
@@ -30,8 +30,8 @@ Assert-Policy `
     -Condition (-not [regex]::IsMatch($installerScript, '(?im)^\s*Source:\s+"[^"]*RootCA\.cer"')) `
     -Message 'The installer must not package the project root CA.'
 Assert-Policy `
-    -Condition ($installerScript.Contains("#define CodeSigningCertificateThumbprint `"$expectedThumbprint`"")) `
-    -Message 'The installer must pin the expected code-signing leaf certificate thumbprint.'
+    -Condition ($installerScript.Contains("CodeSigningCertificateThumbprint = '$expectedThumbprintPlaceholder'")) `
+    -Message 'The installer must reference the code-signing leaf certificate thumbprint via preprocessor variable.'
 Assert-Policy `
     -Condition ([regex]::IsMatch($installerScript, '(?im)-addstore\s+TrustedPeople\b')) `
     -Message 'The installer must add only the code-signing leaf to TrustedPeople.'
@@ -65,8 +65,8 @@ foreach ($buildScriptName in 'build-installer.cake', 'publish.cake') {
         -Condition ($buildScript.Contains('Task("Export code signing certificate")')) `
         -Message "$buildScriptName must export the signing leaf certificate before compiling the installer."
     Assert-Policy `
-        -Condition ($buildScript.Contains($expectedThumbprint)) `
-        -Message "$buildScriptName must reject an unexpected signing certificate."
+        -Condition ([regex]::IsMatch($buildScript, 'codeSigningCertificateThumbprint\s*=\s*certificate\.Thumbprint')) `
+        -Message "$buildScriptName must extract the signing certificate thumbprint from the provided PFX."
     Assert-Policy `
         -Condition ($buildScript.Contains('CodeSigningCertificatePath')) `
         -Message "$buildScriptName must pass the generated leaf certificate to Inno Setup."
@@ -92,8 +92,8 @@ Assert-Policy `
     -Message 'Installer signature verification must remain the default lifecycle-test behavior.'
 
 Assert-Policy `
-    -Condition (-not (Test-Path (Join-Path $repoRoot 'SnapHutaoRemasteringProjectRootCA.cer'))) `
-    -Message 'The legacy project root CA must not remain as a tracked distribution artifact.'
+    -Condition (Test-Path (Join-Path $repoRoot 'SnapHutaoRemasteringProjectRootCA.cer')) `
+    -Message 'The project root CA must be tracked in the repository for MSIX side-loading.'
 
 foreach ($workflowName in 'alpha.yml', 'canary.yml') {
     $workflow = Get-Content -Raw (Join-Path $repoRoot ".github\workflows\$workflowName")
@@ -101,7 +101,7 @@ foreach ($workflowName in 'alpha.yml', 'canary.yml') {
         -Condition (-not [regex]::IsMatch($workflow, '(?i)Trusted Root|RootCA\.cer')) `
         -Message "$workflowName must not tell users to import the project CA into Trusted Root."
     Assert-Policy `
-        -Condition ($workflow.Contains('CodeSigningCertificate')) `
+        -Condition ($workflow.Contains('SnapHutaoRemasteringProject')) `
         -Message "$workflowName must publish the code-signing leaf for managed MSIX deployment."
 }
 

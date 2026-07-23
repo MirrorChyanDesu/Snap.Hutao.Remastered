@@ -204,14 +204,8 @@
   <data name="ViewGuideStepAgreementCopyInstruction" xml:space="preserve">
     <value>抄寫下面的文字</value>
   </data>
-  <data name="ViewGuideAgreementCopyTextLine1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ViewGuideAgreementCopyTextLine2" xml:space="preserve">
+  <data name="ViewGuideStepAgreementDownStream" xml:space="preserve">
     <value>我已知悉 Snap Hutao Remastered 是 Hutao 的下游分支，與 DGP Studio 及原作者無關</value>
-  </data>
-  <data name="ViewGuideAgreementCopyPlaceholder" xml:space="preserve">
-    <value>請在此處抄寫上方文字以繼續</value>
   </data>
   <data name="MetadataSpecialNameMetaAvatarSexProInfoPronounBoyGirlD" xml:space="preserve">
     <value>&lt;color=#1E90FF&gt;王子&lt;/color&gt;/&lt;color=#FFB6C1&gt;公主&lt;/color&gt;</value>
@@ -2915,12 +2909,6 @@
   <data name="ViewPageLaunchGameDisableFogOn" xml:space="preserve">
     <value>移除</value>
   </data>
-  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
-    <value>反角色虛化</value>
-  </data>
-  <data name="ViewPageLaunchGameDisablePlayerDiveMosaicHeader" xml:space="preserve">
-    <value>移除水下馬賽克</value>
-  </data>
   <data name="ViewPageLaunchGameElevationDescription" xml:space="preserve">
     <value>遊戲檔案管理/切換遊戲伺服器/注入功能需要系統管理員權限</value>
   </data>
@@ -4091,6 +4079,12 @@
   <data name="ViewPageSettingAutoStartDescription" xml:space="preserve">
     <value>程式將在當前用戶登錄時啟動（修改需以管理員身份運行，且與始終以管理員身份運行一起勾選將始終保持管理員狀態）</value>
   </data>
+  <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
+    <value>反角色虛化</value>
+  </data>
+  <data name="ViewPageLaunchGameDisablePlayerDiveMosaicHeader" xml:space="preserve">
+    <value>移除水下馬賽克</value>
+  </data>
   <data name="ViewControlStatisticsCardPurpleAveragePullText" xml:space="preserve">
     <value>四星平均抽數</value>
   </data>
@@ -4317,6 +4311,15 @@
   <data name="ViewModelMainNetworkRecoveredRetrying" xml:space="preserve">
     <value>網絡已恢復，正在自動重試</value>
   </data>
+  <data name="ViewPageSettingBackgroundMediaNone" xml:space="preserve">
+    <value>無</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaLocalFolder" xml:space="preserve">
+    <value>本機隨機影片</value>
+  </data>
+  <data name="ViewPageSettingBackgroundMediaOfficialLauncherVideo" xml:space="preserve">
+    <value>官方啟動器背景</value>
+  </data>
   <data name="ViewPageSettingHomeAnnouncementActPreviewDescription" xml:space="preserve">
     <value>默認關閉，不在進行中的事件日期等部分內容將不會正確顯示</value>
   </data>
@@ -4343,15 +4346,6 @@
   </data>
   <data name="ViewPageSettingBackgroundVideoDescription" xml:space="preserve">
     <value>更改視窗的背景影片來源，優先級大於背景圖片</value>
-  </data>
-  <data name="ViewPageSettingBackgroundMediaNone" xml:space="preserve">
-    <value>無</value>
-  </data>
-  <data name="ViewPageSettingBackgroundMediaLocalFolder" xml:space="preserve">
-    <value>本機隨機影片</value>
-  </data>
-  <data name="ViewPageSettingBackgroundMediaOfficialLauncherVideo" xml:space="preserve">
-    <value>官方啟動器背景</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoIsLoopingHeader" xml:space="preserve">
     <value>是否循環播放</value>

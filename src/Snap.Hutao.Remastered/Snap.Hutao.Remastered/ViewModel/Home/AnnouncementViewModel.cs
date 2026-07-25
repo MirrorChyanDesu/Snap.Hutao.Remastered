@@ -127,7 +127,6 @@ public sealed partial class AnnouncementViewModel : Abstraction.ViewModel, IReci
 
             await taskContext.SwitchToMainThreadAsync();
             Announcement = announcementWrapper;
-            DeferContentLoader?.Load("GameAnnouncementPivot");
             return true;
         }
         catch (OperationCanceledException)

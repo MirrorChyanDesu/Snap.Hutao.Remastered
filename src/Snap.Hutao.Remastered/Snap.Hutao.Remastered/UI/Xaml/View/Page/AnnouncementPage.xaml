@@ -1145,9 +1145,9 @@
                         x:Name="GameAnnouncementPivot"
                         Margin="-16"
                         x:FieldModifier="internal"
-                        x:Load="False"
                         Style="{ThemeResource CardPivotStyle}"
-                        Transitions="{ThemeResource EntranceThemeTransitions}">
+                        Transitions="{ThemeResource EntranceThemeTransitions}"
+                        Visibility="{Binding Announcement, Converter={StaticResource EmptyObjectToVisibilityConverter}}">
                         <PivotItem
                             Content="{Binding Announcement.List[1]}"
                             ContentTemplate="{StaticResource AnnouncementPivotItemContentTemplate}"

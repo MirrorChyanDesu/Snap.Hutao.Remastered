@@ -114,6 +114,11 @@ public sealed partial class MainWindow : Microsoft.UI.Xaml.Window,
             return;
         }
 
+        if (XamlApplicationLifetime.WindowClosedForGameLaunch)
+        {
+            return;
+        }
+
         if (!XamlApplicationLifetime.NotifyIconCreated || app.Options.LastWindowCloseBehavior.Value is LastWindowCloseBehavior.ExitApplication)
         {
             app.Exit();

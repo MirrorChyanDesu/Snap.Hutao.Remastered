@@ -20,7 +20,8 @@ public sealed class DefaultLaunchExecutionInvoker : AbstractLaunchExecutionInvok
             new LaunchExecutionGameIslandHandler(resume: false),
             new LaunchExecutionOverlayHandler(),
             new LaunchExecutionStarwardPlayTimeStatisticsHandler(),
-            new LaunchExecutionBetterGenshinImpactAutomationHandler()
+            new LaunchExecutionBetterGenshinImpactAutomationHandler(),
+            new LaunchExecutionCloseWindowHandler(),
         ];
     }
 }

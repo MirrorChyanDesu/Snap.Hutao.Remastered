@@ -3464,6 +3464,12 @@ Space Available: {2}</value>
   <data name="ViewPageSettingKeyShortcutWarningDescription" xml:space="preserve">
     <value>Setting the same shortcut key for different functions may cause unexpected results, and additional operations or restarting the application are required to restore normal function.</value>
   </data>
+  <data name="ViewPageSettingLaunchCloseWhenGameStartedDescription" xml:space="preserve">
+    <value>Automatically close the Snap Hutao window after launching the game to save memory.</value>
+  </data>
+  <data name="ViewPageSettingLaunchCloseWhenGameStartedHeader" xml:space="preserve">
+    <value>Close Window After Launching Game</value>
+  </data>
   <data name="ViewPageSettingLaunchForceUsingTouchScreenDescription" xml:space="preserve">
     <value>When an integrated touch device is detected and injection functionality is enabled, force enable touch screen interaction mode when launching the game; when not detected, force disable.</value>
   </data>

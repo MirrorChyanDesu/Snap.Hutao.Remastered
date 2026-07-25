@@ -27,6 +27,12 @@ public sealed partial class SettingGameViewModel : Abstraction.ViewModel
         get => LocalSetting.Get(SettingKeys.LaunchForceUsingTouchScreen, false);
         set => LocalSetting.Set(SettingKeys.LaunchForceUsingTouchScreen, value);
     }
+    public bool CloseWhenGameStarted
+    {
+        get => LocalSetting.Get(SettingKeys.LaunchIsCloseWhenGameStarted, false);
+        set => LocalSetting.Set(SettingKeys.LaunchIsCloseWhenGameStarted, value);
+    }
+
     public bool AutoSignInEnabled
     {
         get => LocalSetting.Get(SettingKeys.AutoSignInEnabled, true);

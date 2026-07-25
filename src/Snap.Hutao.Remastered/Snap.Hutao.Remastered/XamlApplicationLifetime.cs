@@ -19,4 +19,6 @@ public static class XamlApplicationLifetime
     public static bool Exiting { get => Volatile.Read(ref field); set => Volatile.Write(ref field, value); }
 
     public static bool Exited { get => Volatile.Read(ref field); set => Volatile.Write(ref field, value); }
+
+    public static bool WindowClosedForGameLaunch { get => Volatile.Read(ref field); set => Volatile.Write(ref field, value); }
 }

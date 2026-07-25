@@ -938,6 +938,12 @@
                                     HeaderIcon="{shuxm:FontIcon Glyph=&#xEC8F;}">
                                     <ToggleSwitch IsOn="{Binding AutoSignInEnabled, Mode=TwoWay}"/>
                                 </cwc:SettingsCard>
+                                <cwc:SettingsCard
+                                    Description="{shuxm:ResourceString Name=ViewPageSettingLaunchCloseWhenGameStartedDescription}"
+                                    Header="{shuxm:ResourceString Name=ViewPageSettingLaunchCloseWhenGameStartedHeader}"
+                                    HeaderIcon="{shuxm:FontIcon Glyph=&#xE8BB;}">
+                                    <ToggleSwitch IsOn="{Binding CloseWhenGameStarted, Mode=TwoWay}"/>
+                                </cwc:SettingsCard>
                             </StackPanel>
                         </Border>
                     </Border>

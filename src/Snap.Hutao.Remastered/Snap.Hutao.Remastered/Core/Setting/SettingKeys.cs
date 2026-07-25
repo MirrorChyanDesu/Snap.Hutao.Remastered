@@ -181,6 +181,9 @@ public static class SettingKeys
     public const string WebView2VideoFastForwardOrRewindSeconds = "Snap::Hutao::Web::WebView::Video::FastForwardOrRewind::Seconds";
     public const string ServerDomainMode                        = "Snap::Hutao::Web::ServerDomainMode";
 
+    // Game - Launch
+    public const string LaunchIsCloseWhenGameStarted            = "Snap::Hutao::Game::Launch::CloseWhenGameStarted";
+
     // Auto Sign-In
     public const string AutoSignInEnabled                       = "Snap::Hutao::SignIn::AutoSignIn::Enabled";
 }

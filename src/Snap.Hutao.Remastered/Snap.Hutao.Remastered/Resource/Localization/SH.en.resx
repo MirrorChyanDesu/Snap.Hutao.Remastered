@@ -4749,4 +4749,40 @@ Space Available: {2}</value>
   <data name="ViewPageSettingStorageBackgroundVideoHint" xml:space="preserve">
     <value>Video background takes priority over background image</value>
   </data>
+  <data name="ModelIntrinsicMainQuestTagNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagGuide" xml:space="preserve">
+    <value>Map Event</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagActivity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagRankZeroWq" xml:space="preserve">
+    <value>World Quest</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagMainWq" xml:space="preserve">
+    <value>Main World Quest</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagReputation" xml:space="preserve">
+    <value>Reputation Quest</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagNatlanTribal" xml:space="preserve">
+    <value>Tribal Chronicles</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagFlowerland" xml:space="preserve">
+    <value>Moonlit Companion</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagThespia" xml:space="preserve">
+    <value>Gathering Quest</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagResidentActivity" xml:space="preserve">
+    <value>Permanent Event</value>
+  </data>
+  <data name="ModelIntrinsicQuestShowTypeShow" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ModelIntrinsicQuestShowTypeHidden" xml:space="preserve">
+    <value>Hidden</value>
+  </data>
 </root>

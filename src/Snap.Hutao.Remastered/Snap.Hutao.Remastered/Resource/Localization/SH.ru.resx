@@ -121,25 +121,25 @@
     <value>Snap Hutao Dev {0}</value>
   </data>
   <data name="AppElevatedDevNameAndVersion" xml:space="preserve">
-    <value>Ху Тао Dev {0} [Администратор]</value>
+    <value>Snap Hutao Dev {0} [Администратор]</value>
   </data>
   <data name="AppElevatedNameAndVersion" xml:space="preserve">
-    <value>Ху Тао {0} [Администратор]</value>
+    <value>Snap Hutao {0} [Администратор]</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>Ху Тао</value>
+    <value>Snap Hutao</value>
   </data>
   <data name="AppDevName" xml:space="preserve">
-    <value>Ху Тао Dev</value>
+    <value>Snap Hutao Dev</value>
   </data>
   <data name="AppNameAndVersion" xml:space="preserve">
-    <value>Ху Тао {0}</value>
+    <value>Snap Hutao {0}</value>
   </data>
   <data name="ContentDialogCancelCloseButtonText" xml:space="preserve">
     <value>Отмена</value>
   </data>
   <data name="ContentDialogCompletePrimaryButtonText" xml:space="preserve">
-    <value>Готово</value>
+    <value>Завершено</value>
   </data>
   <data name="ContentDialogConfirmPrimaryButtonText" xml:space="preserve">
     <value>Подтвердить</value>
@@ -169,7 +169,7 @@
     <value>Не удалось создать значок в области уведомлений</value>
   </data>
   <data name="CoreThreadingSemaphoreSlimDisposed" xml:space="preserve">
-    <value>Semaphore удален, операция отменена</value>
+    <value>Семафор был освобождён, операция отменена</value>
   </data>
   <data name="CoreWebView2HelperVersionUndetected" xml:space="preserve">
     <value>Среда выполнения WebView2 не обнаружена</value>
@@ -190,7 +190,7 @@
     <value>Выход</value>
   </data>
   <data name="CoreWindowingNotifyIconLaunchGameLabel" xml:space="preserve">
-    <value>Game Launcher</value>
+    <value>Запуск игры</value>
   </data>
   <data name="CoreWindowingNotifyIconPromotedHint" xml:space="preserve">
     <value>Snap Hutao работает в фоновом режиме</value>
@@ -199,7 +199,7 @@
     <value>Окно</value>
   </data>
   <data name="GuideWindowTitle" xml:space="preserve">
-    <value>Добро пожаловать в Snap Hutao, путешественник ~</value>
+    <value>Добро пожаловать в Snap Hutao</value>
   </data>
   <data name="ViewGuideStepAgreementCopyInstruction" xml:space="preserve">
     <value>Скопируйте текст ниже</value>
@@ -211,22 +211,22 @@
     <value>&lt;color=#1E90FF&gt;Принц&lt;/color&gt;/&lt;color=#FFB6C1&gt;Принцесса&lt;/color&gt;</value>
   </data>
   <data name="MetadataSpecialNameMetaAvatarSexProInfoPronounBoyGirlFirst" xml:space="preserve">
-    <value>&lt;color=#1E90FF&gt;I&lt;/color&gt;/&lt;color=#FFB6C1&gt;I&lt;/color&gt;</value>
+    <value>&lt;color=#1E90FF&gt;Я&lt;/color&gt;/&lt;color=#FFB6C1&gt;Я&lt;/color&gt;</value>
   </data>
   <data name="MetadataSpecialNameNickname" xml:space="preserve">
     <value>Путешественник</value>
   </data>
   <data name="MetadataSpecialNamePlayerAvatarSexProInfoPronounHeShe" xml:space="preserve">
-    <value>&lt;color=#1E90FF&gt;He&lt;/color&gt;/&lt;color=#FFB6C1&gt;She&lt;/color&gt;</value>
+    <value>&lt;color=#1E90FF&gt;Он&lt;/color&gt;/&lt;color=#FFB6C1&gt;Она&lt;/color&gt;</value>
   </data>
   <data name="MetadataSpecialNameRealNameId1" xml:space="preserve">
-    <value>Путник</value>
+    <value>Странник</value>
   </data>
   <data name="MetadataSpecialNameServerTimeZone" xml:space="preserve">
     <value>Часовой пояс сервера</value>
   </data>
   <data name="ModelBindingAvatarPropertyWeaponAffix" xml:space="preserve">
-    <value>Уточнить {0}</value>
+    <value>Пробуждение {0}</value>
   </data>
   <data name="ModelBindingCultivationDaysOfWeek14" xml:space="preserve">
     <value>Понедельник/Четверг/Воскресенье</value>
@@ -238,49 +238,49 @@
     <value>Среда/Суббота/Воскресенье</value>
   </data>
   <data name="ModelBindingGachaTypedWishSummaryAveragePull" xml:space="preserve">
-    <value>{0:f2} Pulls</value>
+    <value>{0:f2} круток</value>
   </data>
   <data name="ViewControlStatisticsCardToLastBlueText" xml:space="preserve">
-    <value>距上个三星</value>
+    <value>С прошлой 3★</value>
   </data>
   <data name="ModelBindingGachaTypedWishSummaryMaxOrangePull" xml:space="preserve">
-    <value>Unluckiest {0} Pulls</value>
+    <value>Антирекорд: {0} круток</value>
   </data>
   <data name="ModelBindingGachaTypedWishSummaryMinOrangePull" xml:space="preserve">
-    <value>Luckiest {0} Pulls</value>
+    <value>Рекорд: {0} круток</value>
   </data>
   <data name="ModelBindingGachaWishBaseTotalCount" xml:space="preserve">
-    <value>{0} Pulls</value>
+    <value>{0} круток</value>
   </data>
   <data name="ModelBindingHutaoComplexRankFloor" xml:space="preserve">
     <value>Этаж {0}</value>
   </data>
   <data name="ModelBindingHutaoComplexRankLevel" xml:space="preserve">
-    <value>Уровень {0}</value>
+    <value>Зал {0}</value>
   </data>
   <data name="ModelBindingHutaoTeamUpCount" xml:space="preserve">
-    <value>Appear {0} Times</value>
+    <value>Появление {0} раз</value>
   </data>
   <data name="ModelBindingLaunchGameLaunchSchemeBilibili" xml:space="preserve">
-    <value>BiliBili</value>
+    <value>Bilibili</value>
   </data>
   <data name="ModelBindingLaunchGameLaunchSchemeChinese" xml:space="preserve">
-    <value>CN</value>
+    <value>Официальный сервер</value>
   </data>
   <data name="ModelBindingLaunchGameLaunchSchemeOversea" xml:space="preserve">
-    <value>Global</value>
+    <value>Международный сервер</value>
   </data>
   <data name="ModelBindingUserInitializationFailed" xml:space="preserve">
-    <value>Ошибка Сети</value>
+    <value>Ошибка сети</value>
   </data>
   <data name="ModelEntityDailyNoteNotRefreshed" xml:space="preserve">
     <value>Не обновлено</value>
   </data>
   <data name="ModelEntityDailyNoteRefreshTime" xml:space="preserve">
-    <value>Обновление в {0:MM.dd HH:mm:ss}</value>
+    <value>Обновлено {0:MM.dd HH:mm:ss}</value>
   </data>
   <data name="ModelEntityHardChallengeSchedule" xml:space="preserve">
-    <value>Расписание {0}: {1}</value>
+    <value>Сезон {0}: {1}</value>
   </data>
   <data name="ModelEntityPrimitiveCultivateTypeAvatarAndSkill" xml:space="preserve">
     <value>Персонаж</value>
@@ -292,10 +292,10 @@
     <value>Оружие</value>
   </data>
   <data name="ModelEntitySpiralAbyssSchedule" xml:space="preserve">
-    <value>Расписание {0}</value>
+    <value>Сезон {0}</value>
   </data>
   <data name="ModelInterchangeUIGFItemTypeAvatar" xml:space="preserve">
-    <value>Персонажи</value>
+    <value>Персонаж</value>
     <comment>Need EXACT same string in official API</comment>
   </data>
   <data name="ModelInterchangeUIGFItemTypeWeapon" xml:space="preserve">
@@ -335,7 +335,7 @@
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelIntrinsicAssociationTypeRanger" xml:space="preserve">
-    <value>Ranger</value>
+    <value>Следопыты</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelIntrinsicAssociationTypeSnezhnaya" xml:space="preserve">
@@ -350,7 +350,7 @@
     <value>Мальчик</value>
   </data>
   <data name="ModelIntrinsicBodyTypeGirl" xml:space="preserve">
-    <value>Девочка</value>
+    <value>Девушка</value>
   </data>
   <data name="ModelIntrinsicBodyTypeLady" xml:space="preserve">
     <value>Леди</value>
@@ -359,7 +359,7 @@
     <value>Лоли</value>
   </data>
   <data name="ModelIntrinsicBodyTypeMale" xml:space="preserve">
-    <value>Мужской</value>
+    <value>Мужчина</value>
   </data>
   <data name="ModelIntrinsicElementNameElec" xml:space="preserve">
     <value>Электро</value>
@@ -390,40 +390,40 @@
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelIntrinsicHardChallengeDifficultyLevelAdvancing" xml:space="preserve">
-    <value>Продвижение</value>
+    <value>Продвинутый</value>
   </data>
   <data name="ModelIntrinsicHardChallengeDifficultyLevelDire" xml:space="preserve">
-    <value>Критический</value>
+    <value>Отчаянный</value>
   </data>
   <data name="ModelIntrinsicHardChallengeDifficultyLevelFearless" xml:space="preserve">
     <value>Бесстрашный</value>
   </data>
   <data name="ModelIntrinsicHardChallengeDifficultyLevelHard" xml:space="preserve">
-    <value>Тяжелый</value>
+    <value>Сложный</value>
   </data>
   <data name="ModelIntrinsicHardChallengeDifficultyLevelMenacing" xml:space="preserve">
     <value>Угрожающий</value>
   </data>
   <data name="ModelIntrinsicHardChallengeDifficultyLevelNormal" xml:space="preserve">
-    <value>Нормальный</value>
+    <value>Обычный</value>
   </data>
   <data name="ModelIntrinsicItemQualityBlue" xml:space="preserve">
-    <value>3 Stars</value>
+    <value>3★</value>
   </data>
   <data name="ModelIntrinsicItemQualityGreen" xml:space="preserve">
-    <value>2 Stars</value>
+    <value>2★</value>
   </data>
   <data name="ModelIntrinsicItemQualityOrange" xml:space="preserve">
-    <value>5 Stars</value>
+    <value>5★</value>
   </data>
   <data name="ModelIntrinsicItemQualityPurple" xml:space="preserve">
-    <value>4 Stars</value>
+    <value>4★</value>
   </data>
   <data name="ModelIntrinsicItemQualityRed" xml:space="preserve">
-    <value>Эксклюзивное событие</value>
+    <value>Эксклюзивная 5★</value>
   </data>
   <data name="ModelIntrinsicItemQualityWhite" xml:space="preserve">
-    <value>1 Star</value>
+    <value>1★</value>
   </data>
   <data name="ModelIntrinsicRoleCombatDifficultyLevelEasy" xml:space="preserve">
     <value>Лёгкий режим</value>
@@ -438,7 +438,7 @@
     <value>Обычный режим</value>
   </data>
   <data name="ModelIntrinsicRoleCombatDifficultyLevelVisionary" xml:space="preserve">
-    <value>Режим «Мастер»</value>
+    <value>Режим мастера</value>
   </data>
   <data name="ModelIntrinsicWeaponTypeBow" xml:space="preserve">
     <value>Лук</value>
@@ -457,21 +457,21 @@
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelIntrinsicWeaponTypeSwordOneHand" xml:space="preserve">
-    <value>Одноручные мечи</value>
+    <value>Одноручный меч</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataAvatarPlayerName" xml:space="preserve">
     <value>Путешественник</value>
   </data>
   <data name="ModelMetadataFetterInfoBirthday" xml:space="preserve">
-    <value>{0}/{1}</value>
+    <value>{0} {1}</value>
   </data>
   <data name="ModelMetadataMaterialCharacterAndWeaponEnhancementMaterial" xml:space="preserve">
     <value>Материалы для улучшения персонажа и оружия</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataMaterialCharacterAscensionMaterial" xml:space="preserve">
-    <value>Материалы для Вознесения Персонажа</value>
+    <value>Материалы возвышения персонажа</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataMaterialCharacterEXPMaterial" xml:space="preserve">
@@ -479,104 +479,104 @@
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataMaterialCharacterLevelUpMaterial" xml:space="preserve">
-    <value>Материалы для повышения уровня персонажа</value>
+    <value>Материалы развития персонажа</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataMaterialCharacterTalentMaterial" xml:space="preserve">
-    <value>Материалы талантов персонажей</value>
+    <value>Материалы талантов персонажа</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataMaterialWeaponAscensionMaterial" xml:space="preserve">
-    <value>Материалы для улучшения оружия</value>
+    <value>Материалы возвышения оружия</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataMaterialWeaponEnhancementMaterial" xml:space="preserve">
-    <value>Weapon Enhancement Materials</value>
+    <value>Материалы улучшения оружия</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ModelMetadataTowerGoalTypeDefeatMonsters" xml:space="preserve">
-    <value>Уничтожьте монстров</value>
+    <value>Уничтожить монстров</value>
   </data>
   <data name="ModelMetadataTowerGoalTypeDefendTarget" xml:space="preserve">
-    <value>Защитите монолит</value>
+    <value>Защитить цель</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeAdditional" xml:space="preserve">
-    <value>Дополнение: Усиление монстров</value>
+    <value>Дополнительно: Подкрепление монстров</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeDefault" xml:space="preserve">
     <value>Монстры в этой комнате</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupA" xml:space="preserve">
-    <value>Группа А: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа A: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupAWave1" xml:space="preserve">
-    <value>Группа А. Волна 1: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа A, волна 1: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupAWave2" xml:space="preserve">
-    <value>Группа А. Волна 2: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа A, волна 2: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupAWave3" xml:space="preserve">
-    <value>Группа А. Волна 3: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа A, волна 3: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupB" xml:space="preserve">
-    <value>Группа B: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа B: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupBWave1" xml:space="preserve">
-    <value>Группа B, волна 1: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа B, волна 1: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupBWave2" xml:space="preserve">
-    <value>Группа B, волна 2: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа B, волна 2: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupBWave3" xml:space="preserve">
-    <value>Группа B, волна 3: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа B, волна 3: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupC" xml:space="preserve">
-    <value>Группа C: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа C: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupCWave1" xml:space="preserve">
-    <value>Группа C, волна 1: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа C, волна 1: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupCWave2" xml:space="preserve">
-    <value>Группа C, волна 2: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа C, волна 2: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupCWave3" xml:space="preserve">
-    <value>Группа C, волна 3: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа C, волна 3: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupD" xml:space="preserve">
-    <value>Группа D: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа D: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupDWave1" xml:space="preserve">
-    <value>Группа D, волна 1: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа D, волна 1: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupDWave2" xml:space="preserve">
-    <value>Группа D, волна 2: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа D, волна 2: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupDWave3" xml:space="preserve">
-    <value>Группа D, волна 3: разные группы сосуществуют и имеют независимые волны.</value>
+    <value>Группа D, волна 3: разные группы присутствуют одновременно, волны независимы</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeIndependent" xml:space="preserve">
-    <value>Независимость от других монстров</value>
+    <value>Не зависит от других монстров</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeSuppressed" xml:space="preserve">
     <value>Нет данных о волнах</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave1" xml:space="preserve">
-    <value>Волна 1: Волна появится только после убийства всех врагов в предыдущей волне.</value>
+    <value>Волна 1: Волна появляется только после убийства всех монстров предыдущей волны</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave1Additional" xml:space="preserve">
-    <value>Дополнение к первой волне: первая волна подкрепления монстров.</value>
+    <value>Дополнительно к первой волне: подкрепление монстров</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave2" xml:space="preserve">
-    <value>Волна 2: Волна появится только после убийства всех врагов в предыдущей волне.</value>
+    <value>Волна 2: Волна появляется только после убийства всех монстров предыдущей волны</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave3" xml:space="preserve">
-    <value>Волна 3: Волна появится только после убийства всех врагов в предыдущей волне.</value>
+    <value>Волна 3: Волна появляется только после убийства всех монстров предыдущей волны</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave4" xml:space="preserve">
-    <value>Четвертая волна: Победите всех монстров, прежде чем появится следующая волна</value>
+    <value>Волна 4: Волна появляется только после убийства всех монстров предыдущей волны</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave99999" xml:space="preserve">
-    <value>Remain 4 Treasure Hoarders on the field, instantly respawn on death. 12 in total.</value>
+    <value>Поддерживается 4 Похитителя сокровищ на поле, при убийстве появляются новые, всего 12.</value>
   </data>
   <data name="ModelNameValueDefaultDescription" xml:space="preserve">
     <value>Обновите данные витрины персонажей</value>
@@ -585,49 +585,49 @@
     <value>Нет данных</value>
   </data>
   <data name="ModelWeaponAffix" xml:space="preserve">
-    <value>Уровень совершенствования {0}</value>
+    <value>Ранг совершенствования {0}</value>
   </data>
   <data name="MustSelectUserAndUid" xml:space="preserve">
-    <value>Необходимо войти в учетную запись miHoYo/HoYoLAB и выбрать пользователя с персонажем</value>
+    <value>Необходимо войти в учётную запись miHoYo/HoYoLAB и выбрать пользователя с персонажем</value>
   </data>
   <data name="ServerCdnServiceInsufficientTime" xml:space="preserve">
-    <value>Snap Hutao Cloud CDN не активирован или срок действия истек</value>
+    <value>Hutao Cloud CDN не активирован или срок его действия истёк</value>
   </data>
   <data name="ServerGachaLogServiceDeleteEntrySucceed" xml:space="preserve">
-    <value>Удален Uid: {0} из {1} записи пожеланий</value>
+    <value>Удалены записи желаний UID {0}: {1} шт.</value>
   </data>
   <data name="ServerGachaLogServiceInsufficientRecordSlot" xml:space="preserve">
-    <value>Достигнуто максимально допустимое количество архивов истории желаний в облаке Snap Hutao</value>
+    <value>Достигнуто максимальное количество архивов истории желаний в облаке Snap Hutao</value>
   </data>
   <data name="ServerGachaLogServiceInsufficientTime" xml:space="preserve">
-    <value>Сервис загрузки записей пожеланий не активирован или истек срок его действия</value>
+    <value>Сервис загрузки записей желаний не активирован или истёк</value>
   </data>
   <data name="ServerGachaLogServiceInvalidGachaLogData" xml:space="preserve">
-    <value>Данные о желаниях содержат недопустимые предметы и не могут быть сохранены в Ху Тао облако</value>
+    <value>Данные желаний содержат недопустимые предметы, невозможно сохранить в облако Snap Hutao</value>
   </data>
   <data name="ServerGachaLogServiceServerDatabaseError" xml:space="preserve">
-    <value>Данные некорректны, не удается сохранить в облако. Пожалуйста, не загружайте через другие аккаунты или попробуйте удалить данные в облаке и повторите попытку</value>
+    <value>Данные некорректны, невозможно сохранить в облако. Не загружайте через другие аккаунты или попробуйте удалить данные в облаке и повторить попытку</value>
   </data>
   <data name="ServerGachaLogServiceUploadEntrySucceed" xml:space="preserve">
-    <value>Загружено Uid: {0} из {1} записи желаний, Сохранено {2} записей</value>
+    <value>Загружены записи желаний UID {0}: {1} шт., сохранено {2} шт.</value>
   </data>
   <data name="ServerPassportDeviceIdEmpty" xml:space="preserve">
     <value>ID устройства не может быть пустым</value>
   </data>
   <data name="ServerPassportLoginRequired" xml:space="preserve">
-    <value>Пожалуйста, сначала войдите или зарегистрируйтесь Snap Hutao аккаунт</value>
+    <value>Пожалуйста, сначала войдите или зарегистрируйте аккаунт Snap Hutao</value>
   </data>
   <data name="ServerPassportLoginSucceed" xml:space="preserve">
     <value>Успешный вход</value>
   </data>
   <data name="ServerPassportPasswordTooShort" xml:space="preserve">
-    <value>Длина пароля не может быть меньше 8 символов</value>
+    <value>Пароль должен содержать не менее 8 символов</value>
   </data>
   <data name="ServerPassportRefreshTokenEmpty" xml:space="preserve">
     <value>Токен обновления не может быть пустым</value>
   </data>
   <data name="ServerPassportRefreshTokenInvalid" xml:space="preserve">
-    <value>Токен обновления недействителен или истек</value>
+    <value>Токен обновления недействителен или истёк</value>
   </data>
   <data name="ServerPassportRegisterSucceed" xml:space="preserve">
     <value>Регистрация успешна</value>
@@ -639,19 +639,19 @@
     <value>Новый пароль не может совпадать со старым</value>
   </data>
   <data name="ServerPassportServiceEmailHasNotRegistered" xml:space="preserve">
-    <value>Текущий адрес электронной почты еще не зарегистрирован</value>
+    <value>Этот адрес электронной почты ещё не зарегистрирован</value>
   </data>
   <data name="ServerPassportServiceEmailHasRegistered" xml:space="preserve">
-    <value>Текущий адрес электронной почты уже зарегистрирован</value>
+    <value>Этот адрес электронной почты уже зарегистрирован</value>
   </data>
   <data name="ServerPassportServiceInternalException" xml:space="preserve">
-    <value>Ошибка регистрации, проблемы с сервером. Пожалуйста, свяжитесь с разработчиком для решения проблемы</value>
+    <value>Ошибка регистрации, проблема с сервером. Пожалуйста, свяжитесь с разработчиком для решения проблемы</value>
   </data>
   <data name="ServerPassportServiceUnregisterPasswordIncorrect" xml:space="preserve">
     <value>Неверный пароль, выход не выполнен</value>
   </data>
   <data name="ServerPassportServiceUnregisterUserNotFound" xml:space="preserve">
-    <value>Пользователь не существует, отмена не удалась</value>
+    <value>Пользователь не существует, отмена регистрации не удалась</value>
   </data>
   <data name="ServerPassportTokenRevokeFailed" xml:space="preserve">
     <value>Не удалось отозвать токен</value>
@@ -660,7 +660,7 @@
     <value>Токен успешно отозван</value>
   </data>
   <data name="ServerPassportUnregisterSucceed" xml:space="preserve">
-    <value>Пользователь успешно отменен</value>
+    <value>Аккаунт успешно удалён</value>
   </data>
   <data name="ServerPassportUserInfoNotExist" xml:space="preserve">
     <value>Пользователь не существует, не удалось получить информацию о пользователе</value>
@@ -672,73 +672,73 @@
     <value>Проверка не удалась</value>
   </data>
   <data name="ServerPassportVerifyRequestNotCurrentUser" xml:space="preserve">
-    <value>Ошибка проверки запроса, это не текущий вход в учетную запись</value>
+    <value>Ошибка проверки запроса, это не текущая учётная запись</value>
   </data>
   <data name="ServerPassportVerifyRequestSuccess" xml:space="preserve">
     <value>Код подтверждения отправлен на электронную почту</value>
   </data>
   <data name="ServerPassportVerifyRequestUserAlreadyExisted" xml:space="preserve">
-    <value>Ошибка проверки запроса, текущий адрес электронной почты уже зарегистрирован</value>
+    <value>Ошибка проверки запроса, этот адрес электронной почты уже зарегистрирован</value>
   </data>
   <data name="ServerPassportVerifyRequestUserNotExisted" xml:space="preserve">
-    <value>Ошибка проверки запроса, текущий адрес электронной почты не зарегистрирован</value>
+    <value>Ошибка проверки запроса, этот адрес электронной почты не зарегистрирован</value>
   </data>
   <data name="ServerPassportVerifyTooFrequent" xml:space="preserve">
-    <value>Слишком частые запросы проверки, пожалуйста, повторите через 1 минуту</value>
+    <value>Слишком частые запросы, повторите попытку через 1 минуту</value>
   </data>
   <data name="ServerRecordBannedUid" xml:space="preserve">
-    <value>Не удалось загрузить записи из Бездны, текущий Uid заблокирован в базе данных Walnut</value>
+    <value>Не удалось загрузить записи Бездны, текущий UID заблокирован в базе данных Snap Hutao</value>
   </data>
   <data name="ServerRecordComputingStatistics" xml:space="preserve">
-    <value>Не удалось загрузить записи из Бездны, выполняется подсчет статистики</value>
+    <value>Не удалось загрузить записи Бездны, выполняется расчёт статистики</value>
   </data>
   <data name="ServerRecordComputingStatistics2" xml:space="preserve">
-    <value>Не удалось получить данные, выполняется подсчет статистики</value>
+    <value>Не удалось получить данные, выполняется расчёт статистики</value>
   </data>
   <data name="ServerRecordInternalException" xml:space="preserve">
-    <value>Не удалось загрузить записи из Бездны, Сервер недоступен, пожалуйста, свяжитесь с разработчиком для решения проблемы</value>
+    <value>Не удалось загрузить записи Бездны, ошибка сервера. Пожалуйста, свяжитесь с разработчиком для решения проблемы</value>
   </data>
   <data name="ServerRecordInvalidData" xml:space="preserve">
-    <value>Не удалось загрузить записи из Бездны, обнаружены недопустимые данные</value>
+    <value>Не удалось загрузить записи Бездны, обнаружены недопустимые данные</value>
   </data>
   <data name="ServerRecordInvalidUid" xml:space="preserve">
-    <value>Недопустимый Uid</value>
+    <value>Неверный UID</value>
   </data>
   <data name="ServerRecordNotCurrentSchedule" xml:space="preserve">
-    <value>Не удалось загрузить записи из Бездны, это не текущие данные</value>
+    <value>Не удалось загрузить записи Бездны, это не данные текущего периода</value>
   </data>
   <data name="ServerRecordPreviousRequestNotCompleted" xml:space="preserve">
-    <value>Не удалось загрузить записи из Бездны, записи для текущего Uid все еще обрабатываются. Пожалуйста, не повторяйте операцию</value>
+    <value>Не удалось загрузить записи Бездны, записи для этого UID всё ещё обрабатываются. Пожалуйста, не повторяйте операцию</value>
   </data>
   <data name="ServerRecordUploadSuccessAndGachaLogServiceTimeExtended" xml:space="preserve">
-    <value>Загрузка записей из Бездны успешна, выдан срок обслуживания загрузки записей о желаниях</value>
+    <value>Записи Бездны успешно загружены, предоставлено время обслуживания загрузки истории молитв</value>
   </data>
   <data name="ServerRecordUploadSuccessButNoPassport" xml:space="preserve">
-    <value>Загрузка записей из Бездны успешна, Но без входа в учетную Snap Hutao пропускной билет, Невозможно получить бесплатный период обслуживания для загрузки записей о желаниях</value>
+    <value>Записи Бездны успешно загружены, но вы не вошли в аккаунт Snap Hutao, поэтому не можете получить бесплатное время обслуживания загрузки истории молитв</value>
   </data>
   <data name="ServerRecordUploadSuccessButNoSuchUser" xml:space="preserve">
-    <value>Загрузка записей из Бездны успешна, Но не удается найти пользователя, Невозможно получить бесплатный период обслуживания для загрузки записей о желаниях</value>
+    <value>Записи Бездны успешно загружены, но пользователь не найден, поэтому не можете получить бесплатное время обслуживания загрузки истории молитв</value>
   </data>
   <data name="ServerRecordUploadSuccessButNotFirstTimeAtCurrentSchedule" xml:space="preserve">
-    <value>Загрузка записей из Бездны успешна, Но это не первая подача в текущем периоде, Невозможно получить бесплатный период обслуживания для загрузки записей о желаниях</value>
+    <value>Записи Бездны успешно загружены, но это не первая загрузка в текущем периоде, поэтому не можете получить бесплатное время обслуживания загрузки истории молитв</value>
   </data>
   <data name="ServiceAchievementImportResult" xml:space="preserve">
-    <value>Добавить：{0} достижения | Обновление: {1} достижение | Удаление: {2} достижения</value>
+    <value>Добавлено: {0} достижений | Обновлено: {1} достижений | Удалено: {2} достижений</value>
   </data>
   <data name="ServiceAchievementUIAFImportPickerFilterText" xml:space="preserve">
-    <value>UIAF JSON файл</value>
+    <value>Файл UIAF JSON</value>
   </data>
   <data name="ServiceAchievementUIAFImportPickerTitile" xml:space="preserve">
-    <value>Открыть UIAF JSON файл</value>
+    <value>Открыть файл UIAF JSON</value>
   </data>
   <data name="ServiceAchievementUserdataCorruptedAchievementIdNotUnique" xml:space="preserve">
     <value>В одном архиве достижений обнаружено несколько одинаковых идентификаторов достижений</value>
   </data>
   <data name="ServiceAppOptionsCalendarServerTimeZoneAmerica" xml:space="preserve">
-    <value>美服 UTC-05</value>
+    <value>Американский сервер UTC-05</value>
   </data>
   <data name="ServiceAppOptionsCalendarServerTimeZoneCommon" xml:space="preserve">
-    <value>其他 UTC+08</value>
+    <value>Другой UTC+08</value>
   </data>
   <data name="ServiceAppOptionsCalendarServerTimeZoneEurope" xml:space="preserve">
     <value>Европейский сервер UTC+01</value>
@@ -752,19 +752,19 @@
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyBaseDef" xml:space="preserve">
-    <value>Основная защита</value>
+    <value>Базовая защита</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyBaseHp" xml:space="preserve">
-    <value>Базовое здоровье</value>
+    <value>Базовое HP</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyCDmg" xml:space="preserve">
-    <value>Урон при критическом ударе</value>
+    <value>Крит. урон</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyCE" xml:space="preserve">
-    <value>Эффективность заряда элемента</value>
+    <value>Восст. энергии</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyCR" xml:space="preserve">
@@ -816,97 +816,97 @@
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyHDB" xml:space="preserve">
-    <value>Бонус лечения</value>
+    <value>Бонус получаемого лечения</value>
   </data>
   <data name="ServiceAvatarInfoPropertyHp" xml:space="preserve">
     <value>HP</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESElec" xml:space="preserve">
-    <value>Electro RES</value>
+    <value>Электро сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESFire" xml:space="preserve">
-    <value>Pyro RES</value>
+    <value>Пиро сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESGrass" xml:space="preserve">
-    <value>Dendro RES</value>
+    <value>Дендро сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESIce" xml:space="preserve">
-    <value>Cryo RES</value>
+    <value>Крио сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESPhysical" xml:space="preserve">
-    <value>Physical RES</value>
+    <value>Физ. сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESRock" xml:space="preserve">
-    <value>Geo RES</value>
+    <value>Гео сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESWater" xml:space="preserve">
-    <value>Hydro RES</value>
+    <value>Гидро сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertyRESWind" xml:space="preserve">
-    <value>Anemo RES</value>
+    <value>Анемо сопротивление</value>
     <comment>Need EXACT same string in game</comment>
   </data>
   <data name="ServiceAvatarInfoPropertySkillCDReduce" xml:space="preserve">
     <value>Сокращение перезарядки</value>
   </data>
   <data name="ServiceBackgroundActivityDefaultDescription" xml:space="preserve">
-    <value>准备中...</value>
+    <value>Подготовка...</value>
   </data>
   <data name="ServiceBackgroundActivityFullTrustInitialization" xml:space="preserve">
-    <value>注入组件初始化</value>
+    <value>Инициализация компонентов внедрения</value>
   </data>
   <data name="ServiceBackgroundActivityFullTrustInitializationDescription" xml:space="preserve">
-    <value>仅在必要时执行</value>
+    <value>Выполняется только при необходимости</value>
   </data>
   <data name="ServiceBackgroundActivityMetadataInitialization" xml:space="preserve">
-    <value>元数据初始化</value>
+    <value>Инициализация метаданных</value>
   </data>
   <data name="ServiceBackgroundActivityMetadataInitializationDescription" xml:space="preserve">
-    <value>准备中，若长时间无反应请尝试重启或检查网络与服务器状态</value>
+    <value>Подготовка, если долго не реагирует, попробуйте перезапустить или проверьте сеть и состояние сервера</value>
   </data>
   <data name="ServiceBackgroundImageTypeBing" xml:space="preserve">
-    <value>Ежедневные обои Bing</value>
+    <value>Ежедневное изображение Bing</value>
   </data>
   <data name="ServiceBackgroundImageTypeDaily" xml:space="preserve">
-    <value>Ежедневные обои Hutao</value>
+    <value>Ежедневное изображение Snap Hutao</value>
   </data>
   <data name="ServiceBackgroundImageTypeLauncher" xml:space="preserve">
-    <value>Официальные обои лаунчера Genshin</value>
+    <value>Официальные обои лаунчера</value>
   </data>
   <data name="ServiceBackgroundImageTypeLocalFolder" xml:space="preserve">
-    <value>Ваше случайное изображение</value>
+    <value>Случайное локальное изображение</value>
   </data>
   <data name="ServiceBackgroundImageTypeNone" xml:space="preserve">
-    <value>Без обоев</value>
+    <value>Без фона</value>
   </data>
   <data name="ServiceCloseButtonBehaviorTypeExit" xml:space="preserve">
     <value>Выйти из Snap Hutao</value>
   </data>
   <data name="ServiceCloseButtonBehaviorTypeMinimize" xml:space="preserve">
-    <value>Свернуть в значок области уведомлений</value>
+    <value>Свернуть в область уведомлений</value>
   </data>
   <data name="ServiceDailyNoteNotificationSendExceptionTitle" xml:space="preserve">
-    <value>Сбой отправки уведомления приложения</value>
+    <value>Не удалось отправить уведомление приложения</value>
   </data>
   <data name="ServiceDailyNoteNotifierActionLaunchGameButton" xml:space="preserve">
-    <value>Game Launcher</value>
+    <value>Запуск игры</value>
   </data>
   <data name="ServiceDailyNoteNotifierActionLaunchGameDismiss" xml:space="preserve">
     <value>Понятно</value>
   </data>
   <data name="ServiceDailyNoteNotifierDailyTask" xml:space="preserve">
-    <value>Ежедневные Поручения</value>
+    <value>Ежедневные поручения</value>
   </data>
   <data name="ServiceDailyNoteNotifierDailyTaskHint" xml:space="preserve">
-    <value>Награда не доступна</value>
+    <value>Награда не получена</value>
   </data>
   <data name="ServiceDailyNoteNotifierExpedition" xml:space="preserve">
     <value>Экспедиции</value>
@@ -915,34 +915,34 @@
     <value>Завершено</value>
   </data>
   <data name="ServiceDailyNoteNotifierExpeditionHint" xml:space="preserve">
-    <value>Экспедиция завершен</value>
+    <value>Экспедиции завершены</value>
   </data>
   <data name="ServiceDailyNoteNotifierHomeCoin" xml:space="preserve">
-    <value>Realm Currency</value>
+    <value>Сокровища обители</value>
   </data>
   <data name="ServiceDailyNoteNotifierHomeCoinCurrent" xml:space="preserve">
-    <value>Текущий баланс сокровищ в Дунтянь: {0}</value>
+    <value>Текущие сокровища обители: {0}</value>
   </data>
   <data name="ServiceDailyNoteNotifierMultiValueReached" xml:space="preserve">
-    <value>Несколько напоминаний достигли установленного значения</value>
+    <value>Несколько напоминаний достигли заданного значения</value>
   </data>
   <data name="ServiceDailyNoteNotifierResin" xml:space="preserve">
-    <value>Оригинальная смола</value>
+    <value>Первородная смола</value>
   </data>
   <data name="ServiceDailyNoteNotifierResinCurrent" xml:space="preserve">
-    <value>Текущая оригинальная смола：{0}</value>
+    <value>Текущая первородная смола: {0}</value>
   </data>
   <data name="ServiceDailyNoteNotifierTitle" xml:space="preserve">
-    <value>Уведомление в реальном времени</value>
+    <value>Уведомление заметок в реальном времени</value>
   </data>
   <data name="ServiceDailyNoteNotifierTransformer" xml:space="preserve">
-    <value>Преобразователь</value>
+    <value>Параметрический преобразователь</value>
   </data>
   <data name="ServiceDailyNoteNotifierTransformerAdaptiveHint" xml:space="preserve">
     <value>Готово</value>
   </data>
   <data name="ServiceDailyNoteNotifierTransformerHint" xml:space="preserve">
-    <value>Преобразователь готов</value>
+    <value>Параметрический преобразователь готов</value>
   </data>
   <data name="ServiceGachaLogFactoryAvatarWishName" xml:space="preserve">
     <value>Молитва события персонажа</value>
@@ -951,7 +951,7 @@
     <value>Хроники желаний</value>
   </data>
   <data name="ServiceGachaLogFactoryNoviceWishName" xml:space="preserve">
-    <value>新手祈愿</value>
+    <value>Молитва новичка</value>
   </data>
   <data name="ServiceGachaLogFactoryPermanentWishName" xml:space="preserve">
     <value>Жажда странствий</value>
@@ -960,134 +960,136 @@
     <value>Воплощение божества</value>
   </data>
   <data name="ServiceGachaLogHutaoCloudEndIdFetchFailed" xml:space="preserve">
-    <value>Не удалось получить историю молитв из облака</value>
+    <value>Не удалось получить историю молитв из Hutao Cloud</value>
   </data>
   <data name="ServiceGachaLogUrlProviderAuthkeyRequestFailed" xml:space="preserve">
-    <value>Не удалось получить ключ авторизации</value>
+    <value>Не удалось запросить ключ аутентификации</value>
   </data>
   <data name="ServiceGachaLogUrlProviderCachePathInvalid" xml:space="preserve">
-    <value>Путь к Genshin Impact не установлен или содержит ошибки</value>
+    <value>Путь к Genshin Impact не задан или неверен</value>
   </data>
   <data name="ServiceGachaLogUrlProviderCachePathNotFound" xml:space="preserve">
-    <value>Не удается найти путь к кэшу встроенного браузера Genshin Impact: 
+    <value>Не удалось найти путь к кэшу встроенного браузера Genshin Impact:
 {0}</value>
   </data>
   <data name="ServiceGachaLogUrlProviderCacheUrlNotFound" xml:space="preserve">
-    <value>Не удалось найти доступный URL</value>
+    <value>Не найдено доступных URL</value>
   </data>
   <data name="ServiceGachaLogUrlProviderCopyWebCacheUnauthorizedAccess" xml:space="preserve">
-    <value>Проблема при копировании кеша веб-страницы во временную папку, недостаточно прав</value>
+    <value>Проблема при копировании веб-кэша во временную папку, недостаточно прав</value>
   </data>
   <data name="ServiceGachaLogUrlProviderManualInputInvalid" xml:space="preserve">
-    <value>Указан неверный Url-адрес</value>
+    <value>Неверный URL</value>
   </data>
   <data name="ServiceGachaLogUrlProviderStokenUnsupported" xml:space="preserve">
-    <value>SToken refresh не поддерживает учетную запись HoYoLab</value>
+    <value>Учётная запись HoYoLAB не поддерживает обновление SToken</value>
   </data>
   <data name="ServiceGachaLogUrlProviderUrlLanguageNotMatchCurrentLocale" xml:space="preserve">
-    <value>Язык в URL: {0} не соответствует языку Snap Hutao: {1}, пожалуйста, переключитесь на соответствующий язык и повторите попытку</value>
+    <value>Язык URL ({0}) не соответствует языку Snap Hutao ({1}), переключитесь на соответствующий язык и повторите попытку</value>
   </data>
   <data name="ServiceGachaStatisticsFactoryItemIdInvalid" xml:space="preserve">
-    <value>Неподдерживаемый Item ID: {0}</value>
+    <value>Неподдерживаемый ID предмета: {0}</value>
   </data>
   <data name="ServiceGameAccountBilibiliNotSupported" xml:space="preserve">
-    <value>Канал Bilibili не поддерживает функции аккаунта</value>
+    <value>Bilibili канал не поддерживает функции аккаунта</value>
   </data>
   <data name="ServiceGameAccountDetectInputNameAlreadyExists" xml:space="preserve">
     <value>Аккаунт с именем {0} уже существует</value>
   </data>
   <data name="ServiceGameAccountRegistryMultipleAccountDetected" xml:space="preserve">
-    <value>Обнаружена информация для входа нескольких учётных записей. Удалите лишние учётные записи на экране входа в игру и повторите попытку после входа в игру</value>
+    <value>Обнаружены данные нескольких учётных записей. Удалите лишние на экране входа в игру и повторите попытку</value>
   </data>
   <data name="ServiceGameAccountRegistryNoAccountDetected" xml:space="preserve">
-    <value>Информация для входа не обнаружена. Повторите попытку после входа в игру</value>
+    <value>Данные для входа не обнаружены. Войдите в игру и повторите попытку</value>
   </data>
   <data name="ServiceGameAccountRegistryTryGetFailed" xml:space="preserve">
-    <value>MAC-адрес этого устройства изменился. Повторите попытку после повторного входа в игру</value>
+    <value>MAC-адрес устройства изменился. Перезайдите в игру и повторите попытку</value>
   </data>
   <data name="ServiceGameDetectGameAccountMultiMatched" xml:space="preserve">
-    <value>Обнаружено несколько совпадающих учетных записей. Удалите повторяющиеся учетные записи</value>
+    <value>Обнаружено несколько совпадающих аккаунтов. Удалите дубликаты</value>
   </data>
   <data name="ServiceGameEnsureGameResourceInsufficientDirectoryPermissions" xml:space="preserve">
-    <value>Недостаточно разрешений файловой системы для запуска сервера</value>
+    <value>Недостаточно прав файловой системы для преобразования сервера</value>
   </data>
   <data name="ServiceGameEnsureGameResourceQueryResourceInformation" xml:space="preserve">
-    <value>Скачать игровые ресурсы</value>
+    <value>Загрузка индекса игровых ресурсов</value>
   </data>
   <data name="ServiceGameIslandFileSystemGetGameVersionFailed" xml:space="preserve">
-    <value>Не удалось получить локальную версию игры, невозможно получить информацию о конфигурации внедрения</value>
+    <value>Не удалось получить версию игры, невозможно получить конфигурацию внедрения</value>
   </data>
   <data name="ServiceGameIslandTargetVersionFileNotExists" xml:space="preserve">
-    <value>尚未支持当前游戏版本</value>
+    <value>Текущая версия игры пока не поддерживается</value>
   </data>
   <data name="ServiceGameLaunchExecutionBetterGenshinImpactStarted" xml:space="preserve">
     <value>BetterGI запущен</value>
   </data>
   <data name="ServiceGameLaunchExecutionBetterGenshinImpactUrlProtocolNotRegistered" xml:space="preserve">
-    <value>Протокол запуска не зарегистрирован. Убедитесь, что BetterGI установлен и запускался хотя бы один раз</value>
+    <value>Протокол запуска не зарегистрирован. Убедитесь, что BetterGI установлен и был запущен хотя бы раз</value>
   </data>
   <data name="ServiceGameLaunchExecutionBetterGenshinImpactWaitGameMainWindowException" xml:space="preserve">
-    <value>При запуске BetterGI возникла проблема: главное окно игры не найдено</value>
+    <value>Проблема при запуске BetterGI: не найдено главное окно игры</value>
   </data>
   <data name="ServiceGameLaunchExecutionCurrentSchemeNull" xml:space="preserve">
-    <value>Локальный файл конфигурации игры повреждён. Выполните восстановление и повторите попытку</value>
+    <value>Файл конфигурации игры повреждён, восстановите и повторите попытку</value>
   </data>
   <data name="ServiceGameLaunchExecutionGameIsRunning" xml:space="preserve">
-    <value>Процесс игры запущен</value>
+    <value>Игра уже запущена. Нельзя запустить несколько процессов одновременно! Закройте текущий процесс игры и попробуйте снова</value>
   </data>
   <data name="ServiceGameLaunchExecutionGameResourceQueryIndexFailed" xml:space="preserve">
-    <value>Не удалось загрузить игровые ресурсы: {0}</value>
+    <value>Ошибка загрузки индекса игровых ресурсов: {0}</value>
   </data>
   <data name="ServiceGameLaunchExecutionGameRunningKillFailed" xml:space="preserve">
     <value>Не удалось завершить процесс</value>
   </data>
   <data name="ServiceGameLaunchPhaseProcessExited" xml:space="preserve">
-    <value>Процесс игры закрыт</value>
+    <value>Процесс игры завершён</value>
   </data>
   <data name="ServiceGameLaunchPhaseProcessStarted" xml:space="preserve">
-    <value>Игра запускается...</value>
+    <value>Процесс игры запущен</value>
   </data>
   <data name="ServiceGameLaunchPhaseWaitingProcessExit" xml:space="preserve">
-    <value>Ожидание закрытия процесса игры</value>
+    <value>Ожидание завершения процесса игры</value>
   </data>
   <data name="ServiceGameLaunchingEnsureGameResourceShouldNotConvert" xml:space="preserve">
-    <value>Целевой сервер соответствует текущим локальным ресурсам игры, преобразование не требуется</value>
+    <value>Целевой сервер соответствует текущим игровым ресурсам, преобразование не требуется</value>
   </data>
   <data name="ServiceGameLaunchingHandlerEmbeddedYaeClientNotElevated" xml:space="preserve">
-    <value>Перед использованием Embedded Yae, Snap Hutao должна быть запущена с правами администратора</value>
+    <value>Для использования Embedded Yae требуется запуск Snap Hutao с правами администратора</value>
   </data>
   <data name="ServiceGameLaunchingHandlerEmbeddedYaeErrorSystemIntegrityPolicyViolation" xml:space="preserve">
-    <value>Внедрение не удалось, возможно, из-за политики Windows Defender "Приложения и браузер" &gt; "Управление интеллектуальными приложениями", которая блокирует операцию. Попробуйте отключить ее.</value>
+    <value>Внедрение не удалось, возможно, из-за политики Windows Defender «Управление приложениями и браузером» > «Защита на основе репутации». Попробуйте отключить её.</value>
   </data>
   <data name="ServiceGameLaunchingHandlerEmbeddedYaeIslandNotEnabled" xml:space="preserve">
-    <value>Перед использованием Embedded Yae вы должны знать о связанных с этим рисках и включить функцию внедрения на странице "Запуск игры"</value>
+    <value>Перед использованием Embedded Yae ознакомьтесь с рисками и включите функцию внедрения на странице «Запуск игры»</value>
   </data>
   <data name="ServiceGameLaunchingHandlerGameProcessStartRepositorySyncFailed" xml:space="preserve">
-    <value>在获取必要的启动游戏组件时发生错误</value>
+    <value>Ошибка при получении необходимых компонентов для запуска игры</value>
   </data>
   <data name="ServiceGameLocatorFileOpenPickerCommitText" xml:space="preserve">
     <value>Выберите исполняемый файл игры</value>
   </data>
   <data name="ServiceGameLocatorPickerFilterText" xml:space="preserve">
-    <value>Игровой клиент</value>
+    <value>Исполняемый файл игры</value>
   </data>
   <data name="ServiceGameLocatorUnityLogCannotOpenRead" xml:space="preserve">
-    <value>Во время работы игры невозможно прочитать файл журнала Unity</value>
+    <value>Невозможно прочитать лог Unity во время работы игры</value>
   </data>
   <data name="ServiceGameLocatorUnityLogFileNotFound" xml:space="preserve">
     <value>Лог Unity не найден</value>
   </data>
   <data name="ServiceGameLocatorUnityLogGamePathNotFound" xml:space="preserve">
-    <value>Путь к игре не найден в файле журнала Unity</value>
+    <value>Путь к игре не найден в логе Unity</value>
   </data>
   <data name="ServiceGamePackageAdvancedAssetOperationDiskCorrupted" xml:space="preserve">
-    <value>Обнаружена ошибка жёсткого диска, запустите chkdsk для исправления.</value>
+    <value>Обнаружена ошибка жёсткого диска, запустите chkdsk для исправления</value>
   </data>
   <data name="ServiceGamePackageAdvancedAssetOperationNoSuchDevice" xml:space="preserve">
-    <value>Обнаружена потеря жесткого диска, проверьте подключение оборудования</value>
+    <value>Обнаружена потеря жёсткого диска, проверьте подключение оборудования</value>
   </data>
   <data name="ServiceGamePackageAdvancedConfirmMessage" xml:space="preserve">
-    <value>Размер пакета ресурсов: {0}\nТребуемое место: {1}\nДоступное место: {2}</value>
+    <value>Размер пакета ресурсов: {0}
+Требуемое место: {1}
+Доступное место: {2}</value>
   </data>
   <data name="ServiceGamePackageAdvancedConfirmStartInstallTitle" xml:space="preserve">
     <value>Подтвердите начало установки игры</value>
@@ -1099,52 +1101,52 @@
     <value>Подтвердите начало обновления игры</value>
   </data>
   <data name="ServiceGamePackageAdvancedDecodeManifestFailed" xml:space="preserve">
-    <value>Не удалось выполнить анализ манифеста.</value>
+    <value>Ошибка разбора файла манифеста</value>
   </data>
   <data name="ServiceGamePackageAdvancedDriverNoAvailableFreeSpace" xml:space="preserve">
     <value>Недостаточно места на диске</value>
   </data>
   <data name="ServiceGamePackageAdvancedInstalling" xml:space="preserve">
-    <value>Идет установка игры</value>
+    <value>Установка игры...</value>
   </data>
   <data name="ServiceGamePackageAdvancedPredownloading" xml:space="preserve">
-    <value>Идет предварительная загрузка ресурсов</value>
+    <value>Предзагрузка ресурсов...</value>
   </data>
   <data name="ServiceGamePackageAdvancedRepairing" xml:space="preserve">
-    <value>Идет восстановление игры</value>
+    <value>Восстановление игры...</value>
   </data>
   <data name="ServiceGamePackageAdvancedUpdating" xml:space="preserve">
-    <value>Идет обновление игры</value>
+    <value>Обновление игры...</value>
   </data>
   <data name="ServiceGamePackageAdvancedVerifyingIntegrity" xml:space="preserve">
-    <value>Идет проверка целостности игры</value>
+    <value>Проверка целостности игры...</value>
   </data>
   <data name="ServiceGamePackageConvertMoveFileBackup" xml:space="preserve">
-    <value>Резервная копия：{0}</value>
+    <value>Резервное копирование: {0}</value>
   </data>
   <data name="ServiceGamePackageConvertMoveFileRename" xml:space="preserve">
-    <value>Переименовать: {0} в:{1}</value>
+    <value>Переименование: {0} в {1}</value>
   </data>
   <data name="ServiceGamePackageConvertMoveFileRestore" xml:space="preserve">
-    <value>Изменить: {0}</value>
+    <value>Восстановление: {0}</value>
   </data>
   <data name="ServiceGamePackageRenameDataFolderFailed" xml:space="preserve">
-    <value>Не удалось изменить имя папки</value>
+    <value>Не удалось переименовать папку данных</value>
   </data>
   <data name="ServiceGamePathLocateFailed" xml:space="preserve">
-    <value>Невозможно найти путь к игре. Измените его в настройках.</value>
+    <value>Не удалось найти путь к игре. Измените его в настройках.</value>
   </data>
   <data name="ServiceGameSetMultiChannelConfigFileNotFound" xml:space="preserve">
-    <value>Невозможно прочитать файл конфигурации игры {0}, возможно файл не существует</value>
+    <value>Не удалось прочитать файл конфигурации игры {0}, возможно, файл не существует</value>
   </data>
   <data name="ServiceGameSetMultiChannelUnauthorizedAccess" xml:space="preserve">
-    <value>Невозможно открыть или сохранить профиль без прав администратора</value>
+    <value>Не удалось прочитать или сохранить файл конфигурации без прав администратора</value>
   </data>
   <data name="ServiceGitRepositoryOperationCompleted" xml:space="preserve">
-    <value>操作完成</value>
+    <value>Операция завершена</value>
   </data>
   <data name="ServiceGitRepositoryOperationFailed" xml:space="preserve">
-    <value>操作失败 一般故障</value>
+    <value>Операция не удалась, общая ошибка</value>
   </data>
   <data name="ServiceHutaoUserGachaLogExpiredAt" xml:space="preserve">
     <value>Срок действия услуги загрузки истории молитв истекает</value>
@@ -1156,61 +1158,61 @@
     <value>Не удалось загрузить один или несколько файлов метаданных: {0}</value>
   </data>
   <data name="ServiceMetadataFileNotFound" xml:space="preserve">
-    <value>Невозможно найти кэш файл метаданных</value>
+    <value>Кэшированный файл метаданных не найден</value>
   </data>
   <data name="ServiceMetadataNotInitialized" xml:space="preserve">
-    <value>Служба метаданных не была инициализирована или инициализация завершилась неудачно</value>
+    <value>Служба метаданных не инициализирована или инициализация не удалась</value>
   </data>
   <data name="ServiceMetadataParseFailed" xml:space="preserve">
-    <value>Не удалось прочитать файл проверки метаданных.</value>
+    <value>Ошибка разбора файла проверки метаданных</value>
   </data>
   <data name="ServiceMetadataVersionNotSupported" xml:space="preserve">
-    <value>Ваша версия Snap Hutao устарела. Пожалуйста, обновите приложение</value>
+    <value>Ваша версия Snap Hutao устарела, пожалуйста, обновитесь</value>
   </data>
   <data name="ServicePackageAdvancedExecuteOperationCanceledTitle" xml:space="preserve">
-    <value>Операция с ресурсами игры отменена</value>
+    <value>Операция с игровыми ресурсами отменена</value>
   </data>
   <data name="ServicePackageAdvancedExecuteOperationFailedTitle" xml:space="preserve">
-    <value>Не удалось выполнить операцию с игровыми ресурсами</value>
+    <value>Операция с игровыми ресурсами не удалась</value>
   </data>
   <data name="ServiceReSignInClaimRewardFailed" xml:space="preserve">
-    <value>Ошибка регистрации, {0}</value>
+    <value>Ошибка дополнительной отметки, {0}</value>
   </data>
   <data name="ServiceReSignInSuccessReward" xml:space="preserve">
-    <value>Перемещение успешно, {0} × {1}</value>
+    <value>Дополнительная отметка успешна, {0}×{1}</value>
   </data>
   <data name="ServiceSignInClaimRewardFailed" xml:space="preserve">
-    <value>Ошибка регистрации, {0}</value>
+    <value>Ошибка отметки, {0}</value>
   </data>
   <data name="ServiceSignInInfoRequestFailed" xml:space="preserve">
-    <value>Не удалось получить количество дней регистрации</value>
+    <value>Не удалось получить информацию о количестве отметок</value>
   </data>
   <data name="ServiceSignInRewardListRequestFailed" xml:space="preserve">
-    <value>Не удалось получить список наград за регистрацию.</value>
+    <value>Не удалось получить список наград за отметку</value>
   </data>
   <data name="ServiceSignInRiskVerificationFailed" xml:space="preserve">
-    <value>Проверка не удалась. Пожалуйста, перейдите на страницу регистрации HoYoLab в Genshin Impact, чтобы вручную получить награду.</value>
+    <value>Проверка не удалась. Пожалуйста, перейдите на страницу отметок в HoYoLAB для Genshin Impact, чтобы получить награду вручную.</value>
   </data>
   <data name="ServiceSignInSuccessReward" xml:space="preserve">
-    <value>Перемещение успешно, {0} × {1}.</value>
+    <value>Отметка успешна, {0}×{1}</value>
   </data>
   <data name="ServiceUIGFImportInvalidItem" xml:space="preserve">
-    <value>Неподдерживаемый предмет, Id: {0}</value>
+    <value>Неподдерживаемый предмет, ID: {0}</value>
   </data>
   <data name="ServiceUserProcessCookieNoMid" xml:space="preserve">
-    <value>Введенные Cookie должны включать Mid.</value>
+    <value>Введённые Cookie должны содержать Mid</value>
   </data>
   <data name="ServiceUserProcessCookieNoSToken" xml:space="preserve">
-    <value>Введенные Cookie должны включать SToken.</value>
+    <value>Введённые Cookie должны содержать SToken</value>
   </data>
   <data name="ServiceUserProcessCookieRequestUserInfoFailed" xml:space="preserve">
-    <value>Предоставленные Cookie не позволяют получить информацию о пользователе.</value>
+    <value>Предоставленные Cookie не позволяют получить информацию о пользователе</value>
   </data>
   <data name="ServiceUserProcessInputCookieDialogTitle" xml:space="preserve">
     <value>Получение информации о пользователе, пожалуйста, подождите...</value>
   </data>
   <data name="ServiceUserUserInfoContainsNoGameRole" xml:space="preserve">
-    <value>Этот аккаунт еще не привязан к персонажу Genshin Impact</value>
+    <value>Этот аккаунт ещё не привязан к персонажу Genshin Impact</value>
   </data>
   <data name="ServiceYaeEmbeddedYaeErrorTitle" xml:space="preserve">
     <value>Ошибка Embedded Yae</value>
@@ -1219,25 +1221,25 @@
     <value>Не удалось получить версию игры</value>
   </data>
   <data name="ServiceYaeWaitForGameResponseMessage" xml:space="preserve">
-    <value>Ожидание данных игры</value>
+    <value>Ожидание данных от игры</value>
   </data>
   <data name="UIViewMainTitleBarBackgroundActivityAction" xml:space="preserve">
-    <value>后台任务</value>
+    <value>Фоновые задачи</value>
   </data>
   <data name="UIViewPageAvatarPropertyRecommendedAppendProperties" xml:space="preserve">
-    <value>Рекомендации по добавочным свойствам</value>
+    <value>Рекомендуемые дополнительные характеристики</value>
   </data>
   <data name="UIViewPageAvatarPropertyRecommendedCircletProperties" xml:space="preserve">
-    <value>Рекомендации по основному свойству Короны разума</value>
+    <value>Рекомендуемое основное свойство Короны разума</value>
   </data>
   <data name="UIViewPageAvatarPropertyRecommendedGobletProperties" xml:space="preserve">
-    <value>Рекомендации по основному свойству Кубка Эонотема</value>
+    <value>Рекомендуемое основное свойство Кубка Эонотема</value>
   </data>
   <data name="UIViewPageAvatarPropertyRecommendedSandProperties" xml:space="preserve">
-    <value>Рекомендации по основному свойству Песков Эона</value>
+    <value>Рекомендуемое основное свойство Песков Эона</value>
   </data>
   <data name="UIXamlControlCachedImageCopyImage" xml:space="preserve">
-    <value>Скопировать изображение</value>
+    <value>Копировать изображение</value>
   </data>
   <data name="UIXamlViewSpecializedSophonProgressDefault" xml:space="preserve">
     <value>Получение данных манифеста</value>
@@ -1255,115 +1257,115 @@
     <value>Мои персонажи</value>
   </data>
   <data name="ViewAvatarPropertySyncDataButtonLabel" xml:space="preserve">
-    <value>Синхронизация данных персонажа.</value>
+    <value>Синхронизировать данные персонажей</value>
   </data>
   <data name="ViewCardAchievementStatisticsTitle" xml:space="preserve">
-    <value>Статистика достижений.</value>
+    <value>Статистика достижений</value>
   </data>
   <data name="ViewCardCalendarAllMaterialsHint" xml:space="preserve">
-    <value>Все подземелья с материалами доступны для прохождения</value>
+    <value>Все подземелья материалов доступны</value>
   </data>
   <data name="ViewCardCalendarNoBirthdayAvatarHint" xml:space="preserve">
-    <value>В этот день ни у одного персонажа нет дня рождения</value>
+    <value>Сегодня ни у кого нет дня рождения</value>
   </data>
   <data name="ViewCardGachaStatisticsTitle" xml:space="preserve">
-    <value>Pity Count</value>
+    <value>Счётчик гаранта</value>
   </data>
   <data name="ViewCardLaunchGameSelectAccountPlaceholder" xml:space="preserve">
-    <value>Выберите аккаунт для начала</value>
+    <value>Выберите аккаунт или начните сразу</value>
   </data>
   <data name="ViewCardSignInClaimReSignInAction" xml:space="preserve">
-    <value>Повторная регистрация</value>
+    <value>Дополнительная отметка</value>
   </data>
   <data name="ViewCardSignInClaimSignInAction" xml:space="preserve">
-    <value>Регистрация</value>
+    <value>Отметка</value>
   </data>
   <data name="ViewControlBaseValueSliderLevel" xml:space="preserve">
     <value>Уровень</value>
   </data>
   <data name="ViewControlBaseValueSliderPromoted" xml:space="preserve">
-    <value>After Ascension</value>
+    <value>После возвышения</value>
   </data>
   <data name="ViewControlElevationText" xml:space="preserve">
-    <value>Требуются привилегии администратора</value>
+    <value>Требуются права администратора</value>
   </data>
   <data name="ViewControlLoadingText" xml:space="preserve">
-    <value>Загрузка, пожалуйста подождите</value>
+    <value>Загрузка, пожалуйста, подождите</value>
   </data>
   <data name="ViewControlStatisticsCardBlueText" xml:space="preserve">
-    <value>3-зв.</value>
+    <value>3★</value>
   </data>
   <data name="ViewControlStatisticsCardGuaranteeText" xml:space="preserve">
     <value>Гарант</value>
   </data>
   <data name="ViewControlStatisticsCardOrangeAveragePullText" xml:space="preserve">
-    <value>Среднее 5-зв. выпадение</value>
+    <value>Среднее число молитв на 5★</value>
   </data>
   <data name="ViewControlStatisticsCardOrangeText" xml:space="preserve">
-    <value>5-зв.</value>
+    <value>5★</value>
   </data>
   <data name="ViewControlStatisticsCardPullText" xml:space="preserve">
-    <value>Pulls</value>
+    <value>молитв</value>
   </data>
   <data name="ViewControlStatisticsCardPurpleText" xml:space="preserve">
-    <value>4 зв.</value>
+    <value>4★</value>
   </data>
   <data name="ViewControlStatisticsCardToLastOrangeText" xml:space="preserve">
-    <value>Последний 5-зв.</value>
+    <value>С последнего 5★</value>
   </data>
   <data name="ViewControlStatisticsCardToLastPurpleText" xml:space="preserve">
-    <value>Последний 4-зв.</value>
+    <value>С последнего 4★</value>
   </data>
   <data name="ViewControlStatisticsCardUpAveragePullText" xml:space="preserve">
-    <value>Средняя удача выпадения</value>
+    <value>Среднее число молитв на ивентовый предмет</value>
   </data>
   <data name="ViewControlStatisticsCardUpText" xml:space="preserve">
-    <value>UP</value>
+    <value>Ивент</value>
   </data>
   <data name="ViewControlStatisticsCardCombinedModeTooltip" xml:space="preserve">
-    <value>合并显示限定金总抽数</value>
+    <value>Объединить счётчики для ивентовых 5★</value>
   </data>
   <data name="ViewControlStatisticsSegmentedItemContentPrediction" xml:space="preserve">
-    <value>Prediction</value>
+    <value>Прогноз</value>
   </data>
   <data name="ViewControlStatisticsSegmentedItemContentProportion" xml:space="preserve">
-    <value>Масштаб</value>
+    <value>Пропорция</value>
   </data>
   <data name="ViewControlStatisticsSegmentedItemContentStatistics" xml:space="preserve">
     <value>Статистика</value>
   </data>
   <data name="ViewControlWebViewerCoreWebView2ProfileQueryInterfaceFailed" xml:space="preserve">
-    <value>Текущая версия WebView2 не поддерживает конфигурацию управления, дальнейшее использование может привести к ошибкам, пожалуйста, установите обновление</value>
+    <value>Текущая версия WebView2 не поддерживает управление конфигурацией, дальнейшее использование может привести к ошибкам. Пожалуйста, обновитесь.</value>
   </data>
   <data name="ViewCultivationHeader" xml:space="preserve">
-    <value>План разработки</value>
+    <value>План развития</value>
   </data>
   <data name="ViewDailyNoteHeader" xml:space="preserve">
     <value>Заметки в реальном времени</value>
   </data>
   <data name="ViewDataHeader" xml:space="preserve">
-    <value>Data</value>
+    <value>Данные</value>
   </data>
   <data name="ViewDialogAchievementArchiveCreateInputPlaceholder" xml:space="preserve">
-    <value>Enter here</value>
+    <value>Введите здесь</value>
   </data>
   <data name="ViewDialogAchievementArchiveCreateTitle" xml:space="preserve">
-    <value>Установить имя архива достижений</value>
+    <value>Укажите имя архива достижений</value>
   </data>
   <data name="ViewDialogAchievementArchiveImportStrategy" xml:space="preserve">
     <value>Режим импорта</value>
   </data>
   <data name="ViewDialogAchievementArchiveImportStrategyAggressive" xml:space="preserve">
-    <value>Жадно (добавляют новые данные, обновляют завершенные записи)</value>
+    <value>Агрессивный (добавлять новые данные, обновлять завершённые)</value>
   </data>
   <data name="ViewDialogAchievementArchiveImportStrategyLazy" xml:space="preserve">
-    <value>Лениво (добавление новых данных, пропуск завершенных записей)</value>
+    <value>Ленивый (добавлять новые данные, пропускать завершённые)</value>
   </data>
   <data name="ViewDialogAchievementArchiveImportStrategyOverwrite" xml:space="preserve">
-    <value>Перезапись (удаление старых данных, добавление новых)</value>
+    <value>Перезапись (удалить старые данные, добавить новые)</value>
   </data>
   <data name="ViewDialogAchievementArchiveImportTitle" xml:space="preserve">
-    <value>Импорт данных о достижениях в текущий архив</value>
+    <value>Импорт достижений в текущий архив</value>
   </data>
   <data name="ViewDialogAvatarPropertyMultiAvatarCultivateSelectTitle" xml:space="preserve">
     <value>Выберите персонажа для добавления в текущий план развития</value>
@@ -1372,7 +1374,7 @@
     <value>Это можно изменить позже в настройках</value>
   </data>
   <data name="ViewDialogCloseButtonBehaviorSetDialogHint" xml:space="preserve">
-    <value>Функции, такие как автоматическое обновление Заметок в реальном времени, требуют, чтобы Snap Hutao работал в фоновом режиме.</value>
+    <value>Для функций типа автоматического обновления заметок Snap Hutao должен работать в фоновом режиме</value>
   </data>
   <data name="ViewDialogCloseButtonBehaviorSetDialogTitle" xml:space="preserve">
     <value>Закрыть окно</value>
@@ -1381,13 +1383,13 @@
     <value>Целевой уровень персонажа</value>
   </data>
   <data name="ViewDialogCultivateBatchSkillATarget" xml:space="preserve">
-    <value>Уровень цели обычной атаки</value>
+    <value>Целевой уровень обычной атаки</value>
   </data>
   <data name="ViewDialogCultivateBatchSkillETarget" xml:space="preserve">
-    <value>Целевой уровень Элементального навыка</value>
+    <value>Целевой уровень элементального навыка</value>
   </data>
   <data name="ViewDialogCultivateBatchSkillQTarget" xml:space="preserve">
-    <value>Целевой уровень Взрыва стихий</value>
+    <value>Целевой уровень взрыва стихии</value>
   </data>
   <data name="ViewDialogCultivateBatchWeaponLevelTarget" xml:space="preserve">
     <value>Целевой уровень оружия</value>
@@ -1396,16 +1398,16 @@
     <value>Введите название плана</value>
   </data>
   <data name="ViewDialogCultivateProjectTitle" xml:space="preserve">
-    <value>Создание нового плана</value>
+    <value>Создать новый план развития</value>
   </data>
   <data name="ViewDialogCultivatePromotionDeltaBatchTitle" xml:space="preserve">
-    <value>Пакетное добавление или обновление в текущий план разработки</value>
+    <value>Пакетное добавление или обновление в текущем плане развития</value>
   </data>
   <data name="ViewDialogCultivatePromotionDeltaPromoted" xml:space="preserve">
     <value>Повышено</value>
   </data>
   <data name="ViewDialogCultivatePromotionDeltaTitle" xml:space="preserve">
-    <value>Добавить или обновить в текущий план разработки</value>
+    <value>Добавить или обновить в текущем плане развития</value>
   </data>
   <data name="ViewDialogCultivationConsumptionSaveStrategyCreateNewEntry" xml:space="preserve">
     <value>Всегда создавать новые записи</value>
@@ -1414,25 +1416,25 @@
     <value>Способ сохранения</value>
   </data>
   <data name="ViewDialogCultivationConsumptionSaveStrategyOverwriteExisting" xml:space="preserve">
-    <value>Перезаписать существующие записи</value>
+    <value>Перезаписывать существующие записи</value>
   </data>
   <data name="ViewDialogCultivationConsumptionSaveStrategyPreserveExisting" xml:space="preserve">
-    <value>Сохранить существующие записи</value>
+    <value>Сохранять существующие записи</value>
   </data>
   <data name="ViewDialogDailyNoteNotificationDailyTaskNotify" xml:space="preserve">
     <value>Уведомление о доступности ежедневных поручений</value>
   </data>
   <data name="ViewDialogDailyNoteNotificationExpeditionNotify" xml:space="preserve">
-    <value>Уведомление об окончании экспедиции</value>
+    <value>Уведомление о завершении экспедиций</value>
   </data>
   <data name="ViewDialogDailyNoteNotificationHomeCoinNotifyThreshold" xml:space="preserve">
     <value>Порог уведомления о сокровищах обители</value>
   </data>
   <data name="ViewDialogDailyNoteNotificationResinNotifyThreshold" xml:space="preserve">
-    <value>Порог уведомления о Первородной смоле</value>
+    <value>Порог уведомления о первородной смоле</value>
   </data>
   <data name="ViewDialogDailyNoteNotificationTitle" xml:space="preserve">
-    <value>Настройки уведомлений в реальном времени</value>
+    <value>Настройки уведомлений заметок в реальном времени</value>
   </data>
   <data name="ViewDialogDailyNoteNotificationTransformerNotify" xml:space="preserve">
     <value>Уведомление о параметрическом преобразователе</value>
@@ -1441,43 +1443,43 @@
     <value>Пожалуйста, введите URL</value>
   </data>
   <data name="ViewDialogDailyNoteWebhookUrlTitle" xml:space="preserve">
-    <value>URL веб-хука для заметок в реальном времени</value>
+    <value>URL вебхука для заметок в реальном времени</value>
   </data>
   <data name="ViewDialogExportUIGFSubtitle" xml:space="preserve">
     <value>Выберите UID для экспорта записей</value>
   </data>
   <data name="ViewDialogExportUIGFTitle" xml:space="preserve">
-    <value>Экспорт UIGF файла</value>
+    <value>Экспорт файла UIGF</value>
   </data>
   <data name="ViewDialogFeedbackEnableLoopbackContent" xml:space="preserve">
-    <value>Для восстановления loopback после снятия ограничений потребуются другие инструменты</value>
+    <value>Для восстановления ограничений loopback после их снятия потребуются другие инструменты</value>
   </data>
   <data name="ViewDialogFeedbackEnableLoopbackTitle" xml:space="preserve">
-    <value>Подтвердить снятие ограничений Loopback?</value>
+    <value>Снять ограничения loopback?</value>
   </data>
   <data name="ViewDialogGachaLogRefreshProgressAuthkeyTimeout" xml:space="preserve">
-    <value>URL истории желаний устарел, пожалуйста, получите его снова</value>
+    <value>URL истории молитв устарел, получите новый</value>
   </data>
   <data name="ViewDialogGachaLogRefreshProgressDescription" xml:space="preserve">
     <value>Получение {0}</value>
   </data>
   <data name="ViewDialogGachaLogRefreshProgressTitle" xml:space="preserve">
-    <value>Получение предметов молитвы</value>
+    <value>Получение предметов молитв</value>
   </data>
   <data name="ViewDialogGachaLogUrlInputPlaceholder" xml:space="preserve">
     <value>Пожалуйста, введите URL</value>
   </data>
   <data name="ViewDialogGachaLogUrlTitle" xml:space="preserve">
-    <value>Ввести URL истории желаний вручную</value>
+    <value>Ввести URL истории молитв вручную</value>
   </data>
   <data name="ViewDialogGameInstallLaunchScheme" xml:space="preserve">
-    <value>Игровой Сервер</value>
+    <value>Игровой сервер</value>
   </data>
   <data name="ViewDialogGameInstallPathHddHint" xml:space="preserve">
-    <value>В настоящий момент выбран каталог на HDD. Рекомендуется использовать SSD.</value>
+    <value>Выбранный каталог находится на HDD, рекомендуется использовать SSD</value>
   </data>
   <data name="ViewDialogGameInstallPickGameDirectory" xml:space="preserve">
-    <value>Установить каталог установки игры</value>
+    <value>Укажите каталог установки игры</value>
   </data>
   <data name="ViewDialogGameInstallTitle" xml:space="preserve">
     <value>Установить игру</value>
@@ -1495,49 +1497,49 @@
     <value>Корейский</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlCompositInputHint" xml:space="preserve">
-    <value>Введите URL-адрес запроса с составным шаблоном</value>
+    <value>Введите составной шаблон URL для запроса к API</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlReturnDataDescription1" xml:space="preserve">
-    <value>Интерфейс должен возвращать данные JSON в формате, показанном выше. Лишние данные будут проигнорированы</value>
+    <value>API должен возвращать JSON как показано выше, лишние данные будут проигнорированы</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlReturnDataDescription2" xml:space="preserve">
-    <value>Если значение "code" равно 0, это означает, что проверка прошла успешно, в противном случае проверка не пройдена.</value>
+    <value>Код 0 означает успех, остальные значения — провал</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlReturnDataHeader" xml:space="preserve">
-    <value>Возвращенные данные</value>
+    <value>Возвращаемые данные</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlSampleDescription1" xml:space="preserve">
-    <value>{0} будет заменен на gt во время фактического запроса</value>
+    <value>{0} будет заменён на gt при запросе</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlSampleDescription2" xml:space="preserve">
-    <value>{1} будет заменен на "challenge" во время фактического запроса</value>
+    <value>{1} будет заменён на challenge при запросе</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlSampleDescription3" xml:space="preserve">
-    <value>Запросы будут отправляться к интерфейсам с помощью GET</value>
+    <value>Запросы будут отправляться методом GET</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlSampleHeader" xml:space="preserve">
     <value>Пример</value>
   </data>
   <data name="ViewDialogGeetestCustomUrlTitle" xml:space="preserve">
-    <value>Настроить интерфейс капчи "无感验证"</value>
+    <value>Настроить интерфейс бесшовной проверки</value>
   </data>
   <data name="ViewDialogHutaoPassportLoginTitle" xml:space="preserve">
-    <value>Войти в Hutao Passport</value>
+    <value>Вход в Hutao Passport</value>
   </data>
   <data name="ViewDialogHutaoPassportRegisterTitle" xml:space="preserve">
-    <value>Зарегистрировать Hutao Passport</value>
+    <value>Регистрация Hutao Passport</value>
   </data>
   <data name="ViewDialogHutaoPassportResetPasswordTitle" xml:space="preserve">
-    <value>Сбросить пароль Hutao Passport</value>
+    <value>Сброс пароля Hutao Passport</value>
   </data>
   <data name="ViewDialogHutaoPassportResetUserNameTitle" xml:space="preserve">
-    <value>Сбросить адрес электронной почты Hutao Passport</value>
+    <value>Сброс адреса электронной почты Hutao Passport</value>
   </data>
   <data name="ViewDialogHutaoPassportUnregisterTitle" xml:space="preserve">
-    <value>Отменить регистрацию учетной записи Hutao Passport</value>
+    <value>Удаление аккаунта Hutao Passport</value>
   </data>
   <data name="ViewDialogHutaoPassportUseRedeemCodeTitle" xml:space="preserve">
-    <value>Использовать код обмена Snap Hutao Cloud</value>
+    <value>Использовать код обмена Hutao Cloud</value>
   </data>
   <data name="ViewDialogImportExportApp" xml:space="preserve">
     <value>Экспорт приложения</value>
@@ -1561,16 +1563,16 @@
     <value>Выберите UID для импорта записей</value>
   </data>
   <data name="ViewDialogImportUIGFTitle" xml:space="preserve">
-    <value>Импорт UIGF файла</value>
+    <value>Импорт файла UIGF</value>
   </data>
   <data name="ViewDialogLaunchGameAccountInputPlaceholder" xml:space="preserve">
     <value>Введите имя</value>
   </data>
   <data name="ViewDialogLaunchGameAccountTitle" xml:space="preserve">
-    <value>Назовите ваш аккаунт</value>
+    <value>Назовите аккаунт</value>
   </data>
   <data name="ViewDialogLaunchGameConfigurationFixDialogHint" xml:space="preserve">
-    <value>Пожалуйста, выберите ваш игровой сервер</value>
+    <value>Пожалуйста, выберите игровой сервер, соответствующий текущему пути игры</value>
   </data>
   <data name="ViewDialogLaunchGameConfigurationFixDialogTitle" xml:space="preserve">
     <value>Восстановление файла конфигурации</value>
@@ -1579,46 +1581,46 @@
     <value>Выбранный путь установки не существует и не может быть создан</value>
   </data>
   <data name="ViewDialogLaunchGameInstallGameDirectoryExistsFileSystemEntry" xml:space="preserve">
-    <value>В выбранном пути установки существует файл или папка</value>
+    <value>По выбранному пути установки уже существует файл или папка</value>
   </data>
   <data name="ViewDialogLaunchGameInstallGameDirectoryInvalid" xml:space="preserve">
     <value>Выбранный путь установки недействителен</value>
   </data>
   <data name="ViewDialogLaunchGameInstallGameDirectoryIsSSDCheckFailed" xml:space="preserve">
-    <value>Произошла неизвестная ошибка при определении типа диска, на котором находится путь. Загрузка и запись данных будут ограничены. Если вы уверены, что это устройство является твердотельным накопителем, свяжитесь с нами.</value>
+    <value>Произошла неизвестная ошибка при определении типа диска. Загрузка и запись данных могут быть ограничены. Если вы уверены, что это SSD, свяжитесь с нами.</value>
   </data>
   <data name="ViewDialogLaunchGameInstallGameNoAudioPackageSelected" xml:space="preserve">
-    <value>Пакет голоса не выбран</value>
+    <value>Не выбран пакет озвучки</value>
   </data>
   <data name="ViewDialogLaunchGameInstallGameNoSchemeSelected" xml:space="preserve">
-    <value>Игровой сервер не выбран</value>
+    <value>Не выбран игровой сервер</value>
   </data>
   <data name="ViewDialogLaunchGameInstallGamePickDirectoryTitle" xml:space="preserve">
     <value>Выберите путь установки</value>
   </data>
   <data name="ViewDialogLaunchGamePackageConvertHint" xml:space="preserve">
-    <value>Переключение может занять некоторое время. Пожалуйста, не закрывайте Snap Hutao.</value>
+    <value>Преобразование может занять некоторое время. Не закрывайте Snap Hutao.</value>
   </data>
   <data name="ViewDialogLaunchGamePackageConvertTitle" xml:space="preserve">
     <value>Преобразование клиента игры</value>
   </data>
   <data name="ViewDialogQRCodeTitle" xml:space="preserve">
-    <value>Отсканируйте QR-код с помощью Miyusha</value>
+    <value>Отсканируйте QR-код через HoYoLAB</value>
   </data>
   <data name="ViewDialogReconfirmHint" xml:space="preserve">
-    <value>Чтобы гарантировать, что пользователи функций обладают независимым суждением, мы будем нерегулярно обновлять условия включения этих функций. Если вы являетесь создателем контента, пожалуйста, не сообщайте своей аудитории о конкретных методах активации при создании контента, связанного со Snap Hutao.</value>
+    <value>Для обеспечения независимого суждения пользователей мы будем время от времени обновлять условия включения этих функций. Если вы создатель контента, пожалуйста, не раскрывайте конкретные методы активации в своих материалах о Snap Hutao.</value>
   </data>
   <data name="ViewDialogReconfirmTextHeader" xml:space="preserve">
-    <value>Чтобы избежать непреднамеренного включения, введите &lt;b&gt;название&lt;/b&gt; функции, которую вы включаете</value>
+    <value>Чтобы избежать случайного включения, введите <b>название</b> включаемой функции</value>
   </data>
   <data name="ViewDialogReconfirmTitle" xml:space="preserve">
-    <value>Вы активируете опасную функцию</value>
+    <value>Вы включаете опасную функцию</value>
   </data>
   <data name="ViewDialogSpiralAbyssUploadRecordHomaNotLoginHint" xml:space="preserve">
-    <value>В настоящее время не выполнен вход в аккаунт Snap Hutao, загрузка данных Бездны не даст вам доступа к Snap Hutao Cloud.</value>
+    <value>Вы не вошли в аккаунт Snap Hutao, загрузка данных Бездны не даст бесплатного времени Hutao Cloud</value>
   </data>
   <data name="ViewDialogSpiralAbyssUploadRecordHomaNotLoginPrimaryButtonText" xml:space="preserve">
-    <value>Перейти к входу</value>
+    <value>Перейти ко входу</value>
   </data>
   <data name="ViewDialogSpiralAbyssUploadRecordHomaNotLoginSecondaryButtonText" xml:space="preserve">
     <value>Продолжить загрузку</value>
@@ -1642,19 +1644,19 @@
     <value>Код подтверждения отправлен</value>
   </data>
   <data name="ViewDialogUserAccountVerificationTitle" xml:space="preserve">
-    <value>Пожалуйста, введите код подтверждения по электронной почте</value>
+    <value>Введите код подтверждения из email</value>
   </data>
   <data name="ViewDialogUserDocumentAction" xml:space="preserve">
     <value>Перейти</value>
   </data>
   <data name="ViewDialogUserDocumentDescription" xml:space="preserve">
-    <value>Перейдите на страницу документа и следуйте инструкциям</value>
+    <value>Перейдите на страницу документации и следуйте инструкциям</value>
   </data>
   <data name="ViewDialogUserDocumentHeader" xml:space="preserve">
-    <value>Документ</value>
+    <value>Документация</value>
   </data>
   <data name="ViewDialogUserInputPlaceholder" xml:space="preserve">
-    <value>Введите здесь Cookie, содержащие SToken</value>
+    <value>Введите Cookie, содержащий SToken</value>
   </data>
   <data name="ViewDialogUserMobileCaptchaCaptchaHint" xml:space="preserve">
     <value>Введите полученный код подтверждения</value>
@@ -1666,16 +1668,16 @@
     <value>Отправить</value>
   </data>
   <data name="ViewDialogUserMobileCaptchaTitle" xml:space="preserve">
-    <value>Вход по коду подтверждения телефона</value>
+    <value>Вход по коду из SMS</value>
   </data>
   <data name="ViewDialogUserTitle" xml:space="preserve">
-    <value>Установка cookie-файлов</value>
+    <value>Установить Cookie</value>
   </data>
   <data name="ViewExceptionWindowCommentDescription" xml:space="preserve">
-    <value>Чёткое и ясное описание шагов поможет нам быстрее локализовать проблему</value>
+    <value>Чёткое и ясное описание шагов поможет нам быстрее найти проблему</value>
   </data>
   <data name="ViewExceptionWindowCommentHeader" xml:space="preserve">
-    <value>Какие действия вы выполняли перед тем, как произошёл сбой?</value>
+    <value>Какие действия вы выполняли перед сбоем?</value>
   </data>
   <data name="ViewExceptionWindowStacktraceHeader" xml:space="preserve">
     <value>Стек вызовов</value>
@@ -1696,13 +1698,13 @@
     <value>Способ и порядок сообщения о проблемах</value>
   </data>
   <data name="ViewGuideStepAgreementOpenSourceLicense" xml:space="preserve">
-    <value>Лицензия с открытым исходным кодом Snap Hutao</value>
+    <value>Лицензия открытого ПО Snap Hutao</value>
   </data>
   <data name="ViewGuideStepAgreementPrivacyPolicy" xml:space="preserve">
-    <value>Данные пользователя и права на конфиденциальность</value>
+    <value>Данные пользователя и конфиденциальность</value>
   </data>
   <data name="ViewGuideStepAgreementTermOfService" xml:space="preserve">
-    <value>Пользовательское соглашение</value>
+    <value>Условия использования и правовое уведомление</value>
   </data>
   <data name="ViewGuideStepCommonSetting" xml:space="preserve">
     <value>Основные настройки</value>
@@ -2047,10 +2049,10 @@
     <value>Идет загрузка в Snap Hutao Cloud</value>
   </data>
   <data name="ViewModelGachaLogDeleteHutaoCloudTitle" xml:space="preserve">
-    <value>删除胡桃云存档</value>
+    <value>Удалить облачное сохранение Hutao Cloud</value>
   </data>
   <data name="ViewModelGachaLogDeleteHutaoCloudMessage" xml:space="preserve">
-    <value>确定要删除 UID {0} 的云端存档吗？此操作是不可逆的，所有祈愿数据会被永久删除。</value>
+    <value>Вы уверены, что хотите удалить облачное сохранение для UID {0}? Это действие необратимо, все данные о молитвах будут удалены навсегда.</value>
   </data>
   <data name="ViewModelGachaUIGFImportPickerTitile" xml:space="preserve">
     <value>Импорт данных из UIGF Json файла</value>
@@ -2110,7 +2112,7 @@
     <value>Далее</value>
   </data>
   <data name="ViewModelGuideActionSkipDownload" xml:space="preserve">
-    <value>跳过</value>
+    <value>Пропустить</value>
   </data>
   <data name="ViewModelGuideActionStaticResourceBegin" xml:space="preserve">
     <value>Загрузка файлов ресурсов, пожалуйста, подождите</value>
@@ -2359,13 +2361,13 @@
     <value>Исключение при загрузке файла</value>
   </data>
   <data name="ViewModelWelcomeDownloadSummarySpeed" xml:space="preserve">
-    <value>{0}/s</value>
+    <value>{0}/с</value>
   </data>
   <data name="ViewModelWelcomeDownloadSummarySkipped" xml:space="preserve">
-    <value>已跳过</value>
+    <value>Пропущено</value>
   </data>
   <data name="ViewModelWelcomeDownloadSummaryStalled" xml:space="preserve">
-    <value>下载超时</value>
+    <value>Таймаут загрузки</value>
   </data>
   <data name="ViewModelWikiAvatarStrategyNotFound" xml:space="preserve">
     <value>Нет информации о стратегиях для этого персонажа</value>
@@ -2437,10 +2439,10 @@
     <value>Нет данных о персонаже</value>
   </data>
   <data name="ViewPageAvatarPropertySpecialDescriptionOff" xml:space="preserve">
-    <value>强化前</value>
+    <value>До усиления</value>
   </data>
   <data name="ViewPageAvatarPropertySpecialDescriptionOn" xml:space="preserve">
-    <value>强化后</value>
+    <value>После усиления</value>
   </data>
   <data name="ViewPageAvatarPropertyExportToTextLabel" xml:space="preserve">
     <value>Экспорт текста в буфер обмена</value>
@@ -3199,13 +3201,13 @@
     <value>Текущий фон — это локальное изображение, пользователь несет личную ответственность в случае проблем с авторскими правами.</value>
   </data>
   <data name="ViewPageSettingBackgroundImageCustomFolderHeader" xml:space="preserve">
-    <value>自定义背景图片文件夹</value>
+    <value>Пользовательская папка с фоновыми изображениями</value>
   </data>
   <data name="ViewPageSettingBackgroundImagePickFolderTitle" xml:space="preserve">
-    <value>选择背景图片文件夹</value>
+    <value>Выбрать папку с фоновыми изображениями</value>
   </data>
   <data name="ViewPageSettingBackgroundImageSetFolderAction" xml:space="preserve">
-    <value>选择文件夹</value>
+    <value>Выбрать папку</value>
   </data>
   <data name="ViewPageSettingCacheFolderHeader" xml:space="preserve">
     <value>Папка кэша</value>
@@ -3310,10 +3312,10 @@
     <value>Показать</value>
   </data>
   <data name="ViewPageSettingEmptyOverviewWishVisibleDescription" xml:space="preserve">
-    <value>在「总览」页面中显示无记录的祈愿活动卡片</value>
+    <value>Показывать карточки событий молитв без записей на странице «Обзор»</value>
   </data>
   <data name="ViewPageSettingEmptyOverviewWishVisibleHeader" xml:space="preserve">
-    <value>无记录的祈愿总览</value>
+    <value>Обзор молитв без записей</value>
   </data>
   <data name="ViewPageSettingFeedbackNavigate" xml:space="preserve">
     <value>Обратная связь</value>
@@ -3658,7 +3660,7 @@
     <value>Выпадающие предметы</value>
   </data>
   <data name="ViewPageWiKiMonsterAutoSuggestBoxPlaceHolder" xml:space="preserve">
-    <value>筛选怪物</value>
+    <value>Фильтр монстров</value>
   </data>
   <data name="ViewPeriodHeader" xml:space="preserve">
     <value>Расписание</value>
@@ -3841,7 +3843,7 @@
     <value>Компактное веб-окно (только для администратора)</value>
   </data>
   <data name="ViewWindowCompactWebView2HotKeyDisabledMessage" xml:space="preserve">
-    <value>以管理员身份运行以启用全局快捷键功能</value>
+    <value>Запустите от имени администратора, чтобы включить глобальные горячие клавиши</value>
   </data>
   <data name="ViewWindowExceptionClose" xml:space="preserve">
     <value>Закрыть</value>
@@ -3862,31 +3864,31 @@
     <value>Выполнить отладочный скрипт</value>
   </data>
   <data name="ViewWindowSpeedGraphTestClose" xml:space="preserve">
-    <value>关闭</value>
+    <value>Закрыть</value>
   </data>
   <data name="ViewWindowSpeedGraphTestCompleted" xml:space="preserve">
-    <value>完成</value>
+    <value>Завершено</value>
   </data>
   <data name="ViewWindowSpeedGraphTestCanceled" xml:space="preserve">
-    <value>已取消</value>
+    <value>Отменено</value>
   </data>
   <data name="ViewWindowSpeedGraphTestDescription" xml:space="preserve">
-    <value>运行测试流并实时观察图表变化</value>
+    <value>Запустите тестовый поток и наблюдайте за изменениями графика в реальном времени</value>
   </data>
   <data name="ViewWindowSpeedGraphTestReady" xml:space="preserve">
-    <value>就绪</value>
+    <value>Готов</value>
   </data>
   <data name="ViewWindowSpeedGraphTestReplay" xml:space="preserve">
-    <value>重新播放</value>
+    <value>Повторить</value>
   </data>
   <data name="ViewWindowSpeedGraphTestRunning" xml:space="preserve">
-    <value>运行中</value>
+    <value>Выполняется</value>
   </data>
   <data name="ViewWindowSpeedGraphTestTitle" xml:space="preserve">
-    <value>SpeedGraph 测试演示</value>
+    <value>Демонстрация тестирования SpeedGraph</value>
   </data>
   <data name="ViewWindowSpeedGraphTestWaiting" xml:space="preserve">
-    <value>等待开始</value>
+    <value>Ожидание начала</value>
   </data>
   <data name="WebAnnouncementTimeDaysBegin" xml:space="preserve">
     <value>Начало через {0} дней</value>
@@ -4120,265 +4122,265 @@
     <value>Автоматическая подпись.</value>
   </data>
   <data name="ViewCardSignInAutoSignInDescription" xml:space="preserve">
-    <value>账号所在时区日期更新和启动时自动签到</value>
+    <value>Автоматическая регистрация при обновлении даты в часовом поясе аккаунта и при запуске</value>
   </data>
   <data name="ViewPageSettingAutoRestartAsAdminHeader" xml:space="preserve">
-    <value>启动时自动以管理员权限重启</value>
+    <value>Автоматически перезапускать с правами администратора при запуске</value>
   </data>
   <data name="ViewPageSettingAlwaysRunAsAdminTextDes" xml:space="preserve">
-    <value>将在手动启动应用时生效，建议开启自启动和管理员自启动以免启动各种功能时可能的UAC弹窗打扰</value>
+    <value>Вступает в силу при ручном запуске приложения. Рекомендуется включить автозапуск и автозапуск от администратора, чтобы избежать возможных запросов UAC при запуске различных функций</value>
   </data>
   <data name="ViewPageSettingAutoRestartAsAdminDescription" xml:space="preserve">
-    <value>启用后，如果胡桃不是以管理员身份运行，将在启动时自动重启并请求管理员权限</value>
+    <value>После включения, если Snap Hutao не запущен от имени администратора, при запуске он автоматически перезапустится и запросит права администратора</value>
   </data>
   <data name="ViewPageSettingAutoStartDescription" xml:space="preserve">
-    <value>程序将在当前用户登录时启动，是否以管理员运行仅在修改时同步管理员模式选项（修改需以管理员身份运行）</value>
+    <value>Программа будет запускаться при входе текущего пользователя. Запуск от имени администратора синхронизируется только при изменении режима администратора (для изменения требуется запуск от имени администратора)</value>
   </data>
   <data name="ViewPageLaunchGameIslandDisplayPaimonHeader" xml:space="preserve">
-    <value>显示派蒙</value>
+    <value>Показать Паймон</value>
   </data>
   <data name="ViewPageLaunchGameIslandDisplayPaimonDescription" xml:space="preserve">
-    <value>在游戏中显示派蒙</value>
+    <value>Показывать Паймон в игре</value>
   </data>
   <data name="ViewPageLaunchGameIslandHideGrassHeader" xml:space="preserve">
-    <value>隐藏草地</value>
+    <value>Скрыть траву</value>
   </data>
   <data name="ViewPageLaunchGameIslandHideGrassDescription" xml:space="preserve">
-    <value>在游戏中隐藏草地</value>
+    <value>Скрывать траву в игре</value>
   </data>
   <data name="ViewPageLaunchGameIslandDebugModeHeader" xml:space="preserve">
-    <value>调试模式</value>
+    <value>Режим отладки</value>
   </data>
   <data name="ViewPageLaunchGameIslandDebugModeDescription" xml:space="preserve">
-    <value>启用调试模式</value>
+    <value>Включить режим отладки</value>
   </data>
   <data name="ViewPageLaunchGameIslandHidePlayerInfoHeader" xml:space="preserve">
-    <value>隐藏玩家信息</value>
+    <value>Скрыть информацию об игроке</value>
   </data>
   <data name="ViewPageLaunchGameIslandHidePlayerInfoDescription" xml:space="preserve">
-    <value>隐藏玩家信息</value>
+    <value>Скрыть информацию об игроке</value>
   </data>
   <data name="ViewPageLaunchGameDisablePlayerPerspectiveDescription" xml:space="preserve">
-    <value>反角色虚化</value>
+    <value>Отключить прозрачность персонажа</value>
   </data>
   <data name="ViewPageLaunchGameDisablePlayerDiveMosaicHeader" xml:space="preserve">
-    <value>移除水下马赛克</value>
+    <value>Убрать подводную мозаику</value>
   </data>
   <data name="ServicePluginEnablingPluginFailed" xml:space="preserve">
-    <value>在启用插件时发生异常</value>
+    <value>Произошла ошибка при включении плагина</value>
   </data>
   <data name="ServicePluginDisablingPluginFailed" xml:space="preserve">
-    <value>在禁用插件时发生异常</value>
+    <value>Произошла ошибка при отключении плагина</value>
   </data>
   <data name="ServicePluginInstallFileNotFound" xml:space="preserve">
-    <value>插件文件未找到</value>
+    <value>Файл плагина не найден</value>
   </data>
   <data name="ServicePluginInstallInvalidFileType" xml:space="preserve">
-    <value>无效的插件文件类型，应为.hutao或.hutaodisabled文件</value>
+    <value>Недопустимый тип файла плагина, ожидаются файлы с расширением .hutao или .hutaodisabled</value>
   </data>
   <data name="ServicePluginInstallManifestNotFound" xml:space="preserve">
-    <value>插件文件中未找到manifest.json文件</value>
+    <value>В файле плагина не найден manifest.json</value>
   </data>
   <data name="ServicePluginInstallInvalidManifest" xml:space="preserve">
-    <value>插件manifest.json文件无效或缺少ID</value>
+    <value>Недействительный manifest.json плагина или отсутствует ID</value>
   </data>
   <data name="ServicePluginInstallSuccess" xml:space="preserve">
-    <value>插件'{0}'安装成功</value>
+    <value>Плагин '{0}' успешно установлен</value>
   </data>
   <data name="ServicePluginInstallFailed" xml:space="preserve">
-    <value>安装插件失败</value>
+    <value>Не удалось установить плагин</value>
   </data>
   <data name="ServicePluginLoadDirectoryNotFound" xml:space="preserve">
-    <value>插件目录'{0}'未找到</value>
+    <value>Не найдена папка плагина '{0}'</value>
   </data>
   <data name="ServicePluginLoadManifestNotFound" xml:space="preserve">
-    <value>插件'{0}'的manifest.json文件未找到</value>
+    <value>Файл manifest.json плагина '{0}' не найден</value>
   </data>
   <data name="ServicePluginLoadDllNotFound" xml:space="preserve">
-    <value>插件'{0}'的DLL文件未找到</value>
+    <value>DLL-файл плагина '{0}' не найден</value>
   </data>
   <data name="ServicePluginLoadSuccess" xml:space="preserve">
-    <value>插件'{0}'加载成功</value>
+    <value>Плагин '{0}' успешно загружен</value>
   </data>
   <data name="ServicePluginLoadFailed" xml:space="preserve">
-    <value>插件加载失败</value>
+    <value>Не удалось загрузить плагин</value>
   </data>
   <data name="ServicePluginNotFound" xml:space="preserve">
-    <value>找不到插件'{0}'</value>
+    <value>Не удалось найти плагин '{0}'</value>
   </data>
   <data name="ServicePluginInstallAlreadyExists" xml:space="preserve">
-    <value>插件'{0}'已经安装</value>
+    <value>Плагин '{0}' уже установлен</value>
   </data>
   <data name="ServicePluginLoadMainTypeNotFound" xml:space="preserve">
-    <value>找不到插件'{0}'的主类</value>
+    <value>Не найден главный класс плагина '{0}'</value>
   </data>
   <data name="ServicePluginLoadInvalidManifest" xml:space="preserve">
-    <value>插件'{0}'具有无效的清单文件</value>
+    <value>Плагин '{0}' имеет недействительный файл манифеста</value>
   </data>
   <data name="ServicePluginDisableSuccess" xml:space="preserve">
-    <value>插件'{0}'禁用成功</value>
+    <value>Плагин '{0}' успешно отключён</value>
   </data>
   <data name="ServicePluginDeleteSuccess" xml:space="preserve">
-    <value>成功卸载了插件'{0}'</value>
+    <value>Плагин '{0}' успешно удалён</value>
   </data>
   <data name="ServicePluginDeleteFailed" xml:space="preserve">
-    <value>在卸载插件'{0}'时发生错误</value>
+    <value>Произошла ошибка при удалении плагина '{0}'</value>
   </data>
   <data name="ServicePluginEnablingSuccess" xml:space="preserve">
-    <value>插件'{0}'启用成功</value>
+    <value>Плагин '{0}' успешно включён</value>
   </data>
   <data name="ViewPluginHeader" xml:space="preserve">
-    <value>插件管理</value>
+    <value>Управление плагинами</value>
   </data>
   <data name="ViewPagePluginInstallButton" xml:space="preserve">
-    <value>安装插件</value>
+    <value>Установить плагин</value>
   </data>
   <data name="ViewPagePluginRefreshButton" xml:space="preserve">
-    <value>刷新</value>
+    <value>Обновить</value>
   </data>
   <data name="ViewPagePluginOpenDirectoryButton" xml:space="preserve">
-    <value>打开插件目录</value>
+    <value>Открыть папку плагинов</value>
   </data>
   <data name="ViewPagePluginTotalText" xml:space="preserve">
-    <value>共</value>
+    <value>Всего</value>
   </data>
   <data name="ViewPagePluginCountText" xml:space="preserve">
-    <value>个插件</value>
+    <value>плагинов</value>
   </data>
   <data name="ViewPagePluginEmptyTitle" xml:space="preserve">
-    <value>暂无插件</value>
+    <value>Плагины отсутствуют</value>
   </data>
   <data name="ViewPagePluginEmptyDescription" xml:space="preserve">
-    <value>点击"安装插件"按钮来添加你的第一个插件</value>
+    <value>Нажмите кнопку «Установить плагин», чтобы добавить свой первый плагин</value>
   </data>
   <data name="ViewPagePluginEnableButton" xml:space="preserve">
-    <value>启用</value>
+    <value>Включить</value>
   </data>
   <data name="ViewPagePluginDisableButton" xml:space="preserve">
-    <value>禁用</value>
+    <value>Отключить</value>
   </data>
   <data name="ViewPagePluginSettingsButton" xml:space="preserve">
-    <value>设置</value>
+    <value>Настройки</value>
   </data>
   <data name="ViewPagePluginUninstallButton" xml:space="preserve">
-    <value>卸载</value>
+    <value>Удалить</value>
   </data>
   <data name="ViewPagePluginStatusEnabled" xml:space="preserve">
-    <value>已启用</value>
+    <value>Включено</value>
   </data>
   <data name="ViewPagePluginStatusDisabled" xml:space="preserve">
-    <value>已禁用</value>
+    <value>Отключено</value>
   </data>
   <data name="ViewPagePluginSettingBackButton" xml:space="preserve">
-    <value>返回</value>
+    <value>Назад</value>
   </data>
   <data name="ViewPagePluginSettingTitle" xml:space="preserve">
-    <value>插件设置</value>
+    <value>Настройки плагина</value>
   </data>
   <data name="ViewPagePluginSettingEmptyTitle" xml:space="preserve">
-    <value>暂无设置</value>
+    <value>Нет настроек</value>
   </data>
   <data name="ViewPagePluginSettingEmptyDescription" xml:space="preserve">
-    <value>此插件没有可配置的设置</value>
+    <value>Этот плагин не имеет настраиваемых параметров</value>
   </data>
   <data name="ViewPagePluginSettingStringPlaceholder" xml:space="preserve">
-    <value>请输入文本</value>
+    <value>Введите текст</value>
   </data>
   <data name="ViewPagePluginSettingIntPlaceholder" xml:space="preserve">
-    <value>请输入整数</value>
+    <value>Введите целое число</value>
   </data>
   <data name="ViewPagePluginSettingToggleOff" xml:space="preserve">
-    <value>关</value>
+    <value>Выкл</value>
   </data>
   <data name="ViewPagePluginSettingToggleOn" xml:space="preserve">
-    <value>开</value>
+    <value>Вкл</value>
   </data>
   <data name="ViewPagePluginSettingDefaultPlaceholder" xml:space="preserve">
-    <value>请输入值</value>
+    <value>Введите значение</value>
   </data>
   <data name="ViewPagePluginSettingSaveButton" xml:space="preserve">
-    <value>保存</value>
+    <value>Сохранить</value>
   </data>
   <data name="ViewPagePluginSettingResetButton" xml:space="preserve">
-    <value>重置</value>
+    <value>Сбросить</value>
   </data>
   <data name="ViewPagePluginSettingDefaultValueText" xml:space="preserve">
-    <value>默认值: </value>
+    <value>Значение по умолчанию: </value>
   </data>
   <data name="ServicePluginPickFileTitle" xml:space="preserve">
-    <value>选择插件文件</value>
+    <value>Выберите файл плагина</value>
   </data>
   <data name="ServicePluginUninstallTitle" xml:space="preserve">
-    <value>卸载插件 {0}</value>
+    <value>Удаление плагина {0}</value>
   </data>
   <data name="ServicePluginUninstallDescription" xml:space="preserve">
-    <value>确定要卸载插件 {0} 吗？此操作不可恢复。</value>
+    <value>Вы уверены, что хотите удалить плагин {0}? Это действие необратимо.</value>
   </data>
   <data name="ViewPageLaunchGameIslandGamepadHotSwitchEnabledHeader" xml:space="preserve">
-    <value>手柄热切换</value>
+    <value>Быстрое переключение геймпада</value>
   </data>
   <data name="ViewPageLaunchGameIslandGamepadHotSwitchEnabledDescription" xml:space="preserve">
-    <value>在游戏中随时自动切换键鼠和手柄输入</value>
+    <value>Автоматически переключать ввод между клавиатурой и геймпадом в игре</value>
   </data>
   <data name="WebUGCGachaConfigTypePermanentWish" xml:space="preserve">
-    <value>常驻颂愿</value>
+    <value>Стандартная молитва</value>
   </data>
   <data name="WebUGCGachaConfigTypeAvatarEventWish" xml:space="preserve">
-    <value>活动颂愿</value>
+    <value>Молитва события</value>
   </data>
   <data name="WebUGCGachaConfigTypeActivityAvatarMaleOne" xml:space="preserve">
-    <value>活动颂愿-男</value>
+    <value>Молитва события – муж</value>
   </data>
   <data name="WebUGCGachaConfigTypeActivityAvatarMaleTwo" xml:space="preserve">
-    <value>活动颂愿-男</value>
+    <value>Молитва события – муж</value>
   </data>
   <data name="WebUGCGachaConfigTypeActivityAvatarFemaleOne" xml:space="preserve">
-    <value>活动颂愿-女</value>
+    <value>Молитва события – жен</value>
   </data>
   <data name="WebUGCGachaConfigTypeActivityAvatarFemaleTwo" xml:space="preserve">
-    <value>活动颂愿-女</value>
+    <value>Молитва события – жен</value>
   </data>
   <data name="ViewControlStatisticsCardPurpleAveragePullText" xml:space="preserve">
-    <value>四星平均抽数</value>
+    <value>Среднее количество круток для 4★</value>
   </data>
   <data name="ViewPageGachaLogSwitchToBeyondGachaModeHeader" xml:space="preserve">
-    <value>颂愿</value>
+    <value>Молитва</value>
   </data>
   <data name="ViewPageGachaLogSwitchToBeyondGachaModeDescription" xml:space="preserve">
-    <value>切换到颂愿(千星奇域)模式</value>
+    <value>Переключиться в режим Молитвы (Тысяча звёзд)</value>
   </data>
   <data name="ServiceGachaLogFactoryBeyondEventWishName" xml:space="preserve">
-    <value>活动颂愿</value>
+    <value>Молитва события</value>
   </data>
   <data name="ServiceGachaLogFactoryBeyondPermanentWishName" xml:space="preserve">
-    <value>奇遇回声</value>
+    <value>Эхо встречи</value>
   </data>
   <data name="ViewOverlayDisplayPaimonToolTip" xml:space="preserve">
-    <value>显示派蒙</value>
+    <value>Показать Паймон</value>
   </data>
   <data name="ViewOverlayHideGrassToolTip" xml:space="preserve">
-    <value>隐藏草地</value>
+    <value>Скрыть траву</value>
   </data>
   <data name="ViewPageAvatarPropertyAddWeaponToPlan" xml:space="preserve">
-    <value>添加武器到养成计划</value>
+    <value>Добавить оружие в план развития</value>
   </data>
   <data name="ViewPageAvatarPropertyAddAvatarToPlan" xml:space="preserve">
-    <value>添加角色到养成计划</value>
+    <value>Добавить персонажа в план развития</value>
   </data>
   <data name="ViewPageAvatarPropertyAddBothToPlan" xml:space="preserve">
-    <value>添加角色与武器到养成计划</value>
+    <value>Добавить персонажа и оружие в план развития</value>
   </data>
   <data name="ViewPageLaunchGameEnableInLevelClockPageSpeedUpHeader" xml:space="preserve">
-    <value>移除调整时间动画</value>
+    <value>Убрать анимацию смены времени</value>
   </data>
   <data name="ViewPageLaunchGameEnableInLevelClockPageSpeedUpDescription" xml:space="preserve">
-    <value>移除调整时间页面点击确定后时间缓慢变化的动画</value>
+    <value>Убрать анимацию медленной смены времени после нажатия кнопки подтверждения на странице смены времени</value>
   </data>
   <data name="ViewPageAvatarPropertyExportToText" xml:space="preserve">
-    <value>导出当前角色</value>
+    <value>Экспортировать текущего персонажа</value>
   </data>
   <data name="ViewPageAvatarPropertyExportAllToText" xml:space="preserve">
-    <value>导出所有角色</value>
+    <value>Экспортировать всех персонажей</value>
   </data>
   <data name="ViewPageLaunchGameAdvancedStartOptionsHeader" xml:space="preserve">
     <value>Пользовательский запуск</value>
@@ -4513,16 +4515,16 @@
     <value>Неподдерживаемый формат архива!</value>
   </data>
   <data name="ViewModelLaunchGameAdvancedStartProgramPathNotSet" xml:space="preserve">
-    <value>未设置自定义启动程序路径</value>
+    <value>Путь к пользовательской программе запуска не задан</value>
   </data>
   <data name="ViewModelLaunchGameAdvancedStartProgramNotExists" xml:space="preserve">
-    <value>自定义启动程序不存在</value>
+    <value>Пользовательская программа запуска не существует</value>
   </data>
   <data name="ViewModelLaunchGameAdvancedStartProgramLaunched" xml:space="preserve">
-    <value>已启动自定义程序</value>
+    <value>Пользовательская программа запущена</value>
   </data>
   <data name="ViewModelLaunchGameAdvancedStartProgramPathSaved" xml:space="preserve">
-    <value>已保存自定义启动程序路径</value>
+    <value>Путь к пользовательской программе запуска сохранён</value>
   </data>
   <data name="ViewPageLaunchGameAdvancedStartManager" xml:space="preserve">
     <value>Управление пользовательскими запусками программ</value>
@@ -4561,7 +4563,7 @@
     <value>Название приложения</value>
   </data>
   <data name="ViewDialogLaunchGameAdvancedStartInfoBarMessage" xml:space="preserve">
-    <value>将会下载到设置的数据目录的 AdvancedStart 文件夹下，可前往设置调整或自行管理</value>
+    <value>Будет загружено в папку AdvancedStart в каталоге данных, указанном в настройках. Вы можете изменить путь или управлять файлами самостоятельно</value>
   </data>
   <data name="ViewPageLaunchGameAdvancedStartCoStartHeader" xml:space="preserve">
     <value>Совместный запуск</value>
@@ -4576,28 +4578,28 @@
     <value>Активировать отложенные запуски при запуске игры</value>
   </data>
   <data name="ViewPageSettingOpenSourceSupportHeader" xml:space="preserve">
-    <value>开源支持</value>
+    <value>Поддержка открытого исходного кода</value>
   </data>
   <data name="ViewPageSettingAutoStartHeader" xml:space="preserve">
-    <value>开机自启动</value>
+    <value>Автозапуск с Windows</value>
   </data>
   <data name="ViewPageSettingAppBehaviorHeader" xml:space="preserve">
-    <value>应用行为</value>
+    <value>Поведение приложения</value>
   </data>
   <data name="ViewPageSettingAutoStartEnableCardHeader" xml:space="preserve">
-    <value>当前用户自启动</value>
+    <value>Автозапуск для текущего пользователя</value>
   </data>
   <data name="ViewPageSettingAutoStartAdminActionCardHeader" xml:space="preserve">
-    <value>自启动行为权限设置：管理员权限</value>
+    <value>Настройка прав автозапуска: права администратора</value>
   </data>
   <data name="ViewPageSettingAutoStartAdminActionCardDescription" xml:space="preserve">
-    <value>注意一些功能可能在不同权限下无法使用</value>
+    <value>Внимание: некоторые функции могут не работать при разных уровнях прав</value>
   </data>
   <data name="ViewModelGamePackageOperationContinueDownloadButtonText" xml:space="preserve">
     <value>Продолжить загрузку</value>
   </data>
   <data name="ContentDialogPauseButtonText" xml:space="preserve">
-    <value>暂停</value>
+    <value>Пауза</value>
   </data>
   <data name="ViewModelMainNetworkUnavailableWillAutoRetry" xml:space="preserve">
     <value>В настоящее время сеть недоступна, повторная попытка будет автоматически предпринята после восстановления сети.</value>
@@ -4612,141 +4614,177 @@
     <value>Сеть восстановлена, автоматически повторная попытка.</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarActStatusOngoing" xml:space="preserve">
-    <value>进行中</value>
+    <value>В процессе</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarActStatusUpcoming" xml:space="preserve">
-    <value>未开启</value>
+    <value>Ожидается</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarCountdownDaysAndHours" xml:space="preserve">
-    <value>剩余时间：{0} 天 {1} 小时</value>
+    <value>Осталось: {0} дн {1} ч</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarCountdownHours" xml:space="preserve">
-    <value>剩余时间：{0} 小时</value>
+    <value>Осталось: {0} ч</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarHardChallengeLocked" xml:space="preserve">
-    <value>尚未解锁</value>
+    <value>Ещё не разблокировано</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarHardChallengeSubCountdownDaysAndHours" xml:space="preserve">
-    <value>紊乱爆发期剩余时间：{0} 天 {1} 小时</value>
+    <value>Осталось до хаотического всплеска: {0} дн {1} ч</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarHardChallengeSubCountdownHours" xml:space="preserve">
-    <value>紊乱爆发期剩余时间：{0} 小时</value>
+    <value>Осталось до хаотического всплеска: {0} ч</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarRoleCombatLocked" xml:space="preserve">
-    <value>尚未解锁</value>
+    <value>Ещё не разблокировано</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarRoleCombatMaxRoundZero" xml:space="preserve">
-    <value>尚未挑战</value>
+    <value>Ещё не пройдено</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarTowerLocked" xml:space="preserve">
-    <value>尚未解锁</value>
+    <value>Ещё не разблокировано</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarCardPoolStatusOngoing" xml:space="preserve">
-    <value>进行中</value>
+    <value>В процессе</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarCardPoolStatusUpcoming" xml:space="preserve">
-    <value>待开启</value>
+    <value>Ожидается</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarDuration" xml:space="preserve">
-    <value>{0} 至 {1}</value>
+    <value>{0} — {1}</value>
   </data>
   <data name="ViewPageSettingBackgroundMediaNone" xml:space="preserve">
-    <value>无</value>
+    <value>Нет</value>
   </data>
   <data name="ViewPageSettingBackgroundMediaLocalFolder" xml:space="preserve">
-    <value>本地随机视频</value>
+    <value>Случайное локальное видео</value>
   </data>
   <data name="ViewPageSettingBackgroundMediaOfficialLauncherVideo" xml:space="preserve">
-    <value>官方启动器背景</value>
+    <value>Официальное видео лаунчера</value>
   </data>
   <data name="WebHoyolabGameRecordActCalendarTowerStar" xml:space="preserve">
     <value>{0}/{1}</value>
   </data>
   <data name="ViewPageSettingHomeAnnouncementActPreviewDescription" xml:space="preserve">
-    <value>默认关闭，不在进行中的事件日期等部分内容将不会正确显示</value>
+    <value>По умолчанию выключено. Некоторые данные, такие как даты событий не в процессе, могут отображаться некорректно</value>
   </data>
   <data name="ViewPageSettingHomeAnnouncementActPreviewHeader" xml:space="preserve">
-    <value>是否显示未在进行中的游戏内版本活动事件</value>
+    <value>Показывать игровые события версии, которые ещё не активны</value>
   </data>
   <data name="ViewPageSettingHomeAnnouncementActHeader" xml:space="preserve">
-    <value>主页游戏活动区域设置</value>
+    <value>Настройки области игровых событий на главной странице</value>
   </data>
   <data name="ViewPageSettingHomeAnnouncementActIsEnableHeader" xml:space="preserve">
-    <value>是否开启游戏活动日历显示</value>
+    <value>Включить календарь игровых событий</value>
   </data>
   <data name="ViewPageSettingHomeAnnouncementActIsEnableDescription" xml:space="preserve">
-    <value>立即生效，关闭后将不再显示</value>
+    <value>Вступает в силу немедленно. После отключения календарь не будет отображаться</value>
   </data>
   <data name="ViewPageLaunchGameIslandCombineMenuHotkeyHeader" xml:space="preserve">
-    <value>合成台快捷键</value>
+    <value>Горячая клавиша для стола алхимии</value>
   </data>
   <data name="ViewPageLaunchGameIslandWeakMapCheckHeader" xml:space="preserve">
-    <value>允许在秘境中打开地图</value>
+    <value>Разрешить открытие карты в подземельях</value>
   </data>
   <data name="ViewPageLaunchGameIslandCombineMenuHotkeyDescription" xml:space="preserve">
-    <value>按下指定的快捷键即可打开合成台，无法在幽境危战使用</value>
+    <value>Нажмите заданную горячую клавишу, чтобы открыть Алхимический верстак. Недоступно в «Сквозь мрак битвы»</value>
   </data>
   <data name="ViewPageLaunchGameCreateGameLaunchShortcut" xml:space="preserve">
-    <value>在桌面上创建游戏启动快捷方式</value>
+    <value>Создать ярлык для запуска игры на рабочем столе</value>
   </data>
   <data name="ViewPageSettingNetworkHeader" xml:space="preserve">
-    <value>网络</value>
+    <value>Сеть</value>
   </data>
   <data name="ModelIntrinsicAssociationTypeHVision" xml:space="preserve">
-    <value>魔女会</value>
+    <value>Гексенциркуль</value>
   </data>
   <data name="ViewPageSettingServerDomainModeHeader" xml:space="preserve">
-    <value>服务器域名</value>
+    <value>Серверный домен</value>
   </data>
   <data name="ViewPageSettingServerDomainModeDescription" xml:space="preserve">
-    <value>选择主域名或备用域名。主域名因 SSL 连接问题失败时将自动切换到备用域名</value>
+    <value>Выберите основной или резервный домен. При сбое основного домена из-за проблем с SSL-подключением будет автоматически использован резервный</value>
   </data>
   <data name="WebServerDomainModePrimary" xml:space="preserve">
-    <value>主域名 (snaphutaorp.org)</value>
+    <value>Основной домен (snaphutaorp.org)</value>
   </data>
   <data name="WebServerDomainModeBackup" xml:space="preserve">
-    <value>备用域名 (hutaorp.org)</value>
+    <value>Резервный домен (hutaorp.org)</value>
   </data>
   <data name="ModelIntrinsicAssociationTypeSnezhnayaStar" xml:space="preserve">
-    <value>愚人众</value>
+    <value>Фатуи</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoHeader" xml:space="preserve">
-    <value>视频背景</value>
+    <value>Видео на фоне</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoDescription" xml:space="preserve">
-    <value>更改窗体的背景视频来源，优先级大于背景图片</value>
+    <value>Измените источник фонового видео. Приоритет выше, чем у фонового изображения</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoIsLoopingHeader" xml:space="preserve">
-    <value>是否循环播放</value>
+    <value>Зацикливание</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoIsMutedHeader" xml:space="preserve">
-    <value>是否静音播放</value>
+    <value>Без звука</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoLocalFolderPathHeader" xml:space="preserve">
-    <value>本地文件夹路径</value>
+    <value>Путь к локальной папке</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoLocalFolderPathPlaceholder" xml:space="preserve">
-    <value>留空则使用默认目录</value>
+    <value>Оставьте пустым, чтобы использовать папку по умолчанию</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoBrowseButton" xml:space="preserve">
-    <value>浏览...</value>
+    <value>Обзор...</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoPickFolderTitle" xml:space="preserve">
-    <value>选择背景视频文件夹</value>
+    <value>Выберите папку с фоновыми видео</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoCustomFolderHeader" xml:space="preserve">
-    <value>自定义背景视频文件夹</value>
+    <value>Настроить папку с фоновыми видео</value>
   </data>
   <data name="ViewPageSettingBackgroundVideoSetFolderAction" xml:space="preserve">
-    <value>设置背景视频文件夹</value>
+    <value>Задать папку с фоновыми видео</value>
   </data>
   <data name="ViewPageSettingOpenBackgroundVideoFolderHeader" xml:space="preserve">
-    <value>打开背景视频文件夹</value>
+    <value>Открыть папку с фоновыми видео</value>
   </data>
   <data name="ViewPageSettingOpenBackgroundVideoFolderDescription" xml:space="preserve">
-    <value>自定义背景视频，支持 mp4 / mkv / webm 格式</value>
+    <value>Настройте фоновое видео. Поддерживаются форматы mp4, mkv, webm</value>
   </data>
   <data name="ViewPageSettingStorageBackgroundVideoHint" xml:space="preserve">
-    <value>视频背景的设置优先级大于背景图片</value>
+    <value>Приоритет фонового видео выше, чем у фонового изображения</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagGuide" xml:space="preserve">
+    <value>地图事件</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagActivity" xml:space="preserve">
+    <value>活动</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagRankZeroWq" xml:space="preserve">
+    <value>普通世界任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagMainWq" xml:space="preserve">
+    <value>主要世界任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagReputation" xml:space="preserve">
+    <value>声望任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagNatlanTribal" xml:space="preserve">
+    <value>纳塔部族任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagFlowerland" xml:space="preserve">
+    <value>伴月纪闻</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagThespia" xml:space="preserve">
+    <value>聚所任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagResidentActivity" xml:space="preserve">
+    <value>常驻活动</value>
+  </data>
+  <data name="ModelIntrinsicQuestShowTypeShow" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="ModelIntrinsicQuestShowTypeHidden" xml:space="preserve">
+    <value>隐藏</value>
   </data>
 </root>

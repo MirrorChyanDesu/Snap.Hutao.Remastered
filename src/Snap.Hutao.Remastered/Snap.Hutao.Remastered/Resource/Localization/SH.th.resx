@@ -139,7 +139,7 @@
     <value>ยกเลิก</value>
   </data>
   <data name="ContentDialogCompletePrimaryButtonText" xml:space="preserve">
-    <value>เสร็จสิ้น</value>
+    <value>เสร็จสมบูรณ์</value>
   </data>
   <data name="ContentDialogConfirmPrimaryButtonText" xml:space="preserve">
     <value>ยืนยัน</value>
@@ -190,7 +190,7 @@
     <value>ออก</value>
   </data>
   <data name="CoreWindowingNotifyIconLaunchGameLabel" xml:space="preserve">
-    <value>เปิดเกม</value>
+    <value>เริ่มเกม</value>
   </data>
   <data name="CoreWindowingNotifyIconPromotedHint" xml:space="preserve">
     <value>Snap Hutao กำลังทำงานอยู่เบื้องหลัง</value>
@@ -552,7 +552,7 @@
     <value>กลุ่ม D เวฟที่ 2: แต่ละกลุ่มปรากฏตัวพร้อมกัน โดยแต่ละกลุ่มจะแยกคลื่นกัน</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeGroupDWave3" xml:space="preserve">
-    <value>กลุ่ม D เวฟ 3: 不同的组同时在场，各自分波独立</value>
+    <value>กลุ่ม D เวฟที่ 3: แต่ละกลุ่มปรากฏตัวพร้อมกัน โดยแต่ละกลุ่มจะแยกคลื่นกัน</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeIndependent" xml:space="preserve">
     <value>เป็นอิสระจากมอนสเตอร์อื่น</value>
@@ -561,19 +561,19 @@
     <value>ไม่มีข้อมูลเวฟ</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave1" xml:space="preserve">
-    <value>เวฟ 1: 击败所有怪物，下一波才会出现</value>
+    <value>ระลอกที่ 1: กำจัดมอนสเตอร์ทั้งหมดเพื่อให้คลื่นถัดไปปรากฏ</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave1Additional" xml:space="preserve">
     <value>ระลอกที่ 1 เพิ่มเติม: เสริมกำลังมอนสเตอร์ระลอกแรก</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave2" xml:space="preserve">
-    <value>ระลอกที่ 2: 击败所有怪物，下一波才会出现</value>
+    <value>ระลอกที่ 2: กำจัดมอนสเตอร์ทั้งหมดเพื่อให้คลื่นถัดไปปรากฏ</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave3" xml:space="preserve">
-    <value>ระลอกที่ 3: 击败所有怪物，下一波才会出现</value>
+    <value>ระลอกที่ 3: กำจัดมอนสเตอร์ทั้งหมดเพื่อให้คลื่นถัดไปปรากฏ</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave4" xml:space="preserve">
-    <value>ระลอกที่ 4: 击败所有怪物，下一波才会出现</value>
+    <value>ระลอกที่ 4: กำจัดมอนสเตอร์ทั้งหมดเพื่อให้คลื่นถัดไปปรากฏ</value>
   </data>
   <data name="ModelMetadataTowerWaveTypeWave99999" xml:space="preserve">
     <value>รักษา 4 มอนสเตอร์กลุ่มโจรล่าสมบัติในสนาม เมื่อฆ่าแล้วจะเกิดใหม่ทันที รวม 12 ตัว</value>
@@ -591,7 +591,7 @@
     <value>ต้องลงชื่อเข้าใช้ 米游社 / HoYoLAB และเลือกผู้ใช้และบทบาท</value>
   </data>
   <data name="ServerCdnServiceInsufficientTime" xml:space="preserve">
-    <value>ไม่ได้เปิดใช้งานหรือหมดอายุ Hutao Cloud CDN</value>
+    <value>ไม่ได้เปิดใช้งาน Hutao Cloud CDN หรือหมดอายุแล้ว</value>
   </data>
   <data name="ServerGachaLogServiceDeleteEntrySucceed" xml:space="preserve">
     <value>ลบบันทึกการอธิษฐาน {1} รายการจาก UID: {0} แล้ว</value>
@@ -600,7 +600,7 @@
     <value>จำนวนการจัดเก็บประวัติการอธิษฐานของ Snap Hutao Cloud ถึงขีดจำกัดสูงสุดของบัญชีปัจจุบันแล้ว</value>
   </data>
   <data name="ServerGachaLogServiceInsufficientTime" xml:space="preserve">
-    <value>ไม่ได้เปิดบริการอัปโหลดประวัติการอธิษฐานหรือหมดอายุแล้ว</value>
+    <value>ไม่ได้เปิดใช้งานบริการอัปโหลดประวัติการอธิษฐาน หรือหมดอายุแล้ว</value>
   </data>
   <data name="ServerGachaLogServiceInvalidGachaLogData" xml:space="preserve">
     <value>ข้อมูลการอธิษฐานมีไอเทมที่ไม่ถูกต้อง ไม่สามารถบันทึกลง Snap Hutao Cloud ได้</value>
@@ -897,7 +897,7 @@
     <value>ส่งการแจ้งเตือนแอปพลิเคชันล้มเหลว</value>
   </data>
   <data name="ServiceDailyNoteNotifierActionLaunchGameButton" xml:space="preserve">
-    <value>เปิดเกม</value>
+    <value>เริ่มเกม</value>
   </data>
   <data name="ServiceDailyNoteNotifierActionLaunchGameDismiss" xml:space="preserve">
     <value>รับทราบ</value>
@@ -1191,7 +1191,7 @@
     <value>ล้มเหลวในการดึงรายการรางวัลการเช็คอิน</value>
   </data>
   <data name="ServiceSignInRiskVerificationFailed" xml:space="preserve">
-    <value>การตรวจสอบสิทธิ์ล้มเหลว โปรดไปที่หน้าเช็คอิน Genshin Impact ของ{米游社} เพื่อรับรางวัลด้วยตนเอง</value>
+    <value>การตรวจสอบสิทธิ์ล้มเหลว โปรดไปที่หน้าเช็คอิน Genshin Impact ของ HoYoLAB เพื่อรับรางวัลด้วยตนเอง</value>
   </data>
   <data name="ServiceSignInSuccessReward" xml:space="preserve">
     <value>ลงชื่อสำเร็จ, {0}×{1}</value>
@@ -1251,7 +1251,7 @@
     <value>การจัดการความสำเร็จ</value>
   </data>
   <data name="ViewAnnouncementHeader" xml:space="preserve">
-    <value>หน้าหลัก</value>
+    <value>หน้าแรก</value>
   </data>
   <data name="ViewAvatarPropertyHeader" xml:space="preserve">
     <value>ตัวละครของฉัน</value>
@@ -1284,7 +1284,7 @@
     <value>เลเวล</value>
   </data>
   <data name="ViewControlBaseValueSliderPromoted" xml:space="preserve">
-    <value>หลังทะลวง</value>
+    <value>หลังการเลื่อนขั้น</value>
   </data>
   <data name="ViewControlElevationText" xml:space="preserve">
     <value>ต้องใช้สิทธิ์ผู้ดูแลระบบ</value>
@@ -1341,7 +1341,7 @@
     <value>แผนการพัฒนา</value>
   </data>
   <data name="ViewDailyNoteHeader" xml:space="preserve">
-    <value>บันทึกช่วยจำแบบเรียลไทม์</value>
+    <value>บันทึกประจำวัน</value>
   </data>
   <data name="ViewDataHeader" xml:space="preserve">
     <value>ข้อมูล</value>
@@ -4744,5 +4744,41 @@
   </data>
   <data name="ViewPageSettingStorageBackgroundVideoHint" xml:space="preserve">
     <value>视频背景的设置优先级大于背景图片</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagNone" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagGuide" xml:space="preserve">
+    <value>地图事件</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagActivity" xml:space="preserve">
+    <value>活动</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagRankZeroWq" xml:space="preserve">
+    <value>普通世界任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagMainWq" xml:space="preserve">
+    <value>主要世界任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagReputation" xml:space="preserve">
+    <value>声望任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagNatlanTribal" xml:space="preserve">
+    <value>纳塔部族任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagFlowerland" xml:space="preserve">
+    <value>伴月纪闻</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagThespia" xml:space="preserve">
+    <value>聚所任务</value>
+  </data>
+  <data name="ModelIntrinsicMainQuestTagResidentActivity" xml:space="preserve">
+    <value>常驻活动</value>
+  </data>
+  <data name="ModelIntrinsicQuestShowTypeShow" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="ModelIntrinsicQuestShowTypeHidden" xml:space="preserve">
+    <value>隐藏</value>
   </data>
 </root>

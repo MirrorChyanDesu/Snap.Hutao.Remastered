@@ -1,6 +1,7 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
+using Microsoft.Win32;
 using Snap.Hutao.Remastered.Core.DependencyInjection.Abstraction;
 using Snap.Hutao.Remastered.Core.ExceptionService;
 using Snap.Hutao.Remastered.Model.Entity.Primitive;
@@ -16,8 +17,20 @@ namespace Snap.Hutao.Remastered.Service.Game.Launching.Handler;
 
 public sealed class LaunchExecutionGameIdentityHandler : AbstractLaunchExecutionHandler
 {
+    private byte[]? preLaunchRegistrySnapshot;
+    private string? snapshotKeyName;
+    private string? snapshotValueName;
+
     public override async ValueTask BeforeAsync(BeforeLaunchExecutionContext context)
     {
+        // Snapshot the current registry value before any launch,
+        // so it can be restored if the game clears it during auth ticket login.
+        if (context.TargetScheme.SchemeType is not SchemeType.ChineseBilibili)
+        {
+            (snapshotKeyName, snapshotValueName) = RegistryInterop.GetKeyValueName(context.TargetScheme.SchemeType);
+            preLaunchRegistrySnapshot = Registry.GetValue(snapshotKeyName, snapshotValueName, Array.Empty<byte>()) as byte[];
+        }
+
         if (context.LaunchOptions.UsingHoyolabAccount.Value)
         {
             await HandleHoyolabAccountAsync(context).ConfigureAwait(false);
@@ -33,6 +46,17 @@ public sealed class LaunchExecutionGameIdentityHandler : AbstractLaunchExecution
         LaunchStatusOptions options = context.ServiceProvider.GetRequiredService<LaunchStatusOptions>();
         await context.TaskContext.SwitchToMainThreadAsync();
         options.UserGameRole = default;
+
+        // When using passport, the login_auth_ticket login may clear or overwrite the
+        // registry MIHOYOSDK value set by a previous non-passport launch. Restore the
+        // pre-launch snapshot so subsequent non-passport launches can still auto-login.
+        if (context.LaunchOptions.UsingHoyolabAccount.Value
+            && snapshotKeyName is not null
+            && snapshotValueName is not null
+            && preLaunchRegistrySnapshot is { Length: > 0 })
+        {
+            Registry.SetValue(snapshotKeyName, snapshotValueName, preLaunchRegistrySnapshot);
+        }
     }
 
     private static async ValueTask HandleHoyolabAccountAsync(BeforeLaunchExecutionContext context)

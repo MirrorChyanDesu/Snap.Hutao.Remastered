@@ -81,7 +81,7 @@ public static class RegistryInterop
         Registry.SetValue(isOversea ? OverseaKeyName : ChineseKeyName, WindowsHDROnValueName, 1);
     }
 
-    private static (string KeyName, string ValueName) GetKeyValueName(SchemeType scheme)
+    public static (string KeyName, string ValueName) GetKeyValueName(SchemeType scheme)
     {
         return scheme switch
         {

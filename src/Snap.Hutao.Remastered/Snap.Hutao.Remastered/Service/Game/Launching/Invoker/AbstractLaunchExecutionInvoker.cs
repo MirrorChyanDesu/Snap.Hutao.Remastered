@@ -149,6 +149,8 @@ public abstract class AbstractLaunchExecutionInvoker
             {
                 ServiceProvider = context.ServiceProvider,
                 TaskContext = taskContext,
+                LaunchOptions = context.LaunchOptions,
+                Identity = context.Identity,
             };
 
             foreach (ILaunchExecutionHandler handler in Handlers)

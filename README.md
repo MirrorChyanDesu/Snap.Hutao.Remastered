@@ -63,10 +63,30 @@ You can download the latest version installer from GitHub Releases page to insta
 
 ---
 
+## 🌍 本地化翻译 / Localization
+
+Snap Hutao Remastered 使用 [Crowdin](https://translate.snaphutaorp.org/) 作为客户端文本翻译平台，在该平台上你可以为你熟悉的语言提交翻译文本。我们感谢每一个为 Snap Hutao Remastered 做出贡献的社区成员，并且欢迎更多的朋友能参与到这个项目中。  
+
+Snap Hutao Remastered uses [Crowdin](https://translate.snaphutaorp.org/) as a client text translation platform where you can submit translated text for languages you are familiar with. We are grateful to every community member who has contributed to Snap Hutao Remastered and welcome more friends to participate in this project.  
+
+[![zh-TW translation](https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.13.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![en translation](https://img.shields.io/badge/dynamic/json?color=blue&label=en&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![fr translation](https://img.shields.io/badge/dynamic/json?color=blue&label=fr&style=flat&logo=crowdin&query=%24.progress.3.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![id translation](https://img.shields.io/badge/dynamic/json?color=blue&label=id&style=flat&logo=crowdin&query=%24.progress.4.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![ja translation](https://img.shields.io/badge/dynamic/json?color=blue&label=ja&style=flat&logo=crowdin&query=%24.progress.6.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![ko translation](https://img.shields.io/badge/dynamic/json?color=blue&label=ko&style=flat&logo=crowdin&query=%24.progress.7.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![pt-PT translation](https://img.shields.io/badge/dynamic/json?color=blue&label=pt-PT&style=flat&logo=crowdin&query=%24.progress.8.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![ru translation](https://img.shields.io/badge/dynamic/json?color=blue&label=ru&style=flat&logo=crowdin&query=%24.progress.9.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+[![vi translation](https://img.shields.io/badge/dynamic/json?color=blue&label=vi&style=flat&logo=crowdin&query=%24.progress.12.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-17561192-914425.json)](https://translate.snaphutaorp.org/project/snap-hutao-remastered)
+
+---
+
 ## 🛠️ 贡献 / Contribute
 
 - [向我们提交 PR / Make Pull Requests](https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered/pulls)  
-- [查看项目文档 / View Project Documentation](https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered)    
+- [查看项目文档 / View Project Documentation](https://github.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered)  
+- [通过 DeepWiKi 了解项目结构 / Understand Project Structure with DeepWiKi](https://deepwiki.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered)  
+  - [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/SnapHutaoRemasteringProject/Snap.Hutao.Remastered)  
 
 ---
 

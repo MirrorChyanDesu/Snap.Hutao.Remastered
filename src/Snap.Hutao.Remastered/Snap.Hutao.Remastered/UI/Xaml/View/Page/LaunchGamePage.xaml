@@ -958,7 +958,7 @@
                                         Padding="10,8,6,6"
                                         Header="{shuxm:ResourceString Name=ViewPageLaunchGameTargetFpsHeader}"
                                         IsEnabled="{Binding LaunchOptions.IsSetTargetFrameRateEnabled.Value}"
-                                        Maximum="480"
+                                        Maximum="2000"
                                         Minimum="1"
                                         SpinButtonPlacementMode="Inline"
                                         ToolTipService.ToolTip="{shuxm:ResourceString Name=ViewPageLaunchGameUnlockFpsDescription}"

@@ -49,6 +49,11 @@ public static class MetadataServiceContextExtension
                     arrayHyperLinkNameSource.HyperLinkNames = await metadataService.GetHyperLinkNameArrayAsync(token).ConfigureAwait(false);
                 }
 
+                if (context is IMetadataArrayMainQuestSource arrayMainQuestSource)
+                {
+                    arrayMainQuestSource.MainQuests = await metadataService.GetMainQuestArrayAsync(token).ConfigureAwait(false);
+                }
+
                 if (context is IMetadataArrayMaterialSource arrayMaterialSource)
                 {
                     arrayMaterialSource.Materials = await metadataService.GetMaterialArrayAsync(token).ConfigureAwait(false);

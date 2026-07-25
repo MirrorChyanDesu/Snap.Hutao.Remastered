@@ -17,6 +17,7 @@ public static class MetadataFileStrategies
     public static readonly MetadataFileStrategy GachaEvent = new("GachaEvent");
     public static readonly MetadataFileStrategy HardChallengeSchedule = new("HardChallengeSchedule");
     public static readonly MetadataFileStrategy HyperLinkName = new("HyperLinkName");
+    public static readonly MetadataFileStrategy MainQuest = new("MainQuest");
     public static readonly MetadataFileStrategy Material = new("Material");
     public static readonly MetadataFileStrategy Monster = new("Monster");
     public static readonly MetadataFileStrategy MonsterCurve = new("MonsterCurve");

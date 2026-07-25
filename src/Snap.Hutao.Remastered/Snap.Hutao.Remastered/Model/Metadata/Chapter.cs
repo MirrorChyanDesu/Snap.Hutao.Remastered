@@ -24,6 +24,8 @@ public sealed class Chapter
 
     public required string Icon { get; init; }
 
+    public required string ChapterIcon { get; init; }
+
     public string? ImageTitle { get; init; }
 
     public required string SerialNumberIcon { get; init; }

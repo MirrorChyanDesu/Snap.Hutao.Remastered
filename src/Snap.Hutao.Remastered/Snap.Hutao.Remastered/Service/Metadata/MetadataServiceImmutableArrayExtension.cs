@@ -62,6 +62,11 @@ public static class MetadataServiceImmutableArrayExtension
             return metadataService.FromCacheOrFileAsync<HyperLinkName>(MetadataFileStrategies.HyperLinkName, token);
         }
 
+        public ValueTask<ImmutableArray<MainQuest>> GetMainQuestArrayAsync(CancellationToken token = default)
+        {
+            return metadataService.FromCacheOrFileAsync<MainQuest>(MetadataFileStrategies.MainQuest, token);
+        }
+
         public ValueTask<ImmutableArray<Material>> GetMaterialArrayAsync(CancellationToken token = default)
         {
             return metadataService.FromCacheOrFileAsync<Material>(MetadataFileStrategies.Material, token);

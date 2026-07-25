@@ -72,6 +72,10 @@
     "Documentation": "等级 1 - 90"
   },
   {
+    "Name": "MainQuestId",
+    "Documentation": "主任务 Id"
+  },
+  {
     "Name": "MaterialId",
     "Documentation": "材料 Id"
   },

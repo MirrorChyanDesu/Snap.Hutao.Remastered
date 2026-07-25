@@ -25,6 +25,7 @@ public sealed partial class UIGFExportDialog : ContentDialog
         }
 
         ItemsSource = uids.SelectAsArray(UIGFUidSelection.Create);
+        IsPrimaryButtonEnabled = false;
     }
 
     public async ValueTask<ValueResult<bool, ImmutableArray<uint>>> GetSelectedUidsAsync()
@@ -41,5 +42,6 @@ public sealed partial class UIGFExportDialog : ContentDialog
     private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         selectedUids = UIGFUidSelection.GetSelectedUidArray(sender.As<ListViewBase>());
+        IsPrimaryButtonEnabled = selectedUids.Length > 0;
     }
 }

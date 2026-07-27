@@ -15,6 +15,7 @@ namespace Snap.Hutao.Remastered.UI.Xaml.View.Dialog;
 [DependencyProperty<string>("UserName")]
 [DependencyProperty<string>("Password")]
 [DependencyProperty<string>("VerifyCode")]
+[DependencyProperty<bool>("IsAgreed")]
 public sealed partial class HutaoPassportRegisterDialog : ContentDialog
 {
     private readonly IContentDialogFactory contentDialogFactory;

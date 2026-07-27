@@ -8,6 +8,7 @@
     Title="{shuxm:ResourceString Name=ViewDialogHutaoPassportRegisterTitle}"
     CloseButtonText="{shuxm:ResourceString Name=ContentDialogCancelCloseButtonText}"
     DefaultButton="Primary"
+    IsPrimaryButtonEnabled="{x:Bind IsAgreed.Value, Mode=OneWay, FallbackValue=False}"
     PrimaryButtonText="{shuxm:ResourceString Name=ContentDialogConfirmPrimaryButtonText}"
     Style="{StaticResource DefaultContentDialogStyle}"
     mc:Ignorable="d">
@@ -44,5 +45,9 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{shuxm:ResourceString Name=ViewPageHutaoPassportPasswordRequirementHint}"/>
         </StackPanel>
+        <CheckBox IsChecked="{x:Bind IsAgreed, Mode=TwoWay}">
+            <TextBlock 
+                Text="{shuxm:ResourceString Name=ViewPageHutaoPassportRegisterAgreement}"/>
+        </CheckBox>
     </StackPanel>
 </ContentDialog>

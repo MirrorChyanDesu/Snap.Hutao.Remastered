@@ -315,6 +315,7 @@ public sealed partial class GuideViewModel : Abstraction.ViewModel
         }
         finally
         {
+            await taskContext.SwitchToMainThreadAsync();
             IsDownloading = false;
             downloadCts?.Dispose();
             downloadCts = null;

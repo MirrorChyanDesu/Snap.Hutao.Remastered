@@ -33,10 +33,12 @@ public static class AchievementFinishPercent
             Debug.Assert(!Unsafe.IsNullRef(in goalStats));
 
             goalStats.TotalCount += 1;
+            goalStats.TotalItem201Count += achievementView.Inner.FinishReward.Count;
             totalCount += 1;
             if (achievementView.IsChecked)
             {
                 goalStats.Finished += 1;
+                goalStats.Item201Finished += achievementView.Inner.FinishReward.Count;
                 totalFinished += 1;
             }
         }

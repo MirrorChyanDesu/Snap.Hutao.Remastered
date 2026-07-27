@@ -26,4 +26,16 @@ public sealed class AchievementStatistics
         finishedPercent = (double)finished / totalCount;
         return $"{finished}/{totalCount} - {finishedPercent:P2}";
     }
+
+    /// <summary>
+    /// 格式化原石进度
+    /// "xxx/yyy"
+    /// </summary>
+    /// <param name="finished">完成的成就获得的原石数量</param>
+    /// <param name="totalCount">总原石个数</param>
+    /// <returns>格式化的原石进度</returns>
+    public static string FormatItem201(uint finished, uint totalCount)
+    {
+        return $"{finished}/{totalCount}";
+    }
 }

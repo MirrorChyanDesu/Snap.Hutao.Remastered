@@ -16,6 +16,10 @@ public sealed class AchievementGoalStatistics
 
     public int Finished { get; set; }
 
+    public uint Item201Finished { get; set; }
+
+    public uint TotalItem201Count { get; set; }
+
     public int TotalCount { get; set; }
 
     public static AchievementGoalStatistics Create(BindingAchievementGoal goal)

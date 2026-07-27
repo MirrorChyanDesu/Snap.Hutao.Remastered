@@ -36,6 +36,9 @@ public sealed partial class AchievementGoalView : ObservableObject,
     [ObservableProperty]
     public partial string? FinishDescription { get; private set; }
 
+    [ObservableProperty]
+    public partial string? Item201Description { get; private set; }
+
     public static AchievementGoalView Create(AchievementGoal source)
     {
         return new(source);
@@ -44,6 +47,7 @@ public sealed partial class AchievementGoalView : ObservableObject,
     public void UpdateFinishDescriptionAndPercent(AchievementGoalStatistics statistics)
     {
         FinishDescription = AchievementStatistics.Format(statistics.Finished, statistics.TotalCount, out double finishPercent);
+        Item201Description = AchievementStatistics.FormatItem201(statistics.Item201Finished, statistics.TotalItem201Count);
         FinishPercent = finishPercent;
     }
 }

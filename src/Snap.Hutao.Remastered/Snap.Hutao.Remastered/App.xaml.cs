@@ -48,6 +48,13 @@ public sealed partial class App : Application
     [GeneratedConstructor(InitializeComponent = true)]
     public partial App(IServiceProvider serviceProvider);
 
+    public App()
+    {
+        // Fuck Microsoft.
+        // Publish without testing.
+        throw new NotImplementedException("This constructor is only for XAML compilation.");
+    }
+
     /// <summary>
     /// Shortcut to get the <see cref="AppOptions"/> instance.
     /// </summary>

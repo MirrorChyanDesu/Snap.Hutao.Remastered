@@ -53,7 +53,7 @@ public sealed class Hk4eItem : IJsonOnDeserialized
             GachaType = item.GachaType,
             ItemId = item.ItemId,
             Count = "1",
-            Time = item.Time.DateTime.AddHours(timezone),
+            Time = item.Time.UtcDateTime.AddHours(timezone),
             Name = name,
             ItemType = itemType,
             RankType = rankType,

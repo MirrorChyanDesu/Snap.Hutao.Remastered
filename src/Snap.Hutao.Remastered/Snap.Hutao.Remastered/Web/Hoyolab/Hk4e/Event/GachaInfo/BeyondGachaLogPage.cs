@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 
 namespace Snap.Hutao.Remastered.Web.Hoyolab.Hk4e.Event.GachaInfo;
 
-public sealed class BeyondGachaLogPage
+public sealed class BeyondGachaLogPage : IJsonOnDeserialized
 {
     [Obsolete("总是为 0")]
     [JsonPropertyName("total")]

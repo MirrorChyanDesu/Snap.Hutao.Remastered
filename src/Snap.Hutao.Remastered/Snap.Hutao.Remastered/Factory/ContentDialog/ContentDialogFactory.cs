@@ -1,6 +1,7 @@
 // Copyright (c) DGP Studio. All rights reserved.
 // Licensed under the MIT license.
 
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Snap.Hutao.Remastered.Core.LifeCycle;
 
@@ -27,6 +28,7 @@ public sealed partial class ContentDialogFactory : IContentDialogFactory
         Microsoft.UI.Xaml.Controls.ContentDialog dialog = new()
         {
             XamlRoot = currentWindowReference.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
             Title = title,
             Content = content,
             DefaultButton = ContentDialogButton.Primary,
@@ -44,6 +46,7 @@ public sealed partial class ContentDialogFactory : IContentDialogFactory
         Microsoft.UI.Xaml.Controls.ContentDialog dialog = new()
         {
             XamlRoot = currentWindowReference.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
             Title = title,
             Content = content,
             DefaultButton = defaultButton,
@@ -63,6 +66,7 @@ public sealed partial class ContentDialogFactory : IContentDialogFactory
         Microsoft.UI.Xaml.Controls.ContentDialog dialog = new()
         {
             XamlRoot = currentWindowReference.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
             Title = title,
             Content = new ProgressBar { IsIndeterminate = true },
             RequestedTheme = currentWindowReference.RequestedTheme,
@@ -78,6 +82,7 @@ public sealed partial class ContentDialogFactory : IContentDialogFactory
 
         TContentDialog contentDialog = ActivatorUtilities.CreateInstance<TContentDialog>(serviceProvider, parameters);
         contentDialog.XamlRoot = currentWindowReference.XamlRoot;
+        contentDialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
         contentDialog.RequestedTheme = currentWindowReference.RequestedTheme;
 
         return contentDialog;

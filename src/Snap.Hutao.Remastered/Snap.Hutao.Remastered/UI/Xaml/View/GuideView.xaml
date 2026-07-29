@@ -427,7 +427,7 @@
                             Margin="1,32,0,5"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="{shuxm:ResourceString Name=ViewPageSettingWebview2Header}"/>
-                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding WebView2VersionText}"/>
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding RuntimeOptions.WebView2Version}"/>
                         <TextBlock>
                             <Run Text="{shuxm:ResourceString Name=ViewGuideStepEnvironmentWebView2Description1}"/>
                             <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/p/?LinkId=2124703">

@@ -34,7 +34,7 @@ namespace Snap.Hutao.Remastered.UI.Xaml.Control.Effect;
 [DependencyProperty<Color>("ColorBrush", NotNull = true, PropertyChangedCallbackName = nameof(OnPropertyChanged))]
 [DependencyProperty<int>("MorphSpeed", NotNull = true, DefaultValue = 2000, PropertyChangedCallbackName = nameof(OnPropertyChanged))]
 [TemplatePart(Name = nameof(PartCanvas), Type = typeof(CanvasControl))]
-public partial class TextMorphEffect : Microsoft.UI.Xaml.Controls.Control
+public partial class TextMorphEffect : Microsoft.UI.Xaml.Controls.Control, IDisposable
 {
     private const string PartCanvas = "PART_Canvas";
 
@@ -242,5 +242,16 @@ public partial class TextMorphEffect : Microsoft.UI.Xaml.Controls.Control
 
         args.DrawingSession.DrawImage(colorMatrixEffect);
         Canvas?.Invalidate();
+    }
+
+    public void Dispose()
+    {
+        blurEffect?.Dispose();
+        colorMatrixEffect?.Dispose();
+        textFormat?.Dispose();
+
+        blurEffect = null;
+        colorMatrixEffect = null;
+        textFormat = null;
     }
 }

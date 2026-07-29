@@ -3,7 +3,6 @@
 
 using Snap.Hutao.Remastered.Core.ExceptionService;
 using Snap.Hutao.Remastered.Web.Endpoint.Hutao;
-using Snap.Hutao.Remastered.Web;
 using System.IO;
 using System.Net;
 using System.Net.Http;

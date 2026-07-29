@@ -16,7 +16,8 @@ namespace Snap.Hutao.Remastered.UI.Xaml.View.Window;
 [Service(ServiceLifetime.Transient)]
 public sealed class SpeedGraphTestWindow : Microsoft.UI.Xaml.Window,
     IXamlWindowExtendContentIntoTitleBar,
-    IXamlWindowHasInitSize
+    IXamlWindowHasInitSize,
+    IDisposable
 {
     private readonly CancellationTokenSource cancellationTokenSource = new();
     private readonly ObservableCollection<string> logEntries = [];
@@ -187,6 +188,12 @@ public sealed class SpeedGraphTestWindow : Microsoft.UI.Xaml.Window,
             replayButton.IsEnabled = true;
             isRunning = false;
         }
+    }
+
+    public void Dispose()
+    {
+        cancellationTokenSource.Cancel();
+        cancellationTokenSource.Dispose();
     }
 
     private void AppendLog(string message)

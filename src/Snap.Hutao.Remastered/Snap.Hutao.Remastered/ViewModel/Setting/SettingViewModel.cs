@@ -7,7 +7,6 @@
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.AppNotifications.Builder;
 using Snap.Hutao.Remastered.Core;
 using Snap.Hutao.Remastered.Core.Logging;
 using Snap.Hutao.Remastered.Core.Setting;

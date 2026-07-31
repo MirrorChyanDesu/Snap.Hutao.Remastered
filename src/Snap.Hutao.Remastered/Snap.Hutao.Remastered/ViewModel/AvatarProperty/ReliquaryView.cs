@@ -10,4 +10,6 @@ public sealed class ReliquaryView : EquipView
     public ImmutableArray<ReliquaryComposedSubProperty> ComposedSubProperties { get; set; }
 
     public string SetName { get; set; } = default!;
+
+    public string Score { get; set; } = default!;
 }

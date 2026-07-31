@@ -65,7 +65,9 @@ public sealed class SummaryAvatarFactory
             .SetLevelNumber(character.Base.Level)
             .SetWeapon(CreateWeapon(character.Weapon))
             .SetRecommendedProperties(character.RecommendRelicProperty.RecommendProperties)
-            .SetReliquaries(character.Relics.SelectAsArray(static (relic, context) => SummaryReliquaryFactory.Create(context, relic), context))
+            .SetReliquaries(character.Relics.SelectAsArray(
+                (relic, ctx) => SummaryReliquaryFactory.Create(ctx.context, relic, ctx.recommendedSubProperties, ctx.energyType),
+                (context: context, recommendedSubProperties: character.RecommendRelicProperty.RecommendProperties.SubPropertyList, energyType: avatar.SkillDepot.EnergySkill.SpecialEnergyType)))
             .SetCostumeIconOrDefault(character, avatar)
             .SetPromoteLevel(character.Base.PromoteLevel)
             .View;

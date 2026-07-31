@@ -88,7 +88,7 @@ public static class AvatarViewTextTemplating
         {
             NameValue<string>? mainProperty = reliquary.MainProperty;
             result.Append($"""
-                    // {ReliquaryEmoji(reliquary.EquipType)} {mainProperty?.Name}: {mainProperty?.Value} [☆{reliquary.Quality:D} {reliquary.Level} {reliquary.SetName}]
+                    // {ReliquaryEmoji(reliquary.EquipType)} {mainProperty?.Name}: {mainProperty?.Value} [☆{reliquary.Quality:D} {reliquary.Level} {reliquary.SetName}] {SH.ViewPageAvatarPropertyReliquaryScore}: {reliquary.Score}
 
                     """);
             result.Append("// ");

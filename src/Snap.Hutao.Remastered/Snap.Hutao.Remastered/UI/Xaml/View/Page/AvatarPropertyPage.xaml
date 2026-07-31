@@ -522,6 +522,12 @@
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     Text="{Binding SetName}"/>
                             </StackPanel>
+                            <TextBlock
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontWeight="Bold"
+                                Style="{StaticResource BaseTextBlockStyle}"
+                                Text="{Binding Score}"/>
                         </Grid>
                     </Grid>
                     <Rectangle

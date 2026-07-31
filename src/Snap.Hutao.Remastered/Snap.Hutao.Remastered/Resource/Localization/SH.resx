@@ -4383,6 +4383,12 @@
   <data name="ViewPageAvatarPropertyExportAllToText" xml:space="preserve">
     <value>导出所有角色</value>
   </data>
+  <data name="ViewPageAvatarPropertyReliquaryScore" xml:space="preserve">
+    <value>评分</value>
+  </data>
+  <data name="ViewPageAvatarPropertyReliquaryScoreValue" xml:space="preserve">
+    <value>{0:F1} 分</value>
+  </data>
   <data name="ViewPageLaunchGameAdvancedStartOptionsHeader" xml:space="preserve">
     <value>自定义启动</value>
   </data>

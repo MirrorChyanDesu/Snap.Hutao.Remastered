@@ -26,11 +26,19 @@ public sealed class LaunchExecutionCloseWindowHandler : AbstractLaunchExecutionH
     {
         if (XamlApplicationLifetime.WindowClosedForGameLaunch)
         {
-            // Game has exited, recreate and show the main window
             XamlApplicationLifetime.WindowClosedForGameLaunch = false;
 
             ICurrentXamlWindowReference currentXamlWindowReference = context.ServiceProvider.GetRequiredService<ICurrentXamlWindowReference>();
             await context.TaskContext.SwitchToMainThreadAsync();
+
+            // If the user has already manually reopened a window (e.g. via tray icon
+            // or by launching a new instance), don't create a duplicate.
+            if (currentXamlWindowReference.Window is not null)
+            {
+                return;
+            }
+
+            // Game has exited, recreate and show the main window
             MainWindow mainWindow = context.ServiceProvider.GetRequiredService<MainWindow>();
             currentXamlWindowReference.Window = mainWindow;
             mainWindow.SwitchTo();

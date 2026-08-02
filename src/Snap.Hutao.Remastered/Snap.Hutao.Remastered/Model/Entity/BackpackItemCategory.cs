@@ -14,4 +14,5 @@ public enum BackpackItemCategory
     Quest,
     PreciousItem,
     Furniture,
+    Unknown
 }

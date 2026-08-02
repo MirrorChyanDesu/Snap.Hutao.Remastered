@@ -71,7 +71,7 @@ public static class BackpackItemCategoryExtension
             return BackpackItemCategory.Food;
         }
 
-        if (IsMaterialItemId(itemId))
+        if (IsMaterialItemId(itemId) && material != null)
         {
             return BackpackItemCategory.Material;
         }
@@ -86,7 +86,7 @@ public static class BackpackItemCategoryExtension
             return GetMaterialCategory(material.MaterialType);
         }
 
-        return BackpackItemCategory.Material;
+        return BackpackItemCategory.Unknown;
     }
 
     private static bool IsFoodItemId(uint itemId)

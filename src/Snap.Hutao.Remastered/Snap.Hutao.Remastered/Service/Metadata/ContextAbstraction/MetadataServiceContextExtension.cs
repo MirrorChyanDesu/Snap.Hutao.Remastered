@@ -39,6 +39,11 @@ public static class MetadataServiceContextExtension
                     arrayChapterSource.Chapters = await metadataService.GetChapterArrayAsync(token).ConfigureAwait(false);
                 }
 
+                if (context is IMetadataArrayCookRecipeSource arrayCookRecipeSource)
+                {
+                    arrayCookRecipeSource.CookRecipes = await metadataService.GetCookRecipeArrayAsync(token).ConfigureAwait(false);
+                }
+
                 if (context is IMetadataArrayGachaEventSource arrayGachaEventSource)
                 {
                     arrayGachaEventSource.GachaEvents = await metadataService.GetGachaEventArrayAsync(token).ConfigureAwait(false);

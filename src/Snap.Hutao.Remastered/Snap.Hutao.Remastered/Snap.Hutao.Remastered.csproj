@@ -215,6 +215,7 @@
     <Content Include="Resource\Navigation\Achievement.png" />
     <Content Include="Resource\Navigation\Announcement.png" />
     <Content Include="Resource\Navigation\AvatarProperty.png" />
+    <Content Include="Resource\Navigation\Backpack.png" />
     <Content Include="Resource\Navigation\CheckIn.png" />
     <Content Include="Resource\Navigation\Cultivation.png" />
     <Content Include="Resource\Navigation\DailyNote.png" />

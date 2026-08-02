@@ -39,6 +39,10 @@ public sealed partial class AppDbContext : DbContext
 
     public DbSet<AchievementArchive> AchievementArchives { get; set; } = default!;
 
+    public DbSet<BackpackArchive> BackpackArchives { get; set; } = default!;
+
+    public DbSet<BackpackItem> BackpackItems { get; set; } = default!;
+
     public DbSet<GachaItem> GachaItems { get; set; } = default!;
 
     public DbSet<BeyondGachaItem> BeyondGachaItems { get; set; } = default!;

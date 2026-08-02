@@ -430,7 +430,7 @@
                     </Border>
                 </Border>
             </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryFurniture}" Visibility="Collapsed">
+            <!--<PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryFurniture}">
                 <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
                     <Border Style="{ThemeResource AcrylicBorderCardStyle}">
                         <GridView
@@ -447,7 +447,7 @@
                         </GridView>
                     </Border>
                 </Border>
-            </PivotItem>
+            </PivotItem>-->
         </Pivot>
     </shuxc:StandardView>
 </shuxc:ScopedPage>

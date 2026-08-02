@@ -38,8 +38,9 @@
             <shuxcc:HorizontalCard Width="270">
                 <shuxcc:HorizontalCard.Left>
                     <shuxc:ItemIcon
-                        Width="44"
-                        Height="44"
+                        Margin="4,0"
+                        Width="54"
+                        Height="54"
                         Icon="{Binding Weapon.Icon, Converter={StaticResource EquipIconConverter}}"
                         Quality="{Binding Weapon.RankLevel}"/>
                 </shuxcc:HorizontalCard.Left>
@@ -82,8 +83,8 @@
                         </Grid.ColumnDefinitions>
                         <shuxc:ItemIcon
                             Grid.Column="0"
-                            Width="48"
-                            Height="48"
+                            Width="54"
+                            Height="54"
                             Icon="{Binding Reliquary.Icon, Converter={StaticResource ItemIconConverter}}"
                             Quality="{Binding Reliquary.RankLevel}"/>
                         <Grid Grid.Column="1">

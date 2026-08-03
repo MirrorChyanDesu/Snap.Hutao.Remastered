@@ -1376,6 +1376,9 @@ Space Available: {2}</value>
   <data name="ViewDialogBackpackArchiveCreateTitle" xml:space="preserve">
     <value>Name your backpack archive</value>
   </data>
+  <data name="ViewDialogBackpackArchivePickerTitle" xml:space="preserve">
+    <value>Select Backpack Archive</value>
+  </data>
   <data name="ViewDialogAchievementArchiveImportStrategy" xml:space="preserve">
     <value>Import mode</value>
   </data>
@@ -2605,6 +2608,9 @@ Space Available: {2}</value>
   </data>
   <data name="ViewPageCultivationRefreshInventoryByEmbeddedYae" xml:space="preserve">
     <value>Sync by Embedded Yae</value>
+  </data>
+  <data name="ViewPageCultivationRefreshInventoryByBackpackArchive" xml:space="preserve">
+    <value>Sync by Backpack Archive</value>
   </data>
   <data name="ViewPageCultivationRemoveEntry" xml:space="preserve">
     <value>Delete list</value>

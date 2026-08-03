@@ -1376,6 +1376,9 @@
   <data name="ViewDialogBackpackArchiveCreateTitle" xml:space="preserve">
     <value>设置背包存档的名称</value>
   </data>
+  <data name="ViewDialogBackpackArchivePickerTitle" xml:space="preserve">
+    <value>选择背包物品存档</value>
+  </data>
   <data name="ViewDialogAchievementArchiveImportStrategy" xml:space="preserve">
     <value>导入模式</value>
   </data>
@@ -2605,6 +2608,9 @@
   </data>
   <data name="ViewPageCultivationRefreshInventoryByEmbeddedYae" xml:space="preserve">
     <value>通过 Embedded Yae 同步</value>
+  </data>
+  <data name="ViewPageCultivationRefreshInventoryByBackpackArchive" xml:space="preserve">
+    <value>通过背包物品存档同步</value>
   </data>
   <data name="ViewPageCultivationRemoveEntry" xml:space="preserve">
     <value>删除清单</value>

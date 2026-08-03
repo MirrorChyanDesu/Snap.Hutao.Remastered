@@ -71,7 +71,7 @@ public sealed partial class LockIcon : Microsoft.UI.Xaml.Controls.Control
         {
             if (e.Status is LoadedImageSourceLoadStatus.Success)
             {
-                _ = iconImage!.DispatcherQueue.TryEnqueue(() => ApplyRedOverlay((LoadedImageSurface)s));
+                _ = iconImage.DispatcherQueue.TryEnqueue(() => ApplyRedOverlay(s));
             }
         };
 

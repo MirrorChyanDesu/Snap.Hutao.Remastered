@@ -70,7 +70,7 @@ public sealed partial class MarkIcon : Microsoft.UI.Xaml.Controls.Control
         {
             if (e.Status is LoadedImageSourceLoadStatus.Success)
             {
-                _ = iconImage!.DispatcherQueue.TryEnqueue(() => ApplyOverlay((LoadedImageSurface)s));
+                _ = iconImage.DispatcherQueue.TryEnqueue(() => ApplyOverlay(s));
             }
         };
 

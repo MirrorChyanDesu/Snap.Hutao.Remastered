@@ -34,185 +34,216 @@
             </ResourceDictionary.ThemeDictionaries>
 
             <!-- Weapon card -->
-        <DataTemplate x:Key="WeaponCardTemplate" x:DataType="shv:BackpackWeaponItemView">
-            <shuxcc:HorizontalCard Width="270">
-                <shuxcc:HorizontalCard.Left>
-                    <shuxc:ItemIcon
+            <DataTemplate x:Key="WeaponCardTemplate" x:DataType="shv:BackpackWeaponItemView">
+                <shuxcc:HorizontalCard Width="270">
+                    <shuxcc:HorizontalCard.Left>
+                        <shuxc:ItemIcon
                         Margin="4,0"
                         Width="54"
                         Height="54"
                         Icon="{Binding Weapon.Icon, Converter={StaticResource EquipIconConverter}}"
                         Quality="{Binding Weapon.RankLevel}"/>
-                </shuxcc:HorizontalCard.Left>
-                <shuxcc:HorizontalCard.Right>
-                    <Grid Margin="16,0">
-                        <StackPanel VerticalAlignment="Center" Spacing="2">
-                            <TextBlock
+                    </shuxcc:HorizontalCard.Left>
+                    <shuxcc:HorizontalCard.Right>
+                        <Grid Margin="16,0">
+                            <StackPanel VerticalAlignment="Center" Spacing="2">
+                                <TextBlock
                                 Text="{Binding Weapon.Name}"
                                 TextTrimming="CharacterEllipsis"
                                 TextWrapping="NoWrap"/>
-                            <TextBlock
+                                <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="{Binding WeaponTypeName}"/>
-                            <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding LevelRefinementInfo}"/>
-                        </StackPanel>
-                    </Grid>
-                </shuxcc:HorizontalCard.Right>
-            </shuxcc:HorizontalCard>
-        </DataTemplate>
+                                <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding LevelRefinementInfo}"/>
+                            </StackPanel>
+                            <shuxc:LockIcon
+                                Margin="0,0,-10,4"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Height="20"
+                                Width="20"
+                                IsLocked="{Binding IsLocked}"/>
+                        </Grid>
+                    </shuxcc:HorizontalCard.Right>
+                </shuxcc:HorizontalCard>
+            </DataTemplate>
 
-        <DataTemplate x:Key="ReliquaryCardTemplate" x:DataType="shv:BackpackReliquaryItemView">
-            <Border Width="320" Style="{StaticResource BorderShimmerStyle}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+            <DataTemplate x:Key="ReliquaryCardTemplate" x:DataType="shv:BackpackReliquaryItemView">
+                <Border Width="320" Style="{StaticResource BorderShimmerStyle}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
-                    <Grid
+                        <Grid
                         Grid.Row="0"
                         Padding="12"
                         ColumnSpacing="12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <shuxc:ItemIcon
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <shuxc:ItemIcon
                             Grid.Column="0"
                             Width="54"
                             Height="54"
                             Icon="{Binding Reliquary.Icon, Converter={StaticResource ItemIconConverter}}"
                             Quality="{Binding Reliquary.RankLevel}"/>
-                        <Grid Grid.Column="1">
-                            <StackPanel VerticalAlignment="Center" Spacing="2">
-                                <TextBlock Text="{Binding Reliquary.Name}"/>
-                                <TextBlock
+                            <Grid Grid.Column="1">
+                                <StackPanel VerticalAlignment="Center" Spacing="2">
+                                    <TextBlock Text="{Binding Reliquary.Name}"/>
+                                    <TextBlock
                                     Opacity="0.7"
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     Text="{Binding SetName}"/>
-                            </StackPanel>
-                            <TextBlock
+                                </StackPanel>
+                                <TextBlock
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 FontWeight="Bold"
                                 Style="{StaticResource BaseTextBlockStyle}">
                                 <Run Text="+"/>
                                 <Run Text="{Binding Level}"/>
-                            </TextBlock>
+                                </TextBlock>
+                            </Grid>
                         </Grid>
-                    </Grid>
 
-                    <Rectangle
+                        <Grid Margin="0,0,4,4" 
+                              HorizontalAlignment="Right"
+                              ColumnSpacing="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <shuxc:LockIcon
+                                Grid.Column="0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Height="20"
+                                Width="20"
+                                IsLocked="{Binding IsLocked}"/>
+                            <shuxc:MarkIcon
+                                Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Height="20"
+                                Width="20"
+                                IsMarked="{Binding IsMarked}"/>
+                        </Grid>
+
+                        <Rectangle
                         Grid.Row="1"
                         Height="1"
                         Fill="{ThemeResource ControlStrokeColorDefaultBrush}"/>
 
-                    <Grid Grid.Row="2" Padding="12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
+                        <Grid Grid.Row="2" Padding="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
                             FontWeight="Bold"
                             Style="{StaticResource BaseTextBlockStyle}"
                             Text="{Binding MainPropName}"/>
-                        <TextBlock
+                            <TextBlock
                             Grid.Column="1"
                             FontWeight="Bold"
                             Style="{StaticResource BaseTextBlockStyle}"
                             Text="{Binding MainPropValue}"/>
-                    </Grid>
+                        </Grid>
 
-                    <Rectangle
+                        <Rectangle
                         Grid.Row="3"
                         Height="1"
                         Fill="{ThemeResource ControlStrokeColorDefaultBrush}"/>
 
-                    <ItemsControl
+                        <ItemsControl
                         Grid.Row="4"
                         Margin="0,12"
                         ItemsSource="{Binding PaddedSubStats}"
                         ItemTemplate="{StaticResource BackpackReliquarySubStatTemplate}"/>
-                </Grid>
-            </Border>
-        </DataTemplate>
+                    </Grid>
+                </Border>
+            </DataTemplate>
 
-        <DataTemplate x:Key="BackpackReliquarySubStatTemplate" x:DataType="shv:BackpackReliquarySubStatView">
-            <Grid Padding="12,0" ColumnSpacing="6" MinHeight="20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock
+            <DataTemplate x:Key="BackpackReliquarySubStatTemplate" x:DataType="shv:BackpackReliquarySubStatView">
+                <Grid Padding="12,0" ColumnSpacing="6" MinHeight="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
                     Style="{StaticResource BaseTextBlockStyle}"
                     Text="{Binding DisplayName}"
                     TextWrapping="NoWrap"
                     Visibility="{Binding HasValue, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                <TextBlock
+                    <TextBlock
                     Grid.Column="1"
                     Text="{Binding DisplayValue}"
                     Visibility="{Binding HasValue, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                <Grid Grid.Column="2" Visibility="{Binding HasValue, Converter={StaticResource BoolToVisibilityConverter}}">
-                    <Ellipse
+                    <Grid Grid.Column="2" Visibility="{Binding HasValue, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <Ellipse
                         Width="16"
                         Height="16"
                         Opacity="0.8"
                         StrokeThickness="1">
-                        <Ellipse.Stroke>
-                            <SolidColorBrush Color="{Binding EnhancedCount, Converter={ThemeResource CountToGradientColorConverter}}"/>
-                        </Ellipse.Stroke>
-                    </Ellipse>
-                    <TextBlock
+                            <Ellipse.Stroke>
+                                <SolidColorBrush Color="{Binding EnhancedCount, Converter={ThemeResource CountToGradientColorConverter}}"/>
+                            </Ellipse.Stroke>
+                        </Ellipse>
+                        <TextBlock
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         FontSize="{ThemeResource InfoBadgeValueFontSize}"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="{Binding EnhancedCount}">
-                        <TextBlock.Foreground>
-                            <SolidColorBrush Color="{Binding EnhancedCount, Converter={ThemeResource CountToGradientColorConverter}}"/>
-                        </TextBlock.Foreground>
-                    </TextBlock>
+                            <TextBlock.Foreground>
+                                <SolidColorBrush Color="{Binding EnhancedCount, Converter={ThemeResource CountToGradientColorConverter}}"/>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </DataTemplate>
+            </DataTemplate>
 
-        <!-- Default card -->
-        <DataTemplate x:Key="DefaultCardTemplate" x:DataType="shv:BackpackItemView">
-            <shuxcc:HorizontalCard Width="270">
-                <shuxcc:HorizontalCard.Left>
-                    <shuxc:ItemIcon
+            <!-- Default card -->
+            <DataTemplate x:Key="DefaultCardTemplate" x:DataType="shv:BackpackItemView">
+                <shuxcc:HorizontalCard Width="270">
+                    <shuxcc:HorizontalCard.Left>
+                        <shuxc:ItemIcon
                         Width="40"
                         Height="40"
                         Icon="{Binding Material.Icon, Converter={StaticResource ItemIconConverter}}"
                         Quality="{Binding Material.RankLevel}"/>
-                </shuxcc:HorizontalCard.Left>
-                <shuxcc:HorizontalCard.Right>
-                    <Grid Margin="16,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
+                    </shuxcc:HorizontalCard.Left>
+                    <shuxcc:HorizontalCard.Right>
+                        <Grid Margin="16,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
                             VerticalAlignment="Center"
                             Text="{Binding Material.Name}"
                             TextTrimming="CharacterEllipsis"/>
-                        <TextBlock
+                            <TextBlock
                             Grid.Column="1"
                             VerticalAlignment="Center"
                             Foreground="{ThemeResource TextFillColorTertiaryBrush}"
                             Style="{StaticResource CaptionTextBlockStyle}"
                             Text="{Binding DisplayCount}"/>
-                    </Grid>
-                </shuxcc:HorizontalCard.Right>
-            </shuxcc:HorizontalCard>
-        </DataTemplate>
+                        </Grid>
+                    </shuxcc:HorizontalCard.Right>
+                </shuxcc:HorizontalCard>
+            </DataTemplate>
 
-        <shv:BackpackItemTemplateSelector
+            <shv:BackpackItemTemplateSelector
             x:Key="BackpackItemTemplateSelector"
             DefaultTemplate="{StaticResource DefaultCardTemplate}"
             ReliquaryTemplate="{StaticResource ReliquaryCardTemplate}"

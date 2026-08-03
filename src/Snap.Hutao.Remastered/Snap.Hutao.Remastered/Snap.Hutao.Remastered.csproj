@@ -184,6 +184,8 @@
     <Content Include="Resource\Icon\UI_Icon_Tower_Star1.png" />
     <Content Include="Resource\Icon\UI_Icon_Tower_Star2.png" />
     <Content Include="Resource\Icon\UI_Icon_UGC_Beyond.png" />
+    <Content Include="Resource\Icon\UI_Icon_UGC_Collect.png" />
+    <Content Include="Resource\Icon\UI_Icon_Unlock.png" />
     <Content Include="Resource\Icon\UI_Img_RoleCombat_EventDetail_Pic_Chance.png" />
     <Content Include="Resource\Icon\UI_ItemIcon_106.png" />
     <Content Include="Resource\Icon\UI_ItemIcon_201.png" />

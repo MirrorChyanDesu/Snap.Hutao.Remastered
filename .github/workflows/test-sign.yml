@@ -3,6 +3,10 @@ name: Snap Hutao Remastered Test
 on:
   workflow_dispatch:
 
+permissions:
+  actions: read
+  contents: read
+
 jobs:
   test-sign:
     runs-on: windows-latest
@@ -28,40 +32,31 @@ jobs:
         shell: pwsh
         run: dotnet tool restore && dotnet cake test-sign.cake
 
+      - name: Upload unsigned MSIX
+        id: upload-unsigned
+        uses: actions/upload-artifact@v7
+        with:
+          name: Snap.Hutao.Remastered.Test-${{ steps.build.outputs.version }}-unsigned
+          path: ${{ steps.build.outputs.msix-path }}
+
       - name: Submit to SignPath for test signing
         id: signpath
-        shell: pwsh
-        env:
-          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
-        run: |
-          $unsignedMsix = "${{ steps.build.outputs.msix-path }}"
-          $signedMsix = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($unsignedMsix), "Snap.Hutao.Remastered.Test-${{ steps.build.outputs.version }}-signed.msix")
-
-          Write-Host "Installing SignPath PowerShell module..."
-          Install-Module -Name SignPath -Force -Scope CurrentUser
-
-          Write-Host "Submitting signing request to SignPath..."
-          Write-Host "  Input:  $unsignedMsix"
-          Write-Host "  Output: $signedMsix"
-
-          Submit-SigningRequest `
-            -InputArtifactPath $unsignedMsix `
-            -ApiToken $Env:SIGNPATH_API_TOKEN `
-            -OrganizationId "ba79caf8-8aa3-44e6-8a7b-ac8541512be4" `
-            -ProjectSlug "Snap.Hutao.Remastered" `
-            -SigningPolicySlug "test-signing" `
-            -ArtifactConfigurationSlug "msix" `
-            -OutputArtifactPath $signedMsix `
-            -WaitForCompletion
-
-          Write-Host "Signing completed."
-          Write-Host "signed-msix=$signedMsix" >> $Env:GITHUB_OUTPUT
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ba79caf8-8aa3-44e6-8a7b-ac8541512be4
+          project-slug: Snap.Hutao.Remastered
+          signing-policy-slug: test-signing
+          artifact-configuration-slug: msix
+          github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: ${{ github.workspace }}/src/output/signed
 
       - name: Upload signed MSIX
         uses: actions/upload-artifact@v7
         with:
           name: Snap.Hutao.Remastered.Test-${{ steps.build.outputs.version }}-signed
-          path: ${{ steps.signpath.outputs.signed-msix }}
+          path: ${{ github.workspace }}/src/output/signed
 
       - name: Add summary
         shell: pwsh
@@ -72,6 +67,7 @@ jobs:
           - **Version:** ${{ steps.build.outputs.version }}
           - **Signing Policy:** test-signing
           - **Certificate:** CN=Test certificate for 'Snap.Hutao.Remastered [OSS]'
+          - **Signing Request:** ${{ steps.signpath.outputs.signing-request-web-url }}
 
           > [!WARNING]
           > 该版本使用 SignPath 测试证书签名

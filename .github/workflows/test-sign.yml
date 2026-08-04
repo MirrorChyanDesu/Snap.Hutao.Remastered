@@ -50,6 +50,7 @@ jobs:
             -OrganizationId "ba79caf8-8aa3-44e6-8a7b-ac8541512be4" `
             -ProjectSlug "Snap.Hutao.Remastered" `
             -SigningPolicySlug "test-signing" `
+            -ArtifactConfigurationSlug "msix" `
             -OutputArtifactPath $signedMsix `
             -WaitForCompletion
 

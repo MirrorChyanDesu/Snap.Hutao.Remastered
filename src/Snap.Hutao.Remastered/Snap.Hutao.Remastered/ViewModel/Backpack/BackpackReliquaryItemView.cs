@@ -3,6 +3,7 @@
 
 using Snap.Hutao.Remastered.Model.Entity;
 using Snap.Hutao.Remastered.Model.Intrinsic;
+using Snap.Hutao.Remastered.Model.Metadata.Converter;
 using Snap.Hutao.Remastered.Model.Metadata.Reliquary;
 using Snap.Hutao.Remastered.Service.Backpack;
 using System.Collections.Immutable;
@@ -15,6 +16,8 @@ public sealed class BackpackReliquaryItemView : BackpackItemView
     public Reliquary Reliquary { get; private set; } = default!;
 
     public string? SetName { get; private set; }
+
+    public Uri? SetIconUri { get; private set; }
 
     public string EquipTypeName => Reliquary.EquipType.GetLocalizedDescriptionOrDefault(SH.ResourceManager, CultureInfo.CurrentCulture)!;
 
@@ -66,6 +69,7 @@ public sealed class BackpackReliquaryItemView : BackpackItemView
         if (context.IdReliquarySetMap.TryGetValue(reliquary.SetId, out ReliquarySet? set))
         {
             view.SetName = set.Name;
+            view.SetIconUri = RelicIconConverter.IconNameToUri(set.Icon);
         }
 
         FightProperty? mainFightProp = null;

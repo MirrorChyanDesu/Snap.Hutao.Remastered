@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 using Snap.Hutao.Remastered.Model.Intrinsic;
+using Snap.Hutao.Remastered.Model.Metadata;
 using Snap.Hutao.Remastered.Model.Metadata.Item;
 using Snap.Hutao.Remastered.Model.Metadata.Reliquary;
 using Snap.Hutao.Remastered.Model.Metadata.Weapon;
@@ -21,7 +22,9 @@ public sealed class BackpackServiceMetadataContext : IMetadataContext,
     IMetadataDictionaryIdReliquarySetSource,
     IMetadataDictionaryIdReliquaryMainPropertySource,
     IMetadataDictionaryIdReliquarySubAffixSource,
-    IMetadataArrayReliquaryMainAffixLevelSource
+    IMetadataArrayReliquaryMainAffixLevelSource,
+    IMetadataArrayCookRecipeSource,
+    IMetadataDictionaryIdCookRecipeSource
 {
     public ImmutableDictionary<MaterialId, DisplayItem> IdDisplayItemAndMaterialMap { get; set; } = default!;
 
@@ -38,4 +41,8 @@ public sealed class BackpackServiceMetadataContext : IMetadataContext,
     public ImmutableDictionary<ReliquarySubAffixId, ReliquarySubAffix> IdReliquarySubAffixMap { get; set; } = default!;
 
     public ImmutableArray<ReliquaryMainAffixLevel> ReliquaryMainAffixLevels { get; set; }
+
+    public ImmutableArray<CookRecipe> CookRecipes { get; set; }
+
+    public ImmutableDictionary<CookRecipeId, CookRecipe> IdCookRecipeMap { get; set; } = default!;
 }

@@ -8,7 +8,9 @@
     xmlns:mxi="using:Microsoft.Xaml.Interactivity"
     xmlns:shuxb="using:Snap.Hutao.Remastered.UI.Xaml.Behavior"
     xmlns:shuxc="using:Snap.Hutao.Remastered.UI.Xaml.Control"
+    xmlns:shuxca="using:Snap.Hutao.Remastered.UI.Xaml.Control.AutoSuggestBox"
     xmlns:shuxcc="using:Snap.Hutao.Remastered.UI.Xaml.Control.Card"
+    xmlns:shuxci="using:Snap.Hutao.Remastered.UI.Xaml.Control.Image"
     xmlns:shuxdcs="using:Snap.Hutao.Remastered.UI.Xaml.Data.Converter.Specialized"
     xmlns:shuxm="using:Snap.Hutao.Remastered.UI.Xaml.Markup"
     xmlns:shv="using:Snap.Hutao.Remastered.ViewModel.Backpack"
@@ -24,12 +26,14 @@
                         x:Key="CountToGradientColorConverter"
                         Maximum="#FFFD0093"
                         Minimum="#FF4B00D9"/>
+                    <SolidColorBrush x:Key="TokenSideIconBackgroundBrush" Color="#FF8A8A8A"/>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <shuxdcs:UInt32ToGradientColorConverter
                         x:Key="CountToGradientColorConverter"
                         Maximum="#FFFF69BF"
                         Minimum="#FF9F69FF"/>
+                    <SolidColorBrush x:Key="TokenSideIconBackgroundBrush" Color="Transparent"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -248,6 +252,58 @@
             DefaultTemplate="{StaticResource DefaultCardTemplate}"
             ReliquaryTemplate="{StaticResource ReliquaryCardTemplate}"
             WeaponTemplate="{StaticResource WeaponCardTemplate}"/>
+
+            <DataTemplate x:Key="TokenTemplate" x:DataType="shuxca:SearchToken">
+                <Grid Height="22" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="24"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!-- IconUri -->
+                    <shuxci:CachedImage
+                        Grid.Column="0"
+                        Width="20"
+                        Height="20"
+                        Margin="-3,2,7,0"
+                        ShowAsMonoChrome="True"
+                        Source="{Binding IconUri, Mode=OneWay}"
+                        Visibility="{Binding IconUri, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
+                    <!-- Quality dot -->
+                    <Ellipse
+                        Grid.Column="0"
+                        Width="12"
+                        Height="12"
+                        Margin="1,1,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"
+                        Visibility="{Binding Quality, Converter={StaticResource EmptyObjectToVisibilityConverter}}">
+                        <Ellipse.Fill>
+                            <SolidColorBrush Color="{Binding Quality}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <!-- Gray background for SideIconUri (light theme only) -->
+                    <Ellipse
+                        Grid.Column="0"
+                        Width="20"
+                        Height="20"
+                        Margin="-4,-2,8,2"
+                        Fill="{ThemeResource TokenSideIconBackgroundBrush}"
+                        Visibility="{Binding SideIconUri, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
+                    <!-- SideIconUri-->
+                    <shuxci:CachedImage
+                        Grid.Column="0"
+                        Width="20"
+                        Height="20"
+                        Margin="-4,-2,8,2"
+                        Source="{Binding SideIconUri, Mode=OneWay}"
+                        Visibility="{Binding SideIconUri, Converter={StaticResource EmptyObjectToVisibilityConverter}}"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Height="20"
+                        VerticalAlignment="Center"
+                        Text="{Binding Value}"/>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -288,181 +344,230 @@
             </Border>
         </shuxc:StandardView.EmptyContent>
 
-        <Pivot
-            SelectedIndex="{Binding SelectedCategoryIndex, Mode=TwoWay}"
-            Style="{ThemeResource CardPivotStyle}">
-            <Pivot.RightHeader>
-                <CommandBar DefaultLabelPosition="Right" Background="Transparent">
-                    <AppBarElementContainer AllowFocusOnInteraction="True">
-                        <shuxc:SizeRestrictedContentControl Margin="2,6,3,6">
-                            <ComboBox
-                                DisplayMemberPath="Name"
-                                ItemsSource="{Binding Archives}"
-                                SelectedItem="{Binding Archives.CurrentItem, Mode=TwoWay}"
-                                Style="{ThemeResource CommandBarComboBoxStyle}"/>
-                        </shuxc:SizeRestrictedContentControl>
-                    </AppBarElementContainer>
-                    <AppBarButton
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Filter bar -->
+            <Border
+                Margin="16" Grid.Row="0" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                    <Grid Margin="4,4" ColumnSpacing="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <shuxca:AutoSuggestTokenBox
+                            Width="800"
+                            Height="44"
+                            Margin="6,-2,6,6"
+                            HorizontalAlignment="Right"
+                            AvailableTokens="{Binding SearchData.AvailableTokens}"
+                            FilterCommand="{Binding FilterCommand}"
+                            ItemsSource="{Binding SearchData.FilterTokens, Mode=TwoWay}"
+                            MaximumTokens="5"
+                            PlaceholderText="{shuxm:ResourceString Name=ViewPageBackpackFilterPlaceholder}"
+                            QueryIcon="{cw:FontIconSource Glyph=&#xE721;}"
+                            Style="{StaticResource DefaultAutoSuggestTokenBoxStyle}"
+                            SuggestedItemTemplate="{StaticResource TokenTemplate}"
+                            SuggestedItemsSource="{Binding SearchData.AvailableTokens.Values}"
+                            Text="{Binding SearchData.FilterToken, Mode=TwoWay}"
+                            TokenItemTemplate="{StaticResource TokenTemplate}"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                Text="{shuxm:ResourceString Name=ViewPageBackpackFilterLevel}"/>
+                            <NumberBox
+                                Width="70"
+                                VerticalAlignment="Center"
+                                Header="{x:Null}"
+                                PlaceholderText="0"
+                                SpinButtonPlacementMode="Hidden"
+                                Value="{Binding FilterLevel, Mode=TwoWay}"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Border>
+            <Pivot
+                Margin="0,-24"
+                Grid.Row="1"
+                SelectedIndex="{Binding SelectedCategoryIndex, Mode=TwoWay}"
+                Style="{ThemeResource CardPivotStyle}">
+                <Pivot.RightHeader>
+                    <CommandBar DefaultLabelPosition="Right" Background="Transparent">
+                        <AppBarElementContainer AllowFocusOnInteraction="True">
+                            <shuxc:SizeRestrictedContentControl Margin="2,6,3,6">
+                                <ComboBox
+                                    DisplayMemberPath="Name"
+                                    ItemsSource="{Binding Archives}"
+                                    SelectedItem="{Binding Archives.CurrentItem, Mode=TwoWay}"
+                                    Style="{ThemeResource CommandBarComboBoxStyle}"/>
+                            </shuxc:SizeRestrictedContentControl>
+                        </AppBarElementContainer>
+                        <AppBarButton
                         Command="{Binding AddArchiveCommand}"
                         Icon="{shuxm:FontIcon Glyph=&#xE710;}"
                         Label="{shuxm:ResourceString Name=ViewPageBackpackAddArchive}"/>
-                    <AppBarButton
+                        <AppBarButton
                         Command="{Binding RemoveArchiveCommand}"
                         Icon="{shuxm:FontIcon Glyph=&#xE74D;}"
                         Label="{shuxm:ResourceString Name=ViewPageBackpackRemoveArchive}"/>
-                    <AppBarSeparator/>
-                    <AppBarButton
+                        <AppBarSeparator/>
+                        <AppBarButton
                         Command="{Binding RefreshByEmbeddedYaeCommand}"
                         Icon="{shuxm:FontIcon Glyph=&#xE72C;}"
                         Label="{shuxm:ResourceString Name=ViewPageBackpackRefreshByEmbeddedYae}"/>
-                </CommandBar>
-            </Pivot.RightHeader>
+                    </CommandBar>
+                </Pivot.RightHeader>
 
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryWeapon}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryWeapon}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryReliquary}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                </PivotItem>
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryReliquary}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryUpgradeItem}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                </PivotItem>
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryUpgradeItem}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryFood}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                </PivotItem>
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryFood}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryMaterial}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                </PivotItem>
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryMaterial}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryGadget}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                </PivotItem>
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryGadget}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryQuest}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                </PivotItem>
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryQuest}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryPreciousItem}">
-                <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
-                    <Border Style="{ThemeResource AcrylicBorderCardStyle}">
-                        <GridView
+                </PivotItem>
+                <PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryPreciousItem}">
+                    <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
+                        <Border Style="{ThemeResource AcrylicBorderCardStyle}">
+                            <GridView
                             Padding="16,16,10,10"
                             ItemTemplateSelector="{StaticResource BackpackItemTemplateSelector}"
                             ItemsSource="{Binding Items}"
                             SelectionMode="None">
-                            <GridView.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,0,6,6"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                        </GridView>
+                                <GridView.ItemContainerStyle>
+                                    <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="0,0,6,6"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                            </GridView>
+                        </Border>
                     </Border>
-                </Border>
-            </PivotItem>
-            <!--<PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryFurniture}">
+                </PivotItem>
+                <!--<PivotItem Header="{shuxm:ResourceString Name=ViewPageBackpackCategoryFurniture}">
                 <Border Margin="16" cw:Effects.Shadow="{ThemeResource CompatCardShadow}">
                     <Border Style="{ThemeResource AcrylicBorderCardStyle}">
                         <GridView
@@ -480,6 +585,7 @@
                     </Border>
                 </Border>
             </PivotItem>-->
-        </Pivot>
+            </Pivot>
+        </Grid>
     </shuxc:StandardView>
 </shuxc:ScopedPage>

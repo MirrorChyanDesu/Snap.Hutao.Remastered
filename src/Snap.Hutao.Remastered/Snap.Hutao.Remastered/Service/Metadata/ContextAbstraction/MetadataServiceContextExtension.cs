@@ -132,6 +132,11 @@ public static class MetadataServiceContextExtension
                     dictionaryIdBeyondItemSource.IdBeyondItemMap = await metadataService.GetIdToBeyondItemMapAsync(token).ConfigureAwait(false);
                 }
 
+                if (context is IMetadataDictionaryIdCookRecipeSource dictionaryIdCookRecipeSource)
+                {
+                    dictionaryIdCookRecipeSource.IdCookRecipeMap = await metadataService.GetIdToCookRecipeMapAsync(token).ConfigureAwait(false);
+                }
+
                 if (context is IMetadataDictionaryIdDisplayItemAndMaterialSource dictionaryIdDisplayItemAndMaterialSource)
                 {
                     dictionaryIdDisplayItemAndMaterialSource.IdDisplayItemAndMaterialMap = await metadataService.GetIdToDisplayItemAndMaterialMapAsync(token).ConfigureAwait(false);

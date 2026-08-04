@@ -17,6 +17,13 @@ public class BackpackItemView
 
     public Material? Material { get; protected set; }
 
+    public string Name => this switch
+    {
+        BackpackWeaponItemView w => w.Weapon.Name,
+        BackpackReliquaryItemView r => r.Reliquary.Name,
+        _ => Material?.Name ?? string.Empty,
+    };
+
     public string DisplayCount => Entity.Count > 1 ? $"x{Entity.Count}" : string.Empty;
 
     public static BackpackItemView Create(BackpackItem entity, BackpackServiceMetadataContext context)

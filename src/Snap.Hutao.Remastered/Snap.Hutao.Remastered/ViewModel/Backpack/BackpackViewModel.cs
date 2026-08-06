@@ -11,6 +11,7 @@ using Snap.Hutao.Remastered.Model.Intrinsic;
 using Snap.Hutao.Remastered.Model.Intrinsic.Frozen;
 using Snap.Hutao.Remastered.Model.Metadata;
 using Snap.Hutao.Remastered.Model.Metadata.Converter;
+using Snap.Hutao.Remastered.Service.AvatarInfo.Factory;
 using Snap.Hutao.Remastered.Service.Backpack;
 using Snap.Hutao.Remastered.Service.Metadata.ContextAbstraction;
 using Snap.Hutao.Remastered.Service.Notification;
@@ -70,6 +71,8 @@ public sealed partial class BackpackViewModel : Abstraction.ViewModel
     [ObservableProperty]
     public partial double? FilterLevel { get; set; }
 
+    public BackpackReliquaryScoreConfig? ScoreConfig { get; private set; }
+
     protected override async ValueTask<bool> LoadOverrideAsync(CancellationToken token)
     {
         // Set empty SearchData so AutoSuggestTokenBox has a non-null binding target
@@ -93,6 +96,7 @@ public sealed partial class BackpackViewModel : Abstraction.ViewModel
         Archives = archives;
         Archives.MoveCurrentTo(Archives.Source.SelectedOrFirstOrDefault());
 
+        ScoreConfig = scopeContext.BackpackService.GetActiveReliquaryScoreConfig();
         UpdateItemsAsync(Archives.CurrentItem, itemsTokenProvider.GetNewToken()).SafeForget();
 
         return true;
@@ -187,6 +191,36 @@ public sealed partial class BackpackViewModel : Abstraction.ViewModel
         Archives.MoveCurrentTo(Archives.Source.SelectedOrFirstOrDefault());
     }
 
+    [Command("ConfigureScoreCommand")]
+    private async Task ConfigureScoreAsync()
+    {
+        SentrySdk.AddBreadcrumb(BreadcrumbFactory.CreateUI("ConfigureScore", "BackpackViewModel.Command"));
+
+        BackpackReliquaryScoreConfigDialog dialog = await scopeContext.ContentDialogFactory
+            .CreateInstanceAsync<BackpackReliquaryScoreConfigDialog>(scopeContext.ServiceProvider)
+            .ConfigureAwait(false);
+
+        ImmutableArray<BackpackReliquaryScoreConfig> allConfigs = scopeContext.BackpackService.GetAllReliquaryScoreConfigs();
+        BackpackReliquaryScoreConfig activeConfig = ScoreConfig ?? scopeContext.BackpackService.GetActiveReliquaryScoreConfig();
+
+        BackpackReliquaryScoreConfig? result = await dialog.GetInputAsync(
+            allConfigs,
+            activeConfig,
+            scopeContext.BackpackService.CreatePreset,
+            scopeContext.BackpackService.DeleteReliquaryScoreConfig).ConfigureAwait(false);
+        if (result is null)
+        {
+            return;
+        }
+
+        result.IsActive = true;
+        result = scopeContext.BackpackService.SaveReliquaryScoreConfig(result);
+        ScoreConfig = result;
+
+        // Refresh all items to update scores with the saved config
+        await UpdateItemsAsync(Archives?.CurrentItem, itemsTokenProvider.GetNewToken()).ConfigureAwait(false);
+    }
+
     [Command("RefreshByEmbeddedYaeCommand")]
     private async Task RefreshByEmbeddedYaeAsync()
     {
@@ -247,9 +281,21 @@ public sealed partial class BackpackViewModel : Abstraction.ViewModel
             .GetContextAsync<BackpackServiceMetadataContext>(linkedCts.Token)
             .ConfigureAwait(false);
 
+        context.ReliquaryScoreConfig = scopeContext.BackpackService.GetActiveReliquaryScoreConfig();
+        ScoreConfig = context.ReliquaryScoreConfig;
+
         ImmutableArray<BackpackItemView> allItems = [.. scopeContext.BackpackService
             .GetBackpackItemImmutableArrayByArchiveId(archive.InnerId)
             .Select(item => BackpackItemView.Create(item, context))];
+
+        // Calculate scores for reliquary items
+        foreach (BackpackItemView item in allItems)
+        {
+            if (item is BackpackReliquaryItemView relicItem)
+            {
+                relicItem.Score = ReliquaryScoreCalculator.CalculateWithWeights(relicItem.SubStats.Select(s => (s.FightProp, s.Value)), context.ReliquaryScoreConfig.GetWeight);
+            }
+        }
 
         categoryItems = BuildCategoryViews(allItems);
 

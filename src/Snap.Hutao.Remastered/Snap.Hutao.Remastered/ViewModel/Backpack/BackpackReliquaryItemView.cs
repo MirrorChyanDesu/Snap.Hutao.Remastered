@@ -31,6 +31,14 @@ public sealed class BackpackReliquaryItemView : BackpackItemView
 
     public string? MainPropValue { get; private set; }
 
+    public double Score { get; set; }
+
+    public bool HasScore => Score > 0;
+
+    public string DisplayScore => HasScore ? string.Format(CultureInfo.CurrentCulture, SH.ViewPageBackpackReliquaryScoreValue, Score) : string.Empty;
+
+    public int ScoreColorValue => (int)Math.Round(Score);
+
     public ImmutableArray<BackpackReliquarySubStatView> SubStats { get; private set; } = [];
 
     /// <summary>
@@ -102,7 +110,6 @@ public sealed class BackpackReliquaryItemView : BackpackItemView
         }
 
         view.BuildSubStats(context);
-
         return view;
     }
 

@@ -1,8 +1,6 @@
 // Copyright (c) Snap Hutao RP. All rights reserved.
 // Licensed under the MIT license.
 
-using System.Text.Json.Serialization;
-
 namespace Snap.Hutao.Remastered.Service.FileUnlocker;
 
 public sealed class LockUnlockResponse

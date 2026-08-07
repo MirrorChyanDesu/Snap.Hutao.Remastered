@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace Snap.Hutao.Remastered.Service.FileUnlocker;
 
 [Service(ServiceLifetime.Singleton, typeof(IFileUnlockerService))]
-public sealed unsafe partial class FileUnlockerService : IFileUnlockerService
+public sealed partial class FileUnlockerService : IFileUnlockerService
 {
     private static readonly JsonSerializerOptions JsonOptions = new()
     {

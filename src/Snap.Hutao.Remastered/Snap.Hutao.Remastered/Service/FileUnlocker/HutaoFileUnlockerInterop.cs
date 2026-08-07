@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace Snap.Hutao.Remastered.Service.FileUnlocker;
 
-internal static unsafe class HutaoFileUnlockerInterop
+internal static class HutaoFileUnlockerInterop
 {
     private const string DllName = "Snap.Hutao.FileUnlocker.dll";
 

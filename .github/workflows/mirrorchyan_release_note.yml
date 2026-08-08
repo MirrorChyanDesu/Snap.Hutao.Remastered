@@ -13,24 +13,19 @@ jobs:
   mirrorchyan:
     runs-on: macos-latest
     if: ${{ github.repository_owner == 'SnapHutaoRemasteringProject' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        rid:
+          - SnapHutaoRemastered
+          - SnapHutaoRemastered_msix
 
     steps:
       - id: uploading
         uses: MirrorChyan/release-note-action@v1
         with:
-          mirrorchyan_rid: SnapHutaoRemastered
-          version_name: ${{ inputs.tag }}
-
-          owner: SnapHutaoRemasteringProject
-          repo: Snap.Hutao.Remastered
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          upload_token: ${{ secrets.MirrorChyanUploadToken }}
-
-      - id: uploading_msix
-        uses: MirrorChyan/release-note-action@v1
-        with:
-          mirrorchyan_rid: SnapHutaoRemastered_msix
-          version_name: ${{ inputs.tag }}
+          mirrorchyan_rid: ${{ matrix.rid }}
+          version_name: ${{ inputs.tag || github.event.release.tag_name }}
 
           owner: SnapHutaoRemasteringProject
           repo: Snap.Hutao.Remastered
